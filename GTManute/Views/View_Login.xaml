@@ -1,0 +1,58 @@
+﻿<Window x:Class="GTManute.Views.View_Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GTManute.Views"
+        mc:Ignorable="d"
+        Title="View_Login" Height="500" Width="500" WindowStyle="None" ResizeMode="NoResize" Background="Transparent">
+
+    <Grid>
+        <Rectangle Fill="Gray" Stroke="Transparent" RadiusY="10" RadiusX="10" Margin="130,81,130,90"/>
+        <Rectangle Fill="{StaticResource primeiraCor}" Stroke="Transparent" RadiusY="10" RadiusX="10" Width="280" Height="320" Margin="110,90"/>
+        <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Center" Height="55" Margin="360,125,81,0" RadiusY="10" RadiusX="10" VerticalAlignment="Top" Width="59"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="360,125,0,0" TextWrapping="Wrap" Text="+" Height="55" Width="59" Foreground="{StaticResource primeiraCor}" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" FontSize="36"/>
+        <Grid x:Name="Login" Margin="110,118,155,104">
+
+
+
+
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Center" Height="41" 
+                VerticalAlignment="Top" Width="10" Margin="0,7,225,0"/>
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Height="55" Width="183" Foreground="{StaticResource SegundaCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
+            <Rectangle Fill="{StaticResource SegundaCor}" Height="2" Margin="45,124,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_usuario" HorizontalAlignment="Left" Height="24" Margin="45,100,0,0" TextWrapping="Wrap" Text="Usuário" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}"/>
+            <Rectangle Fill="{StaticResource SegundaCor}" Height="2" Margin="45,174,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_senha" HorizontalAlignment="Left" Height="24" Margin="45,150,0,0" TextWrapping="Wrap" Text="Senha" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}"/>
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="25" Margin="88,232,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="45,262,0,0" TextWrapping="Wrap" Text="Esqueceu a senha?" VerticalAlignment="Top" Width="190" TextAlignment="Center" Foreground="#FF747171"/>
+            <TextBlock x:Name="textBlock3" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left" Margin="101,232,0,0" TextWrapping="Wrap" Text="Entrar" VerticalAlignment="Top" Height="25" Width="75" TextAlignment="Center" FontWeight="Bold" FontSize="18"/>
+
+
+
+
+        </Grid>
+        <Grid x:Name="NovoLogin" Margin="110,118,155,104" Visibility="Hidden">
+            <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Center" Height="41" 
+                VerticalAlignment="Top" Width="10" Margin="0,7,225,0"/>
+            <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap" Text="Novo Login" VerticalAlignment="Top" Height="55" Width="210" Foreground="{StaticResource primeiraCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
+            <Rectangle Fill="{StaticResource primeiraCor}" Height="2" Margin="45,119,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_Novo_Usuario" HorizontalAlignment="Left" Height="24" Margin="45,95,0,0" TextWrapping="Wrap" Text="Usuário" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}"/>
+            <Rectangle Fill="{StaticResource primeiraCor}" Height="2" Margin="45,159,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_Novo_Senha" HorizontalAlignment="Left" Height="24" Margin="45,135,0,0" TextWrapping="Wrap" Text="Senha" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}"/>
+            <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Left" Height="25" Margin="88,232,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
+            <TextBlock x:Name="textBlock3_Copy" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="94,232,0,0" TextWrapping="Wrap" Text="Cadastrar" VerticalAlignment="Top" Height="25" Width="87" TextAlignment="Center" FontWeight="Bold" FontSize="18"/>
+            <Rectangle Fill="{StaticResource primeiraCor}" Height="2" Margin="45,200,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_Novo_ConfirmaSenha" HorizontalAlignment="Left" Height="24" Margin="45,176,0,0" TextWrapping="Wrap" Text="Confirmar senha" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}"/>
+
+
+
+
+        </Grid>
+
+
+
+
+    </Grid>
+
+</Window>

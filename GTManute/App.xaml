@@ -1,0 +1,13 @@
+﻿<Application x:Class="GTManute.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GTManute"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="primeiraCor">#ffffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="SegundaCor">#581845</SolidColorBrush>
+            <SolidColorBrush x:Key="TerceiraCor">#900c3f</SolidColorBrush>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
