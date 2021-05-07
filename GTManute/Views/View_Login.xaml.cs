@@ -23,5 +23,10 @@ namespace GTManute.Views
         {
             InitializeComponent();
         }
+
+        private void textBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }

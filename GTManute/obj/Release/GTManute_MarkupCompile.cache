@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Release\
 GTManute
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\App.xaml
 2970940152
 
-71769938203
+61217552006
 13-1142990016
 MainWindow.xaml;Views\View_Login.xaml;
 
