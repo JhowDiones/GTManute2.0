@@ -23,6 +23,7 @@ namespace GTManute
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

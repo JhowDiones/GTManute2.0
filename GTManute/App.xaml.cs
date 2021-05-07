@@ -14,7 +14,6 @@ namespace GTManute
     /// </summary>
     public partial class App : Application
     {
-        View_Login _Login = new View_Login();
-        
+       
     }
 }

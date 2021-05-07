@@ -24,9 +24,30 @@ namespace GTManute.Views
             InitializeComponent();
         }
 
-        private void textBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
         {
-            
+            txt_usuario.Text = "";
+        }
+
+        private void txt_usuario_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_usuario.Text =="")
+            {
+                txt_usuario.Text = "Usuário";
+            }
+        }
+
+        private void txt_senha_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_senha.Text = "";
+        }
+
+        private void txt_senha_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_senha.Text == "")
+            {
+                txt_senha.Text = "Senha";
+            }
         }
     }
 }
