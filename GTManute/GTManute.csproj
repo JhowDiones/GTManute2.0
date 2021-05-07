@@ -62,6 +62,9 @@
     <Compile Include="Views\View_Login.xaml.cs">
       <DependentUpon>View_Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\View_Menu.xaml.cs">
+      <DependentUpon>View_Menu.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +79,9 @@
     </Compile>
     <Page Include="Views\View_Login.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\View_Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

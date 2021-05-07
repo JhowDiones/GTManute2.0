@@ -49,5 +49,49 @@ namespace GTManute.Views
                 txt_senha.Text = "Senha";
             }
         }
+
+        private void txt_Novo_Usuario_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_Novo_Usuario.Text = "";
+        }
+
+        private void txt_Novo_Usuario_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_Novo_Usuario.Text == "")
+            {
+                txt_Novo_Usuario.Text = "Usuário";
+            }
+        }
+
+        private void txt_Novo_Senha_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_Novo_Senha.Text = "";
+        }
+
+        private void txt_Novo_Senha_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_Novo_Senha.Text == "")
+            {
+                txt_Novo_Senha.Text = "Senha";
+            }
+        }
+
+        private void txt_Novo_ConfirmaSenha_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_Novo_ConfirmaSenha.Text = "";
+        }
+
+        private void txt_Novo_ConfirmaSenha_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_Novo_ConfirmaSenha.Text == "")
+            {
+                txt_Novo_ConfirmaSenha.Text = "Confirmar senha";
+            }
+        }
+
+        private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
