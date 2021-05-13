@@ -23,5 +23,18 @@ namespace GTManute.Views
         {
             InitializeComponent();
         }
+
+        private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_servidor.Text = "";
+        }
+
+        private void txt_servidor_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_servidor.Text == "")
+            {
+                txt_servidor.Text = "Servidor";
+            }
+        }
     }
 }

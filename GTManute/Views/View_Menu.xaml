@@ -3,10 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GTManute.Views"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:GTManute.Views" ResizeMode="NoResize"
+        mc:Ignorable="d"   AllowsTransparency="True" WindowState="Normal" WindowStyle="None" Background="Transparent"
         Title="View_Menu" Height="450" Width="800">
     <Grid>
+        <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" />
         
+        <Grid HorizontalAlignment="Left" Margin="9.5,10,0,10" Width="109.901">
+
+            <Rectangle Fill="{StaticResource TerceiraCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0" Margin="-0.917,0,10.818,0" RadiusY="10" RadiusX="10"/>
+            <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0" Margin="10,0,0,0" HorizontalAlignment="Left" Width="99.901" />
+        </Grid>
+        <Rectangle Fill="{StaticResource SegundaCor}" Height="100" Margin="19.401,10,10,0" VerticalAlignment="Top"/>
+
+        <Grid HorizontalAlignment="Left" Height="20" Margin="19,110,0,0" VerticalAlignment="Top" Width="100.401">
+            <Rectangle Fill="{StaticResource TerceiraCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
+            <Image x:Name="image1" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
+            <TextBlock x:Name="Home1" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+
+
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="20" Margin="19,130,0,0" VerticalAlignment="Top" Width="100.401">
+            <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
+            <Image x:Name="image2" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
+            <TextBlock x:Name="Home2" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+
+
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="20" Margin="19,150,0,0" VerticalAlignment="Top" Width="100.401">
+            <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
+            <Image x:Name="image3" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
+            <TextBlock x:Name="Home3" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+
+
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="20" Margin="19,170,0,0" VerticalAlignment="Top" Width="100.401">
+            <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
+            <TextBlock x:Name="Home" Margin="0,0,0.401,0.016" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Height="30.5" Margin="0,0,-0.5,0" VerticalAlignment="Top" Width="30">
+            <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" Stroke="Black" RadiusX="5" RadiusY="5" Margin="0,0.5,0,0"/>
+            <TextBlock x:Name="btn_Fechar" TextWrapping="Wrap" Text="x" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0.5,0,0.5,0.5"/>
+        </Grid>
+
+
+
     </Grid>
 </Window>
