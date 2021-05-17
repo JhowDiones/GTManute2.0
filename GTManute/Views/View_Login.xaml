@@ -120,7 +120,7 @@
             <TextBox x:Name="txt_senha" HorizontalAlignment="Left" Height="24" Margin="45,150,0,0" TextWrapping="Wrap" Text="Senha" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" GotFocus="txt_senha_GotFocus" LostFocus="txt_senha_LostFocus" />
             <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="25" Margin="88,232,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
             <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="45,262,0,0" TextWrapping="Wrap" Text="Esqueceu a senha?" VerticalAlignment="Top" Width="190" TextAlignment="Center" Foreground="#FF747171"/>
-            <TextBlock x:Name="textBlock3" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left" Margin="88,232,0,0" TextWrapping="Wrap" Text="Entrar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18"/>
+            <TextBlock x:Name="btn_entrar" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left" Margin="88,232,0,0" TextWrapping="Wrap" Text="Entrar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_entrar_MouseLeftButtonDown" />
         </Grid>
         <Grid x:Name="NovoLogin" Margin="110,118,155,104" Visibility="Hidden">
             <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Center" Height="41" 
@@ -131,7 +131,7 @@
             <Rectangle Fill="{StaticResource primeiraCor}" Height="2" Margin="45,159,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
             <TextBox x:Name="txt_Novo_Senha" HorizontalAlignment="Left" Height="24" Margin="45,135,0,0" TextWrapping="Wrap" Text="Senha" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" GotFocus="txt_Novo_Senha_GotFocus" LostFocus="txt_Novo_Senha_LostFocus"/>
             <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Left" Height="25" Margin="88,232,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
-            <TextBlock x:Name="textBlock3_Copy" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="94,232,0,0" TextWrapping="Wrap" Text="Cadastrar" VerticalAlignment="Top" Height="25" Width="87" TextAlignment="Center" FontWeight="Bold" FontSize="18"/>
+            <TextBlock x:Name="textBlock3_Copy" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="94,232,0,0" TextWrapping="Wrap" Text="Cadastrar" VerticalAlignment="Top" Height="25" Width="87" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="textBlock3_Copy_MouseLeftButtonDown"/>
             <Rectangle Fill="{StaticResource primeiraCor}" Height="2" Margin="45,200,0,0" Stroke="Transparent" VerticalAlignment="Top"/>
             <TextBox x:Name="txt_Novo_ConfirmaSenha" HorizontalAlignment="Left" Height="24" Margin="45,176,0,0" TextWrapping="Wrap" Text="Confirmar senha" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" GotFocus="txt_Novo_ConfirmaSenha_GotFocus" LostFocus="txt_Novo_ConfirmaSenha_LostFocus"/>
         </Grid>

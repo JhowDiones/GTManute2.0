@@ -3,7 +3,6 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\App.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute_MarkupCompile.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute_MarkupCompile.lref
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe.config
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.pdb
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\App.baml
@@ -19,3 +18,11 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.baml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Banco.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csprojAssemblyReference.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe.config
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\app.config
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.pdb
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CopyComplete
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.baml

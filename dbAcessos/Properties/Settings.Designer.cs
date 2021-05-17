@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GTManute.Properties {
+namespace dbAcessos.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -23,27 +23,14 @@ namespace GTManute.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Empresa {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security I" +
+            "nfo=True;User ID=Dionatan;Password=Di24091996")]
+        public string db_17ConnectionString {
             get {
-                return ((string)(this["Empresa"]));
-            }
-            set {
-                this["Empresa"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Info_db {
-            get {
-                return ((string)(this["Info_db"]));
-            }
-            set {
-                this["Info_db"] = value;
+                return ((string)(this["db_17ConnectionString"]));
             }
         }
     }

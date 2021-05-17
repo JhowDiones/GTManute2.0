@@ -27,7 +27,7 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,130,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image2" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home2" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+            <TextBlock x:Name="Home2" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Lançamentos" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
 
 
 
@@ -35,7 +35,7 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,150,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image3" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home3" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+            <TextBlock x:Name="Home3" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Relatórios" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
 
 
 

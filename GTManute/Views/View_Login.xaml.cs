@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using dbAcessos;
+using GTManute.Properties;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
 namespace GTManute.Views
 {
     /// <summary>
@@ -19,9 +11,19 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Login : Window
     {
+        private Settings cfg = new Settings();
+        private string Empresa { get; set; }
+        dbManuteDataContext db = new dbManuteDataContext();
+        Mensagem mensagem = new Mensagem();
         public View_Login()
         {
             InitializeComponent();
+            Empresa = cfg.Empresa;
+            if (Empresa == null || Empresa == "")
+            {
+                mensagem.Exibir("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
+                mensagem.ShowDialog();
+            }
         }
 
         private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
@@ -29,11 +31,24 @@ namespace GTManute.Views
             txt_usuario.Text = "";
         }
 
-        private void txt_usuario_LostFocus(object sender, RoutedEventArgs e)
+        private async void txt_usuario_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_usuario.Text =="")
+            if (txt_usuario.Text == "")
             {
                 txt_usuario.Text = "Usuário";
+            }
+            else
+            {
+                try
+                {
+                    string usuario = db.db_login.Where(a => a.USUARIO == txt_usuario.Text).Where(a => a.Empresa == Empresa).Select(a => a.USUARIO).First();
+                    txt_usuario.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
+                }
+                catch
+                {
+                    txt_usuario.Foreground = new SolidColorBrush(Colors.Red);
+                }
+
             }
         }
 
@@ -48,6 +63,19 @@ namespace GTManute.Views
             {
                 txt_senha.Text = "Senha";
             }
+            else
+            {
+                try
+                {
+                    string senha = db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Text).Select(a => a.SENHA).First();
+                    txt_senha.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
+
+                }
+                catch
+                {
+                    txt_senha.Foreground = new SolidColorBrush(Colors.Red);
+                }
+            }
         }
 
         private void txt_Novo_Usuario_GotFocus(object sender, RoutedEventArgs e)
@@ -55,11 +83,27 @@ namespace GTManute.Views
             txt_Novo_Usuario.Text = "";
         }
 
-        private void txt_Novo_Usuario_LostFocus(object sender, RoutedEventArgs e)
+        private async void txt_Novo_Usuario_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txt_Novo_Usuario.Text == "")
             {
                 txt_Novo_Usuario.Text = "Usuário";
+            }
+            else
+            {
+                try
+                {
+                    string senha = db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.USUARIO == txt_Novo_Usuario.Text).Select(a => a.USUARIO).First();
+
+
+                    txt_Novo_Usuario.Foreground = new SolidColorBrush(Colors.Red);
+                    MessageBox.Show("Usuário já cadastrado!", "Cadastro de Usuário");
+
+                }
+                catch
+                {
+                    txt_Novo_Usuario.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
+                }
             }
         }
 
@@ -91,7 +135,22 @@ namespace GTManute.Views
 
         private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            this.Close();
+        }
 
+        private void btn_entrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // var usuarios= db.db_login.Where()
+        }
+
+        private void textBlock3_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (txt_Novo_ConfirmaSenha.Text != "" && txt_Novo_ConfirmaSenha.Text != null &&
+                txt_Novo_Senha.Text != "" && txt_Novo_Senha.Text != null &&
+                txt_Novo_Usuario.Text != "" && txt_Novo_Usuario.Text != null && txt_Novo_Usuario.Foreground != new SolidColorBrush(Colors.Red))
+            {
+
+            }
         }
     }
 }
