@@ -19,14 +19,9 @@ namespace GTManute.Views
     /// </summary>
     public partial class Mensagem : Window
     {
-        public Mensagem()
+        public Mensagem(string principal, bool explica, string explicacao, string botao)
         {
             InitializeComponent();
-           
-        }
-
-        public void Exibir(string principal, bool explica, string explicacao, string botao)
-        {
             if (explica == true)
             {
                 txt_principal.Text = principal;
@@ -44,6 +39,7 @@ namespace GTManute.Views
                 btn_ok_segundo.Text = botao;
             }
         }
+
         private void btn_ok_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();

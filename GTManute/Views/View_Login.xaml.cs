@@ -14,15 +14,14 @@ namespace GTManute.Views
         private Settings cfg = new Settings();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
-        Mensagem mensagem = new Mensagem();
+       
         public View_Login()
         {
             InitializeComponent();
             Empresa = cfg.Empresa;
             if (Empresa == null || Empresa == "")
             {
-                mensagem.Exibir("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
-                mensagem.ShowDialog();
+                Mensagem("Empresa não configurada!",false,"","Ok!");
             }
         }
 
@@ -151,6 +150,11 @@ namespace GTManute.Views
             {
 
             }
+        }
+        private void Mensagem(string principal, bool explica, string explicacao, string botao)
+        {
+            Mensagem mensagem = new Mensagem(principal,explica,explicacao,botao);
+             mensagem.ShowDialog();
         }
     }
 }

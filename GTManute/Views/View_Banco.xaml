@@ -11,14 +11,16 @@
         <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="41" 
             VerticalAlignment="Top" Width="7.332" Margin="10.47,21.216,0,0"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="22.802,14.332,0,0"
-                   TextWrapping="Wrap" Text="Banco de dados" VerticalAlignment="Top" Width="276.792"
+                   TextWrapping="Wrap" Text="Configurações" VerticalAlignment="Top" Width="276.792"
                    Foreground="{StaticResource SegundaCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
         <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5"/>
         <TextBlock x:Name="btn_Fechar" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Width="29" FontSize="20" TextAlignment="Center" FontWeight="Bold"  Margin="0,-0.5,0.5,0"/>
         <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="25" Margin="100.669,158,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
         <TextBlock x:Name="textBlock3" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left" Margin="100.669,158,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18"/>
         <Rectangle Fill="{StaticResource SegundaCor}" Margin="17.792,99.33,18.875,98.67"  Stroke="Transparent"/>
-        <TextBox x:Name="txt_servidor" Text="Servidor" Margin="17.792,75.33,18.875,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_usuario_GotFocus" LostFocus="txt_servidor_LostFocus" />
+        <TextBox x:Name="txt_empresa" Text="Empresa" Margin="17.792,75.33,18.875,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_usuario_GotFocus" LostFocus="txt_servidor_LostFocus" />
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="17.792,0,18.875,67.67"  Stroke="Transparent" Height="2" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="txt_senha" Text="Contra senha" Margin="17.792,0,18.875,69.67"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Bottom" GotFocus="txt_senha_GotFocus_1" LostFocus="txt_senha_LostFocus" />
 
     </Grid>
 </Window>
