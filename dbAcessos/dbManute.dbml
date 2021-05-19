@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_17" Class="dbManuteDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security Info=True;User ID=Dionatan" SettingsObjectName="dbAcessos.Properties.Settings" SettingsPropertyName="db_17ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.db_abast" Member="db_abast">
+    <Type Name="db_abast">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PARA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PLACA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOTORISTA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AJUDANTE1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AJUDANTE2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_PARTIDA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_CHEGADA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DESPESA_ALI" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DESPESA_PERN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DESPESA_COMB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DESPESA_OUTRAS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="KM_PARTIDA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="KM_CHEGADA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HORA_PARTIDA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HORA_CHEGADA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="N_DOC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LITRAGEM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VALOR_TOTAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_HR" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UF_DE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UF_PARA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="periodo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="COMBUS_INTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VALOR_INTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="COMBUS_EXTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VALOR_EXTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_colaboradores" Member="db_colaboradores">
+    <Type Name="db_colaboradores">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SOBRENOME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NASCIMENTO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CPF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RG" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CNH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_CNH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAT_CNH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ENDERECO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="funcao" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="REFERENCIA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TEL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TEL2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MEDICAMENTO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TIPO_SANG" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_despconfig" Member="db_despconfig">
+    <Type Name="db_despconfig">
+      <Column Name="Código" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Pernoite" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Alimentacao" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Hora_Almoco" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Hora_Jantar" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_erro" Member="db_erro">
+    <Type Name="db_erro">
+      <Column Name="cod" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Erro" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Usuario" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_HR" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_estoque" Member="db_estoque">
+    <Type Name="db_estoque">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODPRO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUTO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CUSTOANTERIOR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SALDOESTOQUE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ULTIMAENTRADA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DT_ULTIMA_ENTRADA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GRUPO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_EstoqueEntraSaida" Member="db_EstoqueEntraSaida">
+    <Type Name="db_EstoqueEntraSaida">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODPROUTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PRODUTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OPERACAO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QUANTIDADE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CUSTO_ENTRADA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DT_HR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CUSTO_TT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FORNECEDOR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NFE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_financeiro" Member="db_financeiro">
+    <Type Name="db_financeiro">
+      <Column Name="COD" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FORNECEDOR" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[TIPO MOVIMENTACAO]" Member="TIPO_MOVIMENTACAO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[DATA PAGAMENTO]" Member="DATA_PAGAMENTO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[VALOR TOTAL]" Member="VALOR_TOTAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[NF-E]" Member="NF_E" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[FORMA PAGAMENTO]" Member="FORMA_PAGAMENTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[NUMERO PAGAMENTO]" Member="NUMERO_PAGAMENTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PARCELA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_forn" Member="db_forn">
+    <Type Name="db_forn">
+      <Column Name="codigo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RAZAO_SOCIAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NM_FANTASIA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CNPJ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="INSC_ESTADUAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ENDERECO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BAIRRO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CIDADE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TEL2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TEL1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SEG" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PAGAMENTO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_frota" Member="db_frota">
+    <Type Name="db_frota">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PLACA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MODELO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RENAVAN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CHASSIS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="POTENCIA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="COR" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ANO_FAB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOD_FAB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TIPO_CARRO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EIXOS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOTORISTA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TIPO_FROTA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PESO_SUPO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CAPACIDADE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_historico" Member="db_historico">
+    <Type Name="db_historico">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_HR" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_licenca" Member="db_licenca">
+    <Type Name="db_licenca">
+      <Column Name="DT_LICENCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_login" Member="db_login">
+    <Type Name="db_login">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SENHA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="T_acesso" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_manu" Member="db_manu">
+    <Type Name="db_manu">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NR_LANCA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_NF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NR_NF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FORNECEDOR" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VEICULO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOTORISTA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DESCRICAO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QUANTIDADE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VALOR" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="KM_MANUTENCAO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DESCONTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_manu_log" Member="db_manu_log">
+    <Type Name="db_manu_log">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NR_NF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_NF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VALOR_TT" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Desconto" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Acrescimo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PLACA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FORNECEDOR" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOTORISTA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="km_manutencao" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_pagamento" Member="db_pagamento">
+    <Type Name="db_pagamento">
+      <Column Name="cod" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dt_pagamento" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dt_processamento" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="status_pagamento" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="forma_pagamento" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serialkey" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_peca" Member="db_peca">
+    <Type Name="db_peca">
+      <Column Name="Cód" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PECA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_permissao" Member="db_permissao">
+    <Type Name="db_permissao">
+      <Column Name="cod" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="lan_abast" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="lan_manut" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="lan_pneus" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cad_forn" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cad_frota" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cad_cola" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cad_pneus" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cad_rotas" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cad_estoque" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ext_abas" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ext_manu" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="outros_rastreador" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="rel_abast" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="rel_manut" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="rel_media_critica" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="rel_cola" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_pneus" Member="db_pneus">
+    <Type Name="db_pneus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DESCRICAO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOCALIZACAO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KM_TOTAL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="N_REFORMAS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ULTIMOKM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="COD_PNEU" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HISTORICO" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.db_rotas" Member="db_rotas">
+    <Type Name="db_rotas">
+      <Column Name="COD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PARA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DT_LANCA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DISTANCIA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UF_DE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UF_PARA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Validar" Member="Validar">
+    <Type Name="Validar">
+      <Column Name="Validacao" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

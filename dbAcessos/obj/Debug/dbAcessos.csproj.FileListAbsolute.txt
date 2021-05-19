@@ -1,0 +1,7 @@
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\dbAcessos.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\dbAcessos.pdb
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csprojAssemblyReference.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.pdb
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\app.config
