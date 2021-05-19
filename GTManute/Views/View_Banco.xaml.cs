@@ -26,27 +26,14 @@ namespace GTManute.Views
 
         private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
         {
-            txt_empresa.Text = "";
+            txt_servidor.Text = "";
         }
 
         private void txt_servidor_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_empresa.Text == "")
+            if (txt_servidor.Text == "")
             {
-                txt_empresa.Text = "Servidor";
-            }
-        }
-
-        private void txt_senha_GotFocus_1(object sender, RoutedEventArgs e)
-        {
-            txt_senha.Text = "";
-        }
-
-        private void txt_senha_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_senha.Text == "")
-            {
-                txt_senha.Text = "Servidor";
+                txt_servidor.Text = "Servidor";
             }
         }
     }
