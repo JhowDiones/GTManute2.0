@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
+
 namespace GTManute.Views
 {
     /// <summary>
@@ -26,6 +27,7 @@ namespace GTManute.Views
             }
             try
             {
+                
                 int usuario = (int)db.db_empresas.Where(a => a.Empresa == int.Parse(txt_empresa.Text)).Select(a => a.Empresa).First();
                 txt_empresa.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
             }
