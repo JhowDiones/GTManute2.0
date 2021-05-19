@@ -47,7 +47,6 @@ namespace GTManute.Views
                 {
                     txt_usuario.Foreground = new SolidColorBrush(Colors.Red);
                 }
-
             }
         }
 

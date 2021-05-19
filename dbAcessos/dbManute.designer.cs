@@ -125,6 +125,14 @@ namespace dbAcessos
 			}
 		}
 		
+		public System.Data.Linq.Table<db_empresas> db_empresas
+		{
+			get
+			{
+				return this.GetTable<db_empresas>();
+			}
+		}
+		
 		public System.Data.Linq.Table<db_erro> db_erro
 		{
 			get
@@ -1692,6 +1700,123 @@ namespace dbAcessos
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.db_empresas")]
+	public partial class db_empresas
+	{
+		
+		private int _Id;
+		
+		private string _NomeEmpresa;
+		
+		private System.Nullable<int> _Empresa;
+		
+		private string _ContraSenha;
+		
+		private System.Nullable<System.DateTime> _DataCadastro;
+		
+		private System.Nullable<System.DateTime> _Validade;
+		
+		public db_empresas()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomeEmpresa", DbType="NVarChar(50)")]
+		public string NomeEmpresa
+		{
+			get
+			{
+				return this._NomeEmpresa;
+			}
+			set
+			{
+				if ((this._NomeEmpresa != value))
+				{
+					this._NomeEmpresa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Empresa", DbType="Int")]
+		public System.Nullable<int> Empresa
+		{
+			get
+			{
+				return this._Empresa;
+			}
+			set
+			{
+				if ((this._Empresa != value))
+				{
+					this._Empresa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContraSenha", DbType="NVarChar(50)")]
+		public string ContraSenha
+		{
+			get
+			{
+				return this._ContraSenha;
+			}
+			set
+			{
+				if ((this._ContraSenha != value))
+				{
+					this._ContraSenha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataCadastro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataCadastro
+		{
+			get
+			{
+				return this._DataCadastro;
+			}
+			set
+			{
+				if ((this._DataCadastro != value))
+				{
+					this._DataCadastro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validade", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Validade
+		{
+			get
+			{
+				return this._Validade;
+			}
+			set
+			{
+				if ((this._Validade != value))
+				{
+					this._Validade = value;
+				}
 			}
 		}
 	}
