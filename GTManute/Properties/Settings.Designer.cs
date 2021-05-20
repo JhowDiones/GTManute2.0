@@ -46,5 +46,17 @@ namespace GTManute.Properties {
                 this["Info_db"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dionatan.barbosadejesus@gmail.com")]
+        public string Email_Dev {
+            get {
+                return ((string)(this["Email_Dev"]));
+            }
+            set {
+                this["Email_Dev"] = value;
+            }
+        }
     }
 }

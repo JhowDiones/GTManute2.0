@@ -8,5 +8,8 @@
     <Setting Name="Info_db" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Email_Dev" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dionatan.barbosadejesus@gmail.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

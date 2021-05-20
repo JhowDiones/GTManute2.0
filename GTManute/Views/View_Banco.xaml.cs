@@ -1,6 +1,7 @@
 ﻿using dbAcessos;
 using GTManute.Properties;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -28,7 +29,7 @@ namespace GTManute.Views
             try
             {
                 
-                int usuario = (int)db.db_empresas.Where(a => a.Empresa == int.Parse(txt_empresa.Text)).Select(a => a.Empresa).First();
+                int usuario = await Task.FromResult<int>( (int)db.db_empresas.Where(a => a.Empresa == int.Parse(txt_empresa.Text)).Select(a => a.Empresa).First());
                 txt_empresa.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
             }
             catch
@@ -58,7 +59,7 @@ namespace GTManute.Views
             {
                 try
                 {
-                    var resultado = db.db_empresas.Where(a => a.ContraSenha == txt_senha.Text).Where(a => a.Empresa == int.Parse(txt_empresa.Text)).First();
+                    db_empresas resultado = await Task.FromResult<db_empresas>( db.db_empresas.Where(a => a.ContraSenha == txt_senha.Text).Where(a => a.Empresa == int.Parse(txt_empresa.Text)).First());
                     if (resultado.Empresa == int.Parse(txt_empresa.Text))
                     {
                         cfg.Empresa = txt_empresa.Text;
