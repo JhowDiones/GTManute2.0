@@ -28,8 +28,7 @@ namespace GTManute.Views
             }
             try
             {
-                
-                int usuario = await Task.FromResult<int>( (int)db.db_empresas.Where(a => a.Empresa == int.Parse(txt_empresa.Text)).Select(a => a.Empresa).First());
+                int usuario = await Task.FromResult<int>((int)db.db_empresas.Where(a => a.Empresa == int.Parse(txt_empresa.Text)).Select(a => a.Empresa).First());
                 txt_empresa.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
             }
             catch
@@ -39,8 +38,10 @@ namespace GTManute.Views
         }
         private void txt_senha_GotFocus_1(object sender, RoutedEventArgs e)
         {
-            if(txt_senha.Text== "Contra senha")
-            txt_senha.Text = "";
+            if (txt_senha.Text == "Contra senha")
+            {
+                txt_senha.Text = "";
+            }
         }
         private void txt_senha_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -59,7 +60,7 @@ namespace GTManute.Views
             {
                 try
                 {
-                    db_empresas resultado = await Task.FromResult<db_empresas>( db.db_empresas.Where(a => a.ContraSenha == txt_senha.Text).Where(a => a.Empresa == int.Parse(txt_empresa.Text)).First());
+                    db_empresas resultado = await Task.FromResult<db_empresas>(db.db_empresas.Where(a => a.ContraSenha == txt_senha.Text).Where(a => a.Empresa == int.Parse(txt_empresa.Text)).First());
                     if (resultado.Empresa == int.Parse(txt_empresa.Text))
                     {
                         cfg.Empresa = txt_empresa.Text;
@@ -73,7 +74,6 @@ namespace GTManute.Views
                 }
                 catch
                 {
-
                 }
                 if (txt_empresa.Foreground == new SolidColorBrush(Colors.Red))
                 {
