@@ -8,6 +8,7 @@
             <SolidColorBrush x:Key="primeiraCor">#ffffffff</SolidColorBrush>
             <SolidColorBrush x:Key="SegundaCor">#581845</SolidColorBrush>
             <SolidColorBrush x:Key="TerceiraCor">#900c3f</SolidColorBrush>
+            <Image x:Key="lupa_png" Source="{}"
         </ResourceDictionary>
     </Application.Resources>
 </Application>

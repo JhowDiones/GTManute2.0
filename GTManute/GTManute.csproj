@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Lançamento\View_Abast.xaml.cs">
+      <DependentUpon>View_Abast.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Mensagem.xaml.cs">
       <DependentUpon>Mensagem.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Lançamento\View_Abast.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Mensagem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
