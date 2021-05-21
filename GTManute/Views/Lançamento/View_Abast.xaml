@@ -8,7 +8,7 @@
         Title="View_Abast" Height="500" Width="800" Background="Transparent">
     <Grid>
         <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" />
-        <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5" Margin="0,0,0,0"/>
+        <Rectangle Fill="{StaticResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5" Margin="0,0,0,0"/>
         <TextBlock x:Name="btn_Fechar" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Width="28" FontSize="20" TextAlignment="Center" FontWeight="Bold"  Margin="0,0,0,0"/>
         <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="41" 
             VerticalAlignment="Top" Width="7.332" Margin="10.47,21.216,0,0"/>
@@ -17,25 +17,34 @@
             Foreground="{StaticResource SegundaCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
         <Grid Margin="35,70,35,0" Height="30" VerticalAlignment="Top">
             <Rectangle Margin="0" Fill="{StaticResource SegundaCor}" RadiusY="10" RadiusX="10"/>
-            <Image   Height="30" Width="30" HorizontalAlignment="Left" Margin="10,0,0,0" />
-            <TextBox Margin="40,2,100,2" />
+            <Image Source="{StaticResource Buscar_ico}" HorizontalAlignment="Left" Margin="5,1,0,1" />
+            <TextBox Margin="40,2,0,2" HorizontalAlignment="Left" Width="80" />
             <TextBlock Text="Buscar" HorizontalAlignment="Right" Width="95" VerticalAlignment="Center"
                        TextAlignment="Center" Foreground="{StaticResource primeiraCor}" FontWeight="Bold" FontSize="20" Height="30"/>
+            <TextBox Margin="140,2,0,2" HorizontalAlignment="Left" Width="111.039" />
+            <TextBox Margin="270,2,354.546,2" />
         </Grid>
         <Grid Margin="35,105,35,65" >
             <Rectangle Fill="{StaticResource SegundaCor}" StrokeThickness="5" RadiusY="10" RadiusX="10" />
             <Grid Margin="0,0,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height=".6*"/>
+                    <RowDefinition Height=".4*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width=".6*"/>
+                    <ColumnDefinition Width=".4*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="5" Grid.Row="0" Background="{StaticResource primeiraCor}">
-                    
-                </StackPanel>
+                <Grid Grid.Column="0"  Grid.Row="0">
+                    <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                </Grid>
+                <Grid Grid.Column="0"  Grid.Row="1">
+                    <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                </Grid>
+                <Grid Grid.Column="1"  Grid.RowSpan="2">
+                    <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                </Grid>
+               
             </Grid>
         </Grid>
 
