@@ -23,5 +23,118 @@ namespace GTManute.Views.Lançamento
         {
             InitializeComponent();
         }
+
+        private void txt_pes_datapartida_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(txt_pes_datapartida.Text=="Data partida")
+            {
+                txt_pes_datapartida.Text = "";
+            }
+        }
+
+        private void txt_pes_datachegada_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_datachegada.Text == "Data chegada")
+            {
+                txt_pes_datachegada.Text = "";
+            }
+        }
+
+        private void txt_pes_veiculo_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_veiculo.Text == "Veículo")
+            {
+                txt_pes_veiculo.Text = "";
+            }
+        }
+
+        private void txt_pes_motorista_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_motorista.Text == "Motorista")
+            {
+                txt_pes_motorista.Text = "";
+            }
+        }
+
+        private void txt_pes_Locpartida_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_Locpartida.Text == "Local partida")
+            {
+                txt_pes_Locpartida.Text = "";
+            }
+        }
+
+        private void txt_pes_locdestino_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_locdestino.Text == "Local destino")
+            {
+                txt_pes_locdestino.Text = "";
+            }
+        }
+
+        private void txt_pes_forncedor_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_fornecedor.Text == "Fornecedor")
+            {
+                txt_pes_fornecedor.Text = "";
+            }
+        }
+
+        private void txt_pes_datapartida_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_datapartida.Text == "")
+            {
+                txt_pes_fornecedor.Text = "Data partida";
+            }
+        }
+
+        private void txt_pes_datachegada_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_datachegada.Text == "")
+            {
+                txt_pes_datachegada.Text = "Data chegada";
+            }
+        }
+
+        private void txt_pes_veiculo_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+            if (txt_pes_veiculo.Text == "")
+            {
+                txt_pes_veiculo.Text = "Veículo";
+            }
+        }
+
+        private void txt_pes_motorista_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_motorista.Text == "")
+            {
+                txt_pes_motorista.Text = "Motorista";
+            }
+        }
+
+        private void txt_pes_Locpartida_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_Locpartida.Text == "")
+            {
+                txt_pes_Locpartida.Text = "Local partida";
+            }
+        }
+
+        private void txt_pes_locdestino_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_locdestino.Text == "")
+            {
+                txt_pes_locdestino.Text = "Local destino";
+            }
+        }
+
+        private void txt_pes_fornecedor_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_pes_fornecedor.Text == "")
+            {
+                txt_pes_fornecedor.Text = "Fornecedor";
+            }
+        }
     }
 }
