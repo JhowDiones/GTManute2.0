@@ -63,7 +63,7 @@
             <TextBlock x:Name="txt_pesquisa" FontSize="20" TextAlignment="Center" FontWeight="Bold"
                        Foreground="{StaticResource primeiraCor}" Margin="0,1,0,-24" TextWrapping="Wrap" Text="Ferramenta de pesquisa" VerticalAlignment="Top"/>
             <Image Source="{StaticResource Buscar_ico}" Margin="0,1,5,0" HorizontalAlignment="Right" Width="28" Height="28" VerticalAlignment="Top" />
-            <Grid Margin="10,51,10,10" Visibility="Hidden">
+            <Grid Margin="10,51,10,10">
                 <DataGrid x:Name="dt_pesquisa" Height="229" Margin="0,75,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rad_contem" Content="Contem" Foreground="{StaticResource primeiraCor}" FontSize="14" Margin="570,0,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rad_exata" Content="Pesquisa exata" Margin="570,23,0,0" Foreground="{StaticResource primeiraCor}" FontSize="14" VerticalAlignment="Top"/>
