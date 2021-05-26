@@ -37,8 +37,8 @@
             <Rectangle Fill="{StaticResource SegundaCor}" StrokeThickness="5" RadiusY="10" RadiusX="10" />
             <Grid Margin="0,0,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".45*"/>
+                    <RowDefinition Height=".55*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width=".6*"/>
@@ -46,9 +46,46 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0"  Grid.Row="0">
                     <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                    <GroupBox x:Name="groupBox" Header="Dados do cupom" HorizontalAlignment="Left" BorderBrush="{StaticResource SegundaCor}" Margin="10,10,0,10" Width="418">
+                        <Grid Margin="0">
+                            <Label x:Name="label1" Content="Nº Doc." HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"/>
+                            <TextBox x:Name="txt_doc" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy" Content="Veículo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="85,0,0,0"/>
+                            <ComboBox x:Name="cmb_veiculo" HorizontalAlignment="Left" Margin="85,25,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="label1_Copy1" Content="Total ltrs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="210,-1,0,0"/>
+                            <TextBox x:Name="txt_litragem" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy2" Content="Total valor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="295,-1,0,0"/>
+                            <TextBox x:Name="txt_valor" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="295,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy3" Content="Valor unitário" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="0,49,0,0"/>
+                            <TextBox x:Name="txt_res_unitario" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy4" Content="Fornecedor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="85,49,0,0"/>
+                            <ComboBox x:Name="cmb_veiculo_Copy" HorizontalAlignment="Left" Margin="85,75,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="label1_Copy5" Content="Total Km" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="210,49,0,0"/>
+                            <TextBox x:Name="txt_res_km" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy6" Content="Média KM/L" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="295,49,0,0"/>
+                            <TextBox x:Name="txt_res_media" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="295,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+
+                        </Grid>
+                    </GroupBox>
                 </Grid>
                 <Grid Grid.Column="0"  Grid.Row="1">
                     <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                    <GroupBox x:Name="groupBox1" Header="Partida" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="162" Margin="10,10,0,0" VerticalAlignment="Top" Width="206">
+                        <Grid Margin="0">
+                            <Label x:Name="label1_Copy7" Content="Nº Doc." HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="0,7,0,0"/>
+                            <TextBox x:Name="txt_doc_Copy" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="94,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+                            <Label x:Name="label1_Copy8" Content="Nº Doc." HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="0,35,0,0"/>
+                            <TextBox x:Name="txt_doc_Copy1" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="94,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+                            <Label x:Name="label1_Copy9" Content="Nº Doc." HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="0,63,0,0"/>
+                            <TextBox x:Name="txt_doc_Copy2" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="94,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+                            <Label x:Name="label1_Copy10" Content="Nº Doc." HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="0,91,0,0"/>
+                            <TextBox x:Name="txt_doc_Copy3" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="94,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox1_Copy" Header="Destino" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="162" Margin="0,10,10,0" VerticalAlignment="Top" Width="206">
+                        <Grid Margin="0"/>
+                    </GroupBox>
                 </Grid>
                 <Grid Grid.Column="1"  Grid.RowSpan="2">
                     <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
@@ -79,6 +116,7 @@
                 <TextBox x:Name="txt_pes_fornecedor" HorizontalAlignment="Left" Height="23" Margin="280,42,0,0" TextWrapping="Wrap" Text="Fornecedor" VerticalAlignment="Top" Width="120" GotFocus="txt_pes_forncedor_GotFocus" LostFocus="txt_pes_fornecedor_LostFocus"/>
             </Grid>
         </Grid>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="-104,223,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
