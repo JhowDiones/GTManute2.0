@@ -98,6 +98,33 @@
                 </Grid>
                 <Grid Grid.Column="1"  Grid.RowSpan="2">
                     <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                    <GroupBox x:Name="groupBox2" Header="Equipe/Despesas" BorderBrush="{StaticResource SegundaCor}"
+                              Margin="10,0,10,10" d:LayoutOverrides="HorizontalAlignment" Height="150" VerticalAlignment="Bottom">
+                        <Grid Margin="0">
+                            <Label x:Name="label1_Copy13" Content="Motorista" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy14" Content="Desp. Alimen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="0,49,0,0"/>
+                            <TextBox x:Name="txt_res_unitario_Copy" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <Label x:Name="label1_Copy15" Content="1º Ajudante" VerticalAlignment="Top" Margin="85,0,95,0"/>
+                            <Label x:Name="label1_Copy16" Content="Desp. Pernoite" VerticalAlignment="Top" Margin="85,49,95,0"/>
+                            <TextBox x:Name="txt_res_unitario_Copy1" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="85,75,95,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                            <Label x:Name="label1_Copy17" Content="2º Ajudante" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Margin="0,0,10,0"/>
+                            <Label x:Name="label1_Copy18" Content="Outras Desp." HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" Margin="0,49,10,0"/>
+                            <TextBox x:Name="txt_res_unitario_Copy2" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,75,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="23.04" Margin="0,25.96,0,0" VerticalAlignment="Top" Width="80"/>
+                            <ComboBox x:Name="comboBox_Copy" Height="23.04" Margin="85,25.96,95,0" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="comboBox_Copy1" HorizontalAlignment="Right" Height="23.04" Margin="0,25.96,10,0" VerticalAlignment="Top" Width="80"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox x:Name="groupBox2_Copy" Header="Ultimas viagens ao destino"
+                              BorderBrush="{StaticResource SegundaCor}" Margin="10,10,10,0" 
+                              d:LayoutOverrides="HorizontalAlignment" Height="160" VerticalAlignment="Top">
+                        <Grid Margin="0">
+                            <DataGrid x:Name="dataGrid"/>
+
+                        </Grid>
+                    </GroupBox>
                 </Grid>
 
             </Grid>
@@ -126,6 +153,14 @@
             </Grid>
         </Grid>
         <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="-104,223,0,0" VerticalAlignment="Top"/>
+        <Grid Height="50" Margin="35,0,35,10" VerticalAlignment="Bottom">
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="316,10,0,15"/>
+            <TextBlock x:Name="btn_entrar" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Entrar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_entrar_MouseLeftButtonDown" Margin="316,10,0,15" />
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"/>
+            <TextBlock x:Name="btn_entrar_Copy" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Entrar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_entrar_MouseLeftButtonDown" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment" />
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="420,10,0,15"/>
+            <TextBlock x:Name="btn_entrar_Copy1" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Entrar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_entrar_MouseLeftButtonDown" Margin="420,10,0,15" />
+        </Grid>
 
     </Grid>
 </Window>
