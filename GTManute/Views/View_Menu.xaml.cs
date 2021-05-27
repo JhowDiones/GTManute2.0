@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GTManute.Views.Lançamento;
 
 namespace GTManute.Views
 {
@@ -22,6 +23,26 @@ namespace GTManute.Views
         public View_Menu()
         {
             InitializeComponent();
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+
+        private void Home2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
+            view_Abast.Show();
+        }
+
+        private void btn_Config_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            View_Banco view_Banco = new View_Banco();
+            view_Banco.ShowDialog();
         }
     }
 }

@@ -3,6 +3,7 @@ using GTManute.Properties;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 
@@ -50,6 +51,15 @@ namespace GTManute.Views
                 txt_senha.Text = "Contra senha";
             }
         }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+
         private async void textBlock3_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (txt_empresa.Text == "" && txt_empresa.Foreground == new SolidColorBrush(Colors.Red) && txt_senha.Text == "")

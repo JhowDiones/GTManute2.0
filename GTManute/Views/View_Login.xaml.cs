@@ -28,6 +28,14 @@ namespace GTManute.Views
             }
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+
         private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txt_usuario.Text == "Usuário")
@@ -87,7 +95,6 @@ namespace GTManute.Views
                         txt_senha.Foreground = new SolidColorBrush(Colors.Red);
                     }
                 }
-                this.Cursor = Cursors.Arrow;
             }
         }
 
@@ -159,15 +166,30 @@ namespace GTManute.Views
             this.Close();
         }
 
-        private void btn_entrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void btn_entrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // var usuarios= db.db_login.Where()
+            if(txt_usuario.Text!="" || txt_senha.Text != "" || txt_usuario.Text != null || txt_senha.Text != null|| txt_usuario.Text != "Usuário" || txt_senha.Text != "Senha")
+            {
+                try
+                {
+                    db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Text).Where(a => a.USUARIO==txt_usuario.Text).First());
+                                        
+                        View_Menu view_Menu = new View_Menu();
+                        view_Menu.Show();
+                        this.Close();
+                    
+                }
+                catch
+                {
+                    mensagem("Falha ao tentar login, confira o usuário e senha!", true, "Confira os campos, estaram em vermelho os campos com dados incorretos.", "Ok");
+                }
+            }
         }
 
         private async void textBlock3_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (txt_Novo_ConfirmaSenha.Text != "" && txt_Novo_ConfirmaSenha.Text != null &&
-                txt_Novo_Senha.Text != "" && txt_Novo_Senha.Text != null &&
+                txt_Novo_Senha.Text != "" && txt_Novo_Senha.Text != null && txt_Novo_Usuario.Text != "Usuário" || txt_Novo_Senha.Text != "Senha" ||
                 txt_Novo_Usuario.Text != "" && txt_Novo_Usuario.Text != null && txt_Novo_Usuario.Foreground != new SolidColorBrush(Colors.Red))
             {
                 db_login novologin = new db_login();

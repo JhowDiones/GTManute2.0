@@ -27,7 +27,7 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,130,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image2" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home2" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Lançamentos" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+            <TextBlock x:Name="Home2" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Lançamentos" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="Home2_MouseLeftButtonDown"/>
 
 
 
@@ -43,7 +43,7 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,170,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home" Margin="0,0,0.401,0.016" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+            <TextBlock x:Name="btn_Config" Margin="0,0,0.401,0.016" TextWrapping="Wrap" TextAlignment="Right" Text="Configurações" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="btn_Config_MouseLeftButtonDown"/>
         </Grid>
         <Grid HorizontalAlignment="Right" Height="30.5" Margin="0,0,-0.5,0" VerticalAlignment="Top" Width="30">
             <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" Stroke="Black" RadiusX="5" RadiusY="5" Margin="0,0.5,0,0"/>

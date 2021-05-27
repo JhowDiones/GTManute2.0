@@ -40,6 +40,14 @@ namespace GTManute.Views.Lançamento
             }
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
+
         private void txt_pes_veiculo_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txt_pes_veiculo.Text == "Veículo")
@@ -135,6 +143,21 @@ namespace GTManute.Views.Lançamento
             {
                 txt_pes_fornecedor.Text = "Fornecedor";
             }
+        }
+
+        private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
