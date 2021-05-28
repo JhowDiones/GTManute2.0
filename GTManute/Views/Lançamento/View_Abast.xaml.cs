@@ -24,9 +24,10 @@ namespace GTManute.Views.Lançamento
 
         private class Ultimas
         {
-            private double KmRodado { get; set; }
-            private double Média { get; set; } 
-            private double 
+            public string Motorista { get; set; }
+            public string KmRodado { get; set; }
+            public string Média { get; set; }
+            public string DTPartida {get; set;}
         }
 
 
@@ -207,7 +208,7 @@ namespace GTManute.Views.Lançamento
         }
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
             string hrdestino, string hrpartida,string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
-            List<dbAcessos.db_abast> gridUltimas,string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
+            List<Ultimas> gridUltimas,string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
 string partida, string veiculo)
         {
             txt_desp_alimentacao.Text = despAlimentacao;
@@ -244,13 +245,23 @@ string partida, string veiculo)
         private async void carregar()
         {
             db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a=>a.ID).FirstOrDefault());
-            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.DE==abast.DE).Where(a=>a.PARA==abast.PARA).OrderByDescending(a=>a.ID).Take(5).ToList());
+            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.PLACA==abast.PLACA).Where(a=>a.DE==abast.DE).Where(a=>a.PARA==abast.PARA).OrderByDescending(a=>a.ID).Take(5).ToList());
 
+            List<Ultimas> ultimas = new List<Ultimas>();
+            for(int i =0; i < Listaabast.Count; i++)
+            {
+                Ultimas ult = new Ultimas();
 
+                ult.Motorista = Listaabast[i].MOTORISTA;
+                ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
+                ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
+                ult.DTPartida = Listaabast[i].DT_PARTIDA;
+                ultimas.Add(ult);
+            }
 
             preencher(abast.DESPESA_ALI,abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
                 abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA, 
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL,Listaabast,abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL,ultimas,abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
         }
     }
 }

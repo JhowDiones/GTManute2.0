@@ -56,3 +56,5 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.exe
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.pdb
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
