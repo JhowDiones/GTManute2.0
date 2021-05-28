@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_17" Class="dbManuteDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security Info=True;User ID=Dionatan" SettingsObjectName="dbAcessos.Properties.Settings" SettingsPropertyName="db_17ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security Info=True;User ID=Dionatan;Asynchronous Processing=True" SettingsObjectName="dbAcessos.Properties.Settings" SettingsPropertyName="db_17ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.db_abast" Member="db_abast">
     <Type Name="db_abast">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -32,6 +32,7 @@
       <Column Name="COMBUS_EXTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="VALOR_EXTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FORNECEDOR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.db_colaboradores" Member="db_colaboradores">

@@ -336,6 +336,8 @@ namespace dbAcessos
 		
 		private string _Empresa;
 		
+		private string _FORNECEDOR;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -400,6 +402,8 @@ namespace dbAcessos
     partial void OnVALOR_EXTERChanged();
     partial void OnEmpresaChanging(string value);
     partial void OnEmpresaChanged();
+    partial void OnFORNECEDORChanging(string value);
+    partial void OnFORNECEDORChanged();
     #endregion
 		
 		public db_abast()
@@ -1003,6 +1007,26 @@ namespace dbAcessos
 					this._Empresa = value;
 					this.SendPropertyChanged("Empresa");
 					this.OnEmpresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FORNECEDOR", DbType="NVarChar(50)")]
+		public string FORNECEDOR
+		{
+			get
+			{
+				return this._FORNECEDOR;
+			}
+			set
+			{
+				if ((this._FORNECEDOR != value))
+				{
+					this.OnFORNECEDORChanging(value);
+					this.SendPropertyChanging();
+					this._FORNECEDOR = value;
+					this.SendPropertyChanged("FORNECEDOR");
+					this.OnFORNECEDORChanged();
 				}
 			}
 		}

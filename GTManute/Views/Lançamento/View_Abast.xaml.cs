@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using dbAcessos;
+using GTManute.Properties;
 
 namespace GTManute.Views.Lançamento
 {
@@ -20,9 +21,24 @@ namespace GTManute.Views.Lançamento
     /// </summary>
     public partial class View_Abast : Window
     {
+
+        private class Ultimas
+        {
+            private double KmRodado { get; set; }
+            private double Média { get; set; } 
+            private double 
+        }
+
+
+
+        private Settings cfg = new Settings();
+        private string Empresa { get; set; }
+        dbManuteDataContext db = new dbManuteDataContext();
         public View_Abast()
         {
             InitializeComponent();
+            Empresa = cfg.Empresa;
+            carregar();
         }
 
         private void txt_pes_datapartida_GotFocus(object sender, RoutedEventArgs e)
@@ -173,6 +189,15 @@ namespace GTManute.Views.Lançamento
             txt_km_inicial.Text = "";
             txt_litragem.Text = "";
             txt_outras_desp.Text = "";
+
+            cmb_1ajudante.Text = "";
+            cmb_2ajudante.Text = "";
+            cmb_destino.Text = "";
+            cmb_fornecedor.Text = "";
+            cmb_motorista.Text = "";
+            cmb_partida.Text = "";
+            cmb_veiculo.Text = "";
+
             txt_res_km.Text = "";
             txt_res_media.Text = "";
             txt_res_unitario.Text = "";
@@ -182,7 +207,8 @@ namespace GTManute.Views.Lançamento
         }
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
             string hrdestino, string hrpartida,string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
-            List<dbAcessos.db_abast> gridUltimas )
+            List<dbAcessos.db_abast> gridUltimas,string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
+string partida, string veiculo)
         {
             txt_desp_alimentacao.Text = despAlimentacao;
             txt_desp_pernoite.Text = despPernoite;
@@ -196,19 +222,35 @@ namespace GTManute.Views.Lançamento
             txt_litragem.Text = litragem;
             txt_outras_desp.Text = outrasdesp;
 
+            cmb_1ajudante.Text = ajudante1;
+            cmb_2ajudante.Text = ajudante2;
+            cmb_destino.Text = destino;
+            cmb_fornecedor.Text = fornecedor;
+            cmb_motorista.Text = motorista;
+            cmb_partida.Text = partida;
+            cmb_veiculo.Text = veiculo;
+            txt_valor.Text = valor;
+
             double kmrestante = double.Parse(kmdestino) - double.Parse(kmpartida);
             double media = kmrestante/ double.Parse(kmpartida);
+            valor = valor.Replace("R$ ", "");
             double unitario = double.Parse(valor) / double.Parse(litragem);
             txt_res_km.Text = kmrestante.ToString("N2");
             txt_res_media.Text = media.ToString("N2");
             txt_res_unitario.Text = unitario.ToString("N2");
-            txt_valor.Text = valor;
+            
             grid_ultimas.ItemsSource = gridUltimas;
         }
         private async void carregar()
         {
-            db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Text).Where(a => a.USUARIO == txt_usuario.Text).First());
+            db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a=>a.ID).FirstOrDefault());
+            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.DE==abast.DE).Where(a=>a.PARA==abast.PARA).OrderByDescending(a=>a.ID).Take(5).ToList());
 
+
+
+            preencher(abast.DESPESA_ALI,abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
+                abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA, 
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL,Listaabast,abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
         }
     }
 }
