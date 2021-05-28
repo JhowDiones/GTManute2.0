@@ -1,18 +1,10 @@
-﻿using System;
+﻿using dbAcessos;
+using GTManute.Properties;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using dbAcessos;
-using GTManute.Properties;
 
 namespace GTManute.Views.Lançamento
 {
@@ -27,35 +19,20 @@ namespace GTManute.Views.Lançamento
             public string Motorista { get; set; }
             public string KmRodado { get; set; }
             public string Média { get; set; }
-            public string DTPartida {get; set;}
+            public string DTPartida { get; set; }
         }
 
 
 
         private Settings cfg = new Settings();
+        List<db_abast> Listpesquisa = new List<db_abast>();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
         public View_Abast()
         {
             InitializeComponent();
             Empresa = cfg.Empresa;
-            carregar();
-        }
-
-        private void txt_pes_datapartida_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if(txt_pes_datapartida.Text=="Data partida")
-            {
-                txt_pes_datapartida.Text = "";
-            }
-        }
-
-        private void txt_pes_datachegada_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_datachegada.Text == "Data chegada")
-            {
-                txt_pes_datachegada.Text = "";
-            }
+            carregar(0);
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -64,103 +41,6 @@ namespace GTManute.Views.Lançamento
 
             // Begin dragging the window
             this.DragMove();
-        }
-
-        private void txt_pes_veiculo_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_veiculo.Text == "Veículo")
-            {
-                txt_pes_veiculo.Text = "";
-            }
-        }
-
-        private void txt_pes_motorista_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_motorista.Text == "Motorista")
-            {
-                txt_pes_motorista.Text = "";
-            }
-        }
-
-        private void txt_pes_Locpartida_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_Locpartida.Text == "Local partida")
-            {
-                txt_pes_Locpartida.Text = "";
-            }
-        }
-
-        private void txt_pes_locdestino_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_locdestino.Text == "Local destino")
-            {
-                txt_pes_locdestino.Text = "";
-            }
-        }
-
-        private void txt_pes_forncedor_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_fornecedor.Text == "Fornecedor")
-            {
-                txt_pes_fornecedor.Text = "";
-            }
-        }
-
-        private void txt_pes_datapartida_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_datapartida.Text == "")
-            {
-                txt_pes_fornecedor.Text = "Data partida";
-            }
-        }
-
-        private void txt_pes_datachegada_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_datachegada.Text == "")
-            {
-                txt_pes_datachegada.Text = "Data chegada";
-            }
-        }
-
-        private void txt_pes_veiculo_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-            if (txt_pes_veiculo.Text == "")
-            {
-                txt_pes_veiculo.Text = "Veículo";
-            }
-        }
-
-        private void txt_pes_motorista_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_motorista.Text == "")
-            {
-                txt_pes_motorista.Text = "Motorista";
-            }
-        }
-
-        private void txt_pes_Locpartida_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_Locpartida.Text == "")
-            {
-                txt_pes_Locpartida.Text = "Local partida";
-            }
-        }
-
-        private void txt_pes_locdestino_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_locdestino.Text == "")
-            {
-                txt_pes_locdestino.Text = "Local destino";
-            }
-        }
-
-        private void txt_pes_fornecedor_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txt_pes_fornecedor.Text == "")
-            {
-                txt_pes_fornecedor.Text = "Fornecedor";
-            }
         }
 
         private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -207,10 +87,11 @@ namespace GTManute.Views.Lançamento
 
         }
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
-            string hrdestino, string hrpartida,string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
-            List<Ultimas> gridUltimas,string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
+            string hrdestino, string hrpartida, string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
+            List<Ultimas> gridUltimas, string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
 string partida, string veiculo)
         {
+            Limpar();
             txt_desp_alimentacao.Text = despAlimentacao;
             txt_desp_pernoite.Text = despPernoite;
             txt_doc.Text = doc;
@@ -233,22 +114,31 @@ string partida, string veiculo)
             txt_valor.Text = valor;
 
             double kmrestante = double.Parse(kmdestino) - double.Parse(kmpartida);
-            double media = kmrestante/ double.Parse(kmpartida);
+            double media = kmrestante / double.Parse(litragem);
             valor = valor.Replace("R$ ", "");
             double unitario = double.Parse(valor) / double.Parse(litragem);
             txt_res_km.Text = kmrestante.ToString("N2");
             txt_res_media.Text = media.ToString("N2");
             txt_res_unitario.Text = unitario.ToString("N2");
-            
+
             grid_ultimas.ItemsSource = gridUltimas;
         }
-        private async void carregar()
+        private async void carregar(int cod)
         {
-            db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a=>a.ID).FirstOrDefault());
-            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.PLACA==abast.PLACA).Where(a=>a.DE==abast.DE).Where(a=>a.PARA==abast.PARA).OrderByDescending(a=>a.ID).Take(5).ToList());
+            db_abast abast = new db_abast();
+            if (cod == 0)
+            {
+                abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.ID).FirstOrDefault());
+            }
+            else
+            {
+               abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.ID==cod).FirstOrDefault());
+            }
+           
+            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(5).ToList());
 
             List<Ultimas> ultimas = new List<Ultimas>();
-            for(int i =0; i < Listaabast.Count; i++)
+            for (int i = 0; i < Listaabast.Count; i++)
             {
                 Ultimas ult = new Ultimas();
 
@@ -259,9 +149,53 @@ string partida, string veiculo)
                 ultimas.Add(ult);
             }
 
-            preencher(abast.DESPESA_ALI,abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
-                abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA, 
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL,ultimas,abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
+            preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
+                abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, ultimas, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
+        }
+
+        private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            string dtchegada = txt_pes_datachegada.Text;
+            string dtpartida = txt_pes_datapartida.Text;
+            string placa = txt_pes_veiculo.Text;//
+            string motorista = txt_pes_motorista.Text;//
+            string fornecedor = txt_pes_fornecedor.Text;//
+            string localpartida = txt_pes_Locpartida.Text;//
+            string localdestino = txt_pes_locdestino.Text;//
+
+            if (rad_contem.IsChecked == true)
+            {
+                Listpesquisa = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa)
+                    .Where(a => a.DE.Contains(localpartida)).Where(a => a.PLACA.Contains(placa)).Where(a => a.PARA.Contains(localdestino))
+                    .Where(a => a.MOTORISTA.Contains(motorista)).Where(a => a.FORNECEDOR.Contains(fornecedor)).Where(a => a.DT_CHEGADA.Contains(dtchegada))
+                   .Where(a => a.DT_PARTIDA.Contains(dtpartida)).OrderByDescending(a => a.ID).ToList());
+
+                //
+                //
+                // 
+
+                dt_pesquisa.ItemsSource = Listpesquisa;
+
+                txt_registros.Text = "Nº de Registros: " + Listpesquisa.Count().ToString();
+            }
+        }
+
+        private void dt_pesquisa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                carregar(Listpesquisa[dt_pesquisa.SelectedIndex].ID);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void dt_pesquisa_CurrentCellChanged(object sender, System.EventArgs e)
+        {
+           
         }
     }
 }
