@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using dbAcessos;
 
 namespace GTManute.Views.Lançamento
 {
@@ -157,6 +158,56 @@ namespace GTManute.Views.Lançamento
 
         private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
+        }
+        private void Limpar()
+        {
+            txt_desp_alimentacao.Text = "";
+            txt_desp_pernoite.Text = "";
+            txt_doc.Text = "";
+            txt_dt_destino.Text = "";
+            txt_dt_partida.Text = "";
+            txt_hr_destino.Text = "";
+            txt_hr_partida.Text = "";
+            txt_km_destino.Text = "";
+            txt_km_inicial.Text = "";
+            txt_litragem.Text = "";
+            txt_outras_desp.Text = "";
+            txt_res_km.Text = "";
+            txt_res_media.Text = "";
+            txt_res_unitario.Text = "";
+            txt_valor.Text = "";
+            grid_ultimas.ItemsSource = null;
+
+        }
+        private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
+            string hrdestino, string hrpartida,string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
+            List<dbAcessos.db_abast> gridUltimas )
+        {
+            txt_desp_alimentacao.Text = despAlimentacao;
+            txt_desp_pernoite.Text = despPernoite;
+            txt_doc.Text = doc;
+            txt_dt_destino.Text = dtdestino;
+            txt_dt_partida.Text = dtpartida;
+            txt_hr_destino.Text = hrdestino;
+            txt_hr_partida.Text = hrpartida;
+            txt_km_destino.Text = kmdestino;
+            txt_km_inicial.Text = kmpartida;
+            txt_litragem.Text = litragem;
+            txt_outras_desp.Text = outrasdesp;
+
+            double kmrestante = double.Parse(kmdestino) - double.Parse(kmpartida);
+            double media = kmrestante/ double.Parse(kmpartida);
+            double unitario = double.Parse(valor) / double.Parse(litragem);
+            txt_res_km.Text = kmrestante.ToString("N2");
+            txt_res_media.Text = media.ToString("N2");
+            txt_res_unitario.Text = unitario.ToString("N2");
+            txt_valor.Text = valor;
+            grid_ultimas.ItemsSource = gridUltimas;
+        }
+        private async void carregar()
+        {
+            db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Text).Where(a => a.USUARIO == txt_usuario.Text).First());
 
         }
     }
