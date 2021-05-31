@@ -26,6 +26,7 @@ namespace GTManute.Views.Lançamento
 
         private string Usuario { get; set; }
         private Settings cfg = new Settings();
+        private int ID { get; set; }
         List<db_abast> Listpesquisa = new List<db_abast>();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
@@ -92,22 +93,96 @@ namespace GTManute.Views.Lançamento
                     _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
                     _abast.USUARIO = Usuario;
                     _abast.VALOR_TOTAL = txt_valor.Text;
+                    _abast.DT_HR = DateTime.UtcNow;
+
+
+                    await Task.Run(() =>
+                    {
+                        try
+                        {
+                            db.db_abast.InsertOnSubmit(_abast);
+                            db.SubmitChanges();
+                            mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                            btn_novo.Text = "Novo";
+                            carregando(0, true);
+                        }
+                        catch
+                        {
+                            mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                        }
+
+                    });
 
                 }
             }
         }
-        private void gravardados()
-        {
 
-        }
         private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            String retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            if (retorno == "Yes")
+            {
+                db_abast _abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
 
+                _abast.AJUDANTE1 = cmb_1ajudante.Text;
+                _abast.AJUDANTE2 = cmb_2ajudante.Text;
+                _abast.DE = cmb_partida.Text;
+                _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
+                _abast.DESPESA_COMB = txt_res_unitario.Text;
+                _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
+                _abast.DESPESA_PERN = txt_desp_pernoite.Text;
+                _abast.DT_CHEGADA = txt_dt_destino.Text;
+                _abast.DT_PARTIDA = txt_dt_partida.Text;
+                _abast.Empresa = Empresa;
+                _abast.FORNECEDOR = cmb_fornecedor.Text;
+                _abast.HORA_CHEGADA = txt_hr_destino.Text;
+                _abast.HORA_PARTIDA = txt_hr_partida.Text;
+                _abast.KM_CHEGADA = txt_km_destino.Text;
+                _abast.KM_PARTIDA = txt_km_inicial.Text;
+                _abast.LITRAGEM = txt_litragem.Text;
+                _abast.MOTORISTA = cmb_motorista.Text;
+                _abast.N_DOC = txt_doc.Text;
+                _abast.PARA = cmb_destino.Text;
+                _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
+                _abast.USUARIO = Usuario;
+                _abast.VALOR_TOTAL = txt_valor.Text;
+                _abast.DT_HR = DateTime.UtcNow;
+
+
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        db.SubmitChanges();
+                        mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                        carregando(ID, true);
+                    }
+                    catch
+                    {
+                        mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                    }
+                });
+            }
         }
 
         private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            String retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            if (retorno == "Yes")
+            {
+                try
+                {
+                    db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
+                    db.db_abast.DeleteOnSubmit(abast);
+                    db.SubmitChanges();
+                    carregando(ID-1, true);
+                }
+                catch
+                {
+                    mensagem("Tivemos algum erro ao deletar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev,false,"","Ok");
+                }
+                
+            }
         }
         private void Limpar()
         {
@@ -141,7 +216,7 @@ namespace GTManute.Views.Lançamento
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
             string hrdestino, string hrpartida, string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
              string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
-string partida, string veiculo)
+    string partida, string veiculo)
         {
             Limpar();
             txt_desp_alimentacao.Text = despAlimentacao;
@@ -187,7 +262,7 @@ string partida, string veiculo)
             {
                 abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.ID == cod).FirstOrDefault());
             }
-
+            ID = abast.ID;
             List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(5).ToList());
 
             List<Ultimas> ultimas = new List<Ultimas>();
@@ -268,5 +343,11 @@ string partida, string veiculo)
         {
             this.Close();
         }
+        private void mensagem(string principal, bool explica, string explicacao, string botao)
+        {
+            Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
+            mensagem.ShowDialog();
+        }
     }
+
 }
