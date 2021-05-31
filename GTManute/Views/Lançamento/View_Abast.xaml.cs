@@ -32,7 +32,7 @@ namespace GTManute.Views.Lançamento
         {
             InitializeComponent();
             Empresa = cfg.Empresa;
-            carregar(0);
+            carregando(0,true);
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -45,6 +45,17 @@ namespace GTManute.Views.Lançamento
 
         private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (btn_novo.Text == "Novo")
+            {
+                btn_novo.Text = "Gravar";
+                Limpar();
+                grid_ultimas.ItemsSource = null;
+            }
+            else
+            {
+
+            }
+            
 
         }
 
@@ -83,12 +94,12 @@ namespace GTManute.Views.Lançamento
             txt_res_media.Text = "";
             txt_res_unitario.Text = "";
             txt_valor.Text = "";
-            grid_ultimas.ItemsSource = null;
+           
 
         }
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
             string hrdestino, string hrpartida, string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
-            List<Ultimas> gridUltimas, string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
+             string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
 string partida, string veiculo)
         {
             Limpar();
@@ -121,9 +132,10 @@ string partida, string veiculo)
             txt_res_media.Text = media.ToString("N2");
             txt_res_unitario.Text = unitario.ToString("N2");
 
-            grid_ultimas.ItemsSource = gridUltimas;
+           
         }
-        private async void carregar(int cod)
+
+        private async void carregando(int cod,bool full)
         {
             db_abast abast = new db_abast();
             if (cod == 0)
@@ -132,9 +144,9 @@ string partida, string veiculo)
             }
             else
             {
-               abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.ID==cod).FirstOrDefault());
+                abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.ID == cod).FirstOrDefault());
             }
-           
+
             List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(5).ToList());
 
             List<Ultimas> ultimas = new List<Ultimas>();
@@ -147,11 +159,24 @@ string partida, string veiculo)
                 ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
                 ult.DTPartida = Listaabast[i].DT_PARTIDA;
                 ultimas.Add(ult);
+              
             }
+            grid_ultimas.ItemsSource = null;
+            grid_ultimas.ItemsSource = ultimas;
+
+            if (full == true)
+            {
+                carregar(abast);
+            }
+        }
+
+        private void carregar(db_abast abast)
+        {
+            
 
             preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
                 abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, ultimas, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL,  abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -185,7 +210,7 @@ string partida, string veiculo)
         {
             try
             {
-                carregar(Listpesquisa[dt_pesquisa.SelectedIndex].ID);
+                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].ID,true);
             }
             catch
             {
@@ -197,5 +222,6 @@ string partida, string veiculo)
         {
            
         }
+
     }
 }

@@ -174,7 +174,7 @@
             <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="316,10,0,15"/>
             <TextBlock x:Name="btn_alterar" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Alterar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="316,10,0,15" MouseLeftButtonDown="btn_alterar_MouseLeftButtonDown" />
             <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"/>
-            <TextBlock x:Name="btn_novo" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Novo" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment" />
+            <TextBlock x:Name="btn_novo" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Novo" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment" MouseLeftButtonDown="btn_novo_MouseLeftButtonDown" />
             <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="420,10,0,15"/>
             <TextBlock x:Name="btn_delete" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Excluir" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="420,10,0,15" MouseLeftButtonDown="btn_delete_MouseLeftButtonDown" />
         </Grid>
