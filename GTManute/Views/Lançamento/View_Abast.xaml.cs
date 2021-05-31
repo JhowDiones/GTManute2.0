@@ -33,7 +33,7 @@ namespace GTManute.Views.Lançamento
         {
             InitializeComponent();
             Empresa = cfg.Empresa;
-            carregando(0,true);
+            carregando(0, true);
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -54,11 +54,11 @@ namespace GTManute.Views.Lançamento
             }
             else
             {
-                double média=0;
-                double valorunit=0;
+                double média = 0;
+                double valorunit = 0;
                 try
                 {
-                    média= ((double.Parse(txt_km_destino.Text)-double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
+                    média = ((double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
                     valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
                 }
                 catch
@@ -66,43 +66,39 @@ namespace GTManute.Views.Lançamento
 
                 }
                 String retorno = MessageBox.Show("Gravar abastecimento? \n Média: " + média.ToString("N2") + "| Valor total: " + valorunit.ToString("N2"), "Conferencia!!!", MessageBoxButton.YesNo).ToString();
-                if (retorno == "YES")
+                if (retorno == "Yes")
                 {
+                    db_abast _abast = new db_abast();
+
+                    _abast.AJUDANTE1 = cmb_1ajudante.Text;
+                    _abast.AJUDANTE2 = cmb_2ajudante.Text;
+                    _abast.DE = cmb_partida.Text;
+                    _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
+                    _abast.DESPESA_COMB = txt_res_unitario.Text;
+                    _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
+                    _abast.DESPESA_PERN = txt_desp_pernoite.Text;
+                    _abast.DT_CHEGADA = txt_dt_destino.Text;
+                    _abast.DT_PARTIDA = txt_dt_partida.Text;
+                    _abast.Empresa = Empresa;
+                    _abast.FORNECEDOR = cmb_fornecedor.Text;
+                    _abast.HORA_CHEGADA = txt_hr_destino.Text;
+                    _abast.HORA_PARTIDA = txt_hr_partida.Text;
+                    _abast.KM_CHEGADA = txt_km_destino.Text;
+                    _abast.KM_PARTIDA = txt_km_inicial.Text;
+                    _abast.LITRAGEM = txt_litragem.Text;
+                    _abast.MOTORISTA = cmb_motorista.Text;
+                    _abast.N_DOC = txt_doc.Text;
+                    _abast.PARA = cmb_destino.Text;
+                    _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
+                    _abast.USUARIO = Usuario;
+                    _abast.VALOR_TOTAL = txt_valor.Text;
 
                 }
-                db_abast _abast = new db_abast();
-
-                _abast.AJUDANTE1 = cmb_1ajudante.Text;
-                _abast.AJUDANTE2 = cmb_2ajudante.Text;
-                _abast.DE = cmb_partida.Text;
-                _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
-                _abast.DESPESA_COMB = txt_res_unitario.Text;
-                _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
-                _abast.DESPESA_PERN = txt_desp_pernoite.Text;
-                _abast.DT_CHEGADA = txt_dt_destino.Text;
-                _abast.DT_PARTIDA = txt_dt_partida.Text;
-                _abast.Empresa = Empresa;
-                _abast.FORNECEDOR = cmb_fornecedor.Text;
-                _abast.HORA_CHEGADA = txt_hr_destino.Text;
-                _abast.HORA_PARTIDA = txt_hr_partida.Text;
-                _abast.KM_CHEGADA = txt_km_destino.Text;
-                _abast.KM_PARTIDA = txt_km_inicial.Text;
-                _abast.LITRAGEM = txt_litragem.Text;
-                _abast.MOTORISTA = cmb_motorista.Text;
-                _abast.N_DOC = txt_doc.Text;
-                _abast.PARA = cmb_destino.Text;
-                _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
-                _abast.USUARIO = Usuario;
-                _abast.VALOR_TOTAL = txt_valor.Text;
-
-
             }
-            
-
         }
-        private void  gravardados()
+        private void gravardados()
         {
-            
+
         }
         private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -139,7 +135,7 @@ namespace GTManute.Views.Lançamento
             txt_res_media.Text = "";
             txt_res_unitario.Text = "";
             txt_valor.Text = "";
-           
+
 
         }
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
@@ -177,10 +173,10 @@ string partida, string veiculo)
             txt_res_media.Text = media.ToString("N2");
             txt_res_unitario.Text = unitario.ToString("N2");
 
-           
+
         }
 
-        private async void carregando(int cod,bool full)
+        private async void carregando(int cod, bool full)
         {
             db_abast abast = new db_abast();
             if (cod == 0)
@@ -204,7 +200,7 @@ string partida, string veiculo)
                 ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
                 ult.DTPartida = Listaabast[i].DT_PARTIDA;
                 ultimas.Add(ult);
-              
+
             }
             grid_ultimas.ItemsSource = null;
             grid_ultimas.ItemsSource = ultimas;
@@ -217,11 +213,11 @@ string partida, string veiculo)
 
         private void carregar(db_abast abast)
         {
-            
+
 
             preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
                 abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL,  abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -255,7 +251,7 @@ string partida, string veiculo)
         {
             try
             {
-                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].ID,true);
+                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].ID, true);
             }
             catch
             {
@@ -265,7 +261,7 @@ string partida, string veiculo)
 
         private void dt_pesquisa_CurrentCellChanged(object sender, System.EventArgs e)
         {
-           
+
         }
 
         private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
