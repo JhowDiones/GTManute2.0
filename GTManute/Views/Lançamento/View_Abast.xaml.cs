@@ -1,5 +1,6 @@
 ﻿using dbAcessos;
 using GTManute.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace GTManute.Views.Lançamento
         }
 
 
-
+        private string Usuario { get; set; }
         private Settings cfg = new Settings();
         List<db_abast> Listpesquisa = new List<db_abast>();
         private string Empresa { get; set; }
@@ -53,12 +54,56 @@ namespace GTManute.Views.Lançamento
             }
             else
             {
+                double média=0;
+                double valorunit=0;
+                try
+                {
+                    média= ((double.Parse(txt_km_destino.Text)-double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
+                    valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
+                }
+                catch
+                {
+
+                }
+                String retorno = MessageBox.Show("Gravar abastecimento? \n Média: " + média.ToString("N2") + "| Valor total: " + valorunit.ToString("N2"), "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+                if (retorno == "YES")
+                {
+
+                }
+                db_abast _abast = new db_abast();
+
+                _abast.AJUDANTE1 = cmb_1ajudante.Text;
+                _abast.AJUDANTE2 = cmb_2ajudante.Text;
+                _abast.DE = cmb_partida.Text;
+                _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
+                _abast.DESPESA_COMB = txt_res_unitario.Text;
+                _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
+                _abast.DESPESA_PERN = txt_desp_pernoite.Text;
+                _abast.DT_CHEGADA = txt_dt_destino.Text;
+                _abast.DT_PARTIDA = txt_dt_partida.Text;
+                _abast.Empresa = Empresa;
+                _abast.FORNECEDOR = cmb_fornecedor.Text;
+                _abast.HORA_CHEGADA = txt_hr_destino.Text;
+                _abast.HORA_PARTIDA = txt_hr_partida.Text;
+                _abast.KM_CHEGADA = txt_km_destino.Text;
+                _abast.KM_PARTIDA = txt_km_inicial.Text;
+                _abast.LITRAGEM = txt_litragem.Text;
+                _abast.MOTORISTA = cmb_motorista.Text;
+                _abast.N_DOC = txt_doc.Text;
+                _abast.PARA = cmb_destino.Text;
+                _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
+                _abast.USUARIO = Usuario;
+                _abast.VALOR_TOTAL = txt_valor.Text;
+
 
             }
             
 
         }
-
+        private void  gravardados()
+        {
+            
+        }
         private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -223,5 +268,9 @@ string partida, string veiculo)
            
         }
 
+        private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
