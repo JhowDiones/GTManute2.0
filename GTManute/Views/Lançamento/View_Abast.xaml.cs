@@ -348,6 +348,24 @@ namespace GTManute.Views.Lançamento
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
         }
+
+        private void txt_litragem_KeyDown(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_litragem_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (!char.IsControl(e.RoutedEvent) && !char.IsDigit(e.KeyChar) &&
+           (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
     }
 
 }
