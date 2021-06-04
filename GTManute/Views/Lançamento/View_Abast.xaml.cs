@@ -69,50 +69,63 @@ namespace GTManute.Views.Lançamento
                 String retorno = MessageBox.Show("Gravar abastecimento? \n Média: " + média.ToString("N2") + "| Valor total: " + valorunit.ToString("N2"), "Conferencia!!!", MessageBoxButton.YesNo).ToString();
                 if (retorno == "Yes")
                 {
-                    db_abast _abast = new db_abast();
-
-                    _abast.AJUDANTE1 = cmb_1ajudante.Text;
-                    _abast.AJUDANTE2 = cmb_2ajudante.Text;
-                    _abast.DE = cmb_partida.Text;
-                    _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
-                    _abast.DESPESA_COMB = txt_res_unitario.Text;
-                    _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
-                    _abast.DESPESA_PERN = txt_desp_pernoite.Text;
-                    _abast.DT_CHEGADA = txt_dt_destino.Text;
-                    _abast.DT_PARTIDA = txt_dt_partida.Text;
-                    _abast.Empresa = Empresa;
-                    _abast.FORNECEDOR = cmb_fornecedor.Text;
-                    _abast.HORA_CHEGADA = txt_hr_destino.Text;
-                    _abast.HORA_PARTIDA = txt_hr_partida.Text;
-                    _abast.KM_CHEGADA = txt_km_destino.Text;
-                    _abast.KM_PARTIDA = txt_km_inicial.Text;
-                    _abast.LITRAGEM = txt_litragem.Text;
-                    _abast.MOTORISTA = cmb_motorista.Text;
-                    _abast.N_DOC = txt_doc.Text;
-                    _abast.PARA = cmb_destino.Text;
-                    _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
-                    _abast.USUARIO = Usuario;
-                    _abast.VALOR_TOTAL = txt_valor.Text;
-                    _abast.DT_HR = DateTime.UtcNow;
-
-
-                    await Task.Run(() =>
+                    try
                     {
-                        try
-                        {
-                            db.db_abast.InsertOnSubmit(_abast);
-                            db.SubmitChanges();
-                            mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
-                            btn_novo.Text = "Novo";
-                            carregando(0, true);
-                        }
-                        catch
-                        {
-                            mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
-                        }
+                        db_abast _abast = new db_abast();
 
-                    });
+                        _abast.AJUDANTE1 = cmb_1ajudante.Text;
+                        _abast.AJUDANTE2 = cmb_2ajudante.Text;
+                        _abast.DE = cmb_partida.Text;
+                        _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
+                        _abast.DESPESA_COMB = txt_res_unitario.Text;
+                        _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
+                        _abast.DESPESA_PERN = txt_desp_pernoite.Text;
+                        _abast.DT_CHEGADA = txt_dt_destino.Text;
+                        _abast.DT_PARTIDA = txt_dt_partida.Text;
+                        _abast.Empresa = Empresa;
+                        _abast.FORNECEDOR = cmb_fornecedor.Text;
+                        _abast.HORA_CHEGADA = txt_hr_destino.Text;
+                        _abast.HORA_PARTIDA = txt_hr_partida.Text;
+                        _abast.KM_CHEGADA = txt_km_destino.Text;
+                        _abast.KM_PARTIDA = txt_km_inicial.Text;
+                        _abast.LITRAGEM = txt_litragem.Text;
+                        _abast.MOTORISTA = cmb_motorista.Text;
+                        _abast.N_DOC = txt_doc.Text;
+                        _abast.PARA = cmb_destino.Text;
+                        _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
+                        _abast.USUARIO = Usuario;
+                        _abast.VALOR_TOTAL = txt_valor.Text;
+                        _abast.DT_HR = DateTime.UtcNow;
 
+
+                        await Task.Run(() =>
+                        {
+                            try
+                            {
+                                db.db_abast.InsertOnSubmit(_abast);
+                                db.SubmitChanges();
+                                Application.Current.Dispatcher.Invoke((Action)delegate {
+                                    mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                               
+                               
+                                btn_novo.Text = "Novo";
+                                carregando(0, true);
+                                });
+                            }
+                            catch
+                            {
+                                Application.Current.Dispatcher.Invoke((Action)delegate {
+                                    mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                                });
+                              }
+
+                        });
+                    }
+                    catch
+                    {
+                        mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+
+                    }
                 }
             }
         }
@@ -154,20 +167,27 @@ namespace GTManute.Views.Lançamento
                     try
                     {
                         db.SubmitChanges();
-                        mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
+                            mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                       
                         carregando(ID, true);
+                        });
                     }
                     catch
                     {
-                        mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
-                    }
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
+                            mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                        });
+                        }
                 });
             }
         }
 
         private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            String retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            string retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
                 try
@@ -179,8 +199,11 @@ namespace GTManute.Views.Lançamento
                 }
                 catch
                 {
-                    mensagem("Tivemos algum erro ao deletar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev,false,"","Ok");
-                }
+                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        mensagem("Tivemos algum erro ao deletar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                    });
+                    }
                 
             }
         }
@@ -277,7 +300,6 @@ namespace GTManute.Views.Lançamento
                 ultimas.Add(ult);
 
             }
-            grid_ultimas.ItemsSource = null;
             grid_ultimas.ItemsSource = ultimas;
 
             if (full == true)
@@ -349,23 +371,6 @@ namespace GTManute.Views.Lançamento
             mensagem.ShowDialog();
         }
 
-        private void txt_litragem_KeyDown(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txt_litragem_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            if (!char.IsControl(e.RoutedEvent) && !char.IsDigit(e.KeyChar) &&
-           (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
     }
 
 }

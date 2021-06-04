@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\App.xaml
-61860877590
+7-1094971075
 
-112061215999
+11375387005
 15-215392931
-MainWindow.xaml;Views\Lançamento\View_Abast.xaml;Views\Mensagem.xaml;Views\View_Banco.xaml;Views\View_Login.xaml;Views\View_Menu.xaml;
+MainWindow.xaml;Views\Cadastro\View_CadFornecedores.xaml;Views\Lançamento\View_Abast.xaml;Views\Mensagem.xaml;Views\View_Banco.xaml;Views\View_Login.xaml;Views\View_Menu.xaml;
 
-True
+False
 

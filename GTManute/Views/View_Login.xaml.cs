@@ -33,7 +33,15 @@ namespace GTManute.Views
             base.OnMouseLeftButtonDown(e);
 
             // Begin dragging the window
-            this.DragMove();
+            try
+            {
+                this.DragMove();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
@@ -68,9 +76,9 @@ namespace GTManute.Views
 
         private void txt_senha_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_senha.Text == "Senha")
+            if (txt_senha.Password == "********")
             {
-                txt_senha.Text = "";
+                txt_senha.Password = "";
             }
 
         }
@@ -78,15 +86,15 @@ namespace GTManute.Views
         private async void txt_senha_LostFocus(object sender, RoutedEventArgs e)
         {
             {
-                if (txt_senha.Text == "")
+                if (txt_senha.Password == "")
                 {
-                    txt_senha.Text = "Senha";
+                    txt_senha.Password = "********";
                 }
                 else
                 {
                     try
                     {
-                        string senha = await Task.FromResult<string>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Text).Select(a => a.SENHA).First());
+                        string senha = await Task.FromResult<string>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Password).Select(a => a.SENHA).First());
                         txt_senha.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
 
                     }
@@ -168,11 +176,11 @@ namespace GTManute.Views
 
         private async void btn_entrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(txt_usuario.Text!="" || txt_senha.Text != "" || txt_usuario.Text != null || txt_senha.Text != null|| txt_usuario.Text != "Usuário" || txt_senha.Text != "Senha")
+            if(txt_usuario.Text!="" || txt_senha.ToString() != "" || txt_usuario.Text != null || txt_senha.ToString() != null|| txt_usuario.Text != "Usuário" || txt_senha.ToString() != "Senha")
             {
                 try
                 {
-                    db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Text).Where(a => a.USUARIO==txt_usuario.Text).First());
+                    db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Password).Where(a => a.USUARIO==txt_usuario.Text).First());
                                         
                         View_Menu view_Menu = new View_Menu();
                         view_Menu.Show();

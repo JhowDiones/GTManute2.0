@@ -35,7 +35,7 @@ namespace GTManute.Views
 
         private void Home2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
+            Cadastro.View_CadFornecedores view_Abast = new Cadastro.View_CadFornecedores();
             view_Abast.Show();
         }
 
@@ -43,6 +43,12 @@ namespace GTManute.Views
         {
             View_Banco view_Banco = new View_Banco();
             view_Banco.ShowDialog();
+        }
+
+        private void Home3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
+            view_Abast.Show();
         }
     }
 }
