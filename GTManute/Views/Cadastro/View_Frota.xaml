@@ -79,7 +79,7 @@
                             <Label x:Name="label1_Copy9" Content="Tipo Véículo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="126,148,0,0"/>
                             <ComboBox x:Name="cmb_tipoVeiculo" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="126,174,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5"/>
                             <Label x:Name="label1_Copy" Content="Qtd. Eixos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="242,148,0,0"/>
-                            <TextBox x:Name="txt_cap_carga_Copy" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="242,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" TextAlignment="Right"/>
+                            <TextBox x:Name="txt_eixos" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="242,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" TextAlignment="Right"/>
                             <GroupBox x:Name="groupBox1" Header="Quantidade de Pneus por eixo" HorizontalAlignment="Left" BorderBrush="{StaticResource SegundaCor}" Height="85" Margin="0,202,0,0" VerticalAlignment="Top" Width="333">
                                 <Grid x:Name="grid_eixos" Visibility="Hidden">
                                     <Label x:Name="labeleixoestepe" Content="Estepe" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51" Margin="10,3,0,0"/>
@@ -138,22 +138,20 @@
                 <RadioButton x:Name="rad_contem" IsChecked="True" Content="Contem" Foreground="{StaticResource primeiraCor}" FontSize="14" Margin="570,0,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rad_exata" Content="Pesquisa exata" Margin="570,23,0,0" Foreground="{StaticResource primeiraCor}" FontSize="14" VerticalAlignment="Top" Visibility="Hidden"/>
                 <TextBlock x:Name="txt_registros" Text="Nº de Registros: " Foreground="{StaticResource primeiraCor}" TextAlignment="Right" FontSize="14" Margin="570,46,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="txt_pes_razao" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txt_pes_fantasia" HorizontalAlignment="Left" Height="23" Margin="140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txt_pes_cnpj" HorizontalAlignment="Left" Height="23" Margin="280,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txt_pes_inscricao" HorizontalAlignment="Left" Height="23" Margin="420,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txt_pes_endereco" HorizontalAlignment="Left" Height="23" Margin="0,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txt_pes_cidade" HorizontalAlignment="Left" Height="23" Margin="140,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txt_pes_placa" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txt_pes_marca" HorizontalAlignment="Left" Height="23" Margin="140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txt_pes_modelo" HorizontalAlignment="Left" Height="23" Margin="280,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txt_pes_cor" HorizontalAlignment="Left" Height="23" Margin="420,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txt_pes_renavan" HorizontalAlignment="Left" Height="23" Margin="0,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txt_pes_chassis" HorizontalAlignment="Left" Height="23" Margin="140,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Left" Height="25" Margin="441,40,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
                 <TextBlock x:Name="btn_pesquisar" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="441,40,0,0" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_pesquisar_MouseLeftButtonDown" />
-                <TextBox x:Name="txt_pes_teltefone" HorizontalAlignment="Left" Height="23" Margin="280,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="1,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Endereço" VerticalAlignment="Top" Width="119"/>
-                <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="141,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Cidade" VerticalAlignment="Top" Width="119"/>
-                <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="281,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Telefone" VerticalAlignment="Top" Width="119"/>
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="1,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Razão Social" VerticalAlignment="Top" Width="119"/>
-                <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="141,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Fantasia" VerticalAlignment="Top" Width="119"/>
-                <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Margin="281,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="CNPJ" VerticalAlignment="Top" Width="119"/>
-                <TextBlock x:Name="textBlock12_Copy" HorizontalAlignment="Left" Margin="421,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Inscrição Estadual" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="1,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Renavan" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="141,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Chassis" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="1,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Placa" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="141,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Marca" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Margin="281,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Modelo" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock12_Copy" HorizontalAlignment="Left" Margin="421,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Cor" VerticalAlignment="Top" Width="119"/>
                 <Rectangle Fill="{StaticResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5"/>
                 <TextBlock x:Name="btn_Fechar_Copy" HorizontalAlignment="Right" TextWrapping="Wrap" Text="x" Width="28" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0,0,0,274"/>
             </Grid>

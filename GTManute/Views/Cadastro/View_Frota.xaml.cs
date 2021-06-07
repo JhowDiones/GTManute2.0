@@ -51,22 +51,36 @@ namespace GTManute.Views.Cadastro
             }
             
         }
+        private void cmbBox()
+        {
+            List<string> vs = new List<string>();
+            vs.Add("Carro");
+            vs.Add("Motocicleta");
+            vs.Add("Caminhão");
+            vs.Add("Cavalo");
+            vs.Add("Impemento");
+            cmb_tipoVeiculo.ItemsSource=
+        }
         private void Limpar()
         {
-            txt_cidade.Text = "";
-            txt_cnpj.Text = "";
-            txt_email.Text = "";
-            txt_endereco.Text = "";
-            txt_fantasia.Text = "";
-            txt_inscricao.Text = "";
-            txt_razao.Text = "";
-            txt_telefone.Text = "";
-            txt_telefone2.Text = "";
-
-            cmb_pagamento.Text = "";
-            cmb_uf.Text = "";
-
-
+            txt_cap_carga.Text = "";
+            txt_chassis.Text = "";
+            txt_cor.Text = "";
+            txt_eixos.Text = "";
+            txt_marca.Text = "";
+            txt_modelo.Text = "";
+            txt_placa.Text = "";
+            txt_potencia.Text = "";
+            txt_p_1.Text = "";
+            txt_p_2.Text = "";
+            txt_p_3.Text = "";
+            txt_p_4.Text = "";
+            txt_p_5.Text = "";
+            txt_p_6.Text = "";
+            txt_p_estepe.Text = "";
+            txt_renavan.Text = "";
+            cmb_tipoVeiculo.Text = "";
+            cmb_transmissao.Text = "";
 
         }
         private void preencher(string cidade, string cnpj, string email, string endereco, string fantasia, string inscricao,
