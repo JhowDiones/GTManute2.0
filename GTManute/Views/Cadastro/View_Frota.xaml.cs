@@ -16,18 +16,17 @@ namespace GTManute.Views.Cadastro
     {
         private class Ultimas
         {
-            public string Descrição { get; set; }
-            public string Quantidade { get; set; }
-            public string Preço_Unit { get; set; }
-            public string Total { get; set; }
-
+            public string Motorista { get; set; }
+            public string KmRodado { get; set; }
+            public string Média { get; set; }
+            public string DTPartida { get; set; }
         }
 
 
         private string Usuario { get; set; }
         private Settings cfg = new Settings();
         private int ID { get; set; }
-        List<db_forn> Listpesquisa = new List<db_forn>();
+        List<db_frota> Listpesquisa = new List<db_frota>();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
         public View_Frota()
@@ -56,14 +55,15 @@ namespace GTManute.Views.Cadastro
             List<string> vs = new List<string>();
             vs.Add("Carro");
             vs.Add("Motocicleta");
+            vs.Add("Triciculo");
             vs.Add("Caminhão");
             vs.Add("Cavalo");
             vs.Add("Impemento");
-            cmb_tipoVeiculo.ItemsSource=
+            cmb_tipoVeiculo.ItemsSource = vs;
         }
         private void Limpar()
         {
-            txt_cap_carga.Text = "";
+            txt_ano.Text = "";
             txt_chassis.Text = "";
             txt_cor.Text = "";
             txt_eixos.Text = "";
@@ -83,47 +83,55 @@ namespace GTManute.Views.Cadastro
             cmb_transmissao.Text = "";
 
         }
-        private void preencher(string cidade, string cnpj, string email, string endereco, string fantasia, string inscricao,
-            string razao, string telefone, string telefone2, string pagamento, string uf)
+        private void preencher(string ano, string chassis, string cor, string eixos, string marca, string modelo, 
+            string placa, string potencia, string p1, string p2, string p3, string p4, string p5, string p6, string pestepe,
+           string renavan, string tipoveiculo, string transmissao)
         {
             Limpar();
-            txt_cidade.Text = cidade;
-            txt_cnpj.Text = cnpj;
-            txt_email.Text = email;
-            txt_endereco.Text = endereco;
-            txt_fantasia.Text = fantasia;
-            txt_inscricao.Text = inscricao;
-            txt_razao.Text = razao;
-            txt_telefone.Text = telefone;
-            txt_telefone2.Text = telefone2;
-            cmb_pagamento.Text = pagamento;
-            cmb_uf.Text = uf;
+            txt_ano.Text = ano;
+            txt_chassis.Text = chassis;
+            txt_cor.Text = cor;
+            txt_eixos.Text = eixos;
+            txt_marca.Text = marca;
+            txt_modelo.Text = modelo;
+            txt_placa.Text = placa;
+            txt_potencia.Text = potencia;
+            txt_p_1.Text = p1;
+            txt_p_2.Text = p2;
+            txt_p_3.Text = p3;
+            txt_p_4.Text = p4;
+            txt_p_5.Text = p5;
+            txt_p_6.Text = p6;
+            txt_p_estepe.Text = pestepe;
+            txt_renavan.Text = renavan;
+            cmb_tipoVeiculo.Text = tipoveiculo;
+            cmb_transmissao.Text = transmissao;
 
         }
 
         private async void carregando(int cod, bool full)
         {
-            db_forn forn = new db_forn();
+            db_frota frota = new db_frota();
             if (cod == 0)
             {
-                forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.codigo).FirstOrDefault());
+                frota = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
             }
             else
             {
-                forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.Empresa == Empresa).Where(a => a.codigo == cod).FirstOrDefault());
+                frota = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
             }
-            ID = forn.codigo;
-            List<db_manu> ListaCompras = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.FORNECEDOR == forn.RAZAO_SOCIAL).OrderByDescending(a => a.COD).Take(20).ToList());
+            ID = frota.COD;
+            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == frota.PLACA).OrderByDescending(a => a.ID).Take(5).ToList());
 
             List<Ultimas> ultimas = new List<Ultimas>();
-            for (int i = 0; i < ListaCompras.Count; i++)
+            for (int i = 0; i < Listaabast.Count; i++)
             {
                 Ultimas ult = new Ultimas();
 
-                ult.Descrição = ListaCompras[i].DESCRICAO;
-                ult.Preço_Unit = ListaCompras[i].VALOR;
-                ult.Quantidade = ListaCompras[i].QUANTIDADE;
-                ult.Total = (double.Parse(ListaCompras[i].VALOR.Replace("R$ ","")) * double.Parse(ListaCompras[i].QUANTIDADE)).ToString("N2");
+                ult.Motorista = Listaabast[i].MOTORISTA;
+                ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
+                ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
+                ult.DTPartida = Listaabast[i].DT_PARTIDA;
                 ultimas.Add(ult);
 
             }
@@ -131,35 +139,34 @@ namespace GTManute.Views.Cadastro
 
             if (full == true)
             {
-                carregar(forn);
+                carregar(frota);
             }
         }
 
-        private void carregar(db_forn abast)
+        private void carregar(db_frota abast)
         {
 
 
-            preencher(abast.CIDADE, abast.CNPJ, abast.EMAIL, abast.ENDERECO, abast.NM_FANTASIA, abast.INSC_ESTADUAL, abast.RAZAO_SOCIAL,
-                abast.TEL1, abast.TEL2, abast.PAGAMENTO, abast.SEG);
+            preencher(abast.ANO_FAB, abast.CHASSIS, abast.COR, abast.EIXOS, abast.MARCA, abast.MODELO, abast.PLACA,
+                abast.POTENCIA, abast.P1, abast.P2, abast.P3, abast.P4,abast.P5,abast.P6, abast.PESTEPE,abast.RENAVAN,abast.TIPO_FROTA,abast.TIPO_CARRO);
 
 
         }
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string cidade = txt_pes_cidade.Text;
-            string cnpj = txt_pes_cnpj.Text;
-            string endereco = txt_pes_endereco.Text;//
-            string fantasia = txt_pes_fantasia.Text;//
-            string inscricao = txt_pes_inscricao.Text;//
-            string razao = txt_pes_razao.Text;//
-            string telefone = txt_pes_teltefone.Text;//
+            string chassis = txt_pes_chassis.Text;
+            string cor = txt_pes_cor.Text;
+            string marca = txt_pes_marca.Text;//
+            string modelo = txt_pes_modelo.Text;//
+            string placa = txt_pes_placa.Text;//
+            string renavan = txt_pes_renavan.Text;//
 
             if (rad_contem.IsChecked == true)
             {
-                Listpesquisa = await Task.FromResult<List<db_forn>>(db.db_forn.Where(a => a.Empresa == Empresa)
-                    .Where(a => a.CIDADE.Contains(cidade)).Where(a => a.CNPJ.Contains(cnpj)).Where(a => a.ENDERECO.Contains(endereco))
-                    .Where(a => a.NM_FANTASIA.Contains(fantasia)).Where(a => a.INSC_ESTADUAL.Contains(inscricao)).Where(a => a.RAZAO_SOCIAL.Contains(razao))
-                   .Where(a => a.TEL1.Contains(telefone)).OrderByDescending(a => a.codigo).ToList());
+                Listpesquisa = await Task.FromResult<List<db_frota>>(db.db_frota.Where(a => a.Empresa == Empresa)
+                    .Where(a => a.CHASSIS.Contains(chassis)).Where(a => a.COR.Contains(cor)).Where(a => a.MARCA.Contains(marca))
+                    .Where(a => a.MODELO.Contains(modelo)).Where(a => a.PLACA.Contains(placa)).Where(a => a.RENAVAN.Contains(renavan))
+                   .OrderByDescending(a => a.COD).ToList());
 
                 //
                 //
@@ -175,7 +182,7 @@ namespace GTManute.Views.Cadastro
         {
             try
             {
-                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].codigo, true);
+                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].COD, true);
             }
             catch
             {
@@ -232,23 +239,29 @@ namespace GTManute.Views.Cadastro
                 {
                     try
                     {
-                        db_forn _abast = new db_forn();
+                        db_frota _abast = new db_frota();
 
-                        _abast.BAIRRO = "";
-                        _abast.CIDADE = txt_cidade.Text;
-                        _abast.CNPJ = txt_cnpj.Text;
+                        _abast.ANO_FAB = txt_ano.Text;
+                        _abast.CHASSIS = txt_chassis.Text;
+                        _abast.COR = txt_cor.Text;
                         _abast.DT_LANCA = DateTime.Now;
-                        _abast.EMAIL = txt_email.Text;
+                        _abast.EIXOS = txt_eixos.Text;
                         _abast.Empresa = Empresa;
-                        _abast.ENDERECO = txt_endereco.Text;
-                        _abast.INSC_ESTADUAL = txt_inscricao.Text;
-                        _abast.NM_FANTASIA = txt_fantasia.Text;
-                        _abast.PAGAMENTO = cmb_pagamento.Text;
-                        _abast.RAZAO_SOCIAL = txt_razao.Text;
-                        _abast.SEG = cmb_uf.Text;
-                        _abast.STATUS = "ATIVO";
-                        _abast.TEL1 = txt_telefone.Text;
-                        _abast.TEL2 = txt_telefone2.Text;
+                        _abast.MARCA = txt_marca.Text;
+                        _abast.MODELO = txt_modelo.Text;
+                        _abast.PLACA = txt_placa.Text;
+                        _abast.POTENCIA = txt_potencia.Text;
+                        _abast.P1 = txt_p_1.Text;
+                        _abast.P2 = txt_p_2.Text;
+                        _abast.P3 = txt_p_3.Text;
+                        _abast.P4 = txt_p_4.Text;
+                        _abast.P5 = txt_p_5.Text;
+                        _abast.P6 = txt_p_6.Text;
+                        _abast.PESTEPE = txt_p_estepe.Text;
+                        _abast.RENAVAN = txt_renavan.Text;
+                        _abast.TIPO_FROTA = cmb_tipoVeiculo.Text;
+                        _abast.TIPO_CARRO = cmb_transmissao.Text;
+
                         _abast.USUARIO = "";
 
 
@@ -256,7 +269,7 @@ namespace GTManute.Views.Cadastro
                         {
                             try
                             {
-                                db.db_forn.InsertOnSubmit(_abast);
+                                db.db_frota.InsertOnSubmit(_abast);
                                 db.SubmitChanges();
                                 Application.Current.Dispatcher.Invoke((Action)delegate {
                                     mensagem("Cadastro gravado com sucesso!", false, "", "Ok");
@@ -289,25 +302,30 @@ namespace GTManute.Views.Cadastro
             string retorno = MessageBox.Show("Deseja alterar este cadastro?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
-                db_forn _abast = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.codigo == ID).FirstOrDefault());
+                db_frota _abast = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.COD == ID).FirstOrDefault());
 
-                _abast.BAIRRO ="";
-                _abast.CIDADE = txt_cidade.Text;
-                _abast.CNPJ = txt_cnpj.Text;
+
+                _abast.ANO_FAB = txt_ano.Text;
+                _abast.CHASSIS = txt_chassis.Text;
+                _abast.COR = txt_cor.Text;
                 _abast.DT_LANCA = DateTime.Now;
-                _abast.EMAIL = txt_email.Text;
+                _abast.EIXOS = txt_eixos.Text;
                 _abast.Empresa = Empresa;
-                _abast.ENDERECO = txt_endereco.Text;
-                _abast.INSC_ESTADUAL = txt_inscricao.Text;
-                _abast.NM_FANTASIA = txt_fantasia.Text;
-                _abast.PAGAMENTO = cmb_pagamento.Text;
-                _abast.RAZAO_SOCIAL = txt_razao.Text;
-                _abast.SEG = cmb_uf.Text;
-                _abast.STATUS = "ATIVO";
-                _abast.TEL1 = txt_telefone.Text;
-                _abast.TEL2 = txt_telefone2.Text;
-                _abast.USUARIO = "";
-                
+                _abast.MARCA = txt_marca.Text;
+                _abast.MODELO = txt_modelo.Text;
+                _abast.PLACA = txt_placa.Text;
+                _abast.POTENCIA = txt_potencia.Text;
+                _abast.P1 = txt_p_1.Text;
+                _abast.P2 = txt_p_2.Text;
+                _abast.P3 = txt_p_3.Text;
+                _abast.P4 = txt_p_4.Text;
+                _abast.P5 = txt_p_5.Text;
+                _abast.P6 = txt_p_6.Text;
+                _abast.PESTEPE = txt_p_estepe.Text;
+                _abast.RENAVAN = txt_renavan.Text;
+                _abast.TIPO_FROTA = cmb_tipoVeiculo.Text;
+                _abast.TIPO_CARRO = cmb_transmissao.Text;
+
 
 
                 await Task.Run(() =>
@@ -333,5 +351,51 @@ namespace GTManute.Views.Cadastro
             }
         }
 
+        private void txt_eixos_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_eixos.Text == "2")
+            {
+                txt_p_3.Visibility = Visibility.Hidden;
+                txt_p_4.Visibility = Visibility.Hidden;
+                txt_p_5.Visibility = Visibility.Hidden;
+                txt_p_6.Visibility = Visibility.Hidden;
+                grid_eixos.Visibility = Visibility.Visible;
+            }
+            if (txt_eixos.Text == "1")
+            {
+                txt_p_2.Visibility = Visibility.Hidden;
+                txt_p_3.Visibility = Visibility.Hidden;
+                txt_p_4.Visibility = Visibility.Hidden;
+                txt_p_5.Visibility = Visibility.Hidden;
+                txt_p_6.Visibility = Visibility.Hidden;
+                grid_eixos.Visibility = Visibility.Visible;
+            }
+            else if(txt_eixos.Text == "3")
+            {
+                txt_p_4.Visibility = Visibility.Hidden;
+                txt_p_5.Visibility = Visibility.Hidden;
+                txt_p_6.Visibility = Visibility.Hidden;
+                grid_eixos.Visibility = Visibility.Visible;
+            }
+            else if (txt_eixos.Text == "4")
+            {
+                txt_p_5.Visibility = Visibility.Hidden;
+                txt_p_6.Visibility = Visibility.Hidden;
+                grid_eixos.Visibility = Visibility.Visible;
+            }
+            else if (txt_eixos.Text == "5")
+            {
+                txt_p_6.Visibility = Visibility.Hidden;
+                grid_eixos.Visibility = Visibility.Visible;
+            }
+            else if (txt_eixos.Text == "6")
+            {
+                grid_eixos.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

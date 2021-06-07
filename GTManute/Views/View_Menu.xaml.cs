@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GTManute.Views.Cadastro;
 using GTManute.Views.Lançamento;
 
 namespace GTManute.Views
@@ -48,6 +49,18 @@ namespace GTManute.Views
         private void Home3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
+            view_Abast.Show();
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            View_Frota view_Abast = new View_Frota();
+            view_Abast.Show();
+        }
+
+        private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            View_CadFornecedores view_Abast = new View_CadFornecedores();
             view_Abast.Show();
         }
     }

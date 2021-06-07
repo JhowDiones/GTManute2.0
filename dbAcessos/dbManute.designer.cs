@@ -22,7 +22,7 @@ namespace dbAcessos
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_17")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="GtManute")]
 	public partial class dbManuteDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -3176,6 +3176,22 @@ namespace dbAcessos
 		
 		private string _Empresa;
 		
+		private string _PESTEPE;
+		
+		private string _P1;
+		
+		private string _P2;
+		
+		private string _P3;
+		
+		private string _P4;
+		
+		private string _P5;
+		
+		private string _P6;
+		
+		private string _MARCA;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3220,6 +3236,22 @@ namespace dbAcessos
     partial void OnDT_LANCAChanged();
     partial void OnEmpresaChanging(string value);
     partial void OnEmpresaChanged();
+    partial void OnPESTEPEChanging(string value);
+    partial void OnPESTEPEChanged();
+    partial void OnP1Changing(string value);
+    partial void OnP1Changed();
+    partial void OnP2Changing(string value);
+    partial void OnP2Changed();
+    partial void OnP3Changing(string value);
+    partial void OnP3Changed();
+    partial void OnP4Changing(string value);
+    partial void OnP4Changed();
+    partial void OnP5Changing(string value);
+    partial void OnP5Changed();
+    partial void OnP6Changing(string value);
+    partial void OnP6Changed();
+    partial void OnMARCAChanging(string value);
+    partial void OnMARCAChanged();
     #endregion
 		
 		public db_frota()
@@ -3623,6 +3655,166 @@ namespace dbAcessos
 					this._Empresa = value;
 					this.SendPropertyChanged("Empresa");
 					this.OnEmpresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PESTEPE", DbType="NVarChar(10)")]
+		public string PESTEPE
+		{
+			get
+			{
+				return this._PESTEPE;
+			}
+			set
+			{
+				if ((this._PESTEPE != value))
+				{
+					this.OnPESTEPEChanging(value);
+					this.SendPropertyChanging();
+					this._PESTEPE = value;
+					this.SendPropertyChanged("PESTEPE");
+					this.OnPESTEPEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P1", DbType="NVarChar(10)")]
+		public string P1
+		{
+			get
+			{
+				return this._P1;
+			}
+			set
+			{
+				if ((this._P1 != value))
+				{
+					this.OnP1Changing(value);
+					this.SendPropertyChanging();
+					this._P1 = value;
+					this.SendPropertyChanged("P1");
+					this.OnP1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P2", DbType="NVarChar(10)")]
+		public string P2
+		{
+			get
+			{
+				return this._P2;
+			}
+			set
+			{
+				if ((this._P2 != value))
+				{
+					this.OnP2Changing(value);
+					this.SendPropertyChanging();
+					this._P2 = value;
+					this.SendPropertyChanged("P2");
+					this.OnP2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P3", DbType="NVarChar(10)")]
+		public string P3
+		{
+			get
+			{
+				return this._P3;
+			}
+			set
+			{
+				if ((this._P3 != value))
+				{
+					this.OnP3Changing(value);
+					this.SendPropertyChanging();
+					this._P3 = value;
+					this.SendPropertyChanged("P3");
+					this.OnP3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P4", DbType="NVarChar(10)")]
+		public string P4
+		{
+			get
+			{
+				return this._P4;
+			}
+			set
+			{
+				if ((this._P4 != value))
+				{
+					this.OnP4Changing(value);
+					this.SendPropertyChanging();
+					this._P4 = value;
+					this.SendPropertyChanged("P4");
+					this.OnP4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P5", DbType="NVarChar(10)")]
+		public string P5
+		{
+			get
+			{
+				return this._P5;
+			}
+			set
+			{
+				if ((this._P5 != value))
+				{
+					this.OnP5Changing(value);
+					this.SendPropertyChanging();
+					this._P5 = value;
+					this.SendPropertyChanged("P5");
+					this.OnP5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P6", DbType="NVarChar(10)")]
+		public string P6
+		{
+			get
+			{
+				return this._P6;
+			}
+			set
+			{
+				if ((this._P6 != value))
+				{
+					this.OnP6Changing(value);
+					this.SendPropertyChanging();
+					this._P6 = value;
+					this.SendPropertyChanged("P6");
+					this.OnP6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MARCA", DbType="NVarChar(50)")]
+		public string MARCA
+		{
+			get
+			{
+				return this._MARCA;
+			}
+			set
+			{
+				if ((this._MARCA != value))
+				{
+					this.OnMARCAChanging(value);
+					this.SendPropertyChanging();
+					this._MARCA = value;
+					this.SendPropertyChanged("MARCA");
+					this.OnMARCAChanged();
 				}
 			}
 		}

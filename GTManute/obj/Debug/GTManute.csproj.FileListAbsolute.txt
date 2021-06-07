@@ -60,3 +60,7 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançame
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml

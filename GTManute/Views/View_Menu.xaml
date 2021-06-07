@@ -49,8 +49,64 @@
             <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" Stroke="Black" RadiusX="5" RadiusY="5" Margin="0,0.5,0,0"/>
             <TextBlock x:Name="btn_Fechar" TextWrapping="Wrap" Text="x" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0.5,0,0.5,0.5"/>
         </Grid>
+        <!-- Cadastros -->
+        <Grid HorizontalAlignment="Left" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671" Background="{StaticResource TerceiraCor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
 
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
 
+            </Grid.ColumnDefinitions>
+            <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="1" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+
+                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <TextBlock Text="Frota" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+            </Grid>
+            <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="3" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
+
+                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <TextBlock Text="Fornecedores" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+            </Grid>
+        </Grid>
+        <!-- Lançamento -->
+        <Grid HorizontalAlignment="Left" Visibility="Hidden" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+
+            </Grid.ColumnDefinitions>
+        </Grid>
 
     </Grid>
 </Window>
