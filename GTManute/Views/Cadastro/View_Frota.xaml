@@ -41,7 +41,7 @@
         <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="41" 
             VerticalAlignment="Top" Width="7.332" Margin="10.47,21.216,0,0"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="23,14,0,0"
-            TextWrapping="Wrap" Text="Cadastro - Fornecedor" VerticalAlignment="Top" Width="537"
+            TextWrapping="Wrap" Text="Cadastro - Veículo" VerticalAlignment="Top" Width="537"
             Foreground="{StaticResource SegundaCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
         <Grid Margin="35,105,35,65" >
             <Rectangle Fill="{StaticResource SegundaCor}" StrokeThickness="5" RadiusY="10" RadiusX="10" />
@@ -57,18 +57,21 @@
                     <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
                     <GroupBox x:Name="groupBox" Header="Dados fornecedor" HorizontalAlignment="Left" BorderBrush="{StaticResource SegundaCor}" Margin="10,10,0,10" Width="345">
                         <Grid Margin="0">
-                            <Label x:Name="label1" Content="Razão Social" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160"/>
-                            <TextBox x:Name="txt_razao" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
-                            <Label x:Name="label1_Copy1" Content="Nome Fantasia" VerticalAlignment="Top" Margin="0,-1,0,0" HorizontalAlignment="Right" Width="160"/>
-                            <TextBox x:Name="txt_fantasia" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="160"/>
-                            <Label x:Name="label1_Copy2" Content="Endereço" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Margin="0,98,0,0"/>
-                            <TextBox x:Name="txt_endereco" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextAlignment="Right"/>
-                            <Label x:Name="label1_Copy3" Content="CNPJ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="0,49,0,0"/>
-                            <TextBox x:Name="txt_cnpj" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextAlignment="Right"/>
-                            <Label x:Name="label1_Copy5" Content="Inscrição Estadual" VerticalAlignment="Top" Margin="0,49,0,0" HorizontalAlignment="Right" Width="160"/>
-                            <TextBox x:Name="txt_inscricao" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="160"/>
-                            <Label x:Name="label1_Copy6" Content="Cidade" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="158,99,0,0"/>
-                            <TextBox x:Name="txt_cidade" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="158,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" TextAlignment="Right"/>
+                            <Label x:Name="label1" Content="Placa" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90"/>
+                            <TextBox x:Name="txt_placa" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
+                            <Label x:Name="label1_Copy4" Content="Marca" VerticalAlignment="Top" HorizontalAlignment="Right" Width="108" Margin="0,0,122,0"/>
+                            <TextBox x:Name="txt_marca" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="0,26,122,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="108"/>
+
+                            <Label x:Name="label1_Copy1" Content="Modelo" VerticalAlignment="Top" HorizontalAlignment="Right" Width="108"/>
+                            <TextBox x:Name="txt_modelo" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="108"/>
+                            <Label x:Name="label1_Copy2" Content="Cor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="0,98,0,0"/>
+                            <TextBox x:Name="txt_cor" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy3" Content="Renavan" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="0,49,0,0"/>
+                            <TextBox x:Name="txt_renavan" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy5" Content="Chassis" VerticalAlignment="Top" Margin="0,49,0,0" HorizontalAlignment="Right" Width="160"/>
+                            <TextBox x:Name="txt_chassis" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="160"/>
+                            <Label x:Name="label1_Copy6" Content="Cidade" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="103,99,0,0"/>
+                            <TextBox x:Name="txt_cidade" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="103,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy" Content="UF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="278,99,0,0"/>
                             <ComboBox x:Name="cmb_uf" IsEditable="True" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="278,125,0,0"  VerticalAlignment="Top" Width="55"/>
                             <Label x:Name="label1_Copy7" Content="Telefone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="0,148,0,0"/>
