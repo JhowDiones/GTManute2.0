@@ -47,7 +47,49 @@ namespace GTManute.Views.Lançamento
 
         private async void cmbbox()
         {
-            List<string> ajudante = await Task.FromResult<db_colaboradores>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
+
+            await Task.Run(() =>
+        {
+            Application.Current.Dispatcher.Invoke((Action)async delegate
+            {
+                List<string> ajudante = new List<string>();
+                List<string> motorista = new List<string>();
+                List<string> fornecedor = new List<string>();
+                List<string> Rotas = new List<string>();
+                List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+                List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
+                List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
+                List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).ToList());
+                List<db_rotas> rot1 = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.DE).ToList());
+                for (int i = 0; i < aju.Count; i++)
+                {
+                    ajudante.Add(aju[i].NOME);
+                }
+                for (int i = 0; i < moto.Count; i++)
+                {
+                    motorista.Add(moto[i].NOME);
+                }
+                for (int i = 0; i < forn.Count; i++)
+                {
+                    fornecedor.Add(forn[i].RAZAO_SOCIAL);
+                }
+                for (int i = 0; i < rot.Count; i++)
+                {
+                    Rotas.Add(rot[i].PARA);
+                }
+                cmb_destino.ItemsSource = Rotas;
+                for (int i = 0; i < rot1.Count; i++)
+                {
+                    Rotas.Add(rot1[i].DE);
+                }
+                cmb_1ajudante.ItemsSource = ajudante;
+                cmb_2ajudante.ItemsSource = ajudante;
+                cmb_motorista.ItemsSource = motorista;
+                cmb_fornecedor.ItemsSource = fornecedor;
+
+            });
+        });
+
         }
 
         private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -109,20 +151,22 @@ namespace GTManute.Views.Lançamento
                             {
                                 db.db_abast.InsertOnSubmit(_abast);
                                 db.SubmitChanges();
-                                Application.Current.Dispatcher.Invoke((Action)delegate {
+                                Application.Current.Dispatcher.Invoke((Action)delegate
+                                {
                                     mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
-                               
-                               
-                                btn_novo.Text = "Novo";
-                                carregando(0, true);
+
+
+                                    btn_novo.Text = "Novo";
+                                    carregando(0, true);
                                 });
                             }
                             catch
                             {
-                                Application.Current.Dispatcher.Invoke((Action)delegate {
+                                Application.Current.Dispatcher.Invoke((Action)delegate
+                                {
                                     mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
                                 });
-                              }
+                            }
 
                         });
                     }
@@ -175,8 +219,8 @@ namespace GTManute.Views.Lançamento
                         Application.Current.Dispatcher.Invoke((Action)delegate
                         {
                             mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
-                       
-                        carregando(ID, true);
+
+                            carregando(ID, true);
                         });
                     }
                     catch
@@ -185,7 +229,7 @@ namespace GTManute.Views.Lançamento
                         {
                             mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
                         });
-                        }
+                    }
                 });
             }
         }
@@ -200,7 +244,7 @@ namespace GTManute.Views.Lançamento
                     db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
                     db.db_abast.DeleteOnSubmit(abast);
                     db.SubmitChanges();
-                    carregando(ID-1, true);
+                    carregando(ID - 1, true);
                 }
                 catch
                 {
@@ -208,8 +252,8 @@ namespace GTManute.Views.Lançamento
                     {
                         mensagem("Tivemos algum erro ao deletar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
                     });
-                    }
-                
+                }
+
             }
         }
         private void Limpar()
