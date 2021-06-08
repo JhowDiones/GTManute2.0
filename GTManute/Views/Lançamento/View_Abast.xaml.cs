@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GTManute.Views.Lançamento
@@ -35,6 +36,7 @@ namespace GTManute.Views.Lançamento
             InitializeComponent();
             Empresa = cfg.Empresa;
             carregando(0, true);
+            cmbbox();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -44,7 +46,33 @@ namespace GTManute.Views.Lançamento
             // Begin dragging the window
             this.DragMove();
         }
-
+        void container_PreviewKeyDown(object sender, KeyEventArgs e)
+                {
+            ComboBox combo = e.Source as ComboBox;
+            TextBox tb = e.Source as TextBox;
+            if (tb != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        tb.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if(combo != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        combo.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
         private async void cmbbox()
         {
 
@@ -56,7 +84,10 @@ namespace GTManute.Views.Lançamento
                 List<string> motorista = new List<string>();
                 List<string> fornecedor = new List<string>();
                 List<string> Rotas = new List<string>();
+                List<string> Rotas1 = new List<string>();
+                List<string> placas = new List<string>();
                 List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+                List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.OrderBy(a => a.PLACA).ToList());
                 List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
                 List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
                 List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).ToList());
@@ -69,6 +100,10 @@ namespace GTManute.Views.Lançamento
                 {
                     motorista.Add(moto[i].NOME);
                 }
+                for (int i = 0; i < pla.Count; i++)
+                {
+                    placas.Add(pla[i].PLACA);
+                }
                 for (int i = 0; i < forn.Count; i++)
                 {
                     fornecedor.Add(forn[i].RAZAO_SOCIAL);
@@ -78,14 +113,17 @@ namespace GTManute.Views.Lançamento
                     Rotas.Add(rot[i].PARA);
                 }
                 cmb_destino.ItemsSource = Rotas;
+                
                 for (int i = 0; i < rot1.Count; i++)
                 {
-                    Rotas.Add(rot1[i].DE);
+                    Rotas1.Add(rot1[i].DE);
                 }
+                cmb_partida.ItemsSource = Rotas1;
                 cmb_1ajudante.ItemsSource = ajudante;
                 cmb_2ajudante.ItemsSource = ajudante;
                 cmb_motorista.ItemsSource = motorista;
                 cmb_fornecedor.ItemsSource = fornecedor;
+                cmb_veiculo.ItemsSource = placas;
 
             });
         });
