@@ -58,5 +58,41 @@ namespace GTManute.Properties {
                 this["Email_Dev"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#ffffffff")]
+        public string primeiraCor {
+            get {
+                return ((string)(this["primeiraCor"]));
+            }
+            set {
+                this["primeiraCor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#581845")]
+        public string SegundaCor {
+            get {
+                return ((string)(this["SegundaCor"]));
+            }
+            set {
+                this["SegundaCor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#900c3f")]
+        public string TerceiraCor {
+            get {
+                return ((string)(this["TerceiraCor"]));
+            }
+            set {
+                this["TerceiraCor"] = value;
+            }
+        }
     }
 }

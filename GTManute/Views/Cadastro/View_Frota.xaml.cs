@@ -34,6 +34,7 @@ namespace GTManute.Views.Cadastro
             InitializeComponent();
             Empresa = cfg.Empresa;
             carregando(0, true);
+            cmbBox();
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -55,11 +56,17 @@ namespace GTManute.Views.Cadastro
             List<string> vs = new List<string>();
             vs.Add("Carro");
             vs.Add("Motocicleta");
-            vs.Add("Triciculo");
+            vs.Add("Triciclo");
             vs.Add("Caminhão");
             vs.Add("Cavalo");
             vs.Add("Impemento");
             cmb_tipoVeiculo.ItemsSource = vs;
+            List<string> trans = new List<string>();
+            trans.Add("Automatico");
+            trans.Add("Semi-Automatico");
+            trans.Add("Manual");
+           
+            cmb_transmissao.ItemsSource = trans;
         }
         private void Limpar()
         {
@@ -106,6 +113,8 @@ namespace GTManute.Views.Cadastro
             txt_renavan.Text = renavan;
             cmb_tipoVeiculo.Text = tipoveiculo;
             cmb_transmissao.Text = transmissao;
+
+            eixosLoad();
 
         }
 
@@ -211,8 +220,8 @@ namespace GTManute.Views.Cadastro
             {
                 try
                 {
-                    db_forn forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.codigo == ID).FirstOrDefault());
-                    db.db_forn.DeleteOnSubmit(forn);
+                    db_frota forn = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.COD == ID).FirstOrDefault());
+                    db.db_frota.DeleteOnSubmit(forn);
                     db.SubmitChanges();
                     carregando(ID - 1, true);
                 }
@@ -290,7 +299,7 @@ namespace GTManute.Views.Cadastro
                     }
                     catch
                     {
-                        mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                        mensagem("Obtivemos algum erro ao gravar o cadastro! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
 
                     }
                 }
@@ -334,7 +343,7 @@ namespace GTManute.Views.Cadastro
                     {
                         db.SubmitChanges();
                         Application.Current.Dispatcher.Invoke((Action)delegate {
-                            mensagem("Fornecedor gravado com sucesso!", false, "", "Ok");
+                            mensagem("Veículo gravado com sucesso!", false, "", "Ok");
                        
                         
                         carregando(ID, true);
@@ -353,12 +362,22 @@ namespace GTManute.Views.Cadastro
 
         private void txt_eixos_LostFocus(object sender, RoutedEventArgs e)
         {
+            eixosLoad();
+        }
+        private void eixosLoad()
+        {
             if (txt_eixos.Text == "2")
             {
                 txt_p_3.Visibility = Visibility.Hidden;
                 txt_p_4.Visibility = Visibility.Hidden;
                 txt_p_5.Visibility = Visibility.Hidden;
                 txt_p_6.Visibility = Visibility.Hidden;
+
+                labeleixo3.Visibility = Visibility.Hidden;
+                labeleixo4.Visibility = Visibility.Hidden;
+                labeleixo5.Visibility = Visibility.Hidden;
+                labeleixo6.Visibility = Visibility.Hidden;
+
                 grid_eixos.Visibility = Visibility.Visible;
             }
             if (txt_eixos.Text == "1")
@@ -368,24 +387,37 @@ namespace GTManute.Views.Cadastro
                 txt_p_4.Visibility = Visibility.Hidden;
                 txt_p_5.Visibility = Visibility.Hidden;
                 txt_p_6.Visibility = Visibility.Hidden;
+
+
+                labeleixo2.Visibility = Visibility.Hidden;
+                labeleixo3.Visibility = Visibility.Hidden;
+                labeleixo4.Visibility = Visibility.Hidden;
+                labeleixo5.Visibility = Visibility.Hidden;
+                labeleixo6.Visibility = Visibility.Hidden;
                 grid_eixos.Visibility = Visibility.Visible;
             }
-            else if(txt_eixos.Text == "3")
+            else if (txt_eixos.Text == "3")
             {
                 txt_p_4.Visibility = Visibility.Hidden;
                 txt_p_5.Visibility = Visibility.Hidden;
                 txt_p_6.Visibility = Visibility.Hidden;
+                labeleixo4.Visibility = Visibility.Hidden;
+                labeleixo5.Visibility = Visibility.Hidden;
+                labeleixo6.Visibility = Visibility.Hidden;
                 grid_eixos.Visibility = Visibility.Visible;
             }
             else if (txt_eixos.Text == "4")
             {
                 txt_p_5.Visibility = Visibility.Hidden;
                 txt_p_6.Visibility = Visibility.Hidden;
+                labeleixo5.Visibility = Visibility.Hidden;
+                labeleixo6.Visibility = Visibility.Hidden;
                 grid_eixos.Visibility = Visibility.Visible;
             }
             else if (txt_eixos.Text == "5")
             {
                 txt_p_6.Visibility = Visibility.Hidden;
+                labeleixo6.Visibility = Visibility.Hidden;
                 grid_eixos.Visibility = Visibility.Visible;
             }
             else if (txt_eixos.Text == "6")

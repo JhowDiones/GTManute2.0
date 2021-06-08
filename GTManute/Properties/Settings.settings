@@ -11,5 +11,14 @@
     <Setting Name="Email_Dev" Type="System.String" Scope="User">
       <Value Profile="(Default)">dionatan.barbosadejesus@gmail.com</Value>
     </Setting>
+    <Setting Name="primeiraCor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#ffffffff</Value>
+    </Setting>
+    <Setting Name="SegundaCor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#581845</Value>
+    </Setting>
+    <Setting Name="TerceiraCor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#900c3f</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

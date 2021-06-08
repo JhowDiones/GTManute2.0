@@ -19,7 +19,7 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,110,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource TerceiraCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image1" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home1" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}"/>
+            <TextBlock x:Name="btn_home" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Home" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="btn_home_MouseLeftButtonDown"/>
 
 
 
@@ -27,7 +27,7 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,130,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image2" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home2" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Cadastros" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="Home2_MouseLeftButtonDown"/>
+            <TextBlock x:Name="btn_cadastro" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Cadastros" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="Home2_MouseLeftButtonDown"/>
 
 
 
@@ -35,22 +35,26 @@
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,150,0,0" VerticalAlignment="Top" Width="100.401">
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
             <Image x:Name="image3" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="Home3" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Lançamentos" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="Home3_MouseLeftButtonDown"  />
+            <TextBlock x:Name="btn_Lanca" Margin="0.401,0.016,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="Lançamentos" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="Home3_MouseLeftButtonDown"  />
 
 
 
         </Grid>
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,170,0,0" VerticalAlignment="Top" Width="100.401">
-            <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0.401,0.016,0,0"/>
-            <Image x:Name="image" HorizontalAlignment="Left" Margin="0,0,0,0.016" Width="20"/>
-            <TextBlock x:Name="btn_Config" Margin="0,0,0.401,0.016" TextWrapping="Wrap" TextAlignment="Right" Text="Configurações" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="btn_Config_MouseLeftButtonDown"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="23*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0.1" Margin="0,0,0.401,0" Grid.ColumnSpan="2"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Width="20"/>
+            <TextBlock x:Name="btn_Config" Margin="0,0,0.401,0" TextWrapping="Wrap" TextAlignment="Right" Text="Configurações" FontWeight="Bold" Foreground="{StaticResource primeiraCor}" MouseLeftButtonDown="btn_Config_MouseLeftButtonDown" Grid.ColumnSpan="2"/>
         </Grid>
         <Grid HorizontalAlignment="Right" Height="30.5" Margin="0,0,-0.5,0" VerticalAlignment="Top" Width="30">
             <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" Stroke="Black" RadiusX="5" RadiusY="5" Margin="0,0.5,0,0"/>
-            <TextBlock x:Name="btn_Fechar" TextWrapping="Wrap" Text="x" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0.5,0,0.5,0.5"/>
+            <TextBlock x:Name="btn_Fechar" TextWrapping="Wrap" Text="x" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0.5,0,0.5,0.5" MouseLeftButtonDown="btn_Fechar_MouseLeftButtonDown"/>
         </Grid>
         <!-- Cadastros -->
-        <Grid HorizontalAlignment="Left" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671" Background="{StaticResource TerceiraCor}">
+        <Grid HorizontalAlignment="Left" Height="330" x:Name="grid_cadastro" Visibility="Hidden" Margin="119,110,0,0" VerticalAlignment="Top" Width="671" Background="{StaticResource TerceiraCor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
@@ -83,9 +87,15 @@
                 <TextBlock Text="Fornecedores" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
             </Grid>
+            <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="5" MouseLeftButtonDown="Grid_MouseLeftButtonDown_2">
+
+                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <TextBlock Text="Colaboradores" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+            </Grid>
         </Grid>
         <!-- Lançamento -->
-        <Grid HorizontalAlignment="Left" Visibility="Hidden" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
+        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Hidden" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
@@ -106,6 +116,13 @@
                 <ColumnDefinition Width="10"/>
 
             </Grid.ColumnDefinitions>
+
+            <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="1" MouseLeftButtonDown="Grid_MouseLeftButtonDown_3">
+
+                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <TextBlock Text="Abastecimento" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+            </Grid>
         </Grid>
 
     </Grid>

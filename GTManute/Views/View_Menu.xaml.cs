@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using dbAcessos;
+using GTManute.Properties;
 using GTManute.Views.Cadastro;
 using GTManute.Views.Lançamento;
 
@@ -21,6 +23,11 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Menu : Window
     {
+        private string Usuario { get; set; }
+        private Settings cfg = new Settings();
+        private int ID { get; set; }
+        private string Empresa { get; set; }
+        dbManuteDataContext db = new dbManuteDataContext();
         public View_Menu()
         {
             InitializeComponent();
@@ -31,13 +38,27 @@ namespace GTManute.Views
             base.OnMouseLeftButtonDown(e);
 
             // Begin dragging the window
-            this.DragMove();
+            try
+            {
+                this.DragMove();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void Home2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Cadastro.View_CadFornecedores view_Abast = new Cadastro.View_CadFornecedores();
-            view_Abast.Show();
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom(cfg.TerceiraCor);
+            Brush brush1 = (Brush)bc.ConvertFrom(cfg.SegundaCor);
+            btn_home.Background = brush1;
+            btn_cadastro.Background = brush;
+            btn_Lanca.Background = brush1;
+            grid_cadastro.Visibility = Visibility.Visible;
+            grid_lanc.Visibility = Visibility.Hidden;
         }
 
         private void btn_Config_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -48,8 +69,14 @@ namespace GTManute.Views
 
         private void Home3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
-            view_Abast.Show();
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom(cfg.TerceiraCor);
+            Brush brush1 = (Brush)bc.ConvertFrom(cfg.SegundaCor);
+            btn_home.Background = brush1;
+            btn_cadastro.Background = brush1;
+            btn_Lanca.Background = brush;
+            grid_cadastro.Visibility = Visibility.Hidden;
+            grid_lanc.Visibility = Visibility.Visible;
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -62,6 +89,35 @@ namespace GTManute.Views
         {
             View_CadFornecedores view_Abast = new View_CadFornecedores();
             view_Abast.Show();
+        }
+
+        private void Grid_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            View_Colaboradores view_Abast = new View_Colaboradores();
+            view_Abast.Show();
+        }
+
+        private void Grid_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        {
+            Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
+            view_Abast.Show();
+        }
+
+        private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom(cfg.TerceiraCor);
+            Brush brush1 = (Brush)bc.ConvertFrom(cfg.SegundaCor);
+            btn_home.Background = brush;
+            btn_cadastro.Background = brush1;
+            btn_Lanca.Background = brush1;
+            grid_cadastro.Visibility = Visibility.Hidden;
+            grid_lanc.Visibility = Visibility.Hidden;
         }
     }
 }

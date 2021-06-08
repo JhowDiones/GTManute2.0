@@ -57,7 +57,14 @@ namespace GTManute.Views
             base.OnMouseLeftButtonDown(e);
 
             // Begin dragging the window
-            this.DragMove();
+            try
+            {
+                this.DragMove();
+            }
+            catch
+            {
+
+            }
         }
 
         private async void textBlock3_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

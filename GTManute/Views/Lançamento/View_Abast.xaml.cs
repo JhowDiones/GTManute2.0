@@ -45,6 +45,11 @@ namespace GTManute.Views.Lançamento
             this.DragMove();
         }
 
+        private async void cmbbox()
+        {
+            List<string> ajudante = await Task.FromResult<db_colaboradores>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
+        }
+
         private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (btn_novo.Text == "Novo")
