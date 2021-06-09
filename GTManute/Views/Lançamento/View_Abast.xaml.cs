@@ -75,14 +75,14 @@ namespace GTManute.Views.Lançamento
                 }
             }
         }
-        private void cmbbox()
+        private async void cmbbox()
         {
-            Application.Current.Dispatcher.Invoke((Action)async delegate
-            {
+            
                 await Task.Run(async () =>
                 {
-
-                    List<string> ajudante = new List<string>();
+                    Application.Current.Dispatcher.Invoke((Action)async delegate
+                    {
+                        List<string> ajudante = new List<string>();
                     List<string> motorista = new List<string>();
                     List<string> fornecedor = new List<string>();
                     List<string> Rotas = new List<string>();
