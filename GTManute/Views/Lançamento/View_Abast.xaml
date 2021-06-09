@@ -62,23 +62,26 @@
                             <TextBox x:Name="txt_doc" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy" Content="Veículo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="85,0,0,0"/>
                             <ComboBox x:Name="cmb_veiculo" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="85,25,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="label1_Copy1" Content="Total ltrs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="210,-1,0,0"/>
-                            <TextBox x:Name="txt_litragem" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
-                            <Label x:Name="label1_Copy2" Content="Total valor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="295,-1,0,0"/>
-                            <TextBox x:Name="txt_valor" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="295,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
-                            <Label x:Name="label1_Copy3" Content="Valor unitário" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="0,49,0,0"/>
-                            <TextBox x:Name="txt_res_unitario" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
-                            <Label x:Name="label1_Copy4" Content="Fornecedor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="85,49,0,0"/>
-                            <ComboBox x:Name="cmb_fornecedor" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="85,75,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="label1_Copy5" Content="Total Km" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="210,49,0,0"/>
-                            <TextBox x:Name="txt_res_km" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
-                            <Label x:Name="label1_Copy6" Content="Média KM/L" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="295,49,0,0"/>
-                            <TextBox x:Name="txt_res_media" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="295,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy1" Content="Total ltrs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="61" Margin="210,-1,0,0"/>
+                            <TextBox x:Name="txt_litragem" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy2" Content="Total valor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Margin="276,0,0,0"/>
+                            <TextBox x:Name="txt_valor" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="276,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy3" Content="Valor unit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Margin="341,0,0,0"/>
+                            <TextBox x:Name="txt_res_unitario" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="346,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy4" Content="Fornecedor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="0,48,0,0"/>
+                            <ComboBox x:Name="cmb_fornecedor" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="label1_Copy19" Content="Combustivel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="111" Margin="125,47,0,0"/>
+                            <ComboBox x:Name="cmb_combustivel" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="125,74,0,0" VerticalAlignment="Top" Width="111"/>
 
+                            <Label x:Name="label1_Copy5" Content="Total Km" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="241,48,0,0"/>
+                            <TextBox x:Name="txt_res_km" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="241,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
+                            <Label x:Name="label1_Copy6" Content="Média KM/L" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="326,48,0,0"/>
+                            <TextBox x:Name="txt_res_media" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="326,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
+                            
                         </Grid>
                     </GroupBox>
                 </Grid>
-                <Grid Grid.Column="0"  Grid.Row="1">
+                <Grid Grid.Column="0"  Grid.Row="1" LostFocus="Grid_LostFocus">
                     <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
                     <GroupBox x:Name="groupBox1" Header="Partida" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="162" Margin="10,10,0,0" VerticalAlignment="Top" Width="206">
                         <Grid Margin="0">

@@ -69,3 +69,4 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cada
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml

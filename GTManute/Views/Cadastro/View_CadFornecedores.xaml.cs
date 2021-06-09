@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GTManute.Views.Cadastro
@@ -35,6 +36,35 @@ namespace GTManute.Views.Cadastro
             InitializeComponent();
             Empresa = cfg.Empresa;
             carregando(0, true);
+        }
+        void container_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox combo = e.Source as ComboBox;
+            TextBox tb = e.Source as TextBox;
+            if (tb != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        tb.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (combo != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        TraversalRequest next = new TraversalRequest(FocusNavigationDirection.Next);
+                        UIElement el = Keyboard.FocusedElement as UIElement;
+                        el.MoveFocus(next);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {

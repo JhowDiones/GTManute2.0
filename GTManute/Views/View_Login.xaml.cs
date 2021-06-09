@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 namespace GTManute.Views
@@ -27,7 +28,35 @@ namespace GTManute.Views
                 banco.ShowDialog();
             }
         }
-
+        void container_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox combo = e.Source as ComboBox;
+            TextBox tb = e.Source as TextBox;
+            if (tb != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        tb.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (combo != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        TraversalRequest next = new TraversalRequest(FocusNavigationDirection.Next);
+                        UIElement el = Keyboard.FocusedElement as UIElement;
+                        el.MoveFocus(next);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);

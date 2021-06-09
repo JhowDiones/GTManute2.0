@@ -47,7 +47,7 @@ namespace GTManute.Views.Lançamento
             this.DragMove();
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
-                {
+        {
             ComboBox combo = e.Source as ComboBox;
             TextBox tb = e.Source as TextBox;
             if (tb != null)
@@ -61,72 +61,74 @@ namespace GTManute.Views.Lançamento
                         break;
                 }
             }
-            else if(combo != null)
+            else if (combo != null)
             {
                 switch (e.Key)
                 {
                     case Key.Enter:
-                        combo.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        TraversalRequest next = new TraversalRequest(FocusNavigationDirection.Next);
+                        UIElement el = Keyboard.FocusedElement as UIElement;
+                        el.MoveFocus(next);
                         break;
                     default:
                         break;
                 }
             }
         }
-        private async void cmbbox()
-        {
-
-            await Task.Run(() =>
+        private void cmbbox()
         {
             Application.Current.Dispatcher.Invoke((Action)async delegate
             {
-                List<string> ajudante = new List<string>();
-                List<string> motorista = new List<string>();
-                List<string> fornecedor = new List<string>();
-                List<string> Rotas = new List<string>();
-                List<string> Rotas1 = new List<string>();
-                List<string> placas = new List<string>();
-                List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
-                List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.OrderBy(a => a.PLACA).ToList());
-                List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
-                List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
-                List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).ToList());
-                List<db_rotas> rot1 = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.DE).ToList());
-                for (int i = 0; i < aju.Count; i++)
+                await Task.Run(async () =>
                 {
-                    ajudante.Add(aju[i].NOME);
-                }
-                for (int i = 0; i < moto.Count; i++)
-                {
-                    motorista.Add(moto[i].NOME);
-                }
-                for (int i = 0; i < pla.Count; i++)
-                {
-                    placas.Add(pla[i].PLACA);
-                }
-                for (int i = 0; i < forn.Count; i++)
-                {
-                    fornecedor.Add(forn[i].RAZAO_SOCIAL);
-                }
-                for (int i = 0; i < rot.Count; i++)
-                {
-                    Rotas.Add(rot[i].PARA);
-                }
-                cmb_destino.ItemsSource = Rotas;
-                
-                for (int i = 0; i < rot1.Count; i++)
-                {
-                    Rotas1.Add(rot1[i].DE);
-                }
-                cmb_partida.ItemsSource = Rotas1;
-                cmb_1ajudante.ItemsSource = ajudante;
-                cmb_2ajudante.ItemsSource = ajudante;
-                cmb_motorista.ItemsSource = motorista;
-                cmb_fornecedor.ItemsSource = fornecedor;
-                cmb_veiculo.ItemsSource = placas;
 
+                    List<string> ajudante = new List<string>();
+                    List<string> motorista = new List<string>();
+                    List<string> fornecedor = new List<string>();
+                    List<string> Rotas = new List<string>();
+                    List<string> Rotas1 = new List<string>();
+                    List<string> placas = new List<string>();
+                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+                    List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.OrderBy(a => a.PLACA).ToList());
+                    List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
+                    List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
+                    List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).ToList());
+                    List<db_rotas> rot1 = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.DE).ToList());
+                    for (int i = 0; i < aju.Count; i++)
+                    {
+                        ajudante.Add(aju[i].NOME);
+                    }
+                    for (int i = 0; i < moto.Count; i++)
+                    {
+                        motorista.Add(moto[i].NOME);
+                    }
+                    for (int i = 0; i < pla.Count; i++)
+                    {
+                        placas.Add(pla[i].PLACA);
+                    }
+                    for (int i = 0; i < forn.Count; i++)
+                    {
+                        fornecedor.Add(forn[i].RAZAO_SOCIAL);
+                    }
+                    for (int i = 0; i < rot.Count; i++)
+                    {
+                        Rotas.Add(rot[i].PARA);
+                    }
+                    cmb_destino.ItemsSource = Rotas;
+
+                    for (int i = 0; i < rot1.Count; i++)
+                    {
+                        Rotas1.Add(rot1[i].DE);
+                    }
+                    cmb_partida.ItemsSource = Rotas1;
+                    cmb_1ajudante.ItemsSource = ajudante;
+                    cmb_2ajudante.ItemsSource = ajudante;
+                    cmb_motorista.ItemsSource = motorista;
+                    cmb_fornecedor.ItemsSource = fornecedor;
+                    cmb_veiculo.ItemsSource = placas;
+
+                });
             });
-        });
 
         }
 
@@ -458,6 +460,26 @@ namespace GTManute.Views.Lançamento
             mensagem.ShowDialog();
         }
 
+        private void Grid_LostFocus(object sender, RoutedEventArgs e)
+        {
+            double média = 0;
+            double valorunit = 0;
+            double km = 0;
+            try
+            {
+                média = ((double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
+                valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
+                km = (double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text));
+                txt_res_unitario.Text = valorunit.ToString("N2");
+                txt_res_media.Text = média.ToString("N2");
+                txt_res_media.Text = km.ToString();
+
+            }
+            catch
+            {
+
+            }
+        }
     }
 
 }

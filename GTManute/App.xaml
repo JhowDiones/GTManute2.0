@@ -9,6 +9,7 @@
             <SolidColorBrush x:Key="SegundaCor">#581845</SolidColorBrush>
             <SolidColorBrush x:Key="TerceiraCor">#900c3f</SolidColorBrush>
             <BitmapImage x:Key="Buscar_ico" UriSource="Res/Img/buscar_ico.png"/>
+            <BitmapImage x:Key="Abastecimento" UriSource="Res/Img/abastecimento.png"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
