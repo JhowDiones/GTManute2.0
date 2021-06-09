@@ -120,6 +120,18 @@ namespace GTManute.Views.Lançamento
                     {
                         Rotas1.Add(rot1[i].DE);
                     }
+                    List<string> combustivel = new List<string>();
+                    combustivel.Add("Disel");
+                    combustivel.Add("Disel S-10");
+                    combustivel.Add("Disel Aditivado");
+                    combustivel.Add("Disel Premium");
+                    combustivel.Add("Etanol");
+                    combustivel.Add("Etanol Aditivado");
+                    combustivel.Add("Gasolina Comum");
+                    combustivel.Add("Gasolina Aditivada");
+                    combustivel.Add("Gasolina Premium");
+
+                    cmb_combustivel.ItemsSource = combustivel;
                     cmb_partida.ItemsSource = Rotas1;
                     cmb_1ajudante.ItemsSource = ajudante;
                     cmb_2ajudante.ItemsSource = ajudante;
