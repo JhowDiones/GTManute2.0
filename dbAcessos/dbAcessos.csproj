@@ -78,9 +78,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="app.config">
+    <AdditionalFiles Include="app.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </AdditionalFiles>
     <None Include="dbManute.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbManute.designer.cs</LastGenOutput>

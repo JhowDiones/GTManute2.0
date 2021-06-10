@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Empresa" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">11</Value>
     </Setting>
     <Setting Name="Info_db" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Beta_Abast</Value>
     </Setting>
     <Setting Name="Email_Dev" Type="System.String" Scope="User">
       <Value Profile="(Default)">dionatan.barbosadejesus@gmail.com</Value>

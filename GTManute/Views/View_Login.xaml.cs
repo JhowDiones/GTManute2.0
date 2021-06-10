@@ -20,13 +20,16 @@ namespace GTManute.Views
         public View_Login()
         {
             InitializeComponent();
+            cfg.Empresa = "11";
+            cfg.Save();
             Empresa = cfg.Empresa;
-            if (Empresa == null || Empresa == "")
-            {
-                mensagem("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
-                View_Banco banco = new View_Banco();
-                banco.ShowDialog();
-            }
+
+          //  if (Empresa == null || Empresa == "")
+          //  {
+            //    mensagem("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
+             //   View_Banco banco = new View_Banco();
+            //   banco.ShowDialog();
+           // }
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -240,6 +243,10 @@ namespace GTManute.Views
                     {
                         db.db_login.InsertOnSubmit(novologin);
                         db.SubmitChanges();
+                        mensagem("Usuário cadastrado com sucesso!" , false, "", "Ok");
+                        txt_Novo_ConfirmaSenha.Text = "";
+                        txt_Novo_Senha.Text = "";
+                        txt_Novo_Usuario.Text = "";
                     }
                     catch
                     {

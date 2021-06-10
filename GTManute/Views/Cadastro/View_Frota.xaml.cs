@@ -34,7 +34,15 @@ namespace GTManute.Views.Cadastro
         {
             InitializeComponent();
             Empresa = cfg.Empresa;
-            carregando(0, true);
+            try
+            {
+                carregando(0, true);
+            }
+            catch
+            {
+
+            }
+            
             cmbBox();
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)

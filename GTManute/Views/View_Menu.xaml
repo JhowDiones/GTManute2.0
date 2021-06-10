@@ -77,25 +77,25 @@
             </Grid.ColumnDefinitions>
             <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="1" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
 
-                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <Image Width="120" Height="120" Margin="5" Source="{StaticResource veiculos}" VerticalAlignment="Top"  />
                 <TextBlock Text="Frota" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
             </Grid>
             <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="3" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
 
-                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <Image Width="120" Height="120" Margin="5" Source="{StaticResource Fornecedor}" VerticalAlignment="Top"  />
                 <TextBlock Text="Fornecedores" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
             </Grid>
             <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="5" MouseLeftButtonDown="Grid_MouseLeftButtonDown_2">
 
-                <Image Width="120" Height="120" VerticalAlignment="Top" />
+                <Image Width="120" Height="120" Margin="5" Source="{StaticResource Funcionario}" VerticalAlignment="Top"  />
                 <TextBlock Text="Colaboradores" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
             </Grid>
         </Grid>
         <!-- Lançamento -->
-        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Visible" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
+        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Hidden" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>

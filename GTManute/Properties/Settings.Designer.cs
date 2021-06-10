@@ -25,7 +25,7 @@ namespace GTManute.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
         public string Empresa {
             get {
                 return ((string)(this["Empresa"]));
@@ -37,7 +37,7 @@ namespace GTManute.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Beta_Abast")]
         public string Info_db {
             get {
                 return ((string)(this["Info_db"]));
