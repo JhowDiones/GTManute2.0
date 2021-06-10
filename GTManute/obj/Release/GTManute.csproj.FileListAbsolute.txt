@@ -34,3 +34,39 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Release\GTManute
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Release\GTManute.csproj.CopyComplete
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Release\GTManute.exe
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Release\GTManute.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\app.config
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\GTManute.exe.config
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\GTManute.exe
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\GTManute.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\dbAcessos.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\dbAcessos.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csprojAssemblyReference.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\MainWindow.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Colaboradores.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Frota.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_CadFornecedores.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Abast.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Mensagem.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Banco.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Login.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Menu.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\App.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute_MarkupCompile.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute_MarkupCompile.lref
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\App.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\MainWindow.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Colaboradores.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Frota.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_CadFornecedores.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Abast.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Mensagem.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Banco.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Login.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Menu.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.g.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.Properties.Resources.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csproj.GenerateResource.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csproj.CoreCompileInputs.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csproj.CopyComplete
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.exe
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.pdb
