@@ -110,7 +110,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="43*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="{StaticResource primeiraCor}" Margin="-2,10,10,10" Stroke="Black" Grid.Column="1" RadiusY="10" RadiusX="10"/>
+        <Rectangle Fill="{StaticResource primeiraCor}"  Margin="-2,10,10,10" Stroke="{StaticResource SegundaCor}" Grid.Column="1" RadiusY="10" RadiusX="10"/>
         <TextBlock x:Name="txt_principal" Margin="8,20,20,44" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource SegundaCor}" Grid.Column="1">
             <TextBlock.RenderTransform>
                 <TransformGroup>

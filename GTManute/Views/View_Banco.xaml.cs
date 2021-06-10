@@ -116,5 +116,10 @@ namespace GTManute.Views
                 txt_empresa.Text = "";
             }
         }
+
+        private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

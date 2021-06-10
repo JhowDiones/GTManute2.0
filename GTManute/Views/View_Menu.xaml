@@ -7,7 +7,7 @@
         mc:Ignorable="d"   AllowsTransparency="True" WindowState="Normal" WindowStyle="None" Background="Transparent"
         Title="View_Menu" Height="450" Width="800">
     <Grid>
-        <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" />
+        <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" Stroke="{StaticResource SegundaCor}" />
         <Rectangle Fill="{StaticResource SegundaCor}" Height="100" Margin="19,10,10,0" VerticalAlignment="Top"/>
 
         <Grid HorizontalAlignment="Left" Margin="9.5,10,0,10" Width="109.901">

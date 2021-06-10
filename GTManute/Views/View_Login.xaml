@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GTManute.Views" AllowsTransparency="True"
         mc:Ignorable="d"
-        Title="View_Login" Height="500" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}" >
+        Title="Login" Height="500" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}" >
     <Window.Resources>
         <Storyboard x:Key="Abrir_Registro">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle">
@@ -96,7 +96,7 @@
 
     <Grid PreviewKeyDown="container_PreviewKeyDown">
         <Rectangle Fill="Gray" RadiusY="10" RadiusX="10" Margin="130,81,130,90"/>
-        <Rectangle Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10" Width="280" Height="320" Margin="110,90"/>
+        <Rectangle Fill="{StaticResource primeiraCor}" Stroke="{StaticResource SegundaCor}" RadiusY="10" RadiusX="10" Width="280" Height="320" Margin="110,90"/>
         <Rectangle x:Name="rectangle" Fill="{StaticResource SegundaCor}" HorizontalAlignment="Center" Height="55" Margin="360,125,81,0" RadiusY="10" RadiusX="10" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>

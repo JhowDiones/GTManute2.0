@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GTManute.Views.Lançamento"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen"  AllowsTransparency="True"
-        Title="View_Abast" Height="500" Width="800" Background="Transparent">
+        Title="Abastecimento" Height="500" Width="800" Background="Transparent">
     <Window.Resources>
         <Storyboard x:Key="abrir_pesquisa">
             <DoubleAnimation Storyboard.TargetName="gridferramenta" x:Name="abrir_pesquisa" Storyboard.TargetProperty="Height"
@@ -35,7 +35,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid PreviewKeyDown="container_PreviewKeyDown" >
-        <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" />
+        <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" Stroke="{StaticResource SegundaCor}" />
         <Rectangle Fill="{StaticResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5" Margin="0,0,0,0"/>
         <TextBlock x:Name="btn_Fechar" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Width="28" FontSize="20" TextAlignment="Center" FontWeight="Bold"  Margin="0,0,0,0" MouseLeftButtonDown="btn_Fechar_MouseLeftButtonDown"/>
         <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="41" 
@@ -67,16 +67,16 @@
                             <Label x:Name="label1_Copy2" Content="Total valor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Margin="276,0,0,0"/>
                             <TextBox x:Name="txt_valor" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="276,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy3" Content="Valor unit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Margin="341,0,0,0"/>
-                            <TextBox x:Name="txt_res_unitario" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="346,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Right"/>
+                            <TextBox x:Name="txt_res_unitario" IsEnabled="False" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="346,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy4" Content="Fornecedor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="0,48,0,0"/>
                             <ComboBox x:Name="cmb_fornecedor" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="120"/>
                             <Label x:Name="label1_Copy19" Content="Combustivel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="111" Margin="125,47,0,0"/>
                             <ComboBox x:Name="cmb_combustivel" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="125,74,0,0" VerticalAlignment="Top" Width="111"/>
 
                             <Label x:Name="label1_Copy5" Content="Total Km" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="241,48,0,0"/>
-                            <TextBox x:Name="txt_res_km" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="241,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
+                            <TextBox x:Name="txt_res_km" IsEnabled="False" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="241,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy6" Content="Média KM/L" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="326,48,0,0"/>
-                            <TextBox x:Name="txt_res_media" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="326,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
+                            <TextBox x:Name="txt_res_media" IsEnabled="False" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="326,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Right"/>
                             
                         </Grid>
                     </GroupBox>

@@ -34,16 +34,8 @@ namespace GTManute.Views.Cadastro
         {
             InitializeComponent();
             Empresa = cfg.Empresa;
-            try
-            {
-                carregando(0, true);
-            }
-            catch
-            {
-
-            }
-            
-            cmbBox();
+                           carregando(0, true);
+                       cmbBox();
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -158,35 +150,42 @@ namespace GTManute.Views.Cadastro
 
         private async void carregando(int cod, bool full)
         {
-            db_frota frota = new db_frota();
-            if (cod == 0)
+            try
             {
-                frota = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+                db_frota frota = new db_frota();
+                if (cod == 0)
+                {
+                    frota = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+                }
+                else
+                {
+                    frota = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
+                }
+                ID = frota.COD;
+                List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == frota.PLACA).OrderByDescending(a => a.ID).Take(5).ToList());
+
+                List<Ultimas> ultimas = new List<Ultimas>();
+                for (int i = 0; i < Listaabast.Count; i++)
+                {
+                    Ultimas ult = new Ultimas();
+
+                    ult.Motorista = Listaabast[i].MOTORISTA;
+                    ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
+                    ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
+                    ult.DTPartida = Listaabast[i].DT_PARTIDA;
+                    ultimas.Add(ult);
+
+                }
+                grid_ultimas.ItemsSource = ultimas;
+
+                if (full == true)
+                {
+                    carregar(frota);
+                }
             }
-            else
+            catch
             {
-                frota = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
-            }
-            ID = frota.COD;
-            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == frota.PLACA).OrderByDescending(a => a.ID).Take(5).ToList());
-
-            List<Ultimas> ultimas = new List<Ultimas>();
-            for (int i = 0; i < Listaabast.Count; i++)
-            {
-                Ultimas ult = new Ultimas();
-
-                ult.Motorista = Listaabast[i].MOTORISTA;
-                ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
-                ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
-                ult.DTPartida = Listaabast[i].DT_PARTIDA;
-                ultimas.Add(ult);
-
-            }
-            grid_ultimas.ItemsSource = ultimas;
-
-            if (full == true)
-            {
-                carregar(frota);
+                btn_novo.Text = "Gravar";
             }
         }
 

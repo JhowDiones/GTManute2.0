@@ -63,8 +63,8 @@ namespace GTManute.Views
 
         private void btn_Config_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            View_Banco view_Banco = new View_Banco();
-            view_Banco.ShowDialog();
+            //View_Banco view_Banco = new View_Banco();
+           // view_Banco.ShowDialog();
         }
 
         private void Home3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -82,25 +82,25 @@ namespace GTManute.Views
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             View_Frota view_Abast = new View_Frota();
-            view_Abast.Show();
+            view_Abast.ShowDialog();
         }
 
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             View_CadFornecedores view_Abast = new View_CadFornecedores();
-            view_Abast.Show();
+            view_Abast.ShowDialog();
         }
 
         private void Grid_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
             View_Colaboradores view_Abast = new View_Colaboradores();
-            view_Abast.Show();
+            view_Abast.ShowDialog();
         }
 
         private void Grid_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
         {
             Lançamento.View_Abast view_Abast = new Lançamento.View_Abast();
-            view_Abast.Show();
+            view_Abast.ShowDialog();
         }
 
         private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -88,7 +88,9 @@ namespace GTManute.Views.Lançamento
                     List<string> Rotas = new List<string>();
                     List<string> Rotas1 = new List<string>();
                     List<string> placas = new List<string>();
-                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+                       
+                            List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+                       
                     List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.OrderBy(a => a.PLACA).ToList());
                     List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
                     List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
@@ -377,35 +379,42 @@ namespace GTManute.Views.Lançamento
 
         private async void carregando(int cod, bool full)
         {
-            db_abast abast = new db_abast();
-            if (cod == 0)
+            try
             {
-                abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.ID).FirstOrDefault());
+                db_abast abast = new db_abast();
+                if (cod == 0)
+                {
+                    abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.ID).FirstOrDefault());
+                }
+                else
+                {
+                    abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.ID == cod).FirstOrDefault());
+                }
+                ID = abast.ID;
+                List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(5).ToList());
+
+                List<Ultimas> ultimas = new List<Ultimas>();
+                for (int i = 0; i < Listaabast.Count; i++)
+                {
+                    Ultimas ult = new Ultimas();
+
+                    ult.Motorista = Listaabast[i].MOTORISTA;
+                    ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
+                    ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
+                    ult.DTPartida = Listaabast[i].DT_PARTIDA;
+                    ultimas.Add(ult);
+
+                }
+                grid_ultimas.ItemsSource = ultimas;
+
+                if (full == true)
+                {
+                    carregar(abast);
+                }
             }
-            else
+            catch
             {
-                abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.ID == cod).FirstOrDefault());
-            }
-            ID = abast.ID;
-            List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(5).ToList());
-
-            List<Ultimas> ultimas = new List<Ultimas>();
-            for (int i = 0; i < Listaabast.Count; i++)
-            {
-                Ultimas ult = new Ultimas();
-
-                ult.Motorista = Listaabast[i].MOTORISTA;
-                ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
-                ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
-                ult.DTPartida = Listaabast[i].DT_PARTIDA;
-                ultimas.Add(ult);
-
-            }
-            grid_ultimas.ItemsSource = ultimas;
-
-            if (full == true)
-            {
-                carregar(abast);
+                btn_novo.Text = "Gravar";
             }
         }
 

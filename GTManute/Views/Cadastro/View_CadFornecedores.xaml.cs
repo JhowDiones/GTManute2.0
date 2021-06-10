@@ -36,6 +36,50 @@ namespace GTManute.Views.Cadastro
             InitializeComponent();
             Empresa = cfg.Empresa;
             carregando(0, true);
+            cmbBox();
+        }
+        private void cmbBox()
+        {
+            List<string> vs = new List<string>();
+            vs.Add("AC");
+            vs.Add("AL");
+            vs.Add("AP");
+            vs.Add("AM");
+            vs.Add("BA");
+            vs.Add("CE");
+            vs.Add("DF");
+            vs.Add("ES");
+            vs.Add("GO");
+            vs.Add("MA");
+            vs.Add("MT");
+            vs.Add("MS");
+            vs.Add("MG");
+            vs.Add("PA");
+            vs.Add("PB");
+            vs.Add("PR");
+            vs.Add("PE");
+            vs.Add("PI");
+            vs.Add("RJ");
+            vs.Add("RN");
+            vs.Add("RS");
+            vs.Add("RO");
+            vs.Add("RR");
+            vs.Add("SC");
+            vs.Add("SP");
+            vs.Add("SE");
+            vs.Add("TO");
+
+            cmb_uf.ItemsSource = vs;
+
+            List<string> vs1 = new List<string>();
+            vs1.Add("A Vista" );
+            vs1.Add("Boleto 7 Dias");
+            vs1.Add("Boleto 14 Dias");
+            vs1.Add("Boleto 21 Dias");
+            vs1.Add("Cheque 7 Dias");
+            vs1.Add("Cheque 14 Dias");
+            vs1.Add("Cheque 21 Dias");
+            cmb_pagamento.ItemsSource = vs1;
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -119,35 +163,42 @@ namespace GTManute.Views.Cadastro
 
         private async void carregando(int cod, bool full)
         {
-            db_forn forn = new db_forn();
-            if (cod == 0)
+            try
             {
-                forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.codigo).FirstOrDefault());
+                db_forn forn = new db_forn();
+                if (cod == 0)
+                {
+                    forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.codigo).FirstOrDefault());
+                }
+                else
+                {
+                    forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.Empresa == Empresa).Where(a => a.codigo == cod).FirstOrDefault());
+                }
+                ID = forn.codigo;
+                List<db_manu> ListaCompras = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.FORNECEDOR == forn.RAZAO_SOCIAL).OrderByDescending(a => a.COD).Take(20).ToList());
+
+                List<Ultimas> ultimas = new List<Ultimas>();
+                for (int i = 0; i < ListaCompras.Count; i++)
+                {
+                    Ultimas ult = new Ultimas();
+
+                    ult.Descrição = ListaCompras[i].DESCRICAO;
+                    ult.Preço_Unit = ListaCompras[i].VALOR;
+                    ult.Quantidade = ListaCompras[i].QUANTIDADE;
+                    ult.Total = (double.Parse(ListaCompras[i].VALOR.Replace("R$ ", "")) * double.Parse(ListaCompras[i].QUANTIDADE)).ToString("N2");
+                    ultimas.Add(ult);
+
+                }
+                grid_ultimas.ItemsSource = ultimas;
+
+                if (full == true)
+                {
+                    carregar(forn);
+                }
             }
-            else
+            catch
             {
-                forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.Empresa == Empresa).Where(a => a.codigo == cod).FirstOrDefault());
-            }
-            ID = forn.codigo;
-            List<db_manu> ListaCompras = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.FORNECEDOR == forn.RAZAO_SOCIAL).OrderByDescending(a => a.COD).Take(20).ToList());
-
-            List<Ultimas> ultimas = new List<Ultimas>();
-            for (int i = 0; i < ListaCompras.Count; i++)
-            {
-                Ultimas ult = new Ultimas();
-
-                ult.Descrição = ListaCompras[i].DESCRICAO;
-                ult.Preço_Unit = ListaCompras[i].VALOR;
-                ult.Quantidade = ListaCompras[i].QUANTIDADE;
-                ult.Total = (double.Parse(ListaCompras[i].VALOR.Replace("R$ ","")) * double.Parse(ListaCompras[i].QUANTIDADE)).ToString("N2");
-                ultimas.Add(ult);
-
-            }
-            grid_ultimas.ItemsSource = ultimas;
-
-            if (full == true)
-            {
-                carregar(forn);
+                btn_novo.Text = "Gravar";
             }
         }
 

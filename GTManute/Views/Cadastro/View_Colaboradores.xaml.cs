@@ -126,46 +126,53 @@ namespace GTManute.Views.Cadastro
 
         private async void carregando(int cod, bool full)
         {
-            db_colaboradores frota = new db_colaboradores();
-            if (cod == 0)
+            try
             {
-                frota = await Task.FromResult<db_colaboradores>(db.db_colaboradores.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
-            }
-            else
-            {
-                frota = await Task.FromResult<db_colaboradores>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
-            }
-            ID = frota.COD;
-            List<db_abast> Listaabast = new List<db_abast>();
-            if (frota.funcao == "Motorista")
-            {
-                Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.MOTORISTA == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
-            }
-            else
-            {
-                List<db_abast> ajudante1 = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.AJUDANTE1 == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
-                Listaabast.AddRange(ajudante1);
-                List<db_abast> ajudante2 = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.AJUDANTE2 == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
-                Listaabast.AddRange(ajudante2);
-            }
-           
-            List<Ultimas> ultimas = new List<Ultimas>();
-            for (int i = 0; i < Listaabast.Count; i++)
-            {
-                Ultimas ult = new Ultimas();
+                db_colaboradores frota = new db_colaboradores();
+                if (cod == 0)
+                {
+                    frota = await Task.FromResult<db_colaboradores>(db.db_colaboradores.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+                }
+                else
+                {
+                    frota = await Task.FromResult<db_colaboradores>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
+                }
+                ID = frota.COD;
+                List<db_abast> Listaabast = new List<db_abast>();
+                if (frota.funcao == "Motorista")
+                {
+                    Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.MOTORISTA == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
+                }
+                else
+                {
+                    List<db_abast> ajudante1 = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.AJUDANTE1 == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
+                    Listaabast.AddRange(ajudante1);
+                    List<db_abast> ajudante2 = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.AJUDANTE2 == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
+                    Listaabast.AddRange(ajudante2);
+                }
 
-                ult.Data = Listaabast[i].DT_CHEGADA;
-                ult.Destino = Listaabast[i].PARA;
-                ult.Partida = Listaabast[i].DE;
-                ult.Veículo = Listaabast[i].PLACA;
-                ultimas.Add(ult);
+                List<Ultimas> ultimas = new List<Ultimas>();
+                for (int i = 0; i < Listaabast.Count; i++)
+                {
+                    Ultimas ult = new Ultimas();
 
+                    ult.Data = Listaabast[i].DT_CHEGADA;
+                    ult.Destino = Listaabast[i].PARA;
+                    ult.Partida = Listaabast[i].DE;
+                    ult.Veículo = Listaabast[i].PLACA;
+                    ultimas.Add(ult);
+
+                }
+                grid_ultimas.ItemsSource = ultimas;
+
+                if (full == true)
+                {
+                    carregar(frota);
+                }
             }
-            grid_ultimas.ItemsSource = ultimas;
-
-            if (full == true)
+            catch
             {
-                carregar(frota);
+                btn_novo.Text = "Gravar";
             }
         }
 
