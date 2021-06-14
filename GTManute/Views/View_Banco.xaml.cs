@@ -44,11 +44,16 @@ namespace GTManute.Views
                 txt_senha.Text = "";
             }
         }
-        private void txt_senha_LostFocus(object sender, RoutedEventArgs e)
+        private async void txt_senha_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txt_senha.Text == "")
             {
                 txt_senha.Text = "Contra senha";
+            }
+            if(txt_empresa.Text!="Contra senha"&& txt_senha.Text!="" && txt_empresa.Text!= "Empresa")
+            {
+ var data =await Task.FromResult<db_empresas>(db.db_empresas.Where(a=>a.Empresa==int.Parse(txt_empresa.Text)).Where(a=>a.ContraSenha==txt_senha.Text).FirstOrDefault());
+                txt_licenca.Content = "Vencimento da Licença: " + data.Validade.ToString();
             }
         }
 
