@@ -42,32 +42,40 @@ namespace GTManute.Views.Lançamento
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9/]+");
-
-            string texto = sender.ToString().Replace("System.Windows.Controls.TextBox: ","");
-            if (texto.Length == 2)
+            Regex regex = new Regex(@"[^0-9,]+");
+            
+            TextBox dt = (TextBox)sender;
+            string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
+            if (justNumbers.Length == 8)
             {
-                e.Handled = regex.IsMatch("/");
-                e.Handled = regex.IsMatch(e.Text);
-            }
-            else if (texto.Length == 5)
-            {
-                e.Handled = regex.IsMatch("/");
-                e.Handled = regex.IsMatch(e.Text);
-            }
-            else if(texto.Length == 10)
+                string newDate = justNumbers.Insert(2, "/").Insert(5, "/");
+                try
                 {
-
+                    dt.Text = DateTime.Parse(newDate).ToString();
+                }
+                catch (Exception ex)
+                {
+                    dt.Text = "";
+                }
             }
 
         }
-        private void DataTextBox(object sender, TextCompositionEventArgs e)
+        private void SetDateFormat(object sender, KeyEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-
-
-
+            TextBox dt = (TextBox)sender;
+            string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
+            if (justNumbers.Length == 8)
+            {
+                string newDate = justNumbers.Insert(2, "/").Insert(5, "/");
+                try
+                {
+                    dt.Text = DateTime.Parse(newDate).ToString();
+                }
+                catch (Exception ex)
+                {
+                    dt.Text = "";
+                }
+            }
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {

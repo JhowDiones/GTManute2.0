@@ -64,7 +64,7 @@
                             <Label x:Name="label1_Copy" Content="Veículo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="85,0,0,0"/>
                             <ComboBox x:Name="cmb_veiculo" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="85,25,0,0" VerticalAlignment="Top" Width="120"/>
                             <Label x:Name="label1_Copy1" Content="Total ltrs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="61" Margin="210,-1,0,0"/>
-                            <TextBox x:Name="txt_litragem" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" TextAlignment="Right"/>
+                            <TextBox x:Name="txt_litragem" TextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="210,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy2" Content="Total valor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Margin="276,0,0,0"/>
                             <TextBox x:Name="txt_valor" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="276,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy3" Content="Valor unit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Margin="341,0,0,0"/>
