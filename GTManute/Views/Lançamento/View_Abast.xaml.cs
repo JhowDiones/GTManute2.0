@@ -3,6 +3,7 @@ using GTManute.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,6 +40,35 @@ namespace GTManute.Views.Lançamento
             cmbbox();
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9/]+");
+
+            string texto = sender.ToString().Replace("System.Windows.Controls.TextBox: ","");
+            if (texto.Length == 2)
+            {
+                e.Handled = regex.IsMatch("/");
+                e.Handled = regex.IsMatch(e.Text);
+            }
+            else if (texto.Length == 5)
+            {
+                e.Handled = regex.IsMatch("/");
+                e.Handled = regex.IsMatch(e.Text);
+            }
+            else if(texto.Length == 10)
+                {
+
+            }
+
+        }
+        private void DataTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+
+
+        }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
@@ -77,20 +107,20 @@ namespace GTManute.Views.Lançamento
         }
         private async void cmbbox()
         {
-            
-                await Task.Run(async () =>
+
+            await Task.Run(async () =>
+            {
+                Application.Current.Dispatcher.Invoke((Action)async delegate
                 {
-                    Application.Current.Dispatcher.Invoke((Action)async delegate
-                    {
-                        List<string> ajudante = new List<string>();
+                    List<string> ajudante = new List<string>();
                     List<string> motorista = new List<string>();
                     List<string> fornecedor = new List<string>();
                     List<string> Rotas = new List<string>();
                     List<string> Rotas1 = new List<string>();
                     List<string> placas = new List<string>();
-                       
-                            List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
-                       
+
+                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+
                     List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.OrderBy(a => a.PLACA).ToList());
                     List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
                     List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
