@@ -43,39 +43,43 @@ namespace GTManute.Views.Lançamento
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[^0-9,]+");
-            
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+        private void setData(object sender, RoutedEventArgs e)
+        {
             TextBox dt = (TextBox)sender;
-            string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
-            if (justNumbers.Length == 8)
+            try
             {
+                string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
+
                 string newDate = justNumbers.Insert(2, "/").Insert(5, "/");
-                try
-                {
-                    dt.Text = DateTime.Parse(newDate).ToString();
-                }
-                catch (Exception ex)
-                {
-                    dt.Text = "";
-                }
+
+                dt.Text = DateTime.Parse(newDate).ToString("dd/MM/yyyy");
+            }
+            catch (Exception ex)
+            {
+                mensagem("Data invalida!", false, "", "OK");
+
             }
 
         }
-        private void SetDateFormat(object sender, KeyEventArgs e)
+        private void setValor(object sender, RoutedEventArgs e)
         {
             TextBox dt = (TextBox)sender;
-            string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
-            if (justNumbers.Length == 8)
+            try
             {
-                string newDate = justNumbers.Insert(2, "/").Insert(5, "/");
-                try
-                {
-                    dt.Text = DateTime.Parse(newDate).ToString();
-                }
-                catch (Exception ex)
-                {
-                    dt.Text = "";
-                }
+
+                string newDate = dt.Text;
+
+                dt.Text = DateTime.Parse(newDate).ToString("N2");
             }
+            catch (Exception ex)
+            {
+                mensagem("Valor invalido!", false, "", "OK");
+
+            }
+
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -538,6 +542,43 @@ namespace GTManute.Views.Lançamento
             {
 
             }
+        }
+
+        
+
+        private void txt_dt_partida_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setData(sender, e);
+        }
+
+        private void txt_dt_destino_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setData(sender, e);
+        }
+
+        private void txt_desp_alimentacao_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
+        }
+
+        private void cmb_veiculo_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_litragem_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
+        }
+
+        private void txt_valor_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
+        }
+
+        private void txt_hr_partida_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setHora(sender, e);
         }
     }
 
