@@ -70,13 +70,31 @@ namespace GTManute.Views.Lançamento
             try
             {
 
-                string newDate = dt.Text;
+                double newDate = double.Parse(dt.Text);
 
-                dt.Text = DateTime.Parse(newDate).ToString("N2");
+                dt.Text = newDate.ToString("N2");
             }
             catch (Exception ex)
             {
                 mensagem("Valor invalido!", false, "", "OK");
+
+            }
+
+        }
+        private void setHora(object sender, RoutedEventArgs e)
+        {
+            TextBox dt = (TextBox)sender;
+            try
+            {
+                string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
+
+                string newDate = justNumbers.Insert(2, ":");
+               
+                dt.Text = DateTime.Parse(newDate).ToString("HH:mm");
+            }
+            catch (Exception ex)
+            {
+                mensagem("horario invalido invalida!", false, "", "OK");
 
             }
 
@@ -569,11 +587,29 @@ namespace GTManute.Views.Lançamento
         private void txt_litragem_LostFocus(object sender, RoutedEventArgs e)
         {
             setValor(sender, e);
+            try
+            {
+               double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
+                txt_res_unitario.Text = valorunit.ToString("N2");
+            }
+            catch
+            {
+
+            }
         }
 
         private void txt_valor_LostFocus(object sender, RoutedEventArgs e)
         {
             setValor(sender, e);
+            try
+            {
+                double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
+                txt_res_unitario.Text = valorunit.ToString("N2");
+            }
+            catch
+            {
+
+            }
         }
 
         private void txt_hr_partida_LostFocus(object sender, RoutedEventArgs e)

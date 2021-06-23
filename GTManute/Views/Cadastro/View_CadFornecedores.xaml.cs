@@ -3,6 +3,7 @@ using GTManute.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,6 +38,74 @@ namespace GTManute.Views.Cadastro
             Empresa = cfg.Empresa;
             carregando(0, true);
             cmbBox();
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+        private void setTelefone(object sender, RoutedEventArgs e)
+        {
+            TextBox dt = (TextBox)sender;
+            try
+            {
+
+                double cell = double.Parse(dt.Text);
+                if (dt.Text.Length==11)
+                {
+                    dt.Text = cell.ToString("(##) #####-####");
+                }
+               else if(dt.Text.Length == 9)
+                {
+                    dt.Text = cell.ToString("#####-####");
+                }
+                else if (dt.Text.Length == 8)
+                {
+                    dt.Text = cell.ToString("####-####");
+                }
+                else if (dt.Text.Length == 10)
+                {
+                    dt.Text = cell.ToString("(##) ####-####");
+                }
+                else
+                {
+                    mensagem("Telefone invalido!", false, "", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem("Telefone invalido!", false, "", "OK");
+
+            }
+
+        }
+        private void setDoc(object sender, RoutedEventArgs e)
+        {
+            TextBox dt = (TextBox)sender;
+            try
+            {
+
+                double cell = double.Parse(dt.Text);
+                if (dt.Text.Length == 14)
+                {
+                    dt.Text = cell.ToString(@"##\.###\.###\/####-##");
+                }
+                else if (dt.Text.Length == 11)
+                {
+                    dt.Text = cell.ToString(@"###\.###\.###-##");
+                }
+                else
+                {
+                    mensagem("Documento invalido!", false, "", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem("Telefone invalido!", false, "", "OK");
+
+            }
+
         }
         private void cmbBox()
         {
@@ -400,5 +469,19 @@ namespace GTManute.Views.Cadastro
             }
         }
 
+        private void txt_telefone_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setTelefone(sender, e);
+        }
+
+        private void txt_telefone2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setTelefone(sender, e);
+        }
+
+        private void txt_cnpj_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setDoc(sender, e);
+        }
     }
 }

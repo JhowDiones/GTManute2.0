@@ -95,8 +95,9 @@ namespace GTManute.Views
                 {
                     try
                     {
-                        string usuario = await Task.FromResult<string>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.USUARIO == txt_usuario.Text).Select(a => a.USUARIO).First());
+                        string usuario = await Task.FromResult<string>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.USUARIO.Equals(txt_usuario.Text)).Select(a => a.USUARIO).First());
                         txt_usuario.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
+                        txt_usuario.Text = usuario;
                     }
                     catch
                     {
@@ -126,7 +127,7 @@ namespace GTManute.Views
                 {
                     try
                     {
-                        string senha = await Task.FromResult<string>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Password).Select(a => a.SENHA).First());
+                        string senha = await Task.FromResult<string>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA.Equals(txt_senha.Password)).Select(a => a.SENHA).First());
                         txt_senha.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747171"));
 
                     }
@@ -163,7 +164,7 @@ namespace GTManute.Views
 
                     txt_Novo_Usuario.Foreground = new SolidColorBrush(Colors.Red);
                     mensagem("Usuário já cadastrado!", false,"","Ok");
-
+                    txt_Novo_Usuario.Text = "";
 
                 }
                 catch
@@ -175,29 +176,29 @@ namespace GTManute.Views
 
         private void txt_Novo_Senha_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_Novo_Senha.Text == "Senha")
-                txt_Novo_Senha.Text = "";
+            if (txt_Novo_Senha.Password == "********")
+                txt_Novo_Senha.Password = "";
         }
 
         private void txt_Novo_Senha_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_Novo_Senha.Text == "")
+            if (txt_Novo_Senha.Password == "")
             {
-                txt_Novo_Senha.Text = "Senha";
+                txt_Novo_Senha.Password = "********";
             }
         }
 
         private void txt_Novo_ConfirmaSenha_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_Novo_ConfirmaSenha.Text == "Confirmar senha")
-                txt_Novo_ConfirmaSenha.Text = "";
+            if (txt_Novo_ConfirmaSenha.Password == "********")
+                txt_Novo_ConfirmaSenha.Password = "";
         }
 
         private void txt_Novo_ConfirmaSenha_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_Novo_ConfirmaSenha.Text == "")
+            if (txt_Novo_ConfirmaSenha.Password == "")
             {
-                txt_Novo_ConfirmaSenha.Text = "Confirmar senha";
+                txt_Novo_ConfirmaSenha.Password = "********";
             }
         }
 
@@ -228,31 +229,33 @@ namespace GTManute.Views
 
         private async void textBlock3_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (txt_Novo_ConfirmaSenha.Text != "" && txt_Novo_ConfirmaSenha.Text != null &&
-                txt_Novo_Senha.Text != "" && txt_Novo_Senha.Text != null && txt_Novo_Usuario.Text != "Usuário" || txt_Novo_Senha.Text != "Senha" ||
-                txt_Novo_Usuario.Text != "" && txt_Novo_Usuario.Text != null && txt_Novo_Usuario.Foreground != new SolidColorBrush(Colors.Red))
+            if (txt_Novo_ConfirmaSenha.Password != "" && txt_Novo_ConfirmaSenha.Password != null &&
+                txt_Novo_Senha.Password != "" && txt_Novo_Senha.Password != null && txt_Novo_Usuario.Text != "Usuário" || txt_Novo_Senha.Password != "Senha" ||
+                txt_Novo_Usuario.Text != "" && txt_Novo_Usuario.Text != null )
             {
                 db_login novologin = new db_login();
                 novologin.Empresa = Empresa;
-                novologin.SENHA = txt_Novo_Senha.Text;
+                novologin.SENHA = txt_Novo_Senha.Password;
                 novologin.T_acesso = "MASTER";
                 novologin.USUARIO = txt_Novo_Usuario.Text;
 
                 await Task.Run(() => {
-                    try
+                    Application.Current.Dispatcher.Invoke((Action)async delegate
                     {
-                        db.db_login.InsertOnSubmit(novologin);
-                        db.SubmitChanges();
-                        mensagem("Usuário cadastrado com sucesso!" , false, "", "Ok");
-                        txt_Novo_ConfirmaSenha.Text = "";
-                        txt_Novo_Senha.Text = "";
-                        txt_Novo_Usuario.Text = "";
-                    }
-                    catch
-                    {
-                        mensagem("Erro ao inserir usuário! Entre em contato com o desenvolvedor \n" + cfg.Email_Dev, false, "", "Ok");
-                    }
-                    
+                        try
+                        {
+                            db.db_login.InsertOnSubmit(novologin);
+                            db.SubmitChanges();
+                            mensagem("Usuário cadastrado com sucesso!", false, "", "Ok");
+                            txt_Novo_ConfirmaSenha.Password = "********";
+                            txt_Novo_Senha.Password = "********";
+                            txt_Novo_Usuario.Text = "Usuário";
+                        }
+                        catch
+                        {
+                            mensagem("Erro ao inserir usuário! Entre em contato com o desenvolvedor \n" + cfg.Email_Dev, false, "", "Ok");
+                        }
+                    });
                 });
             }
         }
