@@ -244,6 +244,7 @@ namespace GTManute.Views.Cadastro
                     db_colaboradores forn = await Task.FromResult<db_colaboradores>(db.db_colaboradores.Where(a => a.COD == ID).FirstOrDefault());
                     db.db_colaboradores.DeleteOnSubmit(forn);
                     db.SubmitChanges();
+                    Limpar();
                     carregando(ID - 1, true);
                 }
                 catch

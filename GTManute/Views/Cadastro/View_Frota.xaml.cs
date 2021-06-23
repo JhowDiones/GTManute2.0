@@ -260,6 +260,7 @@ namespace GTManute.Views.Cadastro
                     db_frota forn = await Task.FromResult<db_frota>(db.db_frota.Where(a => a.COD == ID).FirstOrDefault());
                     db.db_frota.DeleteOnSubmit(forn);
                     db.SubmitChanges();
+                    Limpar();
                     carregando(ID - 1, true);
                 }
                 catch

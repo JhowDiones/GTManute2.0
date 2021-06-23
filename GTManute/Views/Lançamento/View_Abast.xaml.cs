@@ -358,6 +358,7 @@ namespace GTManute.Views.Lançamento
                     db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
                     db.db_abast.DeleteOnSubmit(abast);
                     db.SubmitChanges();
+                    Limpar();
                     carregando(ID - 1, true);
                 }
                 catch

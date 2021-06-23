@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Empresa" Type="System.String" Scope="User">
-      <Value Profile="(Default)">11</Value>
+      <Value Profile="(Default)">00</Value>
     </Setting>
     <Setting Name="Info_db" Type="System.String" Scope="User">
       <Value Profile="(Default)">Beta_Abast</Value>

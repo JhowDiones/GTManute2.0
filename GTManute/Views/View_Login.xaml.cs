@@ -20,7 +20,7 @@ namespace GTManute.Views
         public View_Login()
         {
             InitializeComponent();
-            cfg.Empresa = "11";
+            cfg.Empresa = "00";
             cfg.Save();
             Empresa = cfg.Empresa;
 

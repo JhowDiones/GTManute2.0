@@ -41,6 +41,7 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\GTManute.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\dbAcessos.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\dbAcessos.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csprojAssemblyReference.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Abast.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\MainWindow.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Colaboradores.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Frota.g.cs
@@ -58,7 +59,6 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\MainWindow.b
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Colaboradores.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Frota.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_CadFornecedores.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Abast.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Mensagem.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Banco.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\View_Login.baml

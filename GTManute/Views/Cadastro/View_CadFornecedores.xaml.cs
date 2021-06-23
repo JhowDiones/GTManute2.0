@@ -343,6 +343,7 @@ namespace GTManute.Views.Cadastro
                     db_forn forn = await Task.FromResult<db_forn>(db.db_forn.Where(a => a.codigo == ID).FirstOrDefault());
                     db.db_forn.DeleteOnSubmit(forn);
                     db.SubmitChanges();
+                    Limpar();
                     carregando(ID - 1, true);
                 }
                 catch
