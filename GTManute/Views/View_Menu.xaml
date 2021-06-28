@@ -14,6 +14,7 @@
 
             <Rectangle Fill="{StaticResource TerceiraCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0" Margin="-0.917,0,10.818,0" RadiusY="10" RadiusX="10"/>
             <Rectangle Fill="{StaticResource SegundaCor}" Stroke="{StaticResource TerceiraCor}" StrokeThickness="0" Margin="10,0,0,0" HorizontalAlignment="Left" Width="99.901" />
+            <Rectangle Fill="Transparent" Margin="-1,390,0,0" HorizontalAlignment="Left" Width="11" Height="40" VerticalAlignment="Top" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"/>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,110,0,0" VerticalAlignment="Top" Width="100.401">

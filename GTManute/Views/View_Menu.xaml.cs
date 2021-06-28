@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using dbAcessos;
 using GTManute.Properties;
 using GTManute.Views.Cadastro;
+using GTManute.Views.CompanyControl;
 using GTManute.Views.Lançamento;
 
 namespace GTManute.Views
@@ -118,6 +119,12 @@ namespace GTManute.Views
             btn_Lanca.Background = brush1;
             grid_cadastro.Visibility = Visibility.Hidden;
             grid_lanc.Visibility = Visibility.Hidden;
+        }
+
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CompanyControl.Control_Acesso acesso = new Control_Acesso();
+            acesso.ShowDialog();
         }
     }
 }

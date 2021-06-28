@@ -72,6 +72,12 @@
     <Compile Include="Views\Cadastro\View_CadFornecedores.xaml.cs">
       <DependentUpon>View_CadFornecedores.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CompanyControl\Company_Control.xaml.cs">
+      <DependentUpon>Company_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompanyControl\Control_Acesso.xaml.cs">
+      <DependentUpon>Control_Acesso.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Lançamento\View_Abast.xaml.cs">
       <DependentUpon>View_Abast.xaml</DependentUpon>
     </Compile>
@@ -108,6 +114,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cadastro\View_CadFornecedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CompanyControl\Company_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CompanyControl\Control_Acesso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

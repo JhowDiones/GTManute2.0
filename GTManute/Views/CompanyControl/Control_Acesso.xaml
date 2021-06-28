@@ -1,0 +1,15 @@
+﻿<Window x:Class="GTManute.Views.CompanyControl.Control_Acesso"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GTManute.Views.CompanyControl"
+        mc:Ignorable="d"
+        Title="Acesso" Height="126.38" Width="386.503">
+    <Grid>
+        <Label x:Name="label" Content="Senha de acesso" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="146"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="231"/>
+        <Button x:Name="btn_entrar" Content="Entrar" Margin="274,41,20,0" VerticalAlignment="Top" Height="23" Click="btn_entrar_Click"/>
+
+    </Grid>
+</Window>
