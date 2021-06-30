@@ -70,3 +70,7 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csp
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csproj.CopyComplete
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.exe
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Company_Control.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Control_Acesso.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Company_Control.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Control_Acesso.baml

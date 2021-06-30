@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\App.xaml
-9394824252
+111583284447
 
-13-1190432398
+15-665882225
 15-1498170516
-MainWindow.xaml;Views\Cadastro\View_Colaboradores.xaml;Views\Cadastro\View_Frota.xaml;Views\Cadastro\View_CadFornecedores.xaml;Views\Lançamento\View_Abast.xaml;Views\Mensagem.xaml;Views\View_Banco.xaml;Views\View_Login.xaml;Views\View_Menu.xaml;
+MainWindow.xaml;Views\Cadastro\View_Colaboradores.xaml;Views\Cadastro\View_Frota.xaml;Views\Cadastro\View_CadFornecedores.xaml;Views\CompanyControl\Company_Control.xaml;Views\CompanyControl\Control_Acesso.xaml;Views\Lançamento\View_Abast.xaml;Views\Mensagem.xaml;Views\View_Banco.xaml;Views\View_Login.xaml;Views\View_Menu.xaml;
 
 False
 

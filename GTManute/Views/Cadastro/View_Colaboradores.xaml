@@ -78,7 +78,7 @@
                             <Label x:Name="label1_Copy9" Content="Telefone" VerticalAlignment="Top" Margin="108,197,132,0"/>
                             <TextBox x:Name="txt_telefone2" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,223,132,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy10" Content="Função" VerticalAlignment="Top" Margin="213,197,0,0"/>
-                            <ComboBox x:Name="cmb_funcao" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,223,0,0"  VerticalAlignment="Top" Width="120" />
+                            <ComboBox x:Name="cmb_funcao" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,223,0,0"  VerticalAlignment="Top" Width="120" IsEditable="True" />
 
                         </Grid>
                     </GroupBox>
