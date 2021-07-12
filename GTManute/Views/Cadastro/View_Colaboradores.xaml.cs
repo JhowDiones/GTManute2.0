@@ -141,7 +141,7 @@ namespace GTManute.Views.Cadastro
                 List<db_abast> Listaabast = new List<db_abast>();
                 if (frota.funcao == "Motorista")
                 {
-                    Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.MOTORISTA == frota.NOME).OrderByDescending(a => a.ID).Take(20).ToList());
+                    Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.MOTORISTA == frota.NOME).OrderByDescending(a=>DateTime.Parse(a.DT_PARTIDA)).Take(20).ToList());
                 }
                 else
                 {
@@ -212,7 +212,10 @@ namespace GTManute.Views.Cadastro
         {
             try
             {
-                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].COD, true);
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                carregando(int.Parse(ID), true);
+
             }
             catch
             {

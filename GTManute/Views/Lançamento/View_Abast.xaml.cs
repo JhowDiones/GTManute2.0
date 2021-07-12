@@ -519,7 +519,10 @@ namespace GTManute.Views.Lançamento
         {
             try
             {
-                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].ID, true);
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                carregando(int.Parse(ID), true);
+
             }
             catch
             {

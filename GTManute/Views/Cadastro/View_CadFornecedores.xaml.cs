@@ -311,7 +311,10 @@ namespace GTManute.Views.Cadastro
         {
             try
             {
-                carregando(Listpesquisa[dt_pesquisa.SelectedIndex].codigo, true);
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                carregando(int.Parse(ID), true);
+
             }
             catch
             {

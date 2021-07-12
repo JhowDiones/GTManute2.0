@@ -10,3 +10,4 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\bin\Release\dbAcessos.p
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.csproj.CoreCompileInputs.cache
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.csprojAssemblyReference.cache
