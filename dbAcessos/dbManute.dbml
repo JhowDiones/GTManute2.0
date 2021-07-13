@@ -33,6 +33,7 @@
       <Column Name="VALOR_EXTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FORNECEDOR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="T_COMBUSTIVEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.db_colaboradores" Member="db_colaboradores">
@@ -70,7 +71,7 @@
   </Table>
   <Table Name="dbo.db_empresas" Member="db_empresas">
     <Type Name="db_empresas">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NomeEmpresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Empresa" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ContraSenha" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

@@ -27,10 +27,10 @@ namespace dbAcessos.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security I" +
-            "nfo=True; Async=True;User ID=Dionatan;Password=Di24091996")]
-        public string db_17ConnectionString {
+            "nfo=True;User ID=Dionatan;Password=Di24091996")]
+        public string conexao {
             get {
-                return ((string)(this["db_17ConnectionString"]));
+                return ((string)(this["conexao"]));
             }
         }
     }

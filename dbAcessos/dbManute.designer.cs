@@ -39,6 +39,9 @@ namespace dbAcessos
     partial void Insertdb_despconfig(db_despconfig instance);
     partial void Updatedb_despconfig(db_despconfig instance);
     partial void Deletedb_despconfig(db_despconfig instance);
+    partial void Insertdb_empresas(db_empresas instance);
+    partial void Updatedb_empresas(db_empresas instance);
+    partial void Deletedb_empresas(db_empresas instance);
     partial void Insertdb_financeiro(db_financeiro instance);
     partial void Updatedb_financeiro(db_financeiro instance);
     partial void Deletedb_financeiro(db_financeiro instance);
@@ -72,7 +75,7 @@ namespace dbAcessos
     #endregion
 		
 		public dbManuteDataContext() : 
-				base(global::dbAcessos.Properties.Settings.Default.db_17ConnectionString, mappingSource)
+				base(global::dbAcessos.Properties.Settings.Default.GtManuteConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -338,6 +341,8 @@ namespace dbAcessos
 		
 		private string _FORNECEDOR;
 		
+		private string _T_COMBUSTIVEL;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -404,6 +409,8 @@ namespace dbAcessos
     partial void OnEmpresaChanged();
     partial void OnFORNECEDORChanging(string value);
     partial void OnFORNECEDORChanged();
+    partial void OnT_COMBUSTIVELChanging(string value);
+    partial void OnT_COMBUSTIVELChanged();
     #endregion
 		
 		public db_abast()
@@ -1027,6 +1034,26 @@ namespace dbAcessos
 					this._FORNECEDOR = value;
 					this.SendPropertyChanged("FORNECEDOR");
 					this.OnFORNECEDORChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_T_COMBUSTIVEL", DbType="NVarChar(50)")]
+		public string T_COMBUSTIVEL
+		{
+			get
+			{
+				return this._T_COMBUSTIVEL;
+			}
+			set
+			{
+				if ((this._T_COMBUSTIVEL != value))
+				{
+					this.OnT_COMBUSTIVELChanging(value);
+					this.SendPropertyChanging();
+					this._T_COMBUSTIVEL = value;
+					this.SendPropertyChanged("T_COMBUSTIVEL");
+					this.OnT_COMBUSTIVELChanged();
 				}
 			}
 		}
@@ -1729,8 +1756,10 @@ namespace dbAcessos
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.db_empresas")]
-	public partial class db_empresas
+	public partial class db_empresas : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
@@ -1744,11 +1773,30 @@ namespace dbAcessos
 		
 		private System.Nullable<System.DateTime> _Validade;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNomeEmpresaChanging(string value);
+    partial void OnNomeEmpresaChanged();
+    partial void OnEmpresaChanging(System.Nullable<int> value);
+    partial void OnEmpresaChanged();
+    partial void OnContraSenhaChanging(string value);
+    partial void OnContraSenhaChanged();
+    partial void OnDataCadastroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataCadastroChanged();
+    partial void OnValidadeChanging(System.Nullable<System.DateTime> value);
+    partial void OnValidadeChanged();
+    #endregion
+		
 		public db_empresas()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -1759,7 +1807,11 @@ namespace dbAcessos
 			{
 				if ((this._Id != value))
 				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
 					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
@@ -1775,7 +1827,11 @@ namespace dbAcessos
 			{
 				if ((this._NomeEmpresa != value))
 				{
+					this.OnNomeEmpresaChanging(value);
+					this.SendPropertyChanging();
 					this._NomeEmpresa = value;
+					this.SendPropertyChanged("NomeEmpresa");
+					this.OnNomeEmpresaChanged();
 				}
 			}
 		}
@@ -1791,7 +1847,11 @@ namespace dbAcessos
 			{
 				if ((this._Empresa != value))
 				{
+					this.OnEmpresaChanging(value);
+					this.SendPropertyChanging();
 					this._Empresa = value;
+					this.SendPropertyChanged("Empresa");
+					this.OnEmpresaChanged();
 				}
 			}
 		}
@@ -1807,7 +1867,11 @@ namespace dbAcessos
 			{
 				if ((this._ContraSenha != value))
 				{
+					this.OnContraSenhaChanging(value);
+					this.SendPropertyChanging();
 					this._ContraSenha = value;
+					this.SendPropertyChanged("ContraSenha");
+					this.OnContraSenhaChanged();
 				}
 			}
 		}
@@ -1823,7 +1887,11 @@ namespace dbAcessos
 			{
 				if ((this._DataCadastro != value))
 				{
+					this.OnDataCadastroChanging(value);
+					this.SendPropertyChanging();
 					this._DataCadastro = value;
+					this.SendPropertyChanged("DataCadastro");
+					this.OnDataCadastroChanged();
 				}
 			}
 		}
@@ -1839,8 +1907,32 @@ namespace dbAcessos
 			{
 				if ((this._Validade != value))
 				{
+					this.OnValidadeChanging(value);
+					this.SendPropertyChanging();
 					this._Validade = value;
+					this.SendPropertyChanged("Validade");
+					this.OnValidadeChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

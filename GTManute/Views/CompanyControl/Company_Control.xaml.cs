@@ -3,16 +3,10 @@ using GTManute.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GTManute.Views.CompanyControl
 {
@@ -36,7 +30,7 @@ namespace GTManute.Views.CompanyControl
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
         public Company_Control()
-       
+
         {
 
             InitializeComponent();
@@ -48,12 +42,11 @@ namespace GTManute.Views.CompanyControl
             this.Close();
         }
 
-        private void btn_alterar_Click(object sender, RoutedEventArgs e)
+        private async void btn_alterar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                db_empresas empresa = new db_empresas();
-                empresa = db.db_empresas.Where(a => a.Empresa == int.Parse(txt_Cod_empresa.Text)).FirstOrDefault();
+                db_empresas empresa = await Task.FromResult<db_empresas>(db.db_empresas.Where(a => a.Empresa == int.Parse(txt_Cod_empresa.Text)).FirstOrDefault());
                 empresa.ContraSenha = txt_senha.Text;
                 empresa.Validade = txt_validade.SelectedDate;
                 empresa.Empresa = int.Parse(txt_Cod_empresa.Text);
@@ -65,7 +58,7 @@ namespace GTManute.Views.CompanyControl
             {
                 mensagem("Erro ao alterar empresa!", false, "", "Ok");
             }
-           
+
         }
         private void dt_pesquisa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -98,12 +91,12 @@ namespace GTManute.Views.CompanyControl
                 db.SubmitChanges();
                 mensagem("Gravado com sucesso!", false, "", "Ok");
             }
-            catch
+            catch(Exception w)
             {
-                mensagem("Erro ao gravar!", false, "", "Ok");
+                mensagem("Erro ao gravar! "+w.Message, false, "", "Ok");
             }
 
-            
+
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -128,12 +121,12 @@ namespace GTManute.Views.CompanyControl
             preecher(Listpesquisa[0].Empresa, Listpesquisa[0].NomeEmpresa, Listpesquisa[0].ContraSenha, Listpesquisa[0].Validade);
 
         }
-        private void preecher(int? codempresa, string empresa,string senha, DateTime? validade)
+        private void preecher(int? codempresa, string empresa, string senha, DateTime? validade)
         {
             txt_Cod_empresa.Text = codempresa.ToString();
-            txt_empresa.Text =empresa;
-            txt_senha.Text =senha;
-            txt_validade.SelectedDate =validade;
+            txt_empresa.Text = empresa;
+            txt_senha.Text = senha;
+            txt_validade.SelectedDate = validade;
         }
         private void mensagem(string principal, bool explica, string explicacao, string botao)
         {
