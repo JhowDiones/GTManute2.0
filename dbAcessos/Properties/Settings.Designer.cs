@@ -23,17 +23,6 @@ namespace dbAcessos.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gtmanut.database.windows.net;Initial Catalog=GtManute;Persist Securit" +
-            "y Info=True;User ID=Dionatan;Password=Di24091996")]
-        public string conexao {
-            get {
-                return ((string)(this["conexao"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -103,6 +92,29 @@ namespace dbAcessos.Properties {
             }
             set {
                 this["senhaempresa"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security I" +
+            "nfo=True;User ID=Dionatan;Password=Di24091996")]
+        public string db_17ConnectionString {
+            get {
+                return ((string)(this["db_17ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string conexao {
+            get {
+                return ((string)(this["conexao"]));
+            }
+            set {
+                this["conexao"] = value;
             }
         }
     }

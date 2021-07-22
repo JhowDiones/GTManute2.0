@@ -1,5 +1,4 @@
 ﻿using dbAcessos;
-using GTManute.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,17 +24,19 @@ namespace GTManute.Views.Cadastro
 
 
         private string Usuario { get; set; }
-        private Settings cfg = new Settings();
+        private GTManute.Properties.Settings cfg = new Properties.Settings();
+        private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
         List<db_frota> Listpesquisa = new List<db_frota>();
         private string Empresa { get; set; }
-        dbManuteDataContext db = new dbManuteDataContext();
+        dbManuteDataContext db = new dbManuteDataContext("");
         public View_Frota()
         {
             InitializeComponent();
-            Empresa = cfg.Empresa;
-                           carregando(0, true);
-                       cmbBox();
+            Empresa = cfgdb.empresa;
+            db = new dbManuteDataContext(cfgdb.conexao);
+            carregando(0, true);
+            cmbBox();
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -79,7 +80,7 @@ namespace GTManute.Views.Cadastro
             {
 
             }
-            
+
         }
         private void cmbBox()
         {
@@ -95,7 +96,7 @@ namespace GTManute.Views.Cadastro
             trans.Add("Automatico");
             trans.Add("Semi-Automatico");
             trans.Add("Manual");
-           
+
             cmb_transmissao.ItemsSource = trans;
         }
         private void Limpar()
@@ -120,7 +121,7 @@ namespace GTManute.Views.Cadastro
             cmb_transmissao.Text = "";
 
         }
-        private void preencher(string ano, string chassis, string cor, string eixos, string marca, string modelo, 
+        private void preencher(string ano, string chassis, string cor, string eixos, string marca, string modelo,
             string placa, string potencia, string p1, string p2, string p3, string p4, string p5, string p6, string pestepe,
            string renavan, string tipoveiculo, string transmissao)
         {
@@ -194,7 +195,7 @@ namespace GTManute.Views.Cadastro
 
 
             preencher(abast.ANO_FAB, abast.CHASSIS, abast.COR, abast.EIXOS, abast.MARCA, abast.MODELO, abast.PLACA,
-                abast.POTENCIA, abast.P1, abast.P2, abast.P3, abast.P4,abast.P5,abast.P6, abast.PESTEPE,abast.RENAVAN,abast.TIPO_FROTA,abast.TIPO_CARRO);
+                abast.POTENCIA, abast.P1, abast.P2, abast.P3, abast.P4, abast.P5, abast.P6, abast.PESTEPE, abast.RENAVAN, abast.TIPO_FROTA, abast.TIPO_CARRO);
 
 
         }
@@ -283,8 +284,8 @@ namespace GTManute.Views.Cadastro
             }
             else
             {
-               
-                string retorno = MessageBox.Show("Gravar cadastro?" , "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+
+                string retorno = MessageBox.Show("Gravar cadastro?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
                 if (retorno == "Yes")
                 {
                     try
@@ -321,20 +322,22 @@ namespace GTManute.Views.Cadastro
                             {
                                 db.db_frota.InsertOnSubmit(_abast);
                                 db.SubmitChanges();
-                                Application.Current.Dispatcher.Invoke((Action)delegate {
+                                Application.Current.Dispatcher.Invoke((Action)delegate
+                                {
                                     mensagem("Cadastro gravado com sucesso!", false, "", "Ok");
-                                
-                                
-                                btn_novo.Text = "Novo";
-                                carregando(0, true);
+
+
+                                    btn_novo.Text = "Novo";
+                                    carregando(0, true);
                                 });
                             }
                             catch
                             {
-                                Application.Current.Dispatcher.Invoke((Action)delegate {
+                                Application.Current.Dispatcher.Invoke((Action)delegate
+                                {
                                     mensagem("Obtivemos algum erro ao gravar o cadastro! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
                                 });
-                              }
+                            }
 
                         });
                     }
@@ -383,20 +386,22 @@ namespace GTManute.Views.Cadastro
                     try
                     {
                         db.SubmitChanges();
-                        Application.Current.Dispatcher.Invoke((Action)delegate {
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
                             mensagem("Veículo gravado com sucesso!", false, "", "Ok");
-                       
-                        
-                        carregando(ID, true);
+
+
+                            carregando(ID, true);
                         });
                     }
                     catch
                     {
-                        Application.Current.Dispatcher.Invoke((Action)delegate {
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
                             mensagem("Tivemos algum erro ao alterar o cadastro! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
 
                         });
-                     }
+                    }
                 });
             }
         }

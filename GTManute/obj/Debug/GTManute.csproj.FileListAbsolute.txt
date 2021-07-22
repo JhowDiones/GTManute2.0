@@ -74,3 +74,7 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.cspro
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csproj.CopyComplete
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.exe
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.pdb
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.baml

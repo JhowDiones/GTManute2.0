@@ -18,7 +18,7 @@ namespace GTManute.Views
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private string Empresa { get; set; }
-        dbManuteDataContext db = new dbManuteDataContext();
+        dbManuteDataContext db = new dbManuteDataContext("");
         public View_Banco()
         {
             InitializeComponent();
@@ -97,7 +97,7 @@ namespace GTManute.Views
                     db_empresas resultado = await Task.FromResult<db_empresas>(db.db_empresas.Where(a => a.ContraSenha == txt_senha.Text).Where(a => a.Empresa == int.Parse(txt_empresa.Text)).First());
                     if (resultado.Empresa == int.Parse(txt_empresa.Text))
                     {
-                        cfg.Empresa = txt_empresa.Text;
+                        cfgdb.empresa = txt_empresa.Text;
                         cfg.Save();
                         this.Close();
                     }

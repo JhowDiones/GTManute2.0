@@ -1,4 +1,5 @@
 ﻿using dbAcessos;
+using dbAcessos.Properties;
 using GTManute.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,18 @@ namespace GTManute.Views.Lançamento
 
 
         private string Usuario { get; set; }
-        private Settings cfg = new Settings();
+        private GTManute.Properties.Settings cfg = new Properties.Settings();
+        private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
         List<db_abast> Listpesquisa = new List<db_abast>();
         private string Empresa { get; set; }
-        dbManuteDataContext db = new dbManuteDataContext();
+        dbManuteDataContext db = new dbManuteDataContext("");
         public View_Abast()
         {
             InitializeComponent();
-            Empresa = cfg.Empresa;
+            db = new dbManuteDataContext(cfgdb.conexao);
+
+            Empresa = cfgdb.empresa;
             carregando(0, true);
             cmbbox();
         }

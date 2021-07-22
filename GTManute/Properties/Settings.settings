@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GTManute.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Empresa" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Info_db" Type="System.String" Scope="User">
       <Value Profile="(Default)">Beta_Abast</Value>
     </Setting>

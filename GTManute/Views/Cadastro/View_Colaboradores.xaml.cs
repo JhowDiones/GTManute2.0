@@ -1,4 +1,5 @@
 ﻿using dbAcessos;
+using dbAcessos.Properties;
 using GTManute.Properties;
 using System;
 using System.Collections.Generic;
@@ -25,15 +26,17 @@ namespace GTManute.Views.Cadastro
 
 
         private string Usuario { get; set; }
-        private Settings cfg = new Settings();
+        private GTManute.Properties.Settings cfg = new Properties.Settings();
+        private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
         List<db_colaboradores> Listpesquisa = new List<db_colaboradores>();
         private string Empresa { get; set; }
-        dbManuteDataContext db = new dbManuteDataContext();
+        dbManuteDataContext db = new dbManuteDataContext("");
         public View_Colaboradores()
         {
             InitializeComponent();
-            Empresa = cfg.Empresa;
+            Empresa = cfgdb.empresa;
+            db = new dbManuteDataContext(cfgdb.conexao);
             carregando(0, true);
             cmbBox();
         }

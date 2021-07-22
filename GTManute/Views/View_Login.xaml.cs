@@ -18,15 +18,14 @@ namespace GTManute.Views
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private Settings cfg = new Settings();
         private string Empresa { get; set; }
-        dbManuteDataContext db = new dbManuteDataContext();
+        dbManuteDataContext db = new dbManuteDataContext("");
         private bool validade= true;
         private DateTime data;
         public View_Login()
         {
             InitializeComponent();
+            db = new dbManuteDataContext(cfgdb.conexao);
             Empresa = cfgdb.empresa;
-           cfg.Empresa= cfgdb.empresa;
-            cfg.Save();
             Carregar();
             
 
@@ -61,6 +60,7 @@ namespace GTManute.Views
                 }
             }
         }
+
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             ComboBox combo = e.Source as ComboBox;
@@ -301,6 +301,7 @@ namespace GTManute.Views
         {
                dbAcessos.banco_controle banco = new dbAcessos.banco_controle();
             banco.ShowDialog();
+            this.Close();
 
         }
     }
