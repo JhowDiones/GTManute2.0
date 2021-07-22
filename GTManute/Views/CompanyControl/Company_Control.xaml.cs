@@ -133,5 +133,10 @@ namespace GTManute.Views.CompanyControl
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
         }
+
+        private void btn_config_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

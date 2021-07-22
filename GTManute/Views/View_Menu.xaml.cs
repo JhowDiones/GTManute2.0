@@ -29,9 +29,16 @@ namespace GTManute.Views
         private int ID { get; set; }
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
-        public View_Menu()
+        public View_Menu(bool validade,string data)
         {
             InitializeComponent();
+            if (validade == false)
+            {
+                txt_validade.Content = data;
+                btn_cadastro.IsEnabled = false;
+                btn_Lanca.IsEnabled = false;
+                btn_home.IsEnabled = false;
+            }
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

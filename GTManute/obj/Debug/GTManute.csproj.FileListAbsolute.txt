@@ -26,6 +26,14 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CopyComplete
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\app.config
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\GTManute.exe.config
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\GTManute.exe
@@ -33,7 +41,14 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\GTManute.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\dbAcessos.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\dbAcessos.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csprojAssemblyReference.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\MainWindow.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Company_Control.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Mensagem.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\View_Banco.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\View_Login.g.cs
@@ -43,6 +58,11 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute_Marku
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute_MarkupCompile.lref
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\App.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\MainWindow.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Company_Control.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Mensagem.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\View_Banco.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\View_Login.baml
@@ -54,23 +74,3 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.cspro
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csproj.CopyComplete
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.exe
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.baml
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Company_Control.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\CompanyControl\Company_Control.baml

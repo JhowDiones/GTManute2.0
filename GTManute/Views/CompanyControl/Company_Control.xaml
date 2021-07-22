@@ -29,5 +29,6 @@
         <Button x:Name="btn_alterar" Content="Alterar" HorizontalAlignment="Left" Margin="611,408,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btn_alterar_Click"/>
         <Button x:Name="btn_gravar" Content="Gravar" HorizontalAlignment="Left" Margin="691,408,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btn_gravar_Click"/>
         <Label x:Name="label_Copy2" Content="Senha" HorizontalAlignment="Left" Margin="466,382,0,0" VerticalAlignment="Top" Width="140"/>
+        <Image x:Name="btn_config" Source="{StaticResource config_banco}" HorizontalAlignment="Left" Height="40" Margin="744,444,0,0" VerticalAlignment="Top" Width="40" MouseLeftButtonUp="btn_config_MouseLeftButtonUp"/>
     </Grid>
 </Window>

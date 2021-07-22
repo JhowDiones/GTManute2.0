@@ -1,11 +1,12 @@
 ﻿using dbAcessos;
 using GTManute.Properties;
+using dbAcessos.Properties;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Configuration;
 
 namespace GTManute.Views
 {
@@ -14,7 +15,8 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Banco : Window
     {
-        private Settings cfg = new Settings();
+        private GTManute.Properties.Settings cfg = new Properties.Settings();
+        private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
         public View_Banco()
@@ -46,15 +48,23 @@ namespace GTManute.Views
         }
         private async void txt_senha_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txt_senha.Text == "")
+            try
             {
-                txt_senha.Text = "Contra senha";
+                if (txt_senha.Text == "")
+                {
+                    txt_senha.Text = "Contra senha";
+                }
+                if (txt_empresa.Text != "Contra senha" && txt_senha.Text != "" && txt_empresa.Text != "Empresa")
+                {
+                    var data = await Task.FromResult<db_empresas>(db.db_empresas.Where(a => a.Empresa == int.Parse(txt_empresa.Text)).Where(a => a.ContraSenha == txt_senha.Text).FirstOrDefault());
+                    txt_licenca.Content = "Vencimento da Licença: " + data.Validade.ToString();
+                }
             }
-            if(txt_empresa.Text!="Contra senha"&& txt_senha.Text!="" && txt_empresa.Text!= "Empresa")
+            catch
             {
- var data =await Task.FromResult<db_empresas>(db.db_empresas.Where(a=>a.Empresa==int.Parse(txt_empresa.Text)).Where(a=>a.ContraSenha==txt_senha.Text).FirstOrDefault());
-                txt_licenca.Content = "Vencimento da Licença: " + data.Validade.ToString();
+
             }
+            
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -74,6 +84,8 @@ namespace GTManute.Views
 
         private async void textBlock3_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+
+            AlterarBD();
             if (txt_empresa.Text == "" && txt_empresa.Foreground == new SolidColorBrush(Colors.Red) && txt_senha.Text == "")
             {
 
@@ -112,6 +124,15 @@ namespace GTManute.Views
         {
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
+        }
+
+        private async void AlterarBD()
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var connectionStringsSection = (ConnectionStringsSection)config.GetSection("conexao");
+            connectionStringsSection.ConnectionStrings["Connection"].ConnectionString = "Data Source="+txt_dataSouce.Text+";Initial Catalog="+txt_catalogo.Text+";UID="+txt_Usúario.Text+ ";password=" + txt_senhabanco.Text ;
+            config.Save();
+            ConfigurationManager.RefreshSection("conexao");
         }
 
         private void txt_empresa_GotFocus(object sender, RoutedEventArgs e)

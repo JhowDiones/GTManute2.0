@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+
 namespace GTManute.Views
 {
     /// <summary>
@@ -14,22 +15,51 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Login : Window
     {
+        private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private Settings cfg = new Settings();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext();
+        private bool validade= true;
+        private DateTime data;
         public View_Login()
         {
             InitializeComponent();
-            cfg.Empresa = "17";
+            Empresa = cfgdb.empresa;
+           cfg.Empresa= cfgdb.empresa;
             cfg.Save();
-            Empresa = cfg.Empresa;
+            Carregar();
+            
 
-          //  if (Empresa == null || Empresa == "")
-          //  {
-            //    mensagem("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
-             //   View_Banco banco = new View_Banco();
-            //   banco.ShowDialog();
-           // }
+        }
+        private async void Carregar()
+        {
+            
+            Empresa = cfgdb.empresa;
+            if (Empresa == null || Empresa == "")
+            {
+                mensagem("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
+                dbAcessos.banco_controle banco = new dbAcessos.banco_controle();
+                banco.ShowDialog();
+                
+            }
+            else
+            {
+                try
+                {
+                    db_empresas _empresas = await Task.FromResult<db_empresas>(db.db_empresas.Where(a => a.Empresa == int.Parse(Empresa)).First());
+                    validade = true;
+                    data = _empresas.Validade.Value;
+                    if (_empresas.Validade < DateTime.Now)
+                    {
+                        mensagem("Sua chave de licença expirou, o sistema trabalhará de forma limitada.", true, "Entre em contato com " + cfg.Email_Dev + " para solicitar outra chave ou reportar algum problema", "Ok");
+                        validade = false;
+                    }
+                }
+                catch
+                {
+                    validade = false;
+                }
+            }
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -73,7 +103,7 @@ namespace GTManute.Views
             {
 
             }
-            
+
         }
 
         private void txt_usuario_GotFocus(object sender, RoutedEventArgs e)
@@ -163,7 +193,7 @@ namespace GTManute.Views
 
 
                     txt_Novo_Usuario.Foreground = new SolidColorBrush(Colors.Red);
-                    mensagem("Usuário já cadastrado!", false,"","Ok");
+                    mensagem("Usuário já cadastrado!", false, "", "Ok");
                     txt_Novo_Usuario.Text = "";
 
                 }
@@ -209,16 +239,17 @@ namespace GTManute.Views
 
         private async void btn_entrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(txt_usuario.Text!="" || txt_senha.ToString() != "" || txt_usuario.Text != null || txt_senha.ToString() != null|| txt_usuario.Text != "Usuário" || txt_senha.ToString() != "Senha")
+            if (txt_usuario.Text != "" || txt_senha.ToString() != "" || txt_usuario.Text != null || txt_senha.ToString() != null || txt_usuario.Text != "Usuário" || txt_senha.ToString() != "Senha")
             {
                 try
                 {
-                    db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Password).Where(a => a.USUARIO==txt_usuario.Text).First());
-                                        
-                        View_Menu view_Menu = new View_Menu();
-                        view_Menu.Show();
-                        this.Close();
-                    
+                    Carregar();
+                    db_login login = await Task.FromResult<db_login>(db.db_login.Where(a => a.Empresa == Empresa).Where(a => a.SENHA == txt_senha.Password).Where(a => a.USUARIO == txt_usuario.Text).First());
+
+                    View_Menu view_Menu = new View_Menu(validade,data.ToShortDateString());
+                    view_Menu.Show();
+                    this.Close();
+
                 }
                 catch
                 {
@@ -231,7 +262,7 @@ namespace GTManute.Views
         {
             if (txt_Novo_ConfirmaSenha.Password != "" && txt_Novo_ConfirmaSenha.Password != null &&
                 txt_Novo_Senha.Password != "" && txt_Novo_Senha.Password != null && txt_Novo_Usuario.Text != "Usuário" || txt_Novo_Senha.Password != "Senha" ||
-                txt_Novo_Usuario.Text != "" && txt_Novo_Usuario.Text != null )
+                txt_Novo_Usuario.Text != "" && txt_Novo_Usuario.Text != null)
             {
                 db_login novologin = new db_login();
                 novologin.Empresa = Empresa;
@@ -239,7 +270,8 @@ namespace GTManute.Views
                 novologin.T_acesso = "MASTER";
                 novologin.USUARIO = txt_Novo_Usuario.Text;
 
-                await Task.Run(() => {
+                await Task.Run(() =>
+                {
                     Application.Current.Dispatcher.Invoke((Action)async delegate
                     {
                         try
@@ -263,6 +295,13 @@ namespace GTManute.Views
         {
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
+        }
+
+        private void btn_config_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+               dbAcessos.banco_controle banco = new dbAcessos.banco_controle();
+            banco.ShowDialog();
+
         }
     }
 }

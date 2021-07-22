@@ -75,7 +75,7 @@ namespace dbAcessos
     #endregion
 		
 		public dbManuteDataContext() : 
-				base(global::dbAcessos.Properties.Settings.Default.GtManuteConnectionString, mappingSource)
+				base(global::dbAcessos.Properties.Settings.Default.conexao, mappingSource)
 		{
 			OnCreated();
 		}

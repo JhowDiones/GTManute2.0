@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GTManute.Views" ResizeMode="NoResize"
         mc:Ignorable="d"  AllowsTransparency="True" WindowState="Normal" WindowStyle="None" Background="Transparent"
-        Title="view_Banco" Height="251" Width="300">
+        Title="view_Banco" Height="400" Width="300">
     <Grid>
         <Rectangle Fill="{StaticResource primeiraCor}" Margin="10" Stroke="{StaticResource SegundaCor}"  RadiusY="5" RadiusX="5"/>
         <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="41" 
@@ -15,14 +15,23 @@
                    Foreground="{StaticResource SegundaCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
         <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5"/>
         <TextBlock x:Name="btn_Fechar" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Width="29" FontSize="20" TextAlignment="Center" FontWeight="Bold"  Margin="0,-0.5,0.5,0" MouseLeftButtonDown="btn_Fechar_MouseLeftButtonDown"/>
-        <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="25" Margin="101,206,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
-        <TextBlock x:Name="textBlock3" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left" Margin="101,206,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="textBlock3_MouseLeftButtonDown"/>
-        <Rectangle Fill="{StaticResource SegundaCor}" Margin="18,99,19,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_empresa" Text="Empresa" Margin="17.792,75.33,18.875,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_empresa_GotFocus" LostFocus="txt_servidor_LostFocus" />
-        <Rectangle Fill="{StaticResource SegundaCor}" Margin="18,130,19,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_senha" Text="Contra senha" Margin="18,106,18,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_senha_GotFocus_1" LostFocus="txt_senha_LostFocus" />
-        <Rectangle Fill="{StaticResource SegundaCor}" Margin="18,161,19,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
-        <Label x:Name="txt_licenca" Content="Vencimento da Licença:" HorizontalAlignment="Left" Margin="18,135,0,0" VerticalAlignment="Top" Width="263"/>
+        <Rectangle Fill="{StaticResource SegundaCor}" Height="25" Margin="101,346,100,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock3" Foreground="{StaticResource primeiraCor}" Margin="101,346,100,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" Height="25" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="textBlock3_MouseLeftButtonDown"/>
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,254,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_empresa" Text="Empresa" Margin="23,230,13,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_empresa_GotFocus" LostFocus="txt_servidor_LostFocus" />
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,285,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_senha" Text="Contra senha" Margin="23,261,13,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_senha_GotFocus_1" LostFocus="txt_senha_LostFocus" />
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,316,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+        <Label x:Name="txt_licenca" Content="Vencimento da Licença:" HorizontalAlignment="Left" Margin="23,290,0,0" VerticalAlignment="Top" Width="263"/>
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,163,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_catalogo" Text="Catálogo" Margin="23,139,13,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_empresa_GotFocus" LostFocus="txt_servidor_LostFocus" />
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,194,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_Usúario" Text="ID Banco" Margin="23,170,13,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_senha_GotFocus_1" LostFocus="txt_senha_LostFocus" />
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,225,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="txt_senhabanco" Text="Senha Banco" Margin="23,201,13,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_senha_GotFocus_1" LostFocus="txt_senha_LostFocus" />
+        <Rectangle Fill="{StaticResource SegundaCor}" Margin="23,134,14,0"  Stroke="Transparent" Height="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_dataSouce" Text="Data Source" Margin="23,110,13,0"  TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF747171" SelectionBrush="{x:Null}" Height="24" VerticalAlignment="Top" GotFocus="txt_empresa_GotFocus" LostFocus="txt_servidor_LostFocus" />
 
     </Grid>
 </Window>

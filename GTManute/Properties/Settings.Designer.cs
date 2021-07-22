@@ -25,7 +25,7 @@ namespace GTManute.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Empresa {
             get {
                 return ((string)(this["Empresa"]));

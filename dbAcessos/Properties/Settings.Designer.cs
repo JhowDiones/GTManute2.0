@@ -13,7 +13,7 @@ namespace dbAcessos.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -26,11 +26,83 @@ namespace dbAcessos.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gtmanut.database.windows.net;Initial Catalog=db_17;Persist Security I" +
-            "nfo=True;User ID=Dionatan;Password=Di24091996")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gtmanut.database.windows.net;Initial Catalog=GtManute;Persist Securit" +
+            "y Info=True;User ID=Dionatan;Password=Di24091996")]
         public string conexao {
             get {
                 return ((string)(this["conexao"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string dtSource {
+            get {
+                return ((string)(this["dtSource"]));
+            }
+            set {
+                this["dtSource"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string catalogo {
+            get {
+                return ((string)(this["catalogo"]));
+            }
+            set {
+                this["catalogo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string id {
+            get {
+                return ((string)(this["id"]));
+            }
+            set {
+                this["id"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string senha {
+            get {
+                return ((string)(this["senha"]));
+            }
+            set {
+                this["senha"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa {
+            get {
+                return ((string)(this["empresa"]));
+            }
+            set {
+                this["empresa"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string senhaempresa {
+            get {
+                return ((string)(this["senhaempresa"]));
+            }
+            set {
+                this["senhaempresa"] = value;
             }
         }
     }

@@ -14,6 +14,7 @@
             <BitmapImage x:Key="Funcionario" UriSource="Res/Img/Funcionarios.png"/>
             <BitmapImage x:Key="Manutencao" UriSource="Res/Img/manutencao.png"/>
             <BitmapImage x:Key="veiculos" UriSource="Res/Img/veiculos.png"/>
+            <BitmapImage x:Key="config_banco" UriSource="Res/Img/config.png"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
