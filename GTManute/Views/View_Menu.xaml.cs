@@ -35,9 +35,10 @@ namespace GTManute.Views
         {
             InitializeComponent();
             db = new dbManuteDataContext(cfgdb.conexao);
+            txt_validade.Content = data;
+            txt_empresa.Content = cfgdb.NomeEmpresa;
             if (validade == false)
             {
-                txt_validade.Content = data;
                 btn_cadastro.IsEnabled = false;
                 btn_Lanca.IsEnabled = false;
                 btn_home.IsEnabled = false;
@@ -134,6 +135,12 @@ namespace GTManute.Views
         private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             CompanyControl.Control_Acesso acesso = new Control_Acesso();
+            acesso.ShowDialog();
+        }
+
+        private void Grid_MouseLeftButtonDown_4(object sender, MouseButtonEventArgs e)
+        {
+            View_Rotas acesso = new View_Rotas();
             acesso.ShowDialog();
         }
     }

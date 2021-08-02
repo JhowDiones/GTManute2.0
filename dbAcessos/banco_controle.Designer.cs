@@ -186,6 +186,7 @@ namespace dbAcessos
             this.Name = "banco_controle";
             this.Text = "Controle do banco";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.banco_controle_FormClosing);
+            this.Load += new System.EventHandler(this.banco_controle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -78,3 +78,7 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Comp
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.baml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Rotas.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Rotas.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Newtonsoft.Json.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Newtonsoft.Json.xml

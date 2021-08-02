@@ -28,7 +28,7 @@ namespace GTManute.Views.CompanyControl
         {
             DateTime agora = DateTime.Now;
             string senha = "Di32383074" + agora.ToString("HHmm");
-            if (senha == textBox.Text)
+            if (senha == textBox.Password)
             {
                 Company_Control control = new Company_Control();
                 control.ShowDialog();

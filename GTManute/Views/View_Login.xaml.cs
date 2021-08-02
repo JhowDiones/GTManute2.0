@@ -39,6 +39,7 @@ namespace GTManute.Views
                 mensagem("Empresa ainda não configurada!", true, "Antes do primeiro acesso, é necessario configurar o arquivo de configurações na pasta do sistema!", "Ok!");
                 dbAcessos.banco_controle banco = new dbAcessos.banco_controle();
                 banco.ShowDialog();
+                this.Close();
                 
             }
             else
@@ -302,7 +303,6 @@ namespace GTManute.Views
                dbAcessos.banco_controle banco = new dbAcessos.banco_controle();
             banco.ShowDialog();
             this.Close();
-
         }
     }
 }

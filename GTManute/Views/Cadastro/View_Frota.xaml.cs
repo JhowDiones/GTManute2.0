@@ -9,9 +9,6 @@ using System.Windows.Input;
 
 namespace GTManute.Views.Cadastro
 {
-    /// <summary>
-    /// Lógica interna para View_CadFornecedores.xaml
-    /// </summary>
     public partial class View_Frota : Window
     {
         private class Ultimas
@@ -101,6 +98,7 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
+            ID = 0;
             txt_ano.Text = "";
             txt_chassis.Text = "";
             txt_cor.Text = "";
@@ -236,7 +234,9 @@ namespace GTManute.Views.Cadastro
             }
             catch
             {
-
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                carregando(int.Parse(ID), true);
             }
         }
 

@@ -108,7 +108,15 @@ namespace GTManute.Views.Lançamento
             base.OnMouseLeftButtonDown(e);
 
             // Begin dragging the window
-            this.DragMove();
+            try
+            {
+                this.DragMove();
+            }
+            catch
+            {
+
+            }
+            
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -153,13 +161,13 @@ namespace GTManute.Views.Lançamento
                     List<string> Rotas1 = new List<string>();
                     List<string> placas = new List<string>();
 
-                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
+                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a=>a.Empresa==Empresa).Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
 
-                    List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.OrderBy(a => a.PLACA).ToList());
-                    List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
-                    List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).ToList());
-                    List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).ToList());
-                    List<db_rotas> rot1 = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.DE).ToList());
+                    List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.Where(a => a.Empresa == Empresa).OrderBy(a => a.PLACA).ToList());
+                    List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
+                    List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).Where(a => a.Empresa == Empresa).ToList());
+                    List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).Where(a => a.Empresa == Empresa).ToList());
+                    List<db_rotas> rot1 = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.DE).Where(a => a.Empresa == Empresa).ToList());
                     for (int i = 0; i < aju.Count; i++)
                     {
                         ajudante.Add(aju[i].NOME);
@@ -377,6 +385,7 @@ namespace GTManute.Views.Lançamento
         }
         private void Limpar()
         {
+            ID = 0;
             txt_desp_alimentacao.Text = "";
             txt_desp_pernoite.Text = "";
             txt_doc.Text = "";
@@ -530,7 +539,9 @@ namespace GTManute.Views.Lançamento
             }
             catch
             {
-
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                carregando(int.Parse(ID), true);
             }
         }
 

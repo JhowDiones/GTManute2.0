@@ -17,6 +17,7 @@
             <Rectangle Fill="Transparent" Margin="-1,390,0,0" HorizontalAlignment="Left" Width="11" Height="40" VerticalAlignment="Top" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"/>
             <Label x:Name="label" Content="Validade licença" HorizontalContentAlignment="Center" Foreground="White" HorizontalAlignment="Left" Margin="10,372,-0.099,0" VerticalAlignment="Top" Width="100"/>
             <Label x:Name="txt_validade" Content="01/01/2020" HorizontalContentAlignment="Center" Foreground="White" Margin="10,398,-0.099,0" VerticalAlignment="Top"/>
+            <Label x:Name="txt_empresa" Content="" HorizontalContentAlignment="Center" Foreground="White" Margin="10,346,-0.099,0" VerticalAlignment="Top"/>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="20" Margin="19,110,0,0" VerticalAlignment="Top" Width="100.401">
@@ -94,6 +95,12 @@
 
                 <Image Width="120" Height="120" Margin="5" Source="{StaticResource Funcionario}" VerticalAlignment="Top"  />
                 <TextBlock Text="Colaboradores" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+            </Grid>
+            <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="7" MouseLeftButtonDown="Grid_MouseLeftButtonDown_4">
+
+                <Image Width="120" Height="120" Margin="5" Source="{StaticResource Rotas}" VerticalAlignment="Top"  />
+                <TextBlock Text="Rotas" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
             </Grid>
         </Grid>

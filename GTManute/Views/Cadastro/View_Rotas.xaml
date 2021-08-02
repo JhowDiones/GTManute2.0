@@ -1,0 +1,130 @@
+﻿<Window x:Class="GTManute.Views.Cadastro.View_Rotas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GTManute.Views.Cadastro"
+        mc:Ignorable="d"  ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen"  AllowsTransparency="True"
+        Title="Veículo" Height="500" Width="800" Background="Transparent">
+    <Window.Resources>
+        <Storyboard x:Key="abrir_pesquisa">
+            <DoubleAnimation Storyboard.TargetName="gridferramenta" x:Name="abrir_pesquisa" Storyboard.TargetProperty="Height"
+                 Duration="0:0:00.3" From="30" To="365"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="fechar_pesquisa">
+            <DoubleAnimation Storyboard.TargetName="gridferramenta" x:Name="fechar_pesquisa" Storyboard.TargetProperty="Height"
+                 Duration="0:0:00.3" From="365" To="30"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Control.MouseDoubleClick" SourceName="dt_pesquisa">
+            <BeginStoryboard x:Name="fechar_pesquisa_BeginStoryboard" Storyboard="{StaticResource fechar_pesquisa}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="txt_pesquisa">
+            <BeginStoryboard Storyboard="{StaticResource abrir_pesquisa}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="btn_Fechar_Copy">
+            <BeginStoryboard x:Name="fechar_pesquisa_BeginStoryboard1" Storyboard="{StaticResource fechar_pesquisa}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid PreviewKeyDown="container_PreviewKeyDown">
+        <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" Stroke="{StaticResource SegundaCor}" />
+        <Rectangle Fill="{StaticResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5" Margin="0,0,0,0"/>
+        <TextBlock x:Name="btn_Fechar" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Width="28" FontSize="20" TextAlignment="Center" FontWeight="Bold"  Margin="0,0,0,0" MouseLeftButtonDown="btn_Fechar_MouseLeftButtonDown"/>
+        <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="41" 
+            VerticalAlignment="Top" Width="7.332" Margin="10.47,21.216,0,0"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="23,14,0,0"
+            TextWrapping="Wrap" Text="Cadastro - Veículo" VerticalAlignment="Top" Width="537"
+            Foreground="{StaticResource SegundaCor}" FontSize="36" FontWeight="Bold" LineHeight="11"/>
+        <Grid Margin="35,105,35,65" >
+            <Rectangle Fill="{StaticResource SegundaCor}" StrokeThickness="5" RadiusY="10" RadiusX="10" />
+            <Grid Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width=".5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0"  Grid.Row="0">
+                    <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+                    <GroupBox x:Name="groupBox" Header="Rota" HorizontalAlignment="Left" BorderBrush="{StaticResource SegundaCor}" Margin="10,9,0,11" Width="345">
+                        <Grid Margin="0">
+                            <Label x:Name="label1" Content="Partida" HorizontalAlignment="Left" VerticalAlignment="Top" Width="259" Margin="0,5,0,0"/>
+                            <TextBox x:Name="txt_partida" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
+                            <Label x:Name="label1_Copy7" Content="UF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="278,6,0,0"/>
+                            <ComboBox x:Name="cmb_ufpartida" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="278,31,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5"/>
+                            <Label x:Name="label1_Copy" Content="Destino" HorizontalAlignment="Left" VerticalAlignment="Top" Width="259" Margin="0,59,0,0"/>
+                            <TextBox x:Name="txt_destino" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
+                            <Label x:Name="label1_Copy2" Content="UF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="278,59,0,0"/>
+                            <ComboBox x:Name="cmb_ufdestino" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="278,85,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5"/>
+                            <Button x:Name="btn_calcular" Content="Ver distância" Margin="129,139,129,0" VerticalAlignment="Top" Foreground="{StaticResource primeiraCor}" Background="{StaticResource SegundaCor}" Click="btn_calcular_Click"/>
+                            <Label x:Name="label1_Copy1" Content="Distância" HorizontalAlignment="Left" VerticalAlignment="Top" Width="259" Margin="0,113,0,0"/>
+                            <TextBox x:Name="txt_distancia" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+                <Grid Grid.Column="0"  Grid.Row="1"/>
+                <Grid Grid.Column="1"  Grid.RowSpan="2">
+                    <Rectangle  Margin="5"  Fill="{StaticResource primeiraCor}" RadiusY="10" RadiusX="10"/>
+
+                    <GroupBox x:Name="groupBox2_Copy" Header="Ultimos viagens na rota"
+                              BorderBrush="{StaticResource SegundaCor}" Margin="10">
+                        <Grid Margin="0">
+                            <DataGrid x:Name="grid_ultimas" Margin="0,0,0,10"/>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+            </Grid>
+        </Grid>
+        <Grid x:Name="gridferramenta" Margin="35,70,35,0" Height="30" VerticalAlignment="Top">
+            <!-- 365-->
+            <Rectangle Margin="0,0,0,0" Fill="{StaticResource SegundaCor}" RadiusY="10" RadiusX="10"/>
+            <Image Source="{StaticResource Buscar_ico}" HorizontalAlignment="Left" Margin="5,0,0,0" Height="28" VerticalAlignment="Top" />
+            <TextBlock x:Name="txt_pesquisa_Copy" FontSize="20" TextAlignment="Center" FontWeight="Bold"
+                Foreground="{StaticResource primeiraCor}" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text=""/></TextBlock>
+            <TextBlock x:Name="txt_pesquisa" FontSize="20" TextAlignment="Center" FontWeight="Bold"
+                       Foreground="{StaticResource primeiraCor}" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Ferramenta de pesquisa"/></TextBlock>
+            <Image Source="{StaticResource Buscar_ico}" Margin="0,1,5,0" HorizontalAlignment="Right" Width="28" Height="28" VerticalAlignment="Top" />
+            <Grid x:Name="grid" Margin="10,51,10,10" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="dt_pesquisa" Height="229" Margin="0,75,0,0" VerticalAlignment="Top" MouseDoubleClick="dt_pesquisa_MouseDoubleClick" CurrentCellChanged="dt_pesquisa_CurrentCellChanged"/>
+                <RadioButton x:Name="rad_contem" IsChecked="True" Content="Contem" Foreground="{StaticResource primeiraCor}" FontSize="14" Margin="570,0,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rad_exata" Content="Pesquisa exata" Margin="570,23,0,0" Foreground="{StaticResource primeiraCor}" FontSize="14" VerticalAlignment="Top" Visibility="Hidden"/>
+                <TextBlock x:Name="txt_registros" Text="Nº de Registros: " Foreground="{StaticResource primeiraCor}" TextAlignment="Right" FontSize="14" Margin="570,46,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_pes_placa" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+                <TextBox x:Name="txt_pes_modelo" HorizontalAlignment="Left" Height="23" Margin="280,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+                <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Left" Height="25" Margin="441,40,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
+                <TextBlock x:Name="btn_pesquisar" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="441,40,0,0" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_pesquisar_MouseLeftButtonDown" />
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="1,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Partida" VerticalAlignment="Top" Width="119"/>
+                <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Margin="281,-16,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Destino" VerticalAlignment="Top" Width="119"/>
+                <Rectangle Fill="{StaticResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="5" RadiusY="5"/>
+                <TextBlock x:Name="btn_Fechar_Copy" HorizontalAlignment="Right" TextWrapping="Wrap" Text="x" Width="28" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0,0,0,274"/>
+            </Grid>
+        </Grid>
+        <Grid Height="50" Margin="35,0,35,10" VerticalAlignment="Bottom">
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="316,10,0,15"/>
+            <TextBlock x:Name="btn_alterar" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Alterar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="316,10,0,15" MouseLeftButtonDown="btn_alterar_MouseLeftButtonDown" />
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"/>
+            <TextBlock x:Name="btn_novo" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Novo" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment" MouseLeftButtonDown="btn_novo_MouseLeftButtonDown" />
+            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="420,10,0,15"/>
+            <TextBlock x:Name="btn_delete" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Excluir" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="420,10,0,15" MouseLeftButtonDown="btn_delete_MouseLeftButtonDown" />
+        </Grid>
+
+
+    </Grid>
+</Window>
+

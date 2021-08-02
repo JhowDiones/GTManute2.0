@@ -33,7 +33,6 @@ namespace dbAcessos
                 cfg.empresa = txt_empresa.Text;
                 cfg.senhaempresa = txt_senhaempresa.Text;
                 cfg.Save();
-                MessageBox.Show("Inicie novamente o sistema, após a configuração!");
                 this.Close();
                
             }
@@ -50,6 +49,7 @@ namespace dbAcessos
                 cfg.dtSource = txt_source.Text;
                 cfg.id = txt_id_banco.Text;
                 cfg.senha = txt_senhabanco.Text;
+
                 
                 string banco = "Data Source=" + txt_source.Text + ";Initial Catalog=" + txt_catalogo.Text + ";Persist Security Info=True;User ID=" + txt_id_banco.Text + ";Password=" + txt_senhabanco.Text;
                 cfg.conexao = banco;
@@ -88,7 +88,9 @@ namespace dbAcessos
                         db_empresas resultado = db.db_empresas.Where(a => a.ContraSenha == txt_senhaempresa.Text).Where(a => a.Empresa == int.Parse(txt_empresa.Text)).First();
                         if (resultado.Empresa == int.Parse(txt_empresa.Text))
                         {
-                            MessageBox.Show("Configurado com sucesso!");
+                            cfg.NomeEmpresa = resultado.NomeEmpresa;
+                            cfg.Save();
+                            MessageBox.Show("Testado com sucesso!");
                             button1.BackColor = Color.Green;
                             result = true;
                             
@@ -122,6 +124,11 @@ namespace dbAcessos
                 button1.BackColor = Color.Red;
                 result = false;
             }
+
+        }
+
+        private void banco_controle_Load(object sender, EventArgs e)
+        {
 
         }
     }

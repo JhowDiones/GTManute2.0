@@ -117,5 +117,17 @@ namespace dbAcessos.Properties {
                 this["conexao"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NomeEmpresa {
+            get {
+                return ((string)(this["NomeEmpresa"]));
+            }
+            set {
+                this["NomeEmpresa"] = value;
+            }
+        }
     }
 }

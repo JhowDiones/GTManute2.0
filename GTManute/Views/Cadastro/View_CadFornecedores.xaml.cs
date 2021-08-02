@@ -199,6 +199,7 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
+            ID = 0;
             txt_cidade.Text = "";
             txt_cnpj.Text = "";
             txt_email.Text = "";
@@ -321,7 +322,9 @@ namespace GTManute.Views.Cadastro
             }
             catch
             {
-
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                carregando(int.Parse(ID), true);
             }
         }
 

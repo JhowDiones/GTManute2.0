@@ -95,6 +95,7 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
+            ID = 0;
             txt_categoria.Text = "";
             txt_cnh.Text = "";
             txt_cpf.Text = "";
@@ -144,7 +145,15 @@ namespace GTManute.Views.Cadastro
                 List<db_abast> Listaabast = new List<db_abast>();
                 if (frota.funcao == "Motorista")
                 {
-                    Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.MOTORISTA == frota.NOME).OrderByDescending(a=>DateTime.Parse(a.DT_PARTIDA)).Take(20).ToList());
+                    try
+                    {
+                        Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.MOTORISTA == frota.NOME).OrderByDescending(a => DateTime.Parse(a.DT_PARTIDA)).Take(20).ToList());
+
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 else
                 {
@@ -222,7 +231,9 @@ namespace GTManute.Views.Cadastro
             }
             catch
             {
-
+                object item = dt_pesquisa.SelectedItem;
+                string ID = (dt_pesquisa.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                carregando(int.Parse(ID), true);
             }
         }
 
