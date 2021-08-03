@@ -95,7 +95,6 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
-            ID = 0;
             txt_categoria.Text = "";
             txt_cnh.Text = "";
             txt_cpf.Text = "";

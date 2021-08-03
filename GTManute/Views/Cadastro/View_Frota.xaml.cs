@@ -98,7 +98,7 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
-            ID = 0;
+            
             txt_ano.Text = "";
             txt_chassis.Text = "";
             txt_cor.Text = "";

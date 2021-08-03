@@ -116,7 +116,6 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
-            ID = 0;
             txt_destino.Text = "";
             txt_partida.Text = "";
             cmb_ufdestino.Text = "";

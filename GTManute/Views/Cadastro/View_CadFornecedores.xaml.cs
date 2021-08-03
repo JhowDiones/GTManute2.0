@@ -199,7 +199,6 @@ namespace GTManute.Views.Cadastro
         }
         private void Limpar()
         {
-            ID = 0;
             txt_cidade.Text = "";
             txt_cnpj.Text = "";
             txt_email.Text = "";

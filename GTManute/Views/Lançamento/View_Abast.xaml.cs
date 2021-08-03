@@ -256,6 +256,8 @@ namespace GTManute.Views.Lançamento
                         _abast.DT_CHEGADA = txt_dt_destino.Text;
                         _abast.DT_PARTIDA = txt_dt_partida.Text;
                         _abast.Empresa = Empresa;
+                        _abast.PLACA = cmb_veiculo.Text;
+                        _abast.T_COMBUSTIVEL = cmb_combustivel.Text;
                         _abast.FORNECEDOR = cmb_fornecedor.Text;
                         _abast.HORA_CHEGADA = txt_hr_destino.Text;
                         _abast.HORA_PARTIDA = txt_hr_partida.Text;
@@ -316,12 +318,14 @@ namespace GTManute.Views.Lançamento
                 _abast.AJUDANTE2 = cmb_2ajudante.Text;
                 _abast.DE = cmb_partida.Text;
                 _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
-                _abast.DESPESA_COMB = txt_res_unitario.Text;
+                _abast.DESPESA_COMB = txt_valor.Text;
                 _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
                 _abast.DESPESA_PERN = txt_desp_pernoite.Text;
                 _abast.DT_CHEGADA = txt_dt_destino.Text;
                 _abast.DT_PARTIDA = txt_dt_partida.Text;
                 _abast.Empresa = Empresa;
+                _abast.PLACA = cmb_veiculo.Text;
+                _abast.T_COMBUSTIVEL = cmb_combustivel.Text;
                 _abast.FORNECEDOR = cmb_fornecedor.Text;
                 _abast.HORA_CHEGADA = txt_hr_destino.Text;
                 _abast.HORA_PARTIDA = txt_hr_partida.Text;
@@ -333,7 +337,24 @@ namespace GTManute.Views.Lançamento
                 _abast.PARA = cmb_destino.Text;
                 _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
                 _abast.USUARIO = Usuario;
-                _abast.VALOR_TOTAL = txt_valor.Text;
+                double valor=0;
+                try
+                {
+                    double combustivel =0;
+                    double pernoite = 0;
+                    double outras = 0;
+                    double alimento = 0;
+                    double.TryParse(txt_desp_alimentacao.Text, out alimento);
+                    double.TryParse(txt_valor.Text,out combustivel);
+                    double.TryParse(txt_desp_alimentacao.Text, out combustivel);
+                    double.TryParse(txt_valor.Text, out combustivel);
+                    valor = combustivel + pernoite + outras+alimento;
+                }
+                catch
+                {
+
+                }
+                _abast.VALOR_TOTAL =valor.ToString("N2");
                 _abast.DT_HR = DateTime.UtcNow;
 
 
@@ -385,7 +406,6 @@ namespace GTManute.Views.Lançamento
         }
         private void Limpar()
         {
-            ID = 0;
             txt_desp_alimentacao.Text = "";
             txt_desp_pernoite.Text = "";
             txt_doc.Text = "";
@@ -416,7 +436,7 @@ namespace GTManute.Views.Lançamento
         private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
             string hrdestino, string hrpartida, string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
              string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
-    string partida, string veiculo)
+    string partida, string veiculo, string combustivelT)
         {
             Limpar();
             txt_desp_alimentacao.Text = despAlimentacao;
@@ -430,7 +450,7 @@ namespace GTManute.Views.Lançamento
             txt_km_inicial.Text = kmpartida;
             txt_litragem.Text = litragem;
             txt_outras_desp.Text = outrasdesp;
-
+            cmb_combustivel.Text = combustivelT;
             cmb_1ajudante.Text = ajudante1;
             cmb_2ajudante.Text = ajudante2;
             cmb_destino.Text = destino;
@@ -498,7 +518,8 @@ namespace GTManute.Views.Lançamento
 
             preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
                 abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA);
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, 
+                abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA,abast.T_COMBUSTIVEL);
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -572,7 +593,7 @@ namespace GTManute.Views.Lançamento
                 km = (double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text));
                 txt_res_unitario.Text = valorunit.ToString("N2");
                 txt_res_media.Text = média.ToString("N2");
-                txt_res_media.Text = km.ToString();
+                txt_res_km.Text = km.ToString();
 
             }
             catch
