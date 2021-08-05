@@ -656,6 +656,11 @@ namespace GTManute.Views.Lançamento
         {
             setHora(sender, e);
         }
+
+        private void txt_hr_destino_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setHora(sender, e);
+        }
     }
 
 }

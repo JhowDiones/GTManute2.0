@@ -107,11 +107,10 @@
     </Window.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="{StaticResource primeiraCor}"  Margin="-2,10,10,10" Stroke="{StaticResource SegundaCor}" Grid.Column="1" RadiusY="10" RadiusX="10"/>
-        <TextBlock x:Name="txt_principal" Margin="8,20,20,44" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource SegundaCor}" Grid.Column="1">
+        <Rectangle Fill="{StaticResource primeiraCor}"  Margin="10" Stroke="{StaticResource SegundaCor}" RadiusY="10" RadiusX="10"/>
+        <TextBlock x:Name="txt_principal" Margin="20,20,20,44" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" Foreground="{DynamicResource SegundaCor}">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -121,7 +120,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Grid x:Name="grid_explica" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,0,15,15" VerticalAlignment="Bottom" Width="25">
+        <Grid x:Name="grid_explica" HorizontalAlignment="Right" Height="25" Margin="0,0,15,15" VerticalAlignment="Bottom" Width="25">
             <Rectangle x:Name="rectangle" Fill="{StaticResource SegundaCor}" RadiusY="10" RadiusX="10" RenderTransformOrigin="0.5,0.5">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
@@ -134,7 +133,7 @@
             </Rectangle>
             <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" TextWrapping="Wrap" Width="25" Height="25" Foreground="{StaticResource primeiraCor}" TextAlignment="Center" FontWeight="Bold" Text="?" FontSize="18" d:LayoutOverrides="VerticalAlignment"/>
         </Grid>
-        <TextBlock x:Name="txt_secundaria" Margin="8,20,20,44" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" Foreground="{DynamicResource primeiraCor}" Grid.Column="1">
+        <TextBlock x:Name="txt_secundaria" Margin="20,20,20,44" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" Foreground="{DynamicResource primeiraCor}">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -144,16 +143,15 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Grid x:Name="grid" Height="25.667" Margin="73,0,86,14" VerticalAlignment="Bottom" Grid.Column="1">
-            <Rectangle Fill="{DynamicResource SegundaCor}" HorizontalAlignment="Left" Height="25" Margin="0,0.667,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
-            <TextBlock x:Name="btn_ok" Foreground="{StaticResource primeiraCor}" TextWrapping="Wrap" Text="Entrar" VerticalAlignment="Top" Height="25" TextAlignment="Center" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Width="99" MouseLeftButtonDown="btn_ok_MouseLeftButtonDown"/>
-        </Grid>
-        <Grid x:Name="grid1" Height="25.667" Margin="73,0,86,14" VerticalAlignment="Bottom" Visibility="Hidden" Grid.Column="1">
+        <Grid x:Name="grid" Height="26" Margin="85,0,86,14" VerticalAlignment="Bottom"/>
+        <Grid x:Name="grid1" Height="26" Margin="85,0,86,14" VerticalAlignment="Bottom" Visibility="Hidden">
             <Rectangle Fill="{DynamicResource TerceiraCor}" HorizontalAlignment="Left" Height="25" Margin="0,0.667,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
             <TextBlock x:Name="btn_ok_segundo" Foreground="{StaticResource primeiraCor}" TextWrapping="Wrap" Text="Entrar" VerticalAlignment="Top" Height="25" TextAlignment="Center" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Width="99" MouseLeftButtonDown="btn_ok_segundo_MouseLeftButtonDown"/>
 
         </Grid>
-        <TextBlock x:Name="txt_fecha" HorizontalAlignment="Left" Margin="218,90,0,15" TextWrapping="Wrap" Width="25" Height="25" Foreground="{StaticResource primeiraCor}" TextAlignment="Center" FontWeight="Bold" Text="x" FontSize="18" Visibility="Hidden" Grid.Column="1"/>
+        <TextBlock x:Name="txt_fecha" HorizontalAlignment="Left" Margin="230,90,0,15" TextWrapping="Wrap" Width="25" Height="25" Foreground="{StaticResource primeiraCor}" TextAlignment="Center" FontWeight="Bold" Text="x" FontSize="18" Visibility="Hidden"/>
+        <Button x:Name="btn_ok" Content="Ok" Style="{StaticResource BotaoRosa}" Margin="98,90,97,20" Click="btn_ok_Click"/>
+
 
     </Grid>
 </Window>

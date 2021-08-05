@@ -27,7 +27,7 @@ namespace GTManute.Views
                 txt_principal.Text = principal;
                 txt_secundaria.Text = explicacao;
                 grid_explica.Visibility = Visibility.Visible;
-                btn_ok.Text = botao;
+                btn_ok.Content = botao;
                 btn_ok_segundo.Text = botao;
             }
             else
@@ -35,24 +35,31 @@ namespace GTManute.Views
                 txt_principal.Text = principal;
                 txt_secundaria.Text = explicacao;
                 grid_explica.Visibility = Visibility.Hidden;
-                btn_ok.Text = botao;
+                btn_ok.Content = botao;
                 btn_ok_segundo.Text = botao;
             }
         }
-        private void btn_ok_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void btn_ok1()
         {
             this.Close();
         }
-        private void btn_ok_segundo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
+       
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
 
             // Begin dragging the window
             this.DragMove();
+        }
+
+        private void btn_ok_segundo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_ok_Click(object sender, RoutedEventArgs e)
+        {
+            btn_ok1();
         }
     }
 }

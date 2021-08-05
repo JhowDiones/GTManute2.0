@@ -230,7 +230,7 @@ namespace GTManute.Views.Cadastro
             txt_telefone2.Text = telefone2;
             cmb_pagamento.Text = pagamento;
             cmb_uf.Text = uf;
-
+            btn_novo.Content = "Novo";
         }
 
         private async void carregando(int cod, bool full)
@@ -270,7 +270,7 @@ namespace GTManute.Views.Cadastro
             }
             catch
             {
-                btn_novo.Text = "Gravar";
+                btn_novo.Content = "Gravar";
             }
         }
 
@@ -283,7 +283,7 @@ namespace GTManute.Views.Cadastro
 
 
         }
-        private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_pesquisar()
         {
             string cidade = txt_pes_cidade.Text;
             string cnpj = txt_pes_cnpj.Text;
@@ -341,7 +341,7 @@ namespace GTManute.Views.Cadastro
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
         }
-        private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_excluir()
         {
             string retorno = MessageBox.Show("Deseja deletar este cadastro?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
@@ -361,11 +361,11 @@ namespace GTManute.Views.Cadastro
 
             }
         }
-        private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _Btn_Novo()
         {
-            if (btn_novo.Text == "Novo")
+            if (btn_novo.Content.ToString() == "Novo")
             {
-                btn_novo.Text = "Gravar";
+                btn_novo.Content = "Gravar";
                 Limpar();
                 grid_ultimas.ItemsSource = null;
             }
@@ -407,7 +407,7 @@ namespace GTManute.Views.Cadastro
                                     mensagem("Cadastro gravado com sucesso!", false, "", "Ok");
                                 
                                 
-                                btn_novo.Text = "Novo";
+                                btn_novo.Content = "Novo";
                                 carregando(0, true);
                                 });
                             }
@@ -429,7 +429,7 @@ namespace GTManute.Views.Cadastro
             }
         }
 
-        private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_alterar()
         {
             string retorno = MessageBox.Show("Deseja alterar este cadastro?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
@@ -491,6 +491,26 @@ namespace GTManute.Views.Cadastro
         private void txt_cnpj_LostFocus(object sender, RoutedEventArgs e)
         {
             setDoc(sender, e);
+        }
+
+        private void btn_novo_Click(object sender, RoutedEventArgs e)
+        {
+            _Btn_Novo();
+        }
+
+        private void btn_alterar_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_alterar();
+        }
+
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_excluir();
+        }
+
+        private void btn_pesquisar_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_pesquisar();
         }
     }
 }

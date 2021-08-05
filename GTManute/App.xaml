@@ -16,6 +16,32 @@
             <BitmapImage x:Key="Manutencao" UriSource="Res/Img/manutencao.png"/>
             <BitmapImage x:Key="veiculos" UriSource="Res/Img/veiculos.png"/>
             <BitmapImage x:Key="config_banco" UriSource="Res/Img/config.png"/>
+            <Style x:Key="BotaoRosa" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="{StaticResource SegundaCor}"/>
+                <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="5" Background="{StaticResource SegundaCor}" BorderThickness="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="Botaobranco" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="{StaticResource primeiraCor}"/>
+                <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" Background="{StaticResource primeiraCor}" BorderThickness="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

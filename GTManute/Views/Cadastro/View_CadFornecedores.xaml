@@ -123,7 +123,7 @@
                 <TextBox x:Name="txt_pes_endereco" HorizontalAlignment="Left" Height="23" Margin="0,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBox x:Name="txt_pes_cidade" HorizontalAlignment="Left" Height="23" Margin="140,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Rectangle Fill="{StaticResource primeiraCor}" HorizontalAlignment="Left" Height="25" Margin="441,40,0,0" RadiusY="10" RadiusX="10" Stroke="Transparent" VerticalAlignment="Top" Width="99"/>
-                <TextBlock x:Name="btn_pesquisar" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="441,40,0,0" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Top" Height="25" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="btn_pesquisar_MouseLeftButtonDown" />
+                <Button x:Name="btn_pesquisar" Foreground="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="441,40,0,0" Content="Pesquisar" VerticalAlignment="Top" Height="25" Width="99" FontWeight="Bold" FontSize="18" Click="btn_pesquisar_Click"/>
                 <TextBox x:Name="txt_pes_teltefone" HorizontalAlignment="Left" Height="23" Margin="280,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="1,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Endereço" VerticalAlignment="Top" Width="119"/>
                 <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="141,27,0,0" TextWrapping="Wrap" Foreground="{StaticResource primeiraCor}" Text="Cidade" VerticalAlignment="Top" Width="119"/>
@@ -137,12 +137,9 @@
             </Grid>
         </Grid>
         <Grid Height="50" Margin="35,0,35,10" VerticalAlignment="Bottom">
-            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="316,10,0,15"/>
-            <TextBlock x:Name="btn_alterar" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Alterar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="316,10,0,15" MouseLeftButtonDown="btn_alterar_MouseLeftButtonDown" />
-            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"/>
-            <TextBlock x:Name="btn_novo" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Novo" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment" MouseLeftButtonDown="btn_novo_MouseLeftButtonDown" />
-            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="420,10,0,15"/>
-            <TextBlock x:Name="btn_delete" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Excluir" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="420,10,0,15" MouseLeftButtonDown="btn_delete_MouseLeftButtonDown" />
+           <Button x:Name="btn_alterar" Style="{StaticResource BotaoRosa}" HorizontalAlignment="Left"  Content="Alterar" Width="99" FontWeight="Bold" FontSize="18" Margin="316,10,0,15"  Click="btn_alterar_Click" />
+            <Button x:Name="btn_novo"  HorizontalAlignment="Left" Style="{StaticResource BotaoRosa}"  Content="Novo" Width="99" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"  Click="btn_novo_Click" />
+            <Button x:Name="btn_delete" Style="{StaticResource BotaoRosa}" HorizontalAlignment="Left"  Content="Excluir" Width="99" FontWeight="Bold" FontSize="18" Margin="420,10,0,15" Click="btn_delete_Click" />
         </Grid>
 
 
