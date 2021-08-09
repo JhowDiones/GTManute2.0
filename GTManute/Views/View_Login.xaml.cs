@@ -238,7 +238,7 @@ namespace GTManute.Views
             this.Close();
         }
 
-        private async void btn_entrar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_entrar()
         {
             if (txt_usuario.Text != "" || txt_senha.ToString() != "" || txt_usuario.Text != null || txt_senha.ToString() != null || txt_usuario.Text != "Usuário" || txt_senha.ToString() != "Senha")
             {
@@ -303,6 +303,11 @@ namespace GTManute.Views
                dbAcessos.banco_controle banco = new dbAcessos.banco_controle();
             banco.ShowDialog();
             this.Close();
+        }
+
+        private void btn_entrar_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_entrar();
         }
     }
 }

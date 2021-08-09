@@ -218,11 +218,11 @@ namespace GTManute.Views.Lançamento
 
         }
 
-        private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_novo()
         {
-            if (btn_novo.Text == "Novo")
+            if (btn_novo.Content.ToString() == "Novo")
             {
-                btn_novo.Text = "Gravar";
+                btn_novo.Content = "Gravar";
                 Limpar();
                 grid_ultimas.ItemsSource = null;
             }
@@ -284,7 +284,7 @@ namespace GTManute.Views.Lançamento
                                     mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
 
 
-                                    btn_novo.Text = "Novo";
+                                    btn_novo.Content = "Novo";
                                     carregando(0, true);
                                 });
                             }
@@ -307,7 +307,7 @@ namespace GTManute.Views.Lançamento
             }
         }
 
-        private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_alterar()
         {
             String retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
@@ -381,9 +381,9 @@ namespace GTManute.Views.Lançamento
             }
         }
 
-        private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_deletar()
         {
-            string retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            string retorno = MessageBox.Show("Deseja apagar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
                 try
@@ -485,7 +485,7 @@ namespace GTManute.Views.Lançamento
                     abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.ID == cod).FirstOrDefault());
                 }
                 ID = abast.ID;
-                List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(5).ToList());
+                List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(20).ToList());
 
                 List<Ultimas> ultimas = new List<Ultimas>();
                 for (int i = 0; i < Listaabast.Count; i++)
@@ -508,7 +508,7 @@ namespace GTManute.Views.Lançamento
             }
             catch
             {
-                btn_novo.Text = "Gravar";
+                btn_novo.Content = "Gravar";
             }
         }
 
@@ -660,6 +660,21 @@ namespace GTManute.Views.Lançamento
         private void txt_hr_destino_LostFocus(object sender, RoutedEventArgs e)
         {
             setHora(sender, e);
+        }
+
+        private void btn_novo_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_novo();
+        }
+
+        private void btn_alterar_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_alterar();
+        }
+
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_deletar();
         }
     }
 

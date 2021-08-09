@@ -22,62 +22,122 @@
                     <Setter Property="OverridesDefaultStyle" Value="true"/>
                     <Setter Property="MinHeight" Value="23"/>
                     <Setter Property="MinWidth" Value="75"/>
-                    <Setter Property="Template">
+                <Setter Property="VerticalContentAlignment" Value="Top"/>
+                <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border 
           x:Name="Border"  
-          CornerRadius="5" 
+          CornerRadius="7" 
           BorderThickness="0"
+                                    
           Background="{StaticResource SegundaCor}"
           BorderBrush="Transparent">
                                     <ContentPresenter 
             Margin="2"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
+                                      
             RecognizesAccessKey="True"/>
                                 </Border>
+                            
                                 <ControlTemplate.Triggers>
                                 <Trigger Property="IsFocused" Value="true">
                                     <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TerceiraCor}" />
+                                    <Setter TargetName="Border" Property="BorderThickness" Value="1"/>
+                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=SegundaCor}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
                                 </Trigger>
                                 <Trigger Property="IsKeyboardFocused" Value="true">
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=SegundaCor}" />
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TerceiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
                                     </Trigger>
                                     <Trigger Property="IsDefaulted" Value="true">
                                     <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=SegundaCor}" />
-                                    </Trigger>
+                                    <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
+                                </Trigger>
                                     <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=SegundaCor}" />
-                                    </Trigger>
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TerceiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
+                                </Trigger>
                                     <Trigger Property="IsPressed" Value="true">
                                     <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=primeiraCor}" />
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=primeiraCor}" />
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=SegundaCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                                </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=SegundaCor}" />
                                     <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=SegundaCor}" />
-                                    <Setter Property="Foreground" Value="{StaticResource ResourceKey=SegundaCor}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource ResourceKey=primeiraCor}"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
-           
-            <Style x:Key="Botaobranco" TargetType="{x:Type Button}">
-                <Setter Property="Background" Value="{StaticResource primeiraCor}"/>
+
+            <Style x:Key="BotaoBranco" TargetType="{x:Type Button}">
+
+                <Setter Property="SnapsToDevicePixels" Value="true"/>
+                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                <Setter Property="MinHeight" Value="23"/>
+                <Setter Property="MinWidth" Value="75"/>
                 <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="10" Background="{StaticResource primeiraCor}" BorderThickness="0">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Border 
+          x:Name="Border"  
+          CornerRadius="7" 
+          BorderThickness="0"
+          Background="{StaticResource primeiraCor}"
+          BorderBrush="Transparent">
+                                <ContentPresenter 
+            Margin="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+                                      
+            RecognizesAccessKey="True"/>
                             </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TerceiraCor}" />
+                                    <Setter TargetName="Border" Property="BorderThickness" Value="1"/>
+                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=primeiraCor}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TerceiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                                </Trigger>
+                                <Trigger Property="IsDefaulted" Value="true">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=primeiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TerceiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource SegundaCor}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=SegundaCor}" />
+                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=primeiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource primeiraCor}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=primeiraCor}" />
+                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ResourceKey=primeiraCor}" />
+                                    <Setter Property="Foreground" Value="{StaticResource ResourceKey=SegundaCor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -65,7 +65,7 @@
                             <TextBox x:Name="txt_destino" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
                             <Label x:Name="label1_Copy2" Content="UF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="278,59,0,0"/>
                             <ComboBox x:Name="cmb_ufdestino" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="278,85,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5"/>
-                            <Button x:Name="btn_calcular" Content="Ver distância" Margin="129,139,129,0" VerticalAlignment="Top" Foreground="{StaticResource primeiraCor}" Background="{StaticResource SegundaCor}" Click="btn_calcular_Click"/>
+                            <Button x:Name="btn_calcular" Style="{StaticResource BotaoRosa}" Content="Ver distância" Margin="129,139,129,0" VerticalAlignment="Top" Click="btn_calcular_Click"/>
                             <Label x:Name="label1_Copy1" Content="Distância" HorizontalAlignment="Left" VerticalAlignment="Top" Width="259" Margin="0,113,0,0"/>
                             <TextBox x:Name="txt_distancia" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TextAlignment="Right" RenderTransformOrigin="0.5,0.5"/>
 
@@ -116,12 +116,9 @@
             </Grid>
         </Grid>
         <Grid Height="50" Margin="35,0,35,10" VerticalAlignment="Bottom">
-            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="316,10,0,15"/>
-            <TextBlock x:Name="btn_alterar" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Alterar" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="316,10,0,15" MouseLeftButtonDown="btn_alterar_MouseLeftButtonDown" />
-            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"/>
-            <TextBlock x:Name="btn_novo" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Novo" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment" MouseLeftButtonDown="btn_novo_MouseLeftButtonDown" />
-            <Rectangle Fill="{StaticResource SegundaCor}" HorizontalAlignment="Left" RadiusY="10" RadiusX="10" Stroke="Transparent" Width="99" Margin="420,10,0,15"/>
-            <TextBlock x:Name="btn_delete" Foreground="{StaticResource primeiraCor}" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Excluir" Width="99" TextAlignment="Center" FontWeight="Bold" FontSize="18" Margin="420,10,0,15" MouseLeftButtonDown="btn_delete_MouseLeftButtonDown" />
+            <Button x:Name="btn_alterar" Style="{StaticResource BotaoRosa}" HorizontalAlignment="Left"  Content="Alterar" Width="99"  FontWeight="Bold" FontSize="18" Margin="316,10,0,15"  Click="btn_alterar_Click" />
+            <Button x:Name="btn_novo" Style="{StaticResource BotaoRosa}" HorizontalAlignment="Left"  Content="Novo" Width="99" FontWeight="Bold" FontSize="18" Margin="212,10,0,15" d:LayoutOverrides="HorizontalAlignment"  Click="btn_novo_Click" />
+            <Button x:Name="btn_delete" Style="{StaticResource BotaoRosa}" HorizontalAlignment="Left"  Content="Excluir" Width="99" FontWeight="Bold" FontSize="18" Margin="420,10,0,15"  Click="btn_delete_Click" />
         </Grid>
 
 

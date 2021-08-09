@@ -170,7 +170,7 @@ namespace GTManute.Views.Cadastro
             }
             catch
             {
-                btn_novo.Text = "Gravar";
+                btn_novo.Content = "Gravar";
             }
         }
 
@@ -235,7 +235,7 @@ namespace GTManute.Views.Cadastro
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
         }
-        private async void btn_delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_deletar()
         {
             string retorno = MessageBox.Show("Deseja deletar este cadastro?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
@@ -255,11 +255,11 @@ namespace GTManute.Views.Cadastro
 
             }
         }
-        private async void btn_novo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_novo()
         {
-            if (btn_novo.Text == "Novo")
+            if (btn_novo.Content.ToString() == "Novo")
             {
-                btn_novo.Text = "Gravar";
+                btn_novo.Content = "Gravar";
                 Limpar();
                 grid_ultimas.ItemsSource = null;
             }
@@ -294,7 +294,7 @@ namespace GTManute.Views.Cadastro
                                     mensagem("Cadastro gravado com sucesso!", false, "", "Ok");
 
 
-                                    btn_novo.Text = "Novo";
+                                    btn_novo.Content = "Novo";
                                     carregando(0, true);
                                 });
                             }
@@ -317,7 +317,7 @@ namespace GTManute.Views.Cadastro
             }
         }
 
-        private async void btn_alterar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void _btn_alterar()
         {
             string retorno = MessageBox.Show("Deseja alterar este cadastro?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
@@ -367,6 +367,21 @@ namespace GTManute.Views.Cadastro
         {
             mensagem("Veja a distância no site que abrirá no seu navegador web e coloque no campo distância para continuar!", false, "", "OK");
             System.Diagnostics.Process.Start("https://pt.distance.to/"+txt_partida.Text+"-"+cmb_ufpartida.Text+"/"+txt_destino.Text+"-"+cmb_ufdestino.Text);
+        }
+
+        private void btn_novo_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_novo();
+        }
+
+        private void btn_alterar_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_alterar();
+        }
+
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            _btn_deletar();
         }
     }
 }
