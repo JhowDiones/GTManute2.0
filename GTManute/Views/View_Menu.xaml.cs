@@ -17,6 +17,7 @@ using GTManute.Properties;
 using GTManute.Views.Cadastro;
 using GTManute.Views.CompanyControl;
 using GTManute.Views.Lançamento;
+using Microsoft.Reporting.WinForms;
 
 namespace GTManute.Views
 {
@@ -37,6 +38,7 @@ namespace GTManute.Views
             db = new dbManuteDataContext(cfgdb.conexao);
             txt_validade.Content = data;
             txt_empresa.Content = cfgdb.NomeEmpresa;
+           Empresa = cfgdb.empresa;
             if (validade == false)
             {
                 btn_cadastro.IsEnabled = false;
@@ -142,6 +144,21 @@ namespace GTManute.Views
         {
             View_Rotas acesso = new View_Rotas();
             acesso.ShowDialog();
+        }
+
+        private async void ReportViewer_Load(object sender, EventArgs e)
+        {
+            string mesatual = DateTime.Now.ToShortDateString();
+            string dias = DateTime.Now.Day.ToString("#0");
+           mesatual= mesatual.Replace(dias, "");
+            var dadosRelatorio = new List<db_abast>();
+            dadosRelatorio = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.DT_CHEGADA.Contains(mesatual)).ToList()) ;
+            var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("Rel_home_Abast", dadosRelatorio);
+            Rel_Abast.LocalReport.DataSources.Clear();
+            Rel_Abast.LocalReport.DataSources.Add(dataSource);
+           Rel_Abast.LocalReport.ReportEmbeddedResource = "GTManute.Relatorios.Rel_Home_Abast.rdlc";
+
+            Rel_Abast.RefreshReport();
         }
     }
 }

@@ -86,3 +86,7 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Newtonsoft
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Rotas.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Rotas.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\RdlCompile.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\RdlCompile.compiled
