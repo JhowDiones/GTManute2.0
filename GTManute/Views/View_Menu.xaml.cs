@@ -153,10 +153,11 @@ namespace GTManute.Views
            mesatual= mesatual.Replace(dias, "");
             var dadosRelatorio = new List<db_abast>();
             dadosRelatorio = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.DT_CHEGADA.Contains(mesatual)).ToList()) ;
-            var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("Rel_home_Abast", dadosRelatorio);
+            
             Rel_Abast.LocalReport.DataSources.Clear();
+            var dataSource = new ReportDataSource("DataSet1", dadosRelatorio);
             Rel_Abast.LocalReport.DataSources.Add(dataSource);
-           Rel_Abast.LocalReport.ReportEmbeddedResource = "GTManute.Relatorios.Rel_Home_Abast.rdlc";
+            Rel_Abast.LocalReport.ReportEmbeddedResource = "GTManute.Relatorios.Rel_Home_Abast.rdlc";
 
             Rel_Abast.RefreshReport();
         }
