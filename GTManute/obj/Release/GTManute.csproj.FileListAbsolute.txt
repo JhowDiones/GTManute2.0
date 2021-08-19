@@ -82,3 +82,5 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadast
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Rotas.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\RdlCompile.cache
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\RdlCompile.compiled
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Manut.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Manut.g.cs

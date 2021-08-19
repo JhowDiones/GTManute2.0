@@ -22,7 +22,7 @@ namespace dbAcessos
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_17")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="GtManute")]
 	public partial class dbManuteDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -74,7 +74,11 @@ namespace dbAcessos
     partial void DeleteValidar(Validar instance);
     #endregion
 		
-		
+		public dbManuteDataContext() : 
+				base(global::dbAcessos.Properties.Settings.Default.db_17ConnectionString, mappingSource)
+		{
+			OnCreated();
+		}
 		
 		public dbManuteDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -3264,7 +3268,7 @@ namespace dbAcessos
 		
 		private string _Empresa;
 		
-		private string _MARCA;
+		private string _PESTEPE;
 		
 		private string _P1;
 		
@@ -3278,7 +3282,11 @@ namespace dbAcessos
 		
 		private string _P6;
 		
-		private string _PESTEPE;
+		private string _MARCA;
+		
+		private string _Tag;
+		
+		private string _Obs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3324,8 +3332,8 @@ namespace dbAcessos
     partial void OnDT_LANCAChanged();
     partial void OnEmpresaChanging(string value);
     partial void OnEmpresaChanged();
-    partial void OnMARCAChanging(string value);
-    partial void OnMARCAChanged();
+    partial void OnPESTEPEChanging(string value);
+    partial void OnPESTEPEChanged();
     partial void OnP1Changing(string value);
     partial void OnP1Changed();
     partial void OnP2Changing(string value);
@@ -3338,8 +3346,12 @@ namespace dbAcessos
     partial void OnP5Changed();
     partial void OnP6Changing(string value);
     partial void OnP6Changed();
-    partial void OnPESTEPEChanging(string value);
-    partial void OnPESTEPEChanged();
+    partial void OnMARCAChanging(string value);
+    partial void OnMARCAChanged();
+    partial void OnTagChanging(string value);
+    partial void OnTagChanged();
+    partial void OnObsChanging(string value);
+    partial void OnObsChanged();
     #endregion
 		
 		public db_frota()
@@ -3747,22 +3759,22 @@ namespace dbAcessos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MARCA", DbType="NVarChar(50)")]
-		public string MARCA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PESTEPE", DbType="NVarChar(10)")]
+		public string PESTEPE
 		{
 			get
 			{
-				return this._MARCA;
+				return this._PESTEPE;
 			}
 			set
 			{
-				if ((this._MARCA != value))
+				if ((this._PESTEPE != value))
 				{
-					this.OnMARCAChanging(value);
+					this.OnPESTEPEChanging(value);
 					this.SendPropertyChanging();
-					this._MARCA = value;
-					this.SendPropertyChanged("MARCA");
-					this.OnMARCAChanged();
+					this._PESTEPE = value;
+					this.SendPropertyChanged("PESTEPE");
+					this.OnPESTEPEChanged();
 				}
 			}
 		}
@@ -3887,22 +3899,62 @@ namespace dbAcessos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PESTEPE", DbType="NVarChar(10)")]
-		public string PESTEPE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MARCA", DbType="NVarChar(50)")]
+		public string MARCA
 		{
 			get
 			{
-				return this._PESTEPE;
+				return this._MARCA;
 			}
 			set
 			{
-				if ((this._PESTEPE != value))
+				if ((this._MARCA != value))
 				{
-					this.OnPESTEPEChanging(value);
+					this.OnMARCAChanging(value);
 					this.SendPropertyChanging();
-					this._PESTEPE = value;
-					this.SendPropertyChanged("PESTEPE");
-					this.OnPESTEPEChanged();
+					this._MARCA = value;
+					this.SendPropertyChanged("MARCA");
+					this.OnMARCAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tag", DbType="NVarChar(50)")]
+		public string Tag
+		{
+			get
+			{
+				return this._Tag;
+			}
+			set
+			{
+				if ((this._Tag != value))
+				{
+					this.OnTagChanging(value);
+					this.SendPropertyChanging();
+					this._Tag = value;
+					this.SendPropertyChanged("Tag");
+					this.OnTagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Obs", DbType="NVarChar(MAX)")]
+		public string Obs
+		{
+			get
+			{
+				return this._Obs;
+			}
+			set
+			{
+				if ((this._Obs != value))
+				{
+					this.OnObsChanging(value);
+					this.SendPropertyChanging();
+					this._Obs = value;
+					this.SendPropertyChanged("Obs");
+					this.OnObsChanged();
 				}
 			}
 		}

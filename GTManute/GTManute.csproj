@@ -90,6 +90,9 @@
     <Compile Include="Views\CompanyControl\Control_Acesso.xaml.cs">
       <DependentUpon>Control_Acesso.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Lançamento\View_Manut.xaml.cs">
+      <DependentUpon>View_Manut.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Lançamento\View_Abast.xaml.cs">
       <DependentUpon>View_Abast.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
     <Page Include="Views\CompanyControl\Control_Acesso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Lançamento\View_Manut.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Lançamento\View_Abast.xaml">
       <SubType>Designer</SubType>

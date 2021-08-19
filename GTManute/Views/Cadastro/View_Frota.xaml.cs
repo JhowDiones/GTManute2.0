@@ -117,16 +117,20 @@ namespace GTManute.Views.Cadastro
             txt_renavan.Text = "";
             cmb_tipoVeiculo.Text = "";
             cmb_transmissao.Text = "";
+            txt_tag.Text = "";
+            txt_obs.Text = "";
 
         }
         private void preencher(string ano, string chassis, string cor, string eixos, string marca, string modelo,
             string placa, string potencia, string p1, string p2, string p3, string p4, string p5, string p6, string pestepe,
-           string renavan, string tipoveiculo, string transmissao)
+           string renavan, string tipoveiculo, string transmissao,string tag, string obs)
         {
             Limpar();
             txt_ano.Text = ano;
             txt_chassis.Text = chassis;
             txt_cor.Text = cor;
+            txt_obs.Text = obs;
+            txt_tag.Text = tag;
             txt_eixos.Text = eixos;
             txt_marca.Text = marca;
             txt_modelo.Text = modelo;
@@ -193,7 +197,7 @@ namespace GTManute.Views.Cadastro
 
 
             preencher(abast.ANO_FAB, abast.CHASSIS, abast.COR, abast.EIXOS, abast.MARCA, abast.MODELO, abast.PLACA,
-                abast.POTENCIA, abast.P1, abast.P2, abast.P3, abast.P4, abast.P5, abast.P6, abast.PESTEPE, abast.RENAVAN, abast.TIPO_FROTA, abast.TIPO_CARRO);
+                abast.POTENCIA, abast.P1, abast.P2, abast.P3, abast.P4, abast.P5, abast.P6, abast.PESTEPE, abast.RENAVAN, abast.TIPO_FROTA, abast.TIPO_CARRO,abast.Tag,abast.Obs);
 
 
         }
@@ -302,6 +306,8 @@ namespace GTManute.Views.Cadastro
                         _abast.MODELO = txt_modelo.Text;
                         _abast.PLACA = txt_placa.Text;
                         _abast.POTENCIA = txt_potencia.Text;
+                        _abast.Tag = txt_tag.Text;
+                        _abast.Obs = txt_obs.Text;
                         _abast.P1 = txt_p_1.Text;
                         _abast.P2 = txt_p_2.Text;
                         _abast.P3 = txt_p_3.Text;
@@ -373,6 +379,8 @@ namespace GTManute.Views.Cadastro
                 _abast.P3 = txt_p_3.Text;
                 _abast.P4 = txt_p_4.Text;
                 _abast.P5 = txt_p_5.Text;
+                _abast.Tag = txt_tag.Text;
+                _abast.Obs = txt_obs.Text;
                 _abast.P6 = txt_p_6.Text;
                 _abast.PESTEPE = txt_p_estepe.Text;
                 _abast.RENAVAN = txt_renavan.Text;
@@ -489,6 +497,11 @@ namespace GTManute.Views.Cadastro
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
             _btn_delete();
+        }
+
+        private void txt_modelo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -93,3 +93,5 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\RdlCompile.com
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.compiled
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Manut.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Manut.g.cs
