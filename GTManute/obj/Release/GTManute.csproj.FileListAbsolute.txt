@@ -74,3 +74,11 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Compan
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Control_Acesso.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Company_Control.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\CompanyControl\Control_Acesso.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\Microsoft.ReportViewer.WinForms.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\Newtonsoft.Json.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\Newtonsoft.Json.xml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Rotas.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Rotas.baml
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\RdlCompile.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\RdlCompile.compiled

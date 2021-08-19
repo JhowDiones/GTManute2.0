@@ -136,7 +136,7 @@
 
             </Grid>
         </Grid>
-        <WindowsFormsHost HorizontalAlignment="Left"  Height="318" Margin="124,115,0,0" VerticalAlignment="Top" Width="659">
+        <WindowsFormsHost Visibility="Hidden" HorizontalAlignment="Left"  Height="318" Margin="124,115,0,0" VerticalAlignment="Top" Width="659">
             <rv:ReportViewer x:Name="Rel_Abast" Load="ReportViewer_Load" AutoSize="True" />
         </WindowsFormsHost>
 
