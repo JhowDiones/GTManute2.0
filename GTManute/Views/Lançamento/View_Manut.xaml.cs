@@ -18,20 +18,11 @@ namespace GTManute.Views.Lançamento
     public partial class View_Manut : Window
     {
 
-        private class Ultimas
-        {
-            public string Motorista { get; set; }
-            public string KmRodado { get; set; }
-            public string Média { get; set; }
-            public string DTPartida { get; set; }
-        }
-
-
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
-        List<db_abast> Listpesquisa = new List<db_abast>();
+        List<db_> Listpesquisa = new List<db_abast>();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
