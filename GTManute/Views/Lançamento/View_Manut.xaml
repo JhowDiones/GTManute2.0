@@ -92,7 +92,7 @@
                             <TextBox x:Name="txt_itemDesconto" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="487,26,105,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right"/>
                             <TextBox x:Name="txt_itemValor" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TextAlignment="Right"/>
                             <CheckBox x:Name="chq_programada" Content="Proxima manuteção programada" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top"/>
-                            <Grid Margin="0,69,0,25" x:Name="_manutprogramada" Visibility="Hidden">
+                            <Grid Margin="0,69,0,25" x:Name="_manutprogramada" Visibility="Visible">
 
                                 <TextBox x:Name="txt_progrmadoKm" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="100"/>
                                 <TextBox x:Name="txt_ProgrmadoObs" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="80" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="698"/>
