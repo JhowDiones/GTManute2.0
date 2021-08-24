@@ -4353,6 +4353,16 @@ namespace dbAcessos
 		
 		private string _Empresa;
 		
+		private string _MProgramada;
+		
+		private string _M_Km_Programada;
+		
+		private string _M_DTR_Programada;
+		
+		private string _M_DT_Programada;
+		
+		private string _M_OBS_Programada;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4387,6 +4397,16 @@ namespace dbAcessos
     partial void OnDESCONTOChanged();
     partial void OnEmpresaChanging(string value);
     partial void OnEmpresaChanged();
+    partial void OnMProgramadaChanging(string value);
+    partial void OnMProgramadaChanged();
+    partial void OnM_Km_ProgramadaChanging(string value);
+    partial void OnM_Km_ProgramadaChanged();
+    partial void OnM_DTR_ProgramadaChanging(string value);
+    partial void OnM_DTR_ProgramadaChanged();
+    partial void OnM_DT_ProgramadaChanging(string value);
+    partial void OnM_DT_ProgramadaChanged();
+    partial void OnM_OBS_ProgramadaChanging(string value);
+    partial void OnM_OBS_ProgramadaChanged();
     #endregion
 		
 		public db_manu()
@@ -4690,6 +4710,106 @@ namespace dbAcessos
 					this._Empresa = value;
 					this.SendPropertyChanged("Empresa");
 					this.OnEmpresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MProgramada", DbType="NVarChar(50)")]
+		public string MProgramada
+		{
+			get
+			{
+				return this._MProgramada;
+			}
+			set
+			{
+				if ((this._MProgramada != value))
+				{
+					this.OnMProgramadaChanging(value);
+					this.SendPropertyChanging();
+					this._MProgramada = value;
+					this.SendPropertyChanged("MProgramada");
+					this.OnMProgramadaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_M_Km_Programada", DbType="NVarChar(50)")]
+		public string M_Km_Programada
+		{
+			get
+			{
+				return this._M_Km_Programada;
+			}
+			set
+			{
+				if ((this._M_Km_Programada != value))
+				{
+					this.OnM_Km_ProgramadaChanging(value);
+					this.SendPropertyChanging();
+					this._M_Km_Programada = value;
+					this.SendPropertyChanged("M_Km_Programada");
+					this.OnM_Km_ProgramadaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_M_DTR_Programada", DbType="NVarChar(50)")]
+		public string M_DTR_Programada
+		{
+			get
+			{
+				return this._M_DTR_Programada;
+			}
+			set
+			{
+				if ((this._M_DTR_Programada != value))
+				{
+					this.OnM_DTR_ProgramadaChanging(value);
+					this.SendPropertyChanging();
+					this._M_DTR_Programada = value;
+					this.SendPropertyChanged("M_DTR_Programada");
+					this.OnM_DTR_ProgramadaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_M_DT_Programada", DbType="NVarChar(50)")]
+		public string M_DT_Programada
+		{
+			get
+			{
+				return this._M_DT_Programada;
+			}
+			set
+			{
+				if ((this._M_DT_Programada != value))
+				{
+					this.OnM_DT_ProgramadaChanging(value);
+					this.SendPropertyChanging();
+					this._M_DT_Programada = value;
+					this.SendPropertyChanged("M_DT_Programada");
+					this.OnM_DT_ProgramadaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_M_OBS_Programada", DbType="NVarChar(50)")]
+		public string M_OBS_Programada
+		{
+			get
+			{
+				return this._M_OBS_Programada;
+			}
+			set
+			{
+				if ((this._M_OBS_Programada != value))
+				{
+					this.OnM_OBS_ProgramadaChanging(value);
+					this.SendPropertyChanging();
+					this._M_OBS_Programada = value;
+					this.SendPropertyChanged("M_OBS_Programada");
+					this.OnM_OBS_ProgramadaChanged();
 				}
 			}
 		}

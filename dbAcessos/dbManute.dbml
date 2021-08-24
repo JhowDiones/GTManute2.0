@@ -229,6 +229,11 @@
       <Column Name="KM_MANUTENCAO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DESCONTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Empresa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MProgramada" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="M_Km_Programada" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="M_DTR_Programada" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="M_DT_Programada" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="M_OBS_Programada" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.db_manu_log" Member="db_manu_log">

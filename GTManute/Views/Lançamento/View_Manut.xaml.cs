@@ -15,12 +15,21 @@ namespace GTManute.Views.Lançamento
     /// </summary>
     public partial class View_Manut : Window
     {
+        private class Ultimas
+        {
+            public int ID { get; set; }
+            public string Descrição { get; set; }
+            public string Quant { get; set; }
+            public string Desconto { get; set; }
+            public string Total { get; set; }
+        }
 
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
         List<db_manu> Listpesquisa = new List<db_manu>();
+        List<db_manu> pecaslista = new List<db_manu>();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
@@ -144,11 +153,11 @@ namespace GTManute.Views.Lançamento
                 Application.Current.Dispatcher.Invoke((Action)async delegate
                 {
 
-                    List<string> pla = await Task.FromResult<List<string>>(db.db_frota.Where(a => a.Empresa == Empresa).OrderBy(a => a.PLACA).Select(a=>a.PLACA).Distinct().ToList());
-                    List<string> moto = await Task.FromResult<List<string>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).Select(a=>a.NOME).Distinct().ToList());
-                    List<string> forn = await Task.FromResult<List<string>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).Where(a => a.Empresa == Empresa).Select(a=>a.RAZAO_SOCIAL).Distinct().ToList());
+                    List<string> pla = await Task.FromResult<List<string>>(db.db_frota.Where(a => a.Empresa == Empresa).OrderBy(a => a.PLACA).Select(a => a.PLACA).Distinct().ToList());
+                    List<string> moto = await Task.FromResult<List<string>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).Select(a => a.NOME).Distinct().ToList());
+                    List<string> forn = await Task.FromResult<List<string>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).Where(a => a.Empresa == Empresa).Select(a => a.RAZAO_SOCIAL).Distinct().ToList());
                     List<string> peca = await Task.FromResult<List<string>>(db.db_manu.OrderBy(a => a.DESCRICAO).Where(a => a.Empresa == Empresa).Select(a => a.DESCRICAO).Distinct().ToList());
-                    
+
                     cmb_fornecedor.ItemsSource = forn;
                     cmb_motorista.ItemsSource = moto;
                     cmb_ItemDesc.ItemsSource = peca;
@@ -253,32 +262,32 @@ namespace GTManute.Views.Lançamento
             String retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
-                db_abast _abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
+                db_manu_log _abast = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.COD == ID).FirstOrDefault());
 
-                //_abast.AJUDANTE1 = cmb_1ajudante.Text;
-                //_abast.AJUDANTE2 = cmb_2ajudante.Text;
-                //_abast.DE = cmb_partida.Text;
-                //_abast.DESPESA_ALI = txt_desp_alimentacao.Text;
-                //_abast.DESPESA_COMB = txt_valor.Text;
-                //_abast.DESPESA_OUTRAS = txt_outras_desp.Text;
-                //_abast.DESPESA_PERN = txt_desp_pernoite.Text;
-                //_abast.DT_CHEGADA = txt_dt_destino.Text;
-                //_abast.DT_PARTIDA = txt_dt_partida.Text;
-                //_abast.Empresa = Empresa;
-                //_abast.PLACA = cmb_veiculo.Text;
-                //_abast.T_COMBUSTIVEL = cmb_combustivel.Text;
-                //_abast.FORNECEDOR = cmb_fornecedor.Text;
-                //_abast.HORA_CHEGADA = txt_hr_destino.Text;
-                //_abast.HORA_PARTIDA = txt_hr_partida.Text;
-                //_abast.KM_CHEGADA = txt_km_destino.Text;
-                //_abast.KM_PARTIDA = txt_km_inicial.Text;
-                //_abast.LITRAGEM = txt_litragem.Text;
-                //_abast.MOTORISTA = cmb_motorista.Text;
-                //_abast.N_DOC = txt_doc.Text;
-                //_abast.PARA = cmb_destino.Text;
-                //_abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
-                //_abast.USUARIO = Usuario;
-                //double valor=0;
+                _abast.AJUDANTE1 = cmb_1ajudante.Text;
+                _abast.AJUDANTE2 = cmb_2ajudante.Text;
+                _abast.DE = cmb_partida.Text;
+                _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
+                _abast.DESPESA_COMB = txt_valor.Text;
+                _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
+                _abast.DESPESA_PERN = txt_desp_pernoite.Text;
+                _abast.DT_CHEGADA = txt_dt_destino.Text;
+                _abast.DT_PARTIDA = txt_dt_partida.Text;
+                _abast.Empresa = Empresa;
+                _abast.PLACA = cmb_veiculo.Text;
+                _abast.T_COMBUSTIVEL = cmb_combustivel.Text;
+                _abast.FORNECEDOR = cmb_fornecedor.Text;
+                _abast.HORA_CHEGADA = txt_hr_destino.Text;
+                _abast.HORA_PARTIDA = txt_hr_partida.Text;
+                _abast.KM_CHEGADA = txt_km_destino.Text;
+                _abast.KM_PARTIDA = txt_km_inicial.Text;
+                _abast.LITRAGEM = txt_litragem.Text;
+                _abast.MOTORISTA = cmb_motorista.Text;
+                _abast.N_DOC = txt_doc.Text;
+                _abast.PARA = cmb_destino.Text;
+                _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
+                _abast.USUARIO = Usuario;
+                double valor = 0;
                 try
                 {
                     double combustivel = 0;
@@ -324,13 +333,14 @@ namespace GTManute.Views.Lançamento
 
         private async void _btn_deletar()
         {
-            string retorno = MessageBox.Show("Deseja apagar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            string retorno = MessageBox.Show("Deseja apagar esta manutenção?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
                 try
                 {
-                    db_abast abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.ID == ID).FirstOrDefault());
-                    db.db_abast.DeleteOnSubmit(abast);
+                    db_manu_log abast = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.COD == ID).FirstOrDefault());
+                    db.db_manu_log.DeleteOnSubmit(abast);
+                    db.db_manu.DeleteAllOnSubmit(pecaslista);
                     db.SubmitChanges();
                     Limpar();
                     carregando(ID - 1, true);
@@ -347,67 +357,44 @@ namespace GTManute.Views.Lançamento
         }
         private void Limpar()
         {
-           txt.Text = "";
-          txt_desp_pernoite.Text = "";
+            txt_calcDesconto.Text = "";
+            txt_calcTotal.Text = "";
+            txt_data.Text = "";
             txt_doc.Text = "";
-            txt_dt_destino.Text = "";
-            txt_dt_partida.Text = "";
-            txt_hr_destino.Text = "";
-            txt_hr_partida.Text = "";
-            txt_km_destino.Text = "";
-            txt_km_inicial.Text = "";
-            txt_litragem.Text = "";
-            txt_outras_desp.Text = "";
+            txt_itemDesconto.Text = "";
+            txt_itemQuant.Text = "";
+            txt_itemValor.Text = "";
+            txt_km.Text = "";
+            txt_ProgrmadoObs.Text = "";
+            txt_progrmadoKm.Text = "";
 
-            cmb_1ajudante.Text = "";
-            cmb_2ajudante.Text = "";
-            cmb_destino.Text = "";
             cmb_fornecedor.Text = "";
+            cmb_ItemDesc.Text = "";
             cmb_motorista.Text = "";
-            cmb_partida.Text = "";
             cmb_veiculo.Text = "";
 
-            txt_res_km.Text = "";
-            txt_res_media.Text = "";
-            txt_res_unitario.Text = "";
-            txt_valor.Text = "";
-
-
         }
-        private void preencher(string despAlimentacao, string despPernoite, string doc, string dtdestino, string dtpartida,
-            string hrdestino, string hrpartida, string kmdestino, string kmpartida, string litragem, string outrasdesp, string valor,
-             string ajudante1, string ajudante2, string destino, string fornecedor, string motorista,
-    string partida, string veiculo, string combustivelT)
+        private void preencher(db_manu listamanu, db_manu_log logmanu)
         {
             Limpar();
-            //txt_desp_alimentacao.Text = despAlimentacao;
-            //txt_desp_pernoite.Text = despPernoite;
-            //txt_doc.Text = doc;
-            //txt_dt_destino.Text = dtdestino;
-            //txt_dt_partida.Text = dtpartida;
-            //txt_hr_destino.Text = hrdestino;
-            //txt_hr_partida.Text = hrpartida;
-            //txt_km_destino.Text = kmdestino;
-            //txt_km_inicial.Text = kmpartida;
-            //txt_litragem.Text = litragem;
-            //txt_outras_desp.Text = outrasdesp;
-            //cmb_combustivel.Text = combustivelT;
-            //cmb_1ajudante.Text = ajudante1;
-            //cmb_2ajudante.Text = ajudante2;
-            //cmb_destino.Text = destino;
-            //cmb_fornecedor.Text = fornecedor;
-            //cmb_motorista.Text = motorista;
-            //cmb_partida.Text = partida;
-            //cmb_veiculo.Text = veiculo;
-            //txt_valor.Text = valor;
+            txt_calcDesconto.Text = logmanu.Desconto;
+            txt_calcTotal.Text = logmanu.VALOR_TT;
+            txt_data.Text = logmanu.DT_NF;
+            txt_doc.Text = logmanu.NR_NF;
+            txt_itemDesconto.Text = listamanu[0].DESCONTO;
+            txt_itemQuant.Text = listamanu[0].QUANTIDADE;
+            txt_itemValor.Text = listamanu[0].VALOR;
+            txt_km.Text = logmanu.km_manutencao;
+            if (listamanu[0].MProgramada == "Programada")
+            {
+                txt_ProgrmadoObs.Text = listamanu[0].M_OBS_Programada;
+                txt_progrmadoKm.Text = listamanu[0].M_Km_Programada;
+            }
 
-            //double kmrestante = double.Parse(kmdestino) - double.Parse(kmpartida);
-            //double media = kmrestante / double.Parse(litragem);
-            //valor = valor.Replace("R$ ", "");
-            //double unitario = double.Parse(valor) / double.Parse(litragem);
-            //txt_res_km.Text = kmrestante.ToString("N2");
-            //txt_res_media.Text = media.ToString("N2");
-            //txt_res_unitario.Text = unitario.ToString("N2");
+            cmb_fornecedor.Text = logmanu.FORNECEDOR;
+            cmb_ItemDesc.Text = listamanu[0].DESCRICAO;
+            cmb_motorista.Text = logmanu.MOTORISTA;
+            cmb_veiculo.Text = logmanu.PLACA;
 
 
         }
@@ -416,35 +403,37 @@ namespace GTManute.Views.Lançamento
         {
             try
             {
-                db_abast abast = new db_abast();
+                db_manu_log manulog = new db_manu_log();
                 if (cod == 0)
                 {
-                    abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.ID).FirstOrDefault());
+                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.NR_NF).ToList());
                 }
                 else
                 {
-                    abast = await Task.FromResult<db_abast>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.ID == cod).FirstOrDefault());
+                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
+                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.NR_NF).ToList());
                 }
-                ID = abast.ID;
-                List<db_abast> Listaabast = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.PLACA == abast.PLACA).Where(a => a.DE == abast.DE).Where(a => a.PARA == abast.PARA).OrderByDescending(a => a.ID).Take(20).ToList());
+                ID = manulog.COD;
 
                 List<Ultimas> ultimas = new List<Ultimas>();
-                for (int i = 0; i < Listaabast.Count; i++)
+                for (int i = 0; i < pecaslista.Count; i++)
                 {
                     Ultimas ult = new Ultimas();
 
-                    ult.Motorista = Listaabast[i].MOTORISTA;
-                    ult.KmRodado = (double.Parse(Listaabast[i].KM_CHEGADA) - double.Parse(Listaabast[i].KM_PARTIDA)).ToString("N2");
-                    ult.Média = (double.Parse(ult.KmRodado) / double.Parse(Listaabast[i].LITRAGEM)).ToString("N2");
-                    ult.DTPartida = Listaabast[i].DT_PARTIDA;
+                    ult.ID = pecaslista[i].COD;
+                    ult.Desconto = pecaslista[i].DESCONTO;
+                    ult.Descrição = pecaslista[i].DESCRICAO;
+                    ult.Quant = pecaslista[i].QUANTIDADE;
+                    ult.Total = pecaslista[i].VALOR;
                     ultimas.Add(ult);
 
                 }
-                grid_ultimas.ItemsSource = ultimas;
+                grid_itens.ItemsSource = ultimas;
 
                 if (full == true)
                 {
-                    carregar(abast);
+                    carregar(manulog, pecaslista[0]);
                 }
             }
             catch
@@ -453,32 +442,29 @@ namespace GTManute.Views.Lançamento
             }
         }
 
-        private void carregar(db_abast abast)
+        private void carregar(db_manu_log log, db_manu _db_manu)
         {
 
 
-            preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
-                abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA,
-                abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA, abast.T_COMBUSTIVEL);
+            preencher(_db_manu, log);
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string dtchegada = txt_pes_datachegada.Text;
-            string dtpartida = txt_pes_datapartida.Text;
-            string placa = txt_pes_veiculo.Text;//
-            string motorista = txt_pes_motorista.Text;//
+            string dt = txt_pes_data.Text;
+            string doc = txt_pes_doc.Text;
             string fornecedor = txt_pes_fornecedor.Text;//
-            string localpartida = txt_pes_Locpartida.Text;//
-            string localdestino = txt_pes_locdestino.Text;//
+            string motorista = txt_pes_motorista.Text;//
+            string km = txt_pes_kmmanute.Text;//
+            string placa = txt_pes_placa.Text;//
+            string peca = txt_pes_pecaservico.Text;//
 
             if (rad_contem.IsChecked == true)
             {
-                Listpesquisa = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa)
-                    .Where(a => a.DE.Contains(localpartida)).Where(a => a.PLACA.Contains(placa)).Where(a => a.PARA.Contains(localdestino))
-                    .Where(a => a.MOTORISTA.Contains(motorista)).Where(a => a.FORNECEDOR.Contains(fornecedor)).Where(a => a.DT_CHEGADA.Contains(dtchegada))
-                   .Where(a => a.DT_PARTIDA.Contains(dtpartida)).OrderByDescending(a => a.ID).ToList());
+                Listpesquisa = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa)
+                    .Where(a => a.DT_NF.Contains(dt)).Where(a => a.NR_NF.Contains(doc)).Where(a => a.FORNECEDOR.Contains(fornecedor))
+                    .Where(a => a.MOTORISTA.Contains(motorista)).Where(a => a.KM_MANUTENCAO.Contains(km)).Where(a => a.VEICULO.Contains(placa))
+                   .Where(a => a.DESCRICAO.Contains(peca)).OrderByDescending(a => a.COD).ToList());
 
                 //
                 //
@@ -522,29 +508,6 @@ namespace GTManute.Views.Lançamento
             mensagem.ShowDialog();
         }
 
-        private void Grid_LostFocus(object sender, RoutedEventArgs e)
-        {
-            double média = 0;
-            double valorunit = 0;
-            double km = 0;
-            try
-            {
-                //média = ((double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
-                //valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
-                //km = (double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text));
-                //txt_res_unitario.Text = valorunit.ToString("N2");
-                //txt_res_media.Text = média.ToString("N2");
-                //txt_res_km.Text = km.ToString();
-
-            }
-            catch
-            {
-
-            }
-        }
-
-
-
         private void txt_dt_partida_LostFocus(object sender, RoutedEventArgs e)
         {
             setData(sender, e);
@@ -563,34 +526,6 @@ namespace GTManute.Views.Lançamento
         private void cmb_veiculo_LostFocus(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void txt_litragem_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setValor(sender, e);
-            try
-            {
-                double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
-                //txt_res_unitario.Text = valorunit.ToString("N2");
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void txt_valor_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setValor(sender, e);
-            try
-            {
-                double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
-                // txt_res_unitario.Text = valorunit.ToString("N2");
-            }
-            catch
-            {
-
-            }
         }
 
         private void txt_hr_partida_LostFocus(object sender, RoutedEventArgs e)
