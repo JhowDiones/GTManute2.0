@@ -1,6 +1,4 @@
 ﻿using dbAcessos;
-using dbAcessos.Properties;
-using GTManute.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +20,7 @@ namespace GTManute.Views.Lançamento
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
-        List<db_> Listpesquisa = new List<db_abast>();
+        List<db_manu> Listpesquisa = new List<db_manu>();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
@@ -84,7 +82,7 @@ namespace GTManute.Views.Lançamento
                 string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
 
                 string newDate = justNumbers.Insert(2, ":");
-               
+
                 dt.Text = DateTime.Parse(newDate).ToString("HH:mm");
             }
             catch (Exception ex)
@@ -107,7 +105,7 @@ namespace GTManute.Views.Lançamento
             {
 
             }
-            
+
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -145,64 +143,16 @@ namespace GTManute.Views.Lançamento
             {
                 Application.Current.Dispatcher.Invoke((Action)async delegate
                 {
-                    List<string> ajudante = new List<string>();
-                    List<string> motorista = new List<string>();
-                    List<string> fornecedor = new List<string>();
-                    List<string> Rotas = new List<string>();
-                    List<string> Rotas1 = new List<string>();
-                    List<string> placas = new List<string>();
 
-                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a=>a.Empresa==Empresa).Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
-
-                    List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.Where(a => a.Empresa == Empresa).OrderBy(a => a.PLACA).ToList());
-                    List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
-                    List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).Where(a => a.Empresa == Empresa).ToList());
-                    List<db_rotas> rot = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.PARA).Where(a => a.Empresa == Empresa).ToList());
-                    List<db_rotas> rot1 = await Task.FromResult<List<db_rotas>>(db.db_rotas.OrderBy(a => a.DE).Where(a => a.Empresa == Empresa).ToList());
-                    for (int i = 0; i < aju.Count; i++)
-                    {
-                        ajudante.Add(aju[i].NOME);
-                    }
-                    for (int i = 0; i < moto.Count; i++)
-                    {
-                        motorista.Add(moto[i].NOME);
-                    }
-                    for (int i = 0; i < pla.Count; i++)
-                    {
-                        placas.Add(pla[i].PLACA);
-                    }
-                    for (int i = 0; i < forn.Count; i++)
-                    {
-                        fornecedor.Add(forn[i].RAZAO_SOCIAL);
-                    }
-                    for (int i = 0; i < rot.Count; i++)
-                    {
-                        Rotas.Add(rot[i].PARA);
-                    }
-                    //cmb_destino.ItemsSource = Rotas;
-
-                    for (int i = 0; i < rot1.Count; i++)
-                    {
-                        Rotas1.Add(rot1[i].DE);
-                    }
-                    List<string> combustivel = new List<string>();
-                    combustivel.Add("Disel");
-                    combustivel.Add("Disel S-10");
-                    combustivel.Add("Disel Aditivado");
-                    combustivel.Add("Disel Premium");
-                    combustivel.Add("Etanol");
-                    combustivel.Add("Etanol Aditivado");
-                    combustivel.Add("Gasolina Comum");
-                    combustivel.Add("Gasolina Aditivada");
-                    combustivel.Add("Gasolina Premium");
-
-                    cmb_combustivel.ItemsSource = combustivel;
-                    //cmb_partida.ItemsSource = Rotas1;
-                    //cmb_1ajudante.ItemsSource = ajudante;
-                    //cmb_2ajudante.ItemsSource = ajudante;
-                    //cmb_motorista.ItemsSource = motorista;
-                    //cmb_fornecedor.ItemsSource = fornecedor;
-                    cmb_veiculo.ItemsSource = placas;
+                    List<string> pla = await Task.FromResult<List<string>>(db.db_frota.Where(a => a.Empresa == Empresa).OrderBy(a => a.PLACA).Select(a=>a.PLACA).Distinct().ToList());
+                    List<string> moto = await Task.FromResult<List<string>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).Select(a=>a.NOME).Distinct().ToList());
+                    List<string> forn = await Task.FromResult<List<string>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).Where(a => a.Empresa == Empresa).Select(a=>a.RAZAO_SOCIAL).Distinct().ToList());
+                    List<string> peca = await Task.FromResult<List<string>>(db.db_manu.OrderBy(a => a.DESCRICAO).Where(a => a.Empresa == Empresa).Select(a => a.DESCRICAO).Distinct().ToList());
+                    
+                    cmb_fornecedor.ItemsSource = forn;
+                    cmb_motorista.ItemsSource = moto;
+                    cmb_ItemDesc.ItemsSource = peca;
+                    cmb_veiculo.ItemsSource = pla;
 
                 });
             });
@@ -215,7 +165,7 @@ namespace GTManute.Views.Lançamento
             {
                 btn_novo.Content = "Gravar";
                 Limpar();
-                grid_ultimas.ItemsSource = null;
+                grid_itens.ItemsSource = null;
             }
             else
             {
@@ -223,7 +173,7 @@ namespace GTManute.Views.Lançamento
                 double valorunit = 0;
                 try
                 {
-                   // média = ((double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
+                    // média = ((double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
                     valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
                 }
                 catch
@@ -331,15 +281,15 @@ namespace GTManute.Views.Lançamento
                 //double valor=0;
                 try
                 {
-                    double combustivel =0;
+                    double combustivel = 0;
                     double pernoite = 0;
                     double outras = 0;
                     double alimento = 0;
                     double.TryParse(txt_desp_alimentacao.Text, out alimento);
-                    double.TryParse(txt_valor.Text,out combustivel);
+                    double.TryParse(txt_valor.Text, out combustivel);
                     double.TryParse(txt_desp_alimentacao.Text, out combustivel);
                     double.TryParse(txt_valor.Text, out combustivel);
-                   // valor = combustivel + pernoite + outras+alimento;
+                    // valor = combustivel + pernoite + outras+alimento;
                 }
                 catch
                 {
@@ -397,30 +347,30 @@ namespace GTManute.Views.Lançamento
         }
         private void Limpar()
         {
-            //txt_desp_alimentacao.Text = "";
-            //txt_desp_pernoite.Text = "";
-            //txt_doc.Text = "";
-            //txt_dt_destino.Text = "";
-            //txt_dt_partida.Text = "";
-            //txt_hr_destino.Text = "";
-            //txt_hr_partida.Text = "";
-            //txt_km_destino.Text = "";
-            //txt_km_inicial.Text = "";
-            //txt_litragem.Text = "";
-            //txt_outras_desp.Text = "";
+           txt.Text = "";
+          txt_desp_pernoite.Text = "";
+            txt_doc.Text = "";
+            txt_dt_destino.Text = "";
+            txt_dt_partida.Text = "";
+            txt_hr_destino.Text = "";
+            txt_hr_partida.Text = "";
+            txt_km_destino.Text = "";
+            txt_km_inicial.Text = "";
+            txt_litragem.Text = "";
+            txt_outras_desp.Text = "";
 
-            //cmb_1ajudante.Text = "";
-            //cmb_2ajudante.Text = "";
-            //cmb_destino.Text = "";
-            //cmb_fornecedor.Text = "";
-            //cmb_motorista.Text = "";
-            //cmb_partida.Text = "";
-            //cmb_veiculo.Text = "";
+            cmb_1ajudante.Text = "";
+            cmb_2ajudante.Text = "";
+            cmb_destino.Text = "";
+            cmb_fornecedor.Text = "";
+            cmb_motorista.Text = "";
+            cmb_partida.Text = "";
+            cmb_veiculo.Text = "";
 
-            //txt_res_km.Text = "";
-            //txt_res_media.Text = "";
-            //txt_res_unitario.Text = "";
-            //txt_valor.Text = "";
+            txt_res_km.Text = "";
+            txt_res_media.Text = "";
+            txt_res_unitario.Text = "";
+            txt_valor.Text = "";
 
 
         }
@@ -509,8 +459,8 @@ namespace GTManute.Views.Lançamento
 
             preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
                 abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, 
-                abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA,abast.T_COMBUSTIVEL);
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA,
+                abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA, abast.T_COMBUSTIVEL);
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -593,7 +543,7 @@ namespace GTManute.Views.Lançamento
             }
         }
 
-        
+
 
         private void txt_dt_partida_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -620,7 +570,7 @@ namespace GTManute.Views.Lançamento
             setValor(sender, e);
             try
             {
-               double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
+                double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
                 //txt_res_unitario.Text = valorunit.ToString("N2");
             }
             catch
@@ -635,7 +585,7 @@ namespace GTManute.Views.Lançamento
             try
             {
                 double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
-               // txt_res_unitario.Text = valorunit.ToString("N2");
+                // txt_res_unitario.Text = valorunit.ToString("N2");
             }
             catch
             {

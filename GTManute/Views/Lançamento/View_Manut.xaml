@@ -70,9 +70,9 @@
                             <Label x:Name="label1_Copy6" Content="Km Manutenção" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Margin="235,0,0,0"/>
                             <Label x:Name="label1_Copy1" Content="Motorista" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Margin="1,96,0,0"/>
                             <ComboBox x:Name="cmb_motorista" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="1,121,0,0" VerticalAlignment="Top" Width="151" LostFocus="cmb_veiculo_LostFocus"/>
-                            <TextBox x:Name="txt_calcTotal" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="250,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus"/>
                             <Label x:Name="label1_Copy8" Content="Valor Total" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="250,96,0,0"/>
                             <TextBox x:Name="txt_calcDesconto" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="157,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus"/>
+                            <TextBox x:Name="txt_calcTotal" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="250,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus"/>
                             <Label x:Name="label1_Copy9" Content="Valor Desconto" HorizontalAlignment="Left" VerticalAlignment="Top" Width="93" Margin="157,96,0,0"/>
 
                         </Grid>
@@ -92,7 +92,7 @@
                             <TextBox x:Name="txt_itemDesconto" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="487,26,105,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right"/>
                             <TextBox x:Name="txt_itemValor" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TextAlignment="Right"/>
                             <CheckBox x:Name="chq_programada" Content="Proxima manuteção programada" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top"/>
-                            <Grid Margin="0,69,0,25" x:Name="_manutprogramada" Visibility="Visible">
+                            <Grid Margin="0,69,0,25" x:Name="_manutprogramada" Visibility="Hidden">
 
                                 <TextBox x:Name="txt_progrmadoKm" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="100"/>
                                 <TextBox x:Name="txt_ProgrmadoObs" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="80" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="698"/>
