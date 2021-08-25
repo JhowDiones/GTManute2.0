@@ -179,7 +179,7 @@ namespace GTManute.Views.Lançamento
             }
             else
             {
-                
+
                 String retorno = MessageBox.Show("Gravar manutenção? \n Valor Total: " + txt_calcTotal.Text, "Conferencia!!!", MessageBoxButton.YesNo).ToString();
                 if (retorno == "Yes")
                 {
@@ -188,16 +188,16 @@ namespace GTManute.Views.Lançamento
                         db_manu_log _abast = new db_manu_log();
 
                         _abast.Desconto = txt_calcDesconto.Text;
-                        _abast.DT_LANCA = DateTime.UtcNow ;
+                        _abast.DT_LANCA = DateTime.UtcNow;
                         _abast.DT_NF = txt_data.Text;
-                        _abast.Empresa =Empresa;
+                        _abast.Empresa = Empresa;
                         _abast.FORNECEDOR = cmb_fornecedor.Text;
                         _abast.km_manutencao = txt_km.Text;
                         _abast.MOTORISTA = cmb_motorista.Text;
                         _abast.NR_NF = txt_doc.Text;
                         _abast.PLACA = cmb_veiculo.Text;
                         _abast.VALOR_TT = txt_calcTotal.Text;
-                       
+
                         await Task.Run(() =>
                         {
                             try
@@ -250,26 +250,26 @@ namespace GTManute.Views.Lançamento
                 _abast.NR_NF = txt_doc.Text;
                 _abast.PLACA = cmb_veiculo.Text;
                 _abast.VALOR_TT = txt_calcTotal.Text;
-               await Task.Run(() =>
-                {
-                    try
-                    {
-                        db.SubmitChanges();
-                        Application.Current.Dispatcher.Invoke((Action)delegate
-                        {
-                            mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
+                await Task.Run(() =>
+                 {
+                     try
+                     {
+                         db.SubmitChanges();
+                         Application.Current.Dispatcher.Invoke((Action)delegate
+                         {
+                             mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
 
-                            carregando(ID, true);
-                        });
-                    }
-                    catch
-                    {
-                        Application.Current.Dispatcher.Invoke((Action)delegate
-                        {
-                            mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
-                        });
-                    }
-                });
+                             carregando(ID, true);
+                         });
+                     }
+                     catch
+                     {
+                         Application.Current.Dispatcher.Invoke((Action)delegate
+                         {
+                             mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                         });
+                     }
+                 });
             }
         }
 
@@ -343,52 +343,59 @@ namespace GTManute.Views.Lançamento
 
         private async void carregando(int cod, bool full)
         {
+            //try
+            //{
+            db_manu_log manulog = new db_manu_log();
+            if (cod == 0)
+            {
+                manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+            }
+            else
+            {
+                manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
+
+            }
             try
             {
-                db_manu_log manulog = new db_manu_log();
-                if (cod == 0)
-                {
-                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
-                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.NR_NF).ToList());
-                }
-                else
-                {
-                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
-                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.NR_NF).ToList());
-                }
-                ID = manulog.COD;
-
-                List<Ultimas> ultimas = new List<Ultimas>();
-                for (int i = 0; i < pecaslista.Count; i++)
-                {
-                    Ultimas ult = new Ultimas();
-
-                    ult.ID = pecaslista[i].COD;
-                    ult.Desconto = pecaslista[i].DESCONTO;
-                    ult.Descrição = pecaslista[i].DESCRICAO;
-                    ult.Quant = pecaslista[i].QUANTIDADE;
-                    ult.Total = pecaslista[i].VALOR;
-                    ultimas.Add(ult);
-
-                }
-                grid_itens.ItemsSource = ultimas;
-
-                if (full == true)
-                {
-                    carregar(manulog, pecaslista[0]);
-                }
+                pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("00000#")).ToList());
+                carregar(manulog, pecaslista[0]);
             }
             catch
             {
-                btn_novo.Content = "Gravar";
+                pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("#")).ToList());
+                carregar(manulog, pecaslista[0]);
             }
+            ID = manulog.COD;
+
+            List<Ultimas> ultimas = new List<Ultimas>();
+            for (int i = 0; i < pecaslista.Count; i++)
+            {
+                Ultimas ult = new Ultimas();
+
+                ult.ID = pecaslista[i].COD;
+                ult.Desconto = pecaslista[i].DESCONTO;
+                ult.Descrição = pecaslista[i].DESCRICAO;
+                ult.Quant = pecaslista[i].QUANTIDADE;
+                ult.Total = pecaslista[i].VALOR;
+                ultimas.Add(ult);
+
+            }
+            grid_itens.ItemsSource = ultimas;
+
+           
+
+            //}
+            //catch
+            //{
+            //    btn_novo.Content = "Gravar";
+            //}
         }
 
         private void carregar(db_manu_log log, db_manu _db_manu)
         {
-
-
             preencher(_db_manu, log);
+
+
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
