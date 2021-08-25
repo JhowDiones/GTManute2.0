@@ -107,7 +107,7 @@
             </Grid>
         </Grid>
         <!-- Lançamento -->
-        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Hidden" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
+        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Visible" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
@@ -133,6 +133,12 @@
 
                 <Image Width="120" Height="120" Margin="5" Source="{StaticResource Abastecimento}" VerticalAlignment="Top" />
                 <TextBlock Text="Abastecimento" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+            </Grid>
+            <Grid Background="{StaticResource primeiraCor}" Grid.Row="1" Grid.Column="3" MouseLeftButtonDown="Grid_MouseLeftButtonDown_5">
+
+                <Image Width="120" Height="120" Margin="5" Source="{StaticResource Manutencao}" VerticalAlignment="Top" />
+                <TextBlock Text="Manutenção" Foreground="{StaticResource SegundaCor}" FontSize="20" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
             </Grid>
         </Grid>

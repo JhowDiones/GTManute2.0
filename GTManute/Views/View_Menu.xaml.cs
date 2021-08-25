@@ -161,5 +161,11 @@ namespace GTManute.Views
 
             Rel_Abast.RefreshReport();
         }
+
+        private void Grid_MouseLeftButtonDown_5(object sender, MouseButtonEventArgs e)
+        {
+            View_Manut acesso = new View_Manut();
+            acesso.ShowDialog();
+        }
     }
 }

@@ -173,65 +173,41 @@ namespace GTManute.Views.Lançamento
             if (btn_novo.Content.ToString() == "Novo")
             {
                 btn_novo.Content = "Gravar";
+                pecaslista = new List<db_manu>();
                 Limpar();
                 grid_itens.ItemsSource = null;
             }
             else
             {
-                double média = 0;
-                double valorunit = 0;
-                try
-                {
-                    // média = ((double.Parse(txt_km_destino.Text) - double.Parse(txt_km_inicial.Text)) / double.Parse(txt_litragem.Text));
-                    valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
-                }
-                catch
-                {
-
-                }
-                String retorno = MessageBox.Show("Gravar abastecimento? \n Média: " + média.ToString("N2") + "| Valor total: " + valorunit.ToString("N2"), "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+                
+                String retorno = MessageBox.Show("Gravar manutenção? \n Valor Total: " + txt_calcTotal.Text, "Conferencia!!!", MessageBoxButton.YesNo).ToString();
                 if (retorno == "Yes")
                 {
                     try
                     {
-                        db_abast _abast = new db_abast();
+                        db_manu_log _abast = new db_manu_log();
 
-                        //_abast.AJUDANTE1 = cmb_1ajudante.Text;
-                        //_abast.AJUDANTE2 = cmb_2ajudante.Text;
-                        //_abast.DE = cmb_partida.Text;
-                        //_abast.DESPESA_ALI = txt_desp_alimentacao.Text;
-                        //_abast.DESPESA_COMB = txt_res_unitario.Text;
-                        //_abast.DESPESA_OUTRAS = txt_outras_desp.Text;
-                        //_abast.DESPESA_PERN = txt_desp_pernoite.Text;
-                        //_abast.DT_CHEGADA = txt_dt_destino.Text;
-                        //_abast.DT_PARTIDA = txt_dt_partida.Text;
-                        //_abast.Empresa = Empresa;
-                        //_abast.PLACA = cmb_veiculo.Text;
-                        //_abast.T_COMBUSTIVEL = cmb_combustivel.Text;
-                        //_abast.FORNECEDOR = cmb_fornecedor.Text;
-                        //_abast.HORA_CHEGADA = txt_hr_destino.Text;
-                        //_abast.HORA_PARTIDA = txt_hr_partida.Text;
-                        //_abast.KM_CHEGADA = txt_km_destino.Text;
-                        //_abast.KM_PARTIDA = txt_km_inicial.Text;
-                        //_abast.LITRAGEM = txt_litragem.Text;
-                        //_abast.MOTORISTA = cmb_motorista.Text;
-                        //_abast.N_DOC = txt_doc.Text;
-                        //_abast.PARA = cmb_destino.Text;
-                        //_abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
-                        //_abast.USUARIO = Usuario;
-                        //_abast.VALOR_TOTAL = txt_valor.Text;
-                        //_abast.DT_HR = DateTime.UtcNow;
-
-
+                        _abast.Desconto = txt_calcDesconto.Text;
+                        _abast.DT_LANCA = DateTime.UtcNow ;
+                        _abast.DT_NF = txt_data.Text;
+                        _abast.Empresa =Empresa;
+                        _abast.FORNECEDOR = cmb_fornecedor.Text;
+                        _abast.km_manutencao = txt_km.Text;
+                        _abast.MOTORISTA = cmb_motorista.Text;
+                        _abast.NR_NF = txt_doc.Text;
+                        _abast.PLACA = cmb_veiculo.Text;
+                        _abast.VALOR_TT = txt_calcTotal.Text;
+                       
                         await Task.Run(() =>
                         {
                             try
                             {
-                                db.db_abast.InsertOnSubmit(_abast);
+                                db.db_manu_log.InsertOnSubmit(_abast);
+                                db.db_manu.InsertAllOnSubmit(pecaslista);
                                 db.SubmitChanges();
                                 Application.Current.Dispatcher.Invoke((Action)delegate
                                 {
-                                    mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                                    mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
 
 
                                     btn_novo.Content = "Novo";
@@ -242,7 +218,7 @@ namespace GTManute.Views.Lançamento
                             {
                                 Application.Current.Dispatcher.Invoke((Action)delegate
                                 {
-                                    mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                                    mensagem("Obtivemos algum erro ao gravar a manutenção! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
                                 });
                             }
 
@@ -250,7 +226,7 @@ namespace GTManute.Views.Lançamento
                     }
                     catch
                     {
-                        mensagem("Obtivemos algum erro ao gravar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                        mensagem("Obtivemos algum erro ao gravar a manutenção! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
 
                     }
                 }
@@ -259,63 +235,29 @@ namespace GTManute.Views.Lançamento
 
         private async void _btn_alterar()
         {
-            String retorno = MessageBox.Show("Deseja alterar este abastecimento?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            String retorno = MessageBox.Show("Deseja alterar esta manuteção?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
                 db_manu_log _abast = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.COD == ID).FirstOrDefault());
 
-                _abast.AJUDANTE1 = cmb_1ajudante.Text;
-                _abast.AJUDANTE2 = cmb_2ajudante.Text;
-                _abast.DE = cmb_partida.Text;
-                _abast.DESPESA_ALI = txt_desp_alimentacao.Text;
-                _abast.DESPESA_COMB = txt_valor.Text;
-                _abast.DESPESA_OUTRAS = txt_outras_desp.Text;
-                _abast.DESPESA_PERN = txt_desp_pernoite.Text;
-                _abast.DT_CHEGADA = txt_dt_destino.Text;
-                _abast.DT_PARTIDA = txt_dt_partida.Text;
+                _abast.Desconto = txt_calcDesconto.Text;
+                _abast.DT_LANCA = DateTime.UtcNow;
+                _abast.DT_NF = txt_data.Text;
                 _abast.Empresa = Empresa;
-                _abast.PLACA = cmb_veiculo.Text;
-                _abast.T_COMBUSTIVEL = cmb_combustivel.Text;
                 _abast.FORNECEDOR = cmb_fornecedor.Text;
-                _abast.HORA_CHEGADA = txt_hr_destino.Text;
-                _abast.HORA_PARTIDA = txt_hr_partida.Text;
-                _abast.KM_CHEGADA = txt_km_destino.Text;
-                _abast.KM_PARTIDA = txt_km_inicial.Text;
-                _abast.LITRAGEM = txt_litragem.Text;
+                _abast.km_manutencao = txt_km.Text;
                 _abast.MOTORISTA = cmb_motorista.Text;
-                _abast.N_DOC = txt_doc.Text;
-                _abast.PARA = cmb_destino.Text;
-                _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
-                _abast.USUARIO = Usuario;
-                double valor = 0;
-                try
-                {
-                    double combustivel = 0;
-                    double pernoite = 0;
-                    double outras = 0;
-                    double alimento = 0;
-                    double.TryParse(txt_desp_alimentacao.Text, out alimento);
-                    double.TryParse(txt_valor.Text, out combustivel);
-                    double.TryParse(txt_desp_alimentacao.Text, out combustivel);
-                    double.TryParse(txt_valor.Text, out combustivel);
-                    // valor = combustivel + pernoite + outras+alimento;
-                }
-                catch
-                {
-
-                }
-                //_abast.VALOR_TOTAL =valor.ToString("N2");
-                _abast.DT_HR = DateTime.UtcNow;
-
-
-                await Task.Run(() =>
+                _abast.NR_NF = txt_doc.Text;
+                _abast.PLACA = cmb_veiculo.Text;
+                _abast.VALOR_TT = txt_calcTotal.Text;
+               await Task.Run(() =>
                 {
                     try
                     {
                         db.SubmitChanges();
                         Application.Current.Dispatcher.Invoke((Action)delegate
                         {
-                            mensagem("Abastecimento gravado com sucesso!", false, "", "Ok");
+                            mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
 
                             carregando(ID, true);
                         });
@@ -381,18 +323,18 @@ namespace GTManute.Views.Lançamento
             txt_calcTotal.Text = logmanu.VALOR_TT;
             txt_data.Text = logmanu.DT_NF;
             txt_doc.Text = logmanu.NR_NF;
-            txt_itemDesconto.Text = listamanu[0].DESCONTO;
-            txt_itemQuant.Text = listamanu[0].QUANTIDADE;
-            txt_itemValor.Text = listamanu[0].VALOR;
+            txt_itemDesconto.Text = listamanu.DESCONTO;
+            txt_itemQuant.Text = listamanu.QUANTIDADE;
+            txt_itemValor.Text = listamanu.VALOR;
             txt_km.Text = logmanu.km_manutencao;
-            if (listamanu[0].MProgramada == "Programada")
+            if (listamanu.MProgramada == "Programada")
             {
-                txt_ProgrmadoObs.Text = listamanu[0].M_OBS_Programada;
-                txt_progrmadoKm.Text = listamanu[0].M_Km_Programada;
+                txt_ProgrmadoObs.Text = listamanu.M_OBS_Programada;
+                txt_progrmadoKm.Text = listamanu.M_Km_Programada;
             }
 
             cmb_fornecedor.Text = logmanu.FORNECEDOR;
-            cmb_ItemDesc.Text = listamanu[0].DESCRICAO;
+            cmb_ItemDesc.Text = listamanu.DESCRICAO;
             cmb_motorista.Text = logmanu.MOTORISTA;
             cmb_veiculo.Text = logmanu.PLACA;
 
