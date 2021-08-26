@@ -23,13 +23,18 @@ namespace GTManute.Views.Lançamento
             public string Desconto { get; set; }
             public string Total { get; set; }
         }
-
+        List<Ultimas> ultimas = new List<Ultimas>();
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
+        private int PecaId { get; set; }
+        db_manu_log manulog = new db_manu_log();
+        List<db_manu> Excluirpecaslista = new List<db_manu>();
         List<db_manu> Listpesquisa = new List<db_manu>();
+        List<db_manu> Novaspecaslista = new List<db_manu>();
         List<db_manu> pecaslista = new List<db_manu>();
+        db_manu peca = new db_manu();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
@@ -41,7 +46,6 @@ namespace GTManute.Views.Lançamento
             carregando(0, true);
             cmbbox();
         }
-
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[^0-9,]+");
@@ -167,7 +171,6 @@ namespace GTManute.Views.Lançamento
             });
 
         }
-
         private async void _btn_novo()
         {
             if (btn_novo.Content.ToString() == "Novo")
@@ -175,6 +178,7 @@ namespace GTManute.Views.Lançamento
                 btn_novo.Content = "Gravar";
                 pecaslista = new List<db_manu>();
                 Limpar();
+                PecaId = -1;
                 grid_itens.ItemsSource = null;
             }
             else
@@ -232,7 +236,6 @@ namespace GTManute.Views.Lançamento
                 }
             }
         }
-
         private async void _btn_alterar()
         {
             String retorno = MessageBox.Show("Deseja alterar esta manuteção?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
@@ -272,7 +275,6 @@ namespace GTManute.Views.Lançamento
                  });
             }
         }
-
         private async void _btn_deletar()
         {
             string retorno = MessageBox.Show("Deseja apagar esta manutenção?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
@@ -340,64 +342,62 @@ namespace GTManute.Views.Lançamento
 
 
         }
-
         private async void carregando(int cod, bool full)
         {
-            //try
-            //{
-            db_manu_log manulog = new db_manu_log();
-            if (cod == 0)
-            {
-                manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
-            }
-            else
-            {
-                manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
-
-            }
             try
             {
-                pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("00000#")).ToList());
-                carregar(manulog, pecaslista[0]);
+                
+                if (cod == 0)
+                {
+                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+                }
+                else
+                {
+                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
+
+                }
+                try
+                {
+                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("00000#")).ToList());
+                    carregar(manulog, pecaslista[0]);
+                }
+                catch
+                {
+                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("#")).ToList());
+                    carregar(manulog, pecaslista[0]);
+                }
+                ID = manulog.COD;
+                PecaId = 0;
+
+                ultimas = new List<Ultimas>();
+                for (int i = 0; i < pecaslista.Count; i++)
+                {
+                    Ultimas ult = new Ultimas();
+
+                    ult.ID = i;
+                    ult.Desconto = pecaslista[i].DESCONTO;
+                    ult.Descrição = pecaslista[i].DESCRICAO;
+                    ult.Quant = pecaslista[i].QUANTIDADE;
+                    ult.Total = pecaslista[i].VALOR;
+                    ultimas.Add(ult);
+
+                }
+                grid_itens.ItemsSource = ultimas;
+
+
+
             }
             catch
             {
-                pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("#")).ToList());
-                carregar(manulog, pecaslista[0]);
+                btn_novo.Content = "Gravar";
             }
-            ID = manulog.COD;
-
-            List<Ultimas> ultimas = new List<Ultimas>();
-            for (int i = 0; i < pecaslista.Count; i++)
-            {
-                Ultimas ult = new Ultimas();
-
-                ult.ID = pecaslista[i].COD;
-                ult.Desconto = pecaslista[i].DESCONTO;
-                ult.Descrição = pecaslista[i].DESCRICAO;
-                ult.Quant = pecaslista[i].QUANTIDADE;
-                ult.Total = pecaslista[i].VALOR;
-                ultimas.Add(ult);
-
-            }
-            grid_itens.ItemsSource = ultimas;
-
-           
-
-            //}
-            //catch
-            //{
-            //    btn_novo.Content = "Gravar";
-            //}
         }
-
         private void carregar(db_manu_log log, db_manu _db_manu)
         {
             preencher(_db_manu, log);
 
 
         }
-
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             string dt = txt_pes_data.Text;
@@ -424,7 +424,6 @@ namespace GTManute.Views.Lançamento
                 txt_registros.Text = "Nº de Registros: " + Listpesquisa.Count().ToString();
             }
         }
-
         private void dt_pesquisa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
@@ -441,12 +440,10 @@ namespace GTManute.Views.Lançamento
                 carregando(int.Parse(ID), true);
             }
         }
-
         private void dt_pesquisa_CurrentCellChanged(object sender, System.EventArgs e)
         {
 
         }
-
         private void btn_Fechar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
@@ -456,50 +453,191 @@ namespace GTManute.Views.Lançamento
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
         }
-
-        private void txt_dt_partida_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setData(sender, e);
-        }
-
-        private void txt_dt_destino_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setData(sender, e);
-        }
-
-        private void txt_desp_alimentacao_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setValor(sender, e);
-        }
-
-        private void cmb_veiculo_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void txt_hr_partida_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setHora(sender, e);
-        }
-
-        private void txt_hr_destino_LostFocus(object sender, RoutedEventArgs e)
-        {
-            setHora(sender, e);
-        }
-
         private void btn_novo_Click(object sender, RoutedEventArgs e)
         {
             _btn_novo();
         }
-
         private void btn_alterar_Click(object sender, RoutedEventArgs e)
         {
             _btn_alterar();
         }
-
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
             _btn_deletar();
+        }
+        private void btn_mais_Click(object sender, RoutedEventArgs e)
+        {
+            txt_itemDesconto.Text = "";
+            txt_itemQuant.Text = "";
+            txt_itemValor.Text = "";
+            cmb_ItemDesc.Text = "";
+            txt_progrmadoKm.Text = "";
+            txt_ProgrmadoObs.Text = "";
+            chq_programada.IsChecked = false;
+            CheqTeste();
+            cmb_ItemDesc.Focus();
+            PecaId = -1;
+        }
+        private void CheqTeste()
+        {
+            if (chq_programada.IsChecked == true)
+            {
+                _manutprogramada.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _manutprogramada.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void btn_itemAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (PecaId == -1)
+            {
+
+
+                try
+                {
+                    peca = new db_manu();
+                    peca.DESCONTO = txt_itemDesconto.Text;
+                    peca.DESCRICAO = cmb_ItemDesc.Text;
+                    peca.DT_LANCA = DateTime.Now;
+                    peca.DT_NF = txt_data.Text;
+                    peca.Empresa = Empresa;
+                    peca.FORNECEDOR = cmb_fornecedor.Text;
+                    peca.KM_MANUTENCAO = txt_km.Text;
+                    peca.MOTORISTA = cmb_motorista.Text;
+                    if (chq_programada.IsChecked == true)
+                    {
+                        peca.MProgramada = "Sim";
+                        peca.M_Km_Programada = txt_progrmadoKm.Text;
+                        peca.M_OBS_Programada = txt_ProgrmadoObs.Text;
+                    }
+                    try
+                    {
+                        peca.NR_LANCA = manulog.NR_NF;
+                        peca.NR_NF = manulog.COD.ToString();
+                        peca.QUANTIDADE = txt_itemQuant.Text;
+                        peca.VALOR = txt_itemValor.Text;
+                        peca.VEICULO = cmb_veiculo.Text;
+                    }
+                    catch
+                    {
+                        peca.NR_LANCA = "";
+                        peca.NR_NF = "";
+                        peca.QUANTIDADE = txt_itemQuant.Text;
+                        peca.VALOR = txt_itemValor.Text;
+                        peca.VEICULO = cmb_veiculo.Text;
+                    }
+                    Novaspecaslista.Add(peca);
+                    Ultimas ultimas1 = new Ultimas();
+                    ultimas1.ID= ultimas.Count + 1;
+                    ultimas1.Desconto = txt_itemDesconto.Text;
+                    ultimas1.Descrição = cmb_ItemDesc.Text;
+                    ultimas1.Quant = txt_itemQuant.Text;
+                    ultimas1.Total = txt_itemValor.Text;
+                    ultimas.Add(ultimas1);
+                    grid_itens.ItemsSource=null;
+                    grid_itens.ItemsSource = ultimas;
+
+                    mensagem("Peça/Serviço adicionado com sucesso!", false, "", "Ok");
+
+                }
+                catch
+                {
+                    mensagem("Erro ao adicionar peça/serviço!", false, "", "Ok");
+                }
+            }
+            else
+            {
+                try
+                {
+                    pecaslista[PecaId].DESCONTO = txt_itemDesconto.Text;
+                    pecaslista[PecaId].DESCRICAO = cmb_ItemDesc.Text;
+                    pecaslista[PecaId].DT_LANCA = DateTime.Now;
+                    pecaslista[PecaId].DT_NF = txt_data.Text;
+                    pecaslista[PecaId].Empresa = Empresa;
+                    pecaslista[PecaId].FORNECEDOR = cmb_fornecedor.Text;
+                    pecaslista[PecaId].KM_MANUTENCAO = txt_km.Text;
+                    pecaslista[PecaId].MOTORISTA = cmb_motorista.Text;
+                    if (chq_programada.IsChecked == true)
+                    {
+                        pecaslista[PecaId].MProgramada = "Sim";
+                        pecaslista[PecaId].M_Km_Programada = txt_progrmadoKm.Text;
+                        pecaslista[PecaId].M_OBS_Programada = txt_ProgrmadoObs.Text;
+                    }
+                    try
+                    {
+                        pecaslista[PecaId].NR_LANCA = manulog.NR_NF;
+                        pecaslista[PecaId].NR_NF = manulog.COD.ToString();
+                        pecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
+                        pecaslista[PecaId].VALOR = txt_itemValor.Text;
+                        pecaslista[PecaId].VEICULO = cmb_veiculo.Text;
+                    }
+                    catch
+                    {
+                        pecaslista[PecaId].NR_LANCA = "";
+                        pecaslista[PecaId].NR_NF = "";
+                        pecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
+                        pecaslista[PecaId].VALOR = txt_itemValor.Text;
+                        pecaslista[PecaId].VEICULO = cmb_veiculo.Text;
+                    }
+                    ultimas[PecaId].Desconto = txt_itemDesconto.Text;
+                    ultimas[PecaId].Descrição = cmb_ItemDesc.Text;
+                    ultimas[PecaId].Quant = txt_itemQuant.Text;
+                    ultimas[PecaId].Total = txt_itemValor.Text;
+                    grid_itens.ItemsSource = null;
+                    grid_itens.ItemsSource = ultimas;
+
+                    mensagem("Peça/Serviço alterada com sucesso!", false, "", "Ok");
+
+                }
+                catch
+                {
+                    mensagem("Erro ao alterar peça/serviço!", false, "", "Ok");
+                }
+            }
+        }
+
+        private void btn_itemExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            if (PecaId == -1)
+            {
+
+            }
+            else
+            {
+                Excluirpecaslista.Add(pecaslista[PecaId]);
+                ultimas.Remove(ultimas[PecaId]);
+                pecaslista.Remove(pecaslista[PecaId]);
+                grid_itens.ItemsSource = null;
+                grid_itens.ItemsSource = ultimas;
+            }
+        }
+
+        private void txt_data_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setData(sender, e);
+        }
+
+        private void txt_calcDesconto_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
+        }
+
+        private void txt_calcTotal_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
+        }
+
+        private void txt_itemDesconto_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
+        }
+
+        private void txt_itemValor_LostFocus(object sender, RoutedEventArgs e)
+        {
+            setValor(sender, e);
         }
     }
 

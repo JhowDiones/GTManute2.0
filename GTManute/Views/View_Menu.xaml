@@ -107,7 +107,7 @@
             </Grid>
         </Grid>
         <!-- Lançamento -->
-        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Visible" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
+        <Grid HorizontalAlignment="Left" x:Name="grid_lanc" Background="{StaticResource TerceiraCor}" Visibility="Hidden" Height="330" Margin="119,110,0,0" VerticalAlignment="Top" Width="671">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>

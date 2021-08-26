@@ -38,6 +38,7 @@ namespace GTManute.Views
                 btn_ok.Content = botao;
                 btn_ok_segundo.Text = botao;
             }
+            btn_ok.Focus();
         }
         private void btn_ok1()
         {

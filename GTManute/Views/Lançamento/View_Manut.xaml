@@ -61,18 +61,18 @@
                             <Label x:Name="label1" Content="Nº Doc." HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"/>
                             <TextBox x:Name="txt_doc" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" TextAlignment="Right"/>
                             <Label x:Name="label1_Copy" Content="Veículo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Margin="235,49,0,0"/>
-                            <TextBox x:Name="txt_data" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="118,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus" HorizontalAlignment="Left" Width="98"/>
-                            <TextBox x:Name="txt_km" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="235,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus"/>
+                            <TextBox x:Name="txt_data" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="118,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" LostFocus="txt_data_LostFocus" HorizontalAlignment="Left" Width="98"/>
+                            <TextBox x:Name="txt_km" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="235,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" TextAlignment="Right"/>
                             <ComboBox x:Name="cmb_fornecedor" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="216"/>
-                            <ComboBox x:Name="cmb_veiculo" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="235,74,0,0" VerticalAlignment="Top" Width="98" LostFocus="cmb_veiculo_LostFocus"/>
+                            <ComboBox x:Name="cmb_veiculo" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="235,74,0,0" VerticalAlignment="Top" Width="98"/>
                             <Label x:Name="label1_Copy4" Content="Fornecedor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="216" Margin="0,48,0,0"/>
                             <Label x:Name="label1_Copy2" Content="Data" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Margin="120,0,0,0"/>
                             <Label x:Name="label1_Copy6" Content="Km Manutenção" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Margin="235,0,0,0"/>
                             <Label x:Name="label1_Copy1" Content="Motorista" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Margin="1,96,0,0"/>
-                            <ComboBox x:Name="cmb_motorista" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="1,121,0,0" VerticalAlignment="Top" Width="151" LostFocus="cmb_veiculo_LostFocus"/>
+                            <ComboBox x:Name="cmb_motorista" IsEditable="True" BorderBrush="{StaticResource SegundaCor}" HorizontalAlignment="Left" Margin="1,121,0,0" VerticalAlignment="Top" Width="151" />
                             <Label x:Name="label1_Copy8" Content="Valor Total" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="250,96,0,0"/>
-                            <TextBox x:Name="txt_calcDesconto" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="157,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus"/>
-                            <TextBox x:Name="txt_calcTotal" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="250,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" TextAlignment="Right" LostFocus="txt_dt_partida_LostFocus"/>
+                            <TextBox x:Name="txt_calcDesconto" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="157,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" TextAlignment="Right" LostFocus="txt_calcDesconto_LostFocus"/>
+                            <TextBox x:Name="txt_calcTotal" PreviewTextInput="NumberValidationTextBox"  BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="250,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" TextAlignment="Right" LostFocus="txt_calcTotal_LostFocus"/>
                             <Label x:Name="label1_Copy9" Content="Valor Desconto" HorizontalAlignment="Left" VerticalAlignment="Top" Width="93" Margin="157,96,0,0"/>
 
                         </Grid>
@@ -84,13 +84,13 @@
                               Margin="10,0,10,10" Height="228" VerticalAlignment="Bottom">
                         <Grid Margin="0">
                             <Label x:Name="label1_Copy14" Content="Descrição" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189"/>
-                            <ComboBox x:Name="cmb_ItemDesc" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,26,0,0" VerticalAlignment="Top" Width="363" IsEditable="True" LostFocus="txt_desp_alimentacao_LostFocus"/>
-                            <Label x:Name="label1_Copy16" Content="Quant." VerticalAlignment="Top" Margin="382,0,0,0" HorizontalAlignment="Left" Width="100"/>
-                            <TextBox x:Name="txt_itemQuant" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="382,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Left" Width="100"/>
-                            <Label x:Name="label1_Copy18" Content="Desconto" HorizontalAlignment="Right" VerticalAlignment="Top" Width="99" Margin="0,0,112,0"/>
-                            <Label x:Name="label1_Copy3" Content="Valor" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100"/>
-                            <TextBox x:Name="txt_itemDesconto" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="487,26,105,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right"/>
-                            <TextBox x:Name="txt_itemValor" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TextAlignment="Right"/>
+                            <ComboBox x:Name="cmb_ItemDesc"  IsEditable="True" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Left" Height="23" Margin="0,26,0,0" VerticalAlignment="Top" Width="317" />
+                            <Label x:Name="label1_Copy16" Content="Quant." VerticalAlignment="Top" Margin="330,0,0,0" HorizontalAlignment="Left" Width="74"/>
+                            <TextBox x:Name="txt_itemQuant" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="330,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Left" Width="74"/>
+                            <Label x:Name="label1_Copy18" Content="Desconto" HorizontalAlignment="Right" VerticalAlignment="Top" Width="89" Margin="0,0,190,0"/>
+                            <Label x:Name="label1_Copy3" Content="Valor" HorizontalAlignment="Right" VerticalAlignment="Top" Width="87" Margin="0,0,88,0"/>
+                            <TextBox x:Name="txt_itemDesconto" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" Height="23" Margin="419,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" LostFocus="txt_itemDesconto_LostFocus" HorizontalAlignment="Left" Width="89"/>
+                            <TextBox x:Name="txt_itemValor" PreviewTextInput="NumberValidationTextBox" BorderBrush="{StaticResource ResourceKey=SegundaCor}" HorizontalAlignment="Right" Height="23" Margin="0,26,88,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" LostFocus="txt_itemValor_LostFocus" TextAlignment="Right"/>
                             <CheckBox x:Name="chq_programada" Content="Proxima manuteção programada" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top"/>
                             <Grid Margin="0,69,0,25" x:Name="_manutprogramada" Visibility="Hidden">
 
@@ -100,8 +100,9 @@
                                 <Label x:Name="label1_Copy7" Content="Obs:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="307"/>
 
                             </Grid>
-                            <Button x:Name="btn_itemAdd" Style="{StaticResource BotaoRosa}"  Content="Adicionar" FontWeight="Bold" FontSize="18" Margin="208,0,374,0"  Click="btn_novo_Click" Height="25" VerticalAlignment="Bottom" />
-                            <Button x:Name="btn_itemExcluir" Style="{StaticResource BotaoRosa}"  Content="Excluir" FontWeight="Bold" FontSize="18" Margin="375,0,208,0"  Click="btn_novo_Click" Height="25" VerticalAlignment="Bottom" />
+                            <Button x:Name="btn_itemAdd" Style="{StaticResource BotaoRosa}"  Content="Gravar" FontWeight="Bold" FontSize="18" Margin="208,0,374,0"  Click="btn_itemAdd_Click" Height="25" VerticalAlignment="Bottom" />
+                            <Button x:Name="btn_itemExcluir" Style="{StaticResource BotaoRosa}"  Content="Excluir" FontWeight="Bold" FontSize="18" Margin="375,0,208,0"  Click="btn_itemExcluir_Click" Height="25" VerticalAlignment="Bottom" />
+                            <Button x:Name="btn_mais" Style="{StaticResource BotaoRosa}"  Content="Novo" FontWeight="Bold" VerticalContentAlignment="Center" FontSize="18" Margin="615,0,0,156"  Click="btn_mais_Click" Height="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="83" />
 
                         </Grid>
                     </GroupBox>
