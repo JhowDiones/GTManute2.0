@@ -194,27 +194,33 @@ namespace GTManute.Views.Lançamento
                 {
                     try
                     {
-                        db_manu_log _abast = new db_manu_log();
+                        manulog = new db_manu_log();
 
-                        _abast.Desconto = txt_calcDesconto.Text;
-                        _abast.DT_LANCA = DateTime.UtcNow;
-                        _abast.DT_NF = txt_data.Text;
-                        _abast.Empresa = Empresa;
-                        _abast.FORNECEDOR = cmb_fornecedor.Text;
-                        _abast.km_manutencao = txt_km.Text;
-                        _abast.MOTORISTA = cmb_motorista.Text;
-                        _abast.NR_NF = txt_doc.Text;
-                        _abast.PLACA = cmb_veiculo.Text;
-                        _abast.VALOR_TT = txt_calcTotal.Text;
+                        manulog.Desconto = txt_calcDesconto.Text;
+                        manulog.DT_LANCA = DateTime.UtcNow;
+                        manulog.DT_NF = txt_data.Text;
+                        manulog.Empresa = Empresa;
+                        manulog.FORNECEDOR = cmb_fornecedor.Text;
+                        manulog.km_manutencao = txt_km.Text;
+                        manulog.MOTORISTA = cmb_motorista.Text;
+                        manulog.NR_NF = txt_doc.Text;
+                        manulog.PLACA = cmb_veiculo.Text;
+                        manulog.VALOR_TT = txt_calcTotal.Text;
                         calcular();
-                        AtualizarItens();
+
                         await Task.Run(() =>
                         {
                             try
                             {
-                                db.db_manu_log.InsertOnSubmit(_abast);
+                                db.db_manu_log.InsertOnSubmit(manulog);
+                                db.SubmitChanges();
+                                AtualizarItens();
+
+                                DarNF(manulog);
+
                                 db.db_manu.InsertAllOnSubmit(Novaspecaslista);
                                 db.SubmitChanges();
+
                                 Application.Current.Dispatcher.Invoke((Action)delegate
                                 {
                                     mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
@@ -294,6 +300,15 @@ namespace GTManute.Views.Lançamento
                     db_manu_log abast = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.COD == ID).FirstOrDefault());
                     db.db_manu_log.DeleteOnSubmit(abast);
                     db.db_manu.DeleteAllOnSubmit(pecaslista);
+                    try
+                    {
+                        db.db_manu.DeleteAllOnSubmit(Excluirpecaslista);
+                    }
+                    catch
+                    {
+
+                    }
+
                     db.SubmitChanges();
                     Limpar();
                     carregando(ID - 1, true);
@@ -630,6 +645,7 @@ namespace GTManute.Views.Lançamento
                 grid_itens.ItemsSource = ultimas;
             }
             calcular();
+            btn_mais();
         }
         private void txt_data_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -712,6 +728,51 @@ namespace GTManute.Views.Lançamento
 
             }
         }
+        private void DarNF(db_manu_log log)
+        {
+            try
+            {
+                for (int i = 0; i < pecaslista.Count; i++)
+                {
+                    try
+                    {
+                        pecaslista[i].NR_LANCA = log.NR_NF;
+                        pecaslista[i].NR_NF = log.COD.ToString();
+                        pecaslista[i].VEICULO = cmb_veiculo.Text;
+                    }
+                    catch
+                    {
+                        mensagem("Erro ao puxar NF", false, "", "OK");
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                for (int i = 0; i < Novaspecaslista.Count; i++)
+                {
+                    try
+                    {
+                        Novaspecaslista[i].NR_LANCA = log.NR_NF;
+                        Novaspecaslista[i].NR_NF = log.COD.ToString();
+                        Novaspecaslista[i].VEICULO = cmb_veiculo.Text;
+                    }
+                    catch
+                    {
+                        mensagem("Erro ao puxar NF", false, "", "OK");
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void calcular()
         {
             try
@@ -730,10 +791,10 @@ namespace GTManute.Views.Lançamento
                     val = 0;
                     double.TryParse(pecaslista[i].DESCONTO.Replace("R$ ", ""), out desc1);
                     double.TryParse(pecaslista[i].QUANTIDADE.Replace("R$ ", ""), out quant);
-                    double.TryParse(pecaslista[i].VALOR.Replace("R$ ",""), out val);
+                    double.TryParse(pecaslista[i].VALOR.Replace("R$ ", ""), out val);
                     desconto += desc1 * quant;
-                    total +=val* quant;
-                    
+                    total += val * quant;
+
                 }
                 txt_calcDesconto.Text = desconto.ToString("N2");
                 txt_calcTotal.Text = total.ToString("N2");
@@ -764,7 +825,6 @@ namespace GTManute.Views.Lançamento
                 _manutprogramada.Visibility = Visibility.Hidden;
             }
         }
-
         private void grid_itens_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
