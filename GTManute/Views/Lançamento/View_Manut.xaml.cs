@@ -179,6 +179,10 @@ namespace GTManute.Views.Lançamento
                 pecaslista = new List<db_manu>();
                 Limpar();
                 PecaId = -1;
+                ultimas.Clear();
+                Novaspecaslista.Clear();
+                Excluirpecaslista.Clear();
+                pecaslista.Clear();
                 grid_itens.ItemsSource = null;
             }
             else
@@ -201,7 +205,8 @@ namespace GTManute.Views.Lançamento
                         _abast.NR_NF = txt_doc.Text;
                         _abast.PLACA = cmb_veiculo.Text;
                         _abast.VALOR_TT = txt_calcTotal.Text;
-
+                        calcular();
+                        AtualizarItens();
                         await Task.Run(() =>
                         {
                             try
@@ -253,6 +258,7 @@ namespace GTManute.Views.Lançamento
                 _abast.NR_NF = txt_doc.Text;
                 _abast.PLACA = cmb_veiculo.Text;
                 _abast.VALOR_TT = txt_calcTotal.Text;
+                AtualizarItens();
                 await Task.Run(() =>
                  {
                      try
@@ -321,8 +327,8 @@ namespace GTManute.Views.Lançamento
         private void preencher(db_manu listamanu, db_manu_log logmanu)
         {
             Limpar();
-            txt_calcDesconto.Text = logmanu.Desconto;
-            txt_calcTotal.Text = logmanu.VALOR_TT;
+            txt_calcDesconto.Text = "";
+            txt_calcTotal.Text = "";
             txt_data.Text = logmanu.DT_NF;
             txt_doc.Text = logmanu.NR_NF;
             txt_itemDesconto.Text = listamanu.DESCONTO;
@@ -346,7 +352,7 @@ namespace GTManute.Views.Lançamento
         {
             try
             {
-                
+
                 if (cod == 0)
                 {
                     manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
@@ -383,7 +389,7 @@ namespace GTManute.Views.Lançamento
 
                 }
                 grid_itens.ItemsSource = ultimas;
-
+                calcular();
 
 
             }
@@ -489,7 +495,6 @@ namespace GTManute.Views.Lançamento
                 _manutprogramada.Visibility = Visibility.Hidden;
             }
         }
-
         private void btn_itemAdd_Click(object sender, RoutedEventArgs e)
         {
             if (PecaId == -1)
@@ -531,13 +536,13 @@ namespace GTManute.Views.Lançamento
                     }
                     Novaspecaslista.Add(peca);
                     Ultimas ultimas1 = new Ultimas();
-                    ultimas1.ID= ultimas.Count + 1;
+                    ultimas1.ID = ultimas.Count + 1;
                     ultimas1.Desconto = txt_itemDesconto.Text;
                     ultimas1.Descrição = cmb_ItemDesc.Text;
                     ultimas1.Quant = txt_itemQuant.Text;
                     ultimas1.Total = txt_itemValor.Text;
                     ultimas.Add(ultimas1);
-                    grid_itens.ItemsSource=null;
+                    grid_itens.ItemsSource = null;
                     grid_itens.ItemsSource = ultimas;
 
                     mensagem("Peça/Serviço adicionado com sucesso!", false, "", "Ok");
@@ -598,7 +603,6 @@ namespace GTManute.Views.Lançamento
                 }
             }
         }
-
         private void btn_itemExcluir_Click(object sender, RoutedEventArgs e)
         {
             if (PecaId == -1)
@@ -614,30 +618,131 @@ namespace GTManute.Views.Lançamento
                 grid_itens.ItemsSource = ultimas;
             }
         }
-
         private void txt_data_LostFocus(object sender, RoutedEventArgs e)
         {
             setData(sender, e);
         }
-
         private void txt_calcDesconto_LostFocus(object sender, RoutedEventArgs e)
         {
             setValor(sender, e);
         }
-
         private void txt_calcTotal_LostFocus(object sender, RoutedEventArgs e)
         {
             setValor(sender, e);
         }
-
         private void txt_itemDesconto_LostFocus(object sender, RoutedEventArgs e)
         {
             setValor(sender, e);
         }
-
         private void txt_itemValor_LostFocus(object sender, RoutedEventArgs e)
         {
             setValor(sender, e);
+        }
+        private void AtualizarItens()
+        {
+            try
+            {
+                for (int i = 0; i < pecaslista.Count; i++)
+                {
+                    peca = pecaslista[i];
+                    pecaslista[i].DESCRICAO = cmb_ItemDesc.Text;
+                    pecaslista[i].DT_LANCA = DateTime.Now;
+                    pecaslista[i].DT_NF = txt_data.Text;
+                    pecaslista[i].Empresa = Empresa;
+                    pecaslista[i].FORNECEDOR = cmb_fornecedor.Text;
+                    pecaslista[i].KM_MANUTENCAO = txt_km.Text;
+                    pecaslista[i].MOTORISTA = cmb_motorista.Text;
+                    try
+                    {
+                        pecaslista[i].NR_LANCA = manulog.NR_NF;
+                        pecaslista[i].NR_NF = manulog.COD.ToString();
+                        pecaslista[i].VEICULO = cmb_veiculo.Text;
+                    }
+                    catch
+                    {
+                        pecaslista[i].NR_LANCA = "";
+                        pecaslista[i].NR_NF = "";
+                        pecaslista[i].VEICULO = cmb_veiculo.Text;
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                for (int i = 0; i < Novaspecaslista.Count; i++)
+                {
+                    peca = Novaspecaslista[i];
+                    Novaspecaslista[i].DESCRICAO = cmb_ItemDesc.Text;
+                    Novaspecaslista[i].DT_LANCA = DateTime.Now;
+                    Novaspecaslista[i].DT_NF = txt_data.Text;
+                    Novaspecaslista[i].Empresa = Empresa;
+                    Novaspecaslista[i].FORNECEDOR = cmb_fornecedor.Text;
+                    Novaspecaslista[i].KM_MANUTENCAO = txt_km.Text;
+                    Novaspecaslista[i].MOTORISTA = cmb_motorista.Text;
+                    try
+                    {
+                        Novaspecaslista[i].NR_LANCA = manulog.NR_NF;
+                        Novaspecaslista[i].NR_NF = manulog.COD.ToString();
+                        Novaspecaslista[i].VEICULO = cmb_veiculo.Text;
+                    }
+                    catch
+                    {
+                        Novaspecaslista[i].NR_LANCA = "";
+                        Novaspecaslista[i].NR_NF = "";
+                        Novaspecaslista[i].VEICULO = cmb_veiculo.Text;
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void calcular()
+        {
+            try
+            {
+                double desconto = 0;
+                double total = 0;
+                double desc1 = 0;
+                double quant = 0;
+                double val = 0;
+
+
+                for (int i = 0; i < pecaslista.Count; i++)
+                {
+                    desc1 = 0;
+                    quant = 0;
+                    val = 0;
+                    double.TryParse(pecaslista[i].DESCONTO.Replace("R$ ", ""), out desc1);
+                    double.TryParse(pecaslista[i].QUANTIDADE.Replace("R$ ", ""), out quant);
+                    double.TryParse(pecaslista[i].VALOR.Replace("R$ ",""), out val);
+                    desconto += desc1 * quant;
+                    total +=val* quant;
+                    
+                }
+                txt_calcDesconto.Text = desconto.ToString("N2");
+                txt_calcTotal.Text = total.ToString("N2");
+                for (int f = 0; f < Novaspecaslista.Count; f++)
+                {
+                    double.TryParse(Novaspecaslista[f].DESCONTO.Replace("R$ ", ""), out desc1);
+                    double.TryParse(Novaspecaslista[f].QUANTIDADE.Replace("R$ ", ""), out quant);
+                    double.TryParse(Novaspecaslista[f].VALOR.Replace("R$ ", ""), out val);
+                    desconto += desc1 * quant;
+                    total += val * quant;
+                }
+                txt_calcDesconto.Text = desconto.ToString("N2");
+                txt_calcTotal.Text = total.ToString("N2");
+            }
+            catch
+            {
+
+            }
         }
     }
 

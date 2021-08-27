@@ -18,7 +18,6 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.baml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Banco.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csprojAssemblyReference.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe.config
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\app.config
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.dll
@@ -95,3 +94,6 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.compiled
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Manut.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Manut.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Manut.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Manut.g.cs

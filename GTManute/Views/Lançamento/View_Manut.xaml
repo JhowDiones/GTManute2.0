@@ -122,7 +122,7 @@
 
         </Grid>
         <Grid x:Name="gridferramenta" Margin="35,70,35,0" Height="30" VerticalAlignment="Top">
-            <!-- 365-->
+            <!-- 480-->
             <Rectangle Margin="0,0,0,0" Fill="{StaticResource SegundaCor}" RadiusY="10" RadiusX="10"/>
             <Image Source="{StaticResource Buscar_ico}" HorizontalAlignment="Left" Margin="5,0,0,0" Height="28" VerticalAlignment="Top" />
             <TextBlock x:Name="txt_pesquisa_Copy" FontSize="20" TextAlignment="Center" FontWeight="Bold"
@@ -135,7 +135,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <DataGrid x:Name="dt_pesquisa" Height="229" Margin="0,75,0,0" VerticalAlignment="Top" MouseDoubleClick="dt_pesquisa_MouseDoubleClick" CurrentCellChanged="dt_pesquisa_CurrentCellChanged"/>
+                <DataGrid x:Name="dt_pesquisa" Height="344" Margin="0,75,0,0" VerticalAlignment="Top" MouseDoubleClick="dt_pesquisa_MouseDoubleClick" CurrentCellChanged="dt_pesquisa_CurrentCellChanged"/>
                 <RadioButton x:Name="rad_contem" IsChecked="True" Content="Contem" Foreground="{StaticResource primeiraCor}" FontSize="14" Margin="570,0,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rad_exata" Content="Pesquisa exata" Margin="570,23,0,0" Foreground="{StaticResource primeiraCor}" FontSize="14" VerticalAlignment="Top" Visibility="Hidden"/>
                 <TextBlock x:Name="txt_registros" Text="Nº de Registros: " Foreground="{StaticResource primeiraCor}" TextAlignment="Right" FontSize="14" Margin="570,46,0,0" VerticalAlignment="Top"/>
