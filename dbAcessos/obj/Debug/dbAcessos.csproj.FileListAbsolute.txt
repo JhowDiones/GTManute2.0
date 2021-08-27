@@ -14,5 +14,5 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.ban
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.csproj.GenerateResource.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.banco_controle.resources
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.GenerateResource.cache
-C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.csprojAssemblyReference.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.AssemblyReference.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.csproj.AssemblyReference.cache

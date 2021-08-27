@@ -253,18 +253,18 @@ namespace GTManute.Views.Lançamento
             String retorno = MessageBox.Show("Deseja alterar esta manuteção?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
-                db_manu_log _abast = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.COD == ID).FirstOrDefault());
 
-                _abast.Desconto = txt_calcDesconto.Text;
-                _abast.DT_LANCA = DateTime.UtcNow;
-                _abast.DT_NF = txt_data.Text;
-                _abast.Empresa = Empresa;
-                _abast.FORNECEDOR = cmb_fornecedor.Text;
-                _abast.km_manutencao = txt_km.Text;
-                _abast.MOTORISTA = cmb_motorista.Text;
-                _abast.NR_NF = txt_doc.Text;
-                _abast.PLACA = cmb_veiculo.Text;
-                _abast.VALOR_TT = txt_calcTotal.Text;
+
+                manulog.Desconto = txt_calcDesconto.Text;
+                manulog.DT_LANCA = DateTime.UtcNow;
+                manulog.DT_NF = txt_data.Text;
+                manulog.Empresa = Empresa;
+                manulog.FORNECEDOR = cmb_fornecedor.Text;
+                manulog.km_manutencao = txt_km.Text;
+                manulog.MOTORISTA = cmb_motorista.Text;
+                manulog.NR_NF = txt_doc.Text;
+                manulog.PLACA = cmb_veiculo.Text;
+                manulog.VALOR_TT = txt_calcTotal.Text;
                 AtualizarItens();
                 await Task.Run(() =>
                  {
@@ -297,8 +297,7 @@ namespace GTManute.Views.Lançamento
             {
                 try
                 {
-                    db_manu_log abast = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.COD == ID).FirstOrDefault());
-                    db.db_manu_log.DeleteOnSubmit(abast);
+                    db.db_manu_log.DeleteOnSubmit(manulog);
                     db.db_manu.DeleteAllOnSubmit(pecaslista);
                     try
                     {
@@ -311,7 +310,7 @@ namespace GTManute.Views.Lançamento
 
                     db.SubmitChanges();
                     Limpar();
-                    carregando(ID - 1, true);
+                    carregando(0, true);
                 }
                 catch
                 {
@@ -560,7 +559,7 @@ namespace GTManute.Views.Lançamento
                     }
                     Novaspecaslista.Add(peca);
                     Ultimas ultimas1 = new Ultimas();
-                    ultimas1.ID = ultimas.Count + 1;
+                    ultimas1.ID = ultimas.Count;
                     ultimas1.Desconto = txt_itemDesconto.Text;
                     ultimas1.Descrição = cmb_ItemDesc.Text;
                     ultimas1.Quant = txt_itemQuant.Text;
@@ -624,7 +623,60 @@ namespace GTManute.Views.Lançamento
                 }
                 catch
                 {
-                    mensagem("Erro ao alterar peça/serviço!", false, "", "Ok");
+                    try
+                    {
+                        try
+                        {
+                            Novaspecaslista[PecaId].DESCONTO = txt_itemDesconto.Text;
+                            Novaspecaslista[PecaId].DESCRICAO = cmb_ItemDesc.Text;
+                            Novaspecaslista[PecaId].DT_LANCA = DateTime.Now;
+                            Novaspecaslista[PecaId].DT_NF = txt_data.Text;
+                            Novaspecaslista[PecaId].Empresa = Empresa;
+                            Novaspecaslista[PecaId].FORNECEDOR = cmb_fornecedor.Text;
+                            Novaspecaslista[PecaId].KM_MANUTENCAO = txt_km.Text;
+                            Novaspecaslista[PecaId].MOTORISTA = cmb_motorista.Text;
+                            if (chq_programada.IsChecked == true)
+                            {
+                                Novaspecaslista[PecaId].MProgramada = "Sim";
+                                Novaspecaslista[PecaId].M_Km_Programada = txt_progrmadoKm.Text;
+                                Novaspecaslista[PecaId].M_OBS_Programada = txt_ProgrmadoObs.Text;
+                            }
+                            try
+                            {
+                                Novaspecaslista[PecaId].NR_LANCA = manulog.NR_NF;
+                                Novaspecaslista[PecaId].NR_NF = manulog.COD.ToString();
+                                Novaspecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
+                                Novaspecaslista[PecaId].VALOR = txt_itemValor.Text;
+                                Novaspecaslista[PecaId].VEICULO = cmb_veiculo.Text;
+                            }
+                            catch
+                            {
+                                Novaspecaslista[PecaId].NR_LANCA = "";
+                                Novaspecaslista[PecaId].NR_NF = "";
+                                Novaspecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
+                                Novaspecaslista[PecaId].VALOR = txt_itemValor.Text;
+                                Novaspecaslista[PecaId].VEICULO = cmb_veiculo.Text;
+                            }
+                            ultimas[PecaId].Desconto = txt_itemDesconto.Text;
+                            ultimas[PecaId].Descrição = cmb_ItemDesc.Text;
+                            ultimas[PecaId].Quant = txt_itemQuant.Text;
+                            ultimas[PecaId].Total = txt_itemValor.Text;
+                            grid_itens.ItemsSource = null;
+                            grid_itens.ItemsSource = ultimas;
+
+                            mensagem("Peça/Serviço alterada com sucesso!", false, "", "Ok");
+
+                        }
+                        catch
+                        {
+                            mensagem("Erro ao alterar peça/serviço!", false, "", "Ok");
+                        }
+                    }
+
+                    catch
+                    {
+                        mensagem("Erro ao alterar peça/serviço!", false, "", "Ok");
+                    }
                 }
             }
 
@@ -827,6 +879,7 @@ namespace GTManute.Views.Lançamento
         }
         private void grid_itens_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
             try
             {
                 object item = grid_itens.SelectedItem;
@@ -841,14 +894,48 @@ namespace GTManute.Views.Lançamento
             }
             catch
             {
+                try
+                {
+
+                    object item = grid_itens.SelectedItem;
+                    string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                    PecaId = int.Parse(ID);
+                    cmb_ItemDesc.Text = pecaslista[PecaId].DESCRICAO;
+                    txt_itemDesconto.Text = pecaslista[PecaId].DESCONTO;
+                    txt_itemQuant.Text = pecaslista[PecaId].QUANTIDADE;
+                    txt_itemValor.Text = pecaslista[PecaId].VALOR;
+                }
+                catch
+                {
+
+                }
+            }
+
+            try
+            {
                 object item = grid_itens.SelectedItem;
-                string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                 PecaId = int.Parse(ID);
                 cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
                 txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
                 txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
                 txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
             }
+            catch
+            {
+                try
+                {
+                    object item = grid_itens.SelectedItem;
+                    string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                    PecaId = int.Parse(ID);
+                    cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
+                    txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
+                    txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
+                    txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
+                }
+                catch { }
+            }
+            cmb_ItemDesc.Focus();
         }
     }
 
