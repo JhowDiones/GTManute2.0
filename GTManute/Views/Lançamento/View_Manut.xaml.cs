@@ -21,12 +21,13 @@ namespace GTManute.Views.Lançamento
             public string Descrição { get; set; }
             public string Quant { get; set; }
             public string Desconto { get; set; }
-            public string Total { get; set; }
+            public string ValorItem { get; set; }
         }
         List<Ultimas> ultimas = new List<Ultimas>();
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
+        bool Mnovo = false;
         private int ID { get; set; }
         private int PecaId { get; set; }
         db_manu_log manulog = new db_manu_log();
@@ -364,6 +365,7 @@ namespace GTManute.Views.Lançamento
             cmb_veiculo.Text = logmanu.PLACA;
             calcular();
             btn_novo.Content = "Novo";
+            btn_mais();
         }
         private async void carregando(int cod, bool full)
         {
@@ -401,7 +403,7 @@ namespace GTManute.Views.Lançamento
                     ult.Desconto = pecaslista[i].DESCONTO;
                     ult.Descrição = pecaslista[i].DESCRICAO;
                     ult.Quant = pecaslista[i].QUANTIDADE;
-                    ult.Total = pecaslista[i].VALOR;
+                    ult.ValorItem = pecaslista[i].VALOR;
                     ultimas.Add(ult);
 
                 }
@@ -563,7 +565,7 @@ namespace GTManute.Views.Lançamento
                     ultimas1.Desconto = txt_itemDesconto.Text;
                     ultimas1.Descrição = cmb_ItemDesc.Text;
                     ultimas1.Quant = txt_itemQuant.Text;
-                    ultimas1.Total = txt_itemValor.Text;
+                    ultimas1.ValorItem = txt_itemValor.Text;
                     ultimas.Add(ultimas1);
                     grid_itens.ItemsSource = null;
                     grid_itens.ItemsSource = ultimas;
@@ -614,7 +616,7 @@ namespace GTManute.Views.Lançamento
                     ultimas[PecaId].Desconto = txt_itemDesconto.Text;
                     ultimas[PecaId].Descrição = cmb_ItemDesc.Text;
                     ultimas[PecaId].Quant = txt_itemQuant.Text;
-                    ultimas[PecaId].Total = txt_itemValor.Text;
+                    ultimas[PecaId].ValorItem = txt_itemValor.Text;
                     grid_itens.ItemsSource = null;
                     grid_itens.ItemsSource = ultimas;
 
@@ -660,7 +662,7 @@ namespace GTManute.Views.Lançamento
                             ultimas[PecaId].Desconto = txt_itemDesconto.Text;
                             ultimas[PecaId].Descrição = cmb_ItemDesc.Text;
                             ultimas[PecaId].Quant = txt_itemQuant.Text;
-                            ultimas[PecaId].Total = txt_itemValor.Text;
+                            ultimas[PecaId].ValorItem = txt_itemValor.Text;
                             grid_itens.ItemsSource = null;
                             grid_itens.ItemsSource = ultimas;
 
@@ -690,11 +692,22 @@ namespace GTManute.Views.Lançamento
             }
             else
             {
-                Excluirpecaslista.Add(pecaslista[PecaId]);
-                ultimas.Remove(ultimas[PecaId]);
-                pecaslista.Remove(pecaslista[PecaId]);
-                grid_itens.ItemsSource = null;
-                grid_itens.ItemsSource = ultimas;
+                if (Mnovo == true)
+                {
+                    ultimas.Remove(ultimas[PecaId + pecaslista.Count]);
+                    Novaspecaslista.Remove(Novaspecaslista[PecaId]);
+                    grid_itens.ItemsSource = null;
+                    grid_itens.ItemsSource = ultimas;
+                }
+                else
+                {
+                    Excluirpecaslista.Add(pecaslista[PecaId]);
+                    ultimas.Remove(ultimas[PecaId]);
+                    pecaslista.Remove(pecaslista[PecaId]);
+                    grid_itens.ItemsSource = null;
+                    grid_itens.ItemsSource = ultimas;
+                }
+
             }
             calcular();
             btn_mais();
@@ -889,11 +902,12 @@ namespace GTManute.Views.Lançamento
                 txt_itemDesconto.Text = pecaslista[PecaId].DESCONTO;
                 txt_itemQuant.Text = pecaslista[PecaId].QUANTIDADE;
                 txt_itemValor.Text = pecaslista[PecaId].VALOR;
-
+                Mnovo = false;
 
             }
             catch
             {
+
                 try
                 {
 
@@ -904,38 +918,53 @@ namespace GTManute.Views.Lançamento
                     txt_itemDesconto.Text = pecaslista[PecaId].DESCONTO;
                     txt_itemQuant.Text = pecaslista[PecaId].QUANTIDADE;
                     txt_itemValor.Text = pecaslista[PecaId].VALOR;
+                    Mnovo = false;
                 }
                 catch
                 {
-
+                    try
+                    {
+                        object item = grid_itens.SelectedItem;
+                        string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                        PecaId = pecaslista.Count - int.Parse(ID);
+                        cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
+                        txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
+                        txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
+                        txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
+                        Mnovo = true;
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            object item = grid_itens.SelectedItem;
+                            string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
+                            PecaId = pecaslista.Count - int.Parse(ID);
+                            cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
+                            txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
+                            txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
+                            txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
+                            Mnovo = true;
+                        }
+                        catch { }
+                    }
                 }
-            }
 
-            try
-            {
-                object item = grid_itens.SelectedItem;
-                string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-                PecaId = int.Parse(ID);
-                cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
-                txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
-                txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
-                txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
-            }
-            catch
-            {
-                try
-                {
-                    object item = grid_itens.SelectedItem;
-                    string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
-                    PecaId = int.Parse(ID);
-                    cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
-                    txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
-                    txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
-                    txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
-                }
-                catch { }
             }
             cmb_ItemDesc.Focus();
+        }
+
+        private void chq_programada_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (chq_programada.IsChecked == true)
+            {
+                _manutprogramada.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _manutprogramada.Visibility = Visibility.Hidden;
+            }
         }
     }
 
