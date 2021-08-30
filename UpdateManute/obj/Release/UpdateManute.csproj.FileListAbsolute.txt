@@ -1,0 +1,5 @@
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Release\UpdateManute.csproj.AssemblyReference.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Release\UpdateManute.Form1.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Release\UpdateManute.Properties.Resources.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Release\UpdateManute.csproj.GenerateResource.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Release\UpdateManute.csproj.CoreCompileInputs.cache

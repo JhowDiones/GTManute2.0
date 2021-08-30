@@ -40,7 +40,6 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\GTManute.exe
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\GTManute.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\dbAcessos.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Release\dbAcessos.pdb
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csprojAssemblyReference.cache
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Abast.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\MainWindow.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Cadastro\View_Colaboradores.g.cs
@@ -84,3 +83,4 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\RdlCompile.c
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\RdlCompile.compiled
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Manut.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\Views\Lançamento\View_Manut.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Release\GTManute.csproj.AssemblyReference.cache
