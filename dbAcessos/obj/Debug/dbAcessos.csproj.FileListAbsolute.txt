@@ -1,9 +1,3 @@
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\dbAcessos.dll
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\dbAcessos.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.CoreCompileInputs.cache
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.dll
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\app.config
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\bin\Debug\app.config
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\bin\Debug\dbAcessos.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\bin\Debug\dbAcessos.pdb
@@ -12,7 +6,13 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.banco_controle.resources
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.csproj.GenerateResource.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\app.config
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\dbAcessos.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Debug\dbAcessos.pdb
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.banco_controle.resources
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.GenerateResource.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.pdb
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\obj\Debug\dbAcessos.csproj.AssemblyReference.cache
-C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Debug\dbAcessos.csproj.AssemblyReference.cache

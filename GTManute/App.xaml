@@ -15,6 +15,8 @@
             <BitmapImage x:Key="Funcionario" UriSource="Res/Img/Funcionarios.png"/>
             <BitmapImage x:Key="Manutencao" UriSource="Res/Img/manute.png"/>
             <BitmapImage x:Key="veiculos" UriSource="Res/Img/veiculos.png"/>
+
+            <BitmapImage x:Key="logo_JW" UriSource="Res/Img/LOGO-JW-SOLUCOES-PNG.png"/>
             <BitmapImage x:Key="config_banco" UriSource="Res/Img/config.png"/>
             <Style x:Key="BotaoRosa" TargetType="{x:Type Button}">
                

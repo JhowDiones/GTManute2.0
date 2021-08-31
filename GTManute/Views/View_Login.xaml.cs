@@ -27,7 +27,7 @@ namespace GTManute.Views
             db = new dbManuteDataContext(cfgdb.conexao);
             Empresa = cfgdb.empresa;
             Carregar();
-            
+            txt_usuario.Focus();
 
         }
         private async void Carregar()
@@ -308,6 +308,11 @@ namespace GTManute.Views
         private void btn_entrar_Click(object sender, RoutedEventArgs e)
         {
             _btn_entrar();
+        }
+
+        private void image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://api.whatsapp.com/send?phone=+5538988595412&text="+"*Pre-atendimento* = *Empresa:* "+cfgdb.NomeEmpresa + " *Cod:* " + cfgdb.empresa+ " *Programa:* "+"GTManute");
         }
     }
 }

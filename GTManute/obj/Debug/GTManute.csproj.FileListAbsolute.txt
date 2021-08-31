@@ -1,38 +1,3 @@
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\MainWindow.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Login.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\App.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute_MarkupCompile.cache
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute_MarkupCompile.lref
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\App.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\MainWindow.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Login.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.g.resources
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.Properties.Resources.resources
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.GenerateResource.cache
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CoreCompileInputs.cache
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.exe
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Banco.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Banco.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe.config
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\app.config
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.dll
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CopyComplete
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\app.config
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\GTManute.exe.config
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\GTManute.exe
@@ -72,28 +37,62 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.cspro
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csproj.CopyComplete
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.exe
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.pdb
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.baml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Rotas.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Cadastro\View_Rotas.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Newtonsoft.Json.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Rotas.g.cs
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Rotas.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\RdlCompile.cache
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\RdlCompile.compiled
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Microsoft.ReportViewer.Common.dll
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.cache
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.compiled
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Manut.baml
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\Views\Lançamento\View_Manut.g.cs
+C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\app.config
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe.config
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.exe
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\GTManute.pdb
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\dbAcessos.pdb
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.AssemblyReference.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Manut.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\MainWindow.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Rotas.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.g.cs
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Manut.g.cs
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Abast.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Banco.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Login.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\App.g.cs
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute_MarkupCompile.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute_MarkupCompile.lref
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\App.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\MainWindow.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Colaboradores.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Rotas.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_Frota.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Cadastro\View_CadFornecedores.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Company_Control.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\CompanyControl\Control_Acesso.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Mensagem.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Banco.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Login.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\View_Menu.baml
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.g.resources
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.Properties.Resources.resources
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.GenerateResource.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.compiled
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CopyComplete
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.exe
+C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.pdb

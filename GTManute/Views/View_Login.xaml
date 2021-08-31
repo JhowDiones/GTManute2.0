@@ -136,7 +136,8 @@
         </Grid>
         <Rectangle Fill="{DynamicResource TerceiraCor}" StrokeThickness="0" HorizontalAlignment="Right" Height="30" Margin="0,75,95,0" Stroke="Black" VerticalAlignment="Top" Width="30" RadiusX="10" RadiusY="10"/>
         <TextBlock x:Name="btn_Fechar" HorizontalAlignment="Right" Height="30" Margin="0,74,96,0" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Width="29" FontSize="20" TextAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="btn_Fechar_MouseLeftButtonDown"/>
-        <Image x:Name="btn_config" Source="{StaticResource config_banco}" HorizontalAlignment="Left" Height="40" Margin="345,363,0,0" VerticalAlignment="Top" Width="40" MouseLeftButtonDown="btn_config_MouseLeftButtonUp"/>
+        <Image x:Name="btn_config" Source="{StaticResource config_banco}" HorizontalAlignment="Left" Height="59" Margin="326,341,0,0" VerticalAlignment="Top" Width="59" MouseLeftButtonDown="btn_config_MouseLeftButtonUp"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Source="{StaticResource logo_JW}" Height="78" Margin="110,332,0,0" VerticalAlignment="Top" Width="85" MouseLeftButtonDown="image_MouseLeftButtonUp"/>
     </Grid>
 
 </Window>

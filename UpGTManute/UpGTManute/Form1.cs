@@ -24,8 +24,8 @@ namespace UpGTManute
 
         private void BtnDownload_Click()
         {
-            string path2 = @"c:\GTManute\Updates\InstallManute.exe";
-            string path = @"c:\GTManute\Updates\InstallManute.zip";
+            string path2 = @"c:\GTManute\Updates\UpManute.exe";
+            string path = @"c:\GTManute\Updates\UpManute.zip";
             string diret = @"c:\GTManute\Updates\";
 
             try
@@ -51,7 +51,7 @@ namespace UpGTManute
 
             using (WebClient wc = new WebClient())
             {
-                string url = "https://j-tec.000webhostapp.com/GTManuteUp/InstallManute.zip";
+                string url = "https://j-tec.000webhostapp.com/GTManuteUp/UpManute.zip";
                 try
                 {
                     Thread thread = new Thread(() =>
@@ -85,7 +85,7 @@ namespace UpGTManute
 
         public void Descompactar(object sender, AsyncCompletedEventArgs e)
         {
-            ZipFile arquivoZip = ZipFile.Read("C:\\GTManute\\Updates\\InstallManute.zip");
+            ZipFile arquivoZip = ZipFile.Read("C:\\GTManute\\Updates\\UpManute.zip");
             try
             {
                 foreach (ZipEntry q in arquivoZip)
@@ -93,14 +93,15 @@ namespace UpGTManute
                     q.Extract("C:\\GTManute\\Updates");
                     progressBar1.Value = 100;
                     MessageBox.Show("Instalador extraido com sucesso! Finalize a atualização pelo instalador!!!");
-                    System.Diagnostics.Process.Start("C:\\GTManute\\Updates\\InstallManute.exe");
-                    this.Close();
+                    System.Diagnostics.Process.Start("C:\\GTManute\\Updates\\UpManute.exe");
+                    
                 }
                 arquivoZip.Dispose();
+                this.Close();
             }
             catch (Exception ex)
             {
-                throw ex;
+                this.Close();
             }
         }
     }
