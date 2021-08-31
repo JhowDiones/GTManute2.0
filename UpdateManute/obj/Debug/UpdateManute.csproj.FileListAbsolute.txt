@@ -1,0 +1,12 @@
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.Form1.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.Properties.Resources.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.csproj.GenerateResource.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.csproj.CoreCompileInputs.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\bin\Debug\UpdateManute.dll.config
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\bin\Debug\UpdateManute.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\bin\Debug\UpdateManute.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\bin\Debug\Ionic.Zip.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.csproj.CopyComplete
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpdateManute\obj\Debug\UpdateManute.csproj.AssemblyReference.cache

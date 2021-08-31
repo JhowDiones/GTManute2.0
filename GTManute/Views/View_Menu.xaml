@@ -145,6 +145,7 @@
         <WindowsFormsHost Visibility="Hidden" HorizontalAlignment="Left"  Height="318" Margin="124,115,0,0" VerticalAlignment="Top" Width="659">
             <rv:ReportViewer x:Name="Rel_Abast" Load="ReportViewer_Load" AutoSize="True" />
         </WindowsFormsHost>
+        <Button x:Name="btn_atualizar" Content="Atualizar" Style="{StaticResource BotaoBranco}" HorizontalAlignment="Left" Margin="667,75,0,0" VerticalAlignment="Top" Width="116" Click="btn_atualizar_Click"/>
 
     </Grid>
 </Window>

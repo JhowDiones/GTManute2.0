@@ -1,7 +1,9 @@
 ﻿using Ionic.Zip;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace UpdateManute
@@ -17,7 +19,7 @@ namespace UpdateManute
         {
             BtnDownload_Click();
         }
-        
+
         private void BtnDownload_Click()
         {
 
@@ -25,7 +27,6 @@ namespace UpdateManute
 
             try
             {
-                // Determine whether the directory exists.
                 if (File.Exists(path))
                 {
                     File.Delete(path);
@@ -39,17 +40,17 @@ namespace UpdateManute
 
             using (WebClient wc = new WebClient())
             {
+                string url = "https://j-tec.000webhostapp.com/GTManuteUp/InstallManute.zip";
                 try
                 {
-                    wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                    wc.DownloadFileAsync(
-                        // Param1 = Link of file
-                        new System.Uri("https://j-tec.000webhostapp.com/GTManuteUp/InstallManute.zip"),
-                        // Param2 = Path to save
-                        "C:\\GTManute\\Updates\\InstallManute.zip"
-
-                    );
-                    Descompactar();
+                    Thread thread = new Thread(() =>
+                    {
+                        WebClient client = new WebClient();
+                        client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
+                        String nomeArquivo = Path.GetFileName(url);
+                        client.DownloadFileAsync(new Uri(url), @"C:\GTManute\Updates\" + nomeArquivo);
+                    });
+                    thread.Start();
                 }
                 catch
                 {
@@ -57,11 +58,17 @@ namespace UpdateManute
                 }
             }
         }
-        // Event to track the progress
-        void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage - 10;
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                double bytesIn = double.Parse(e.BytesReceived.ToString());
+                double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+                double percentage = bytesIn / totalBytes * 100;
+                progressBar1.Value = int.Parse(Math.Truncate(percentage).ToString());
+            });
         }
+
         public void Descompactar()
         {
             ZipFile arquivoZip = ZipFile.Read("C:\\GTManute\\Updates\\InstallManute.zip");

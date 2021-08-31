@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using dbAcessos;
-using dbAcessos.Properties;
-using GTManute.Properties;
+﻿using dbAcessos;
 using GTManute.Views.Cadastro;
 using GTManute.Views.CompanyControl;
 using GTManute.Views.Lançamento;
 using Microsoft.Reporting.WinForms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
+using UpdateManute;
 
 namespace GTManute.Views
 {
@@ -32,13 +25,13 @@ namespace GTManute.Views
         private int ID { get; set; }
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
-        public View_Menu(bool validade,string data)
+        public View_Menu(bool validade, string data)
         {
             InitializeComponent();
             db = new dbManuteDataContext(cfgdb.conexao);
             txt_validade.Content = data;
             txt_empresa.Content = cfgdb.NomeEmpresa;
-           Empresa = cfgdb.empresa;
+            Empresa = cfgdb.empresa;
             if (validade == false)
             {
                 btn_cadastro.IsEnabled = false;
@@ -60,7 +53,7 @@ namespace GTManute.Views
             {
 
             }
-            
+
         }
 
         private void Home2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -78,7 +71,7 @@ namespace GTManute.Views
         private void btn_Config_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             //View_Banco view_Banco = new View_Banco();
-           // view_Banco.ShowDialog();
+            // view_Banco.ShowDialog();
         }
 
         private void Home3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -150,10 +143,10 @@ namespace GTManute.Views
         {
             string mesatual = DateTime.Now.ToShortDateString();
             string dias = DateTime.Now.Day.ToString("#0");
-           mesatual= mesatual.Replace(dias, "");
+            mesatual = mesatual.Replace(dias, "");
             var dadosRelatorio = new List<db_abast>();
-            dadosRelatorio = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a=>a.DT_CHEGADA.Contains(mesatual)).ToList()) ;
-            
+            dadosRelatorio = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.DT_CHEGADA.Contains(mesatual)).ToList());
+
             Rel_Abast.LocalReport.DataSources.Clear();
             var dataSource = new ReportDataSource("DataSet1", dadosRelatorio);
             Rel_Abast.LocalReport.DataSources.Add(dataSource);
@@ -166,6 +159,13 @@ namespace GTManute.Views
         {
             View_Manut acesso = new View_Manut();
             acesso.ShowDialog();
+        }
+
+        private void btn_atualizar_Click(object sender, RoutedEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Close();
         }
     }
 }
