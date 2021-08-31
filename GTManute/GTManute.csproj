@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -220,10 +220,6 @@
     <ProjectReference Include="..\dbAcessos\dbAcessos.csproj">
       <Project>{a48da256-87c9-44d2-a4cc-8ebae864ceae}</Project>
       <Name>dbAcessos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UpdateManute\UpdateManute.csproj">
-      <Project>{acb3147d-7b3e-4d12-a337-cf8d91c845e0}</Project>
-      <Name>UpdateManute</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

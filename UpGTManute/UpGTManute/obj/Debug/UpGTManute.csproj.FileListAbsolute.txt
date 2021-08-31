@@ -1,0 +1,12 @@
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\bin\Debug\UpGTManute.exe.config
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\bin\Debug\UpGTManute.exe
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\bin\Debug\UpGTManute.pdb
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\bin\Debug\Ionic.Zip.dll
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.csproj.AssemblyReference.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.Form1.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.Properties.Resources.resources
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.csproj.GenerateResource.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.csproj.CoreCompileInputs.cache
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.csproj.CopyComplete
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.exe
+C:\Users\vostro\Desktop\JWD Programas\GTManute\UpGTManute\UpGTManute\obj\Debug\UpGTManute.pdb

@@ -6,11 +6,12 @@ using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using UpdateManute;
 
 namespace GTManute.Views
 {
@@ -38,8 +39,40 @@ namespace GTManute.Views
                 btn_Lanca.IsEnabled = false;
                 btn_home.IsEnabled = false;
             }
+            Atualizar();
         }
+        private async void Atualizar()
+        {
+            string version = new WebClient().DownloadString("https://pastebin.com/raw/69a43Jdw");
+            string Importante = new WebClient().DownloadString("https://pastebin.com/raw/f5Cb29qQ");
 
+            string atualversao = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            if(atualversao!= version)
+            {
+                btn_atualizar.Visibility = Visibility.Visible;
+                if (Importante == "Sim")
+                {
+                    mensagem("Atualização obrigatória! O GTManute estará disponivel para ultilização logo após a atualização!!!", false, "", "OK");
+
+                    try
+                    {
+                        System.Diagnostics.Process.Start("C:\\GTManute\\UpGTManute.exe");
+                        this.Close();
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                mensagem("Existem atualizações pendentes!", false, "", "OK");
+            }
+
+        }
+        private void mensagem(string principal, bool explica, string explicacao, string botao)
+        {
+            Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
+            mensagem.ShowDialog();
+        }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
@@ -163,9 +196,16 @@ namespace GTManute.Views
 
         private void btn_atualizar_Click(object sender, RoutedEventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.Show();
-            this.Close();
+            try
+            {
+                System.Diagnostics.Process.Start("C:\\GTManute\\UpGTManute.exe");
+                this.Close();
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }

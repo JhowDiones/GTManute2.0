@@ -97,7 +97,3 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.c
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Manut.baml
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\Views\Lançamento\View_Manut.g.cs
 C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\obj\Debug\GTManute.csproj.AssemblyReference.cache
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\UpdateManute.dll
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\Ionic.Zip.dll
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\UpdateManute.pdb
-C:\Users\vostro\Desktop\JWD Programas\GTManute\GTManute\bin\Debug\UpdateManute.dll.config
