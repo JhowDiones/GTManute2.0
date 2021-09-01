@@ -20,6 +20,7 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Menu : Window
     {
+        private string VersaoPrograma = "1.0.0.1";
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
@@ -39,15 +40,15 @@ namespace GTManute.Views
                 btn_Lanca.IsEnabled = false;
                 btn_home.IsEnabled = false;
             }
-            Atualizar();
+            
         }
-        private async void Atualizar()
+        private void Atualizar()
         {
             string version = new WebClient().DownloadString("https://pastebin.com/raw/69a43Jdw");
             string Importante = new WebClient().DownloadString("https://pastebin.com/raw/f5Cb29qQ");
 
-            string atualversao = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            if(atualversao!= version)
+            
+            if(VersaoPrograma!= version)
             {
                 btn_atualizar.Visibility = Visibility.Visible;
                 if (Importante == "Sim")
@@ -64,7 +65,11 @@ namespace GTManute.Views
 
                     }
                 }
-                mensagem("Existem atualizações pendentes!", false, "", "OK");
+                else
+                {
+                    mensagem("Existem atualizações pendentes!", false, "", "OK");
+                }
+                
             }
 
         }
@@ -170,24 +175,7 @@ namespace GTManute.Views
         {
             View_Rotas acesso = new View_Rotas();
             acesso.ShowDialog();
-        }
-
-        private async void ReportViewer_Load(object sender, EventArgs e)
-        {
-            string mesatual = DateTime.Now.ToShortDateString();
-            string dias = DateTime.Now.Day.ToString("#0");
-            mesatual = mesatual.Replace(dias, "");
-            var dadosRelatorio = new List<db_abast>();
-            dadosRelatorio = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.DT_CHEGADA.Contains(mesatual)).ToList());
-
-            Rel_Abast.LocalReport.DataSources.Clear();
-            var dataSource = new ReportDataSource("DataSet1", dadosRelatorio);
-            Rel_Abast.LocalReport.DataSources.Add(dataSource);
-            Rel_Abast.LocalReport.ReportEmbeddedResource = "GTManute.Relatorios.Rel_Home_Abast.rdlc";
-
-            Rel_Abast.RefreshReport();
-        }
-
+        }       
         private void Grid_MouseLeftButtonDown_5(object sender, MouseButtonEventArgs e)
         {
             View_Manut acesso = new View_Manut();
@@ -206,6 +194,11 @@ namespace GTManute.Views
 
             }
 
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Atualizar();
         }
     }
 }

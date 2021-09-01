@@ -10,10 +10,10 @@ using System.Windows;
 [assembly: AssemblyTitle("GTManute")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("JW Soluções em Tecnologia")]
 [assembly: AssemblyProduct("GTManute")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2021")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("JW Soluções em Tecnologia")]
 [assembly: AssemblyCulture("")]
 
 // Definir ComVisible como false torna os tipos neste assembly invisíveis
@@ -53,3 +53,4 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("pt-BR")]

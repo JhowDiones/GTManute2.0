@@ -7,7 +7,7 @@
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         mc:Ignorable="d"   AllowsTransparency="True" WindowState="Normal" WindowStyle="None" Background="Transparent"
         Title="View_Menu" Height="450" Width="800">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
 
         <Rectangle Margin="10" RadiusY="10" RadiusX="10" Fill="{StaticResource primeiraCor}" Stroke="{StaticResource SegundaCor}" />
         <Rectangle Fill="{StaticResource SegundaCor}" Height="100" Margin="19,10,10,0" VerticalAlignment="Top"/>
@@ -142,10 +142,8 @@
 
             </Grid>
         </Grid>
-        <WindowsFormsHost Visibility="Hidden" HorizontalAlignment="Left"  Height="318" Margin="124,115,0,0" VerticalAlignment="Top" Width="659">
-            <rv:ReportViewer x:Name="Rel_Abast" Load="ReportViewer_Load" AutoSize="True" />
-        </WindowsFormsHost>
-        <Button x:Name="btn_atualizar" Content="Atualizar" Style="{StaticResource BotaoBranco}" HorizontalAlignment="Left" Margin="667,75,0,0" VerticalAlignment="Top" Width="116" Click="btn_atualizar_Click"/>
+        
+        <Button x:Name="btn_atualizar" Visibility="Hidden" Content="Atualizar" Style="{StaticResource BotaoBranco}" HorizontalAlignment="Left" Margin="667,75,0,0" VerticalAlignment="Top" Width="116" Click="btn_atualizar_Click"/>
 
     </Grid>
 </Window>
