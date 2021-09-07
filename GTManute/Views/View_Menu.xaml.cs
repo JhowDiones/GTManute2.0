@@ -2,13 +2,7 @@
 using GTManute.Views.Cadastro;
 using GTManute.Views.CompanyControl;
 using GTManute.Views.Lançamento;
-using Microsoft.Reporting.WinForms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -40,15 +34,15 @@ namespace GTManute.Views
                 btn_Lanca.IsEnabled = false;
                 btn_home.IsEnabled = false;
             }
-            
+
         }
         private void Atualizar()
         {
             string version = new WebClient().DownloadString("https://pastebin.com/raw/69a43Jdw");
             string Importante = new WebClient().DownloadString("https://pastebin.com/raw/f5Cb29qQ");
 
-            
-            if(VersaoPrograma!= version)
+
+            if (VersaoPrograma != version)
             {
                 btn_atualizar.Visibility = Visibility.Visible;
                 if (Importante == "Sim")
@@ -69,7 +63,7 @@ namespace GTManute.Views
                 {
                     mensagem("Existem atualizações pendentes!", false, "", "OK");
                 }
-                
+
             }
 
         }
@@ -175,7 +169,7 @@ namespace GTManute.Views
         {
             View_Rotas acesso = new View_Rotas();
             acesso.ShowDialog();
-        }       
+        }
         private void Grid_MouseLeftButtonDown_5(object sender, MouseButtonEventArgs e)
         {
             View_Manut acesso = new View_Manut();

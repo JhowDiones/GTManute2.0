@@ -27,15 +27,9 @@ namespace GTManute.Views.Lançamento
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
-        bool Mnovo = false;
-        private int ID { get; set; }
-        private int PecaId { get; set; }
         db_manu_log manulog = new db_manu_log();
-        List<db_manu> Excluirpecaslista = new List<db_manu>();
         List<db_manu> Listpesquisa = new List<db_manu>();
-        List<db_manu> Novaspecaslista = new List<db_manu>();
         List<db_manu> pecaslista = new List<db_manu>();
-        db_manu peca = new db_manu();
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
@@ -178,18 +172,12 @@ namespace GTManute.Views.Lançamento
             if (btn_novo.Content.ToString() == "Novo")
             {
                 btn_novo.Content = "Gravar";
-                pecaslista = new List<db_manu>();
                 Limpar();
-                PecaId = -1;
-                ultimas.Clear();
-                Novaspecaslista.Clear();
-                Excluirpecaslista.Clear();
-                pecaslista.Clear();
+                ultimas = new List<Ultimas>();
                 grid_itens.ItemsSource = null;
             }
             else
             {
-
                 String retorno = MessageBox.Show("Gravar manutenção? \n Valor Total: " + txt_calcTotal.Text, "Conferencia!!!", MessageBoxButton.YesNo).ToString();
                 if (retorno == "Yes")
                 {
@@ -216,17 +204,13 @@ namespace GTManute.Views.Lançamento
                                 db.db_manu_log.InsertOnSubmit(manulog);
                                 db.SubmitChanges();
                                 AtualizarItens();
-
                                 DarNF(manulog);
-
-                                db.db_manu.InsertAllOnSubmit(Novaspecaslista);
+                                db.db_manu.InsertAllOnSubmit(pecaslista);
                                 db.SubmitChanges();
 
                                 Application.Current.Dispatcher.Invoke((Action)delegate
                                 {
                                     mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
-
-
                                     btn_novo.Content = "Novo";
                                     carregando(0, true);
                                 });
@@ -507,7 +491,6 @@ namespace GTManute.Views.Lançamento
             chq_programada.IsChecked = false;
             CheqTeste();
             cmb_ItemDesc.Focus();
-            PecaId = -1;
         }
         private void CheqTeste()
         {
@@ -520,198 +503,7 @@ namespace GTManute.Views.Lançamento
                 _manutprogramada.Visibility = Visibility.Hidden;
             }
         }
-        private void btn_itemAdd_Click(object sender, RoutedEventArgs e)
-        {
-            if (PecaId == -1)
-            {
-
-
-                try
-                {
-                    peca = new db_manu();
-                    peca.DESCONTO = txt_itemDesconto.Text;
-                    peca.DESCRICAO = cmb_ItemDesc.Text;
-                    peca.DT_LANCA = DateTime.Now;
-                    peca.DT_NF = txt_data.Text;
-                    peca.Empresa = Empresa;
-                    peca.FORNECEDOR = cmb_fornecedor.Text;
-                    peca.KM_MANUTENCAO = txt_km.Text;
-                    peca.MOTORISTA = cmb_motorista.Text;
-                    if (chq_programada.IsChecked == true)
-                    {
-                        peca.MProgramada = "Sim";
-                        peca.M_Km_Programada = txt_progrmadoKm.Text;
-                        peca.M_OBS_Programada = txt_ProgrmadoObs.Text;
-                    }
-                    try
-                    {
-                        peca.NR_LANCA = manulog.NR_NF;
-                        peca.NR_NF = manulog.COD.ToString();
-                        peca.QUANTIDADE = txt_itemQuant.Text;
-                        peca.VALOR = txt_itemValor.Text;
-                        peca.VEICULO = cmb_veiculo.Text;
-                    }
-                    catch
-                    {
-                        peca.NR_LANCA = "";
-                        peca.NR_NF = "";
-                        peca.QUANTIDADE = txt_itemQuant.Text;
-                        peca.VALOR = txt_itemValor.Text;
-                        peca.VEICULO = cmb_veiculo.Text;
-                    }
-                    Novaspecaslista.Add(peca);
-                    Ultimas ultimas1 = new Ultimas();
-                    ultimas1.ID = ultimas.Count;
-                    ultimas1.Desconto = txt_itemDesconto.Text;
-                    ultimas1.Descrição = cmb_ItemDesc.Text;
-                    ultimas1.Quant = txt_itemQuant.Text;
-                    ultimas1.ValorItem = txt_itemValor.Text;
-                    ultimas.Add(ultimas1);
-                    grid_itens.ItemsSource = null;
-                    grid_itens.ItemsSource = ultimas;
-
-                    mensagem("Peça/Serviço adicionado com sucesso!", false, "", "Ok");
-                    btn_mais();
-
-                }
-                catch
-                {
-                    mensagem("Erro ao adicionar peça/serviço!", false, "", "Ok");
-                }
-            }
-            else
-            {
-                try
-                {
-                    pecaslista[PecaId].DESCONTO = txt_itemDesconto.Text;
-                    pecaslista[PecaId].DESCRICAO = cmb_ItemDesc.Text;
-                    pecaslista[PecaId].DT_LANCA = DateTime.Now;
-                    pecaslista[PecaId].DT_NF = txt_data.Text;
-                    pecaslista[PecaId].Empresa = Empresa;
-                    pecaslista[PecaId].FORNECEDOR = cmb_fornecedor.Text;
-                    pecaslista[PecaId].KM_MANUTENCAO = txt_km.Text;
-                    pecaslista[PecaId].MOTORISTA = cmb_motorista.Text;
-                    if (chq_programada.IsChecked == true)
-                    {
-                        pecaslista[PecaId].MProgramada = "Sim";
-                        pecaslista[PecaId].M_Km_Programada = txt_progrmadoKm.Text;
-                        pecaslista[PecaId].M_OBS_Programada = txt_ProgrmadoObs.Text;
-                    }
-                    try
-                    {
-                        pecaslista[PecaId].NR_LANCA = manulog.NR_NF;
-                        pecaslista[PecaId].NR_NF = manulog.COD.ToString();
-                        pecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
-                        pecaslista[PecaId].VALOR = txt_itemValor.Text;
-                        pecaslista[PecaId].VEICULO = cmb_veiculo.Text;
-                    }
-                    catch
-                    {
-                        pecaslista[PecaId].NR_LANCA = "";
-                        pecaslista[PecaId].NR_NF = "";
-                        pecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
-                        pecaslista[PecaId].VALOR = txt_itemValor.Text;
-                        pecaslista[PecaId].VEICULO = cmb_veiculo.Text;
-                    }
-                    ultimas[PecaId].Desconto = txt_itemDesconto.Text;
-                    ultimas[PecaId].Descrição = cmb_ItemDesc.Text;
-                    ultimas[PecaId].Quant = txt_itemQuant.Text;
-                    ultimas[PecaId].ValorItem = txt_itemValor.Text;
-                    grid_itens.ItemsSource = null;
-                    grid_itens.ItemsSource = ultimas;
-
-                    mensagem("Peça/Serviço alterada com sucesso!", false, "", "Ok");
-
-                }
-                catch
-                {
-                    try
-                    {
-                        try
-                        {
-                            Novaspecaslista[PecaId].DESCONTO = txt_itemDesconto.Text;
-                            Novaspecaslista[PecaId].DESCRICAO = cmb_ItemDesc.Text;
-                            Novaspecaslista[PecaId].DT_LANCA = DateTime.Now;
-                            Novaspecaslista[PecaId].DT_NF = txt_data.Text;
-                            Novaspecaslista[PecaId].Empresa = Empresa;
-                            Novaspecaslista[PecaId].FORNECEDOR = cmb_fornecedor.Text;
-                            Novaspecaslista[PecaId].KM_MANUTENCAO = txt_km.Text;
-                            Novaspecaslista[PecaId].MOTORISTA = cmb_motorista.Text;
-                            if (chq_programada.IsChecked == true)
-                            {
-                                Novaspecaslista[PecaId].MProgramada = "Sim";
-                                Novaspecaslista[PecaId].M_Km_Programada = txt_progrmadoKm.Text;
-                                Novaspecaslista[PecaId].M_OBS_Programada = txt_ProgrmadoObs.Text;
-                            }
-                            try
-                            {
-                                Novaspecaslista[PecaId].NR_LANCA = manulog.NR_NF;
-                                Novaspecaslista[PecaId].NR_NF = manulog.COD.ToString();
-                                Novaspecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
-                                Novaspecaslista[PecaId].VALOR = txt_itemValor.Text;
-                                Novaspecaslista[PecaId].VEICULO = cmb_veiculo.Text;
-                            }
-                            catch
-                            {
-                                Novaspecaslista[PecaId].NR_LANCA = "";
-                                Novaspecaslista[PecaId].NR_NF = "";
-                                Novaspecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
-                                Novaspecaslista[PecaId].VALOR = txt_itemValor.Text;
-                                Novaspecaslista[PecaId].VEICULO = cmb_veiculo.Text;
-                            }
-                            ultimas[PecaId].Desconto = txt_itemDesconto.Text;
-                            ultimas[PecaId].Descrição = cmb_ItemDesc.Text;
-                            ultimas[PecaId].Quant = txt_itemQuant.Text;
-                            ultimas[PecaId].ValorItem = txt_itemValor.Text;
-                            grid_itens.ItemsSource = null;
-                            grid_itens.ItemsSource = ultimas;
-
-                            mensagem("Peça/Serviço alterada com sucesso!", false, "", "Ok");
-
-                        }
-                        catch
-                        {
-                            mensagem("Erro ao alterar peça/serviço!", false, "", "Ok");
-                        }
-                    }
-
-                    catch
-                    {
-                        mensagem("Erro ao alterar peça/serviço!", false, "", "Ok");
-                    }
-                }
-            }
-
-            calcular();
-        }
-        private void btn_itemExcluir_Click(object sender, RoutedEventArgs e)
-        {
-            if (PecaId == -1)
-            {
-
-            }
-            else
-            {
-                if (Mnovo == true)
-                {
-                    ultimas.Remove(ultimas[PecaId + pecaslista.Count]);
-                    Novaspecaslista.Remove(Novaspecaslista[PecaId]);
-                    grid_itens.ItemsSource = null;
-                    grid_itens.ItemsSource = ultimas;
-                }
-                else
-                {
-                    Excluirpecaslista.Add(pecaslista[PecaId]);
-                    ultimas.Remove(ultimas[PecaId]);
-                    pecaslista.Remove(pecaslista[PecaId]);
-                    grid_itens.ItemsSource = null;
-                    grid_itens.ItemsSource = ultimas;
-                }
-
-            }
-            calcular();
-            btn_mais();
-        }
+        
         private void txt_data_LostFocus(object sender, RoutedEventArgs e)
         {
             setData(sender, e);
@@ -953,7 +745,6 @@ namespace GTManute.Views.Lançamento
             }
             cmb_ItemDesc.Focus();
         }
-
         private void chq_programada_Click(object sender, RoutedEventArgs e)
         {
 
