@@ -503,7 +503,6 @@ namespace GTManute.Views.Lançamento
                 _manutprogramada.Visibility = Visibility.Hidden;
             }
         }
-        
         private void txt_data_LostFocus(object sender, RoutedEventArgs e)
         {
             setData(sender, e);
@@ -596,27 +595,6 @@ namespace GTManute.Views.Lançamento
                         pecaslista[i].NR_LANCA = log.NR_NF;
                         pecaslista[i].NR_NF = log.COD.ToString();
                         pecaslista[i].VEICULO = cmb_veiculo.Text;
-                    }
-                    catch
-                    {
-                        mensagem("Erro ao puxar NF", false, "", "OK");
-                    }
-
-                }
-            }
-            catch
-            {
-
-            }
-            try
-            {
-                for (int i = 0; i < Novaspecaslista.Count; i++)
-                {
-                    try
-                    {
-                        Novaspecaslista[i].NR_LANCA = log.NR_NF;
-                        Novaspecaslista[i].NR_NF = log.COD.ToString();
-                        Novaspecaslista[i].VEICULO = cmb_veiculo.Text;
                     }
                     catch
                     {
