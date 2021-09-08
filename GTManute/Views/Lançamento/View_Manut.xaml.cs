@@ -30,6 +30,8 @@ namespace GTManute.Views.Lançamento
         db_manu_log manulog = new db_manu_log();
         List<db_manu> Listpesquisa = new List<db_manu>();
         List<db_manu> pecaslista = new List<db_manu>();
+        private int ID { get; set; }
+        private int PecaId { get; set; }
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
@@ -173,6 +175,7 @@ namespace GTManute.Views.Lançamento
             {
                 btn_novo.Content = "Gravar";
                 Limpar();
+                btn_mais1.Visibility = Visibility.Visible;
                 ultimas = new List<Ultimas>();
                 grid_itens.ItemsSource = null;
             }
@@ -211,6 +214,7 @@ namespace GTManute.Views.Lançamento
                                 Application.Current.Dispatcher.Invoke((Action)delegate
                                 {
                                     mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
+                                    btn_mais1.Visibility = Visibility.Hidden;
                                     btn_novo.Content = "Novo";
                                     carregando(0, true);
                                 });
@@ -250,17 +254,16 @@ namespace GTManute.Views.Lançamento
                 manulog.NR_NF = txt_doc.Text;
                 manulog.PLACA = cmb_veiculo.Text;
                 manulog.VALOR_TT = txt_calcTotal.Text;
+                
                 AtualizarItens();
                 await Task.Run(() =>
                  {
                      try
                      {
-                         db.db_manu.InsertAllOnSubmit(Novaspecaslista);
-                         db.db_manu.DeleteAllOnSubmit(Excluirpecaslista);
                          db.SubmitChanges();
                          Application.Current.Dispatcher.Invoke((Action)delegate
                          {
-                             mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
+                             mensagem("Manutenção alterada com sucesso!", false, "", "Ok");
 
                              carregando(ID, true);
                          });
@@ -282,17 +285,8 @@ namespace GTManute.Views.Lançamento
             {
                 try
                 {
-                    db.db_manu_log.DeleteOnSubmit(manulog);
                     db.db_manu.DeleteAllOnSubmit(pecaslista);
-                    try
-                    {
-                        db.db_manu.DeleteAllOnSubmit(Excluirpecaslista);
-                    }
-                    catch
-                    {
-
-                    }
-
+                   
                     db.SubmitChanges();
                     Limpar();
                     carregando(0, true);
@@ -554,35 +548,6 @@ namespace GTManute.Views.Lançamento
             {
 
             }
-            try
-            {
-                for (int i = 0; i < Novaspecaslista.Count; i++)
-                {
-                    Novaspecaslista[i].DT_LANCA = DateTime.Now;
-                    Novaspecaslista[i].DT_NF = txt_data.Text;
-                    Novaspecaslista[i].Empresa = Empresa;
-                    Novaspecaslista[i].FORNECEDOR = cmb_fornecedor.Text;
-                    Novaspecaslista[i].KM_MANUTENCAO = txt_km.Text;
-                    Novaspecaslista[i].MOTORISTA = cmb_motorista.Text;
-                    try
-                    {
-                        Novaspecaslista[i].NR_LANCA = manulog.NR_NF;
-                        Novaspecaslista[i].NR_NF = manulog.COD.ToString();
-                        Novaspecaslista[i].VEICULO = cmb_veiculo.Text;
-                    }
-                    catch
-                    {
-                        Novaspecaslista[i].NR_LANCA = "";
-                        Novaspecaslista[i].NR_NF = "";
-                        Novaspecaslista[i].VEICULO = cmb_veiculo.Text;
-                    }
-
-                }
-            }
-            catch
-            {
-
-            }
         }
         private void DarNF(db_manu_log log)
         {
@@ -672,8 +637,6 @@ namespace GTManute.Views.Lançamento
                 txt_itemDesconto.Text = pecaslista[PecaId].DESCONTO;
                 txt_itemQuant.Text = pecaslista[PecaId].QUANTIDADE;
                 txt_itemValor.Text = pecaslista[PecaId].VALOR;
-                Mnovo = false;
-
             }
             catch
             {
@@ -688,36 +651,10 @@ namespace GTManute.Views.Lançamento
                     txt_itemDesconto.Text = pecaslista[PecaId].DESCONTO;
                     txt_itemQuant.Text = pecaslista[PecaId].QUANTIDADE;
                     txt_itemValor.Text = pecaslista[PecaId].VALOR;
-                    Mnovo = false;
                 }
                 catch
                 {
-                    try
-                    {
-                        object item = grid_itens.SelectedItem;
-                        string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-                        PecaId = pecaslista.Count - int.Parse(ID);
-                        cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
-                        txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
-                        txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
-                        txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
-                        Mnovo = true;
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            object item = grid_itens.SelectedItem;
-                            string ID = (grid_itens.SelectedCells[0].Column.GetCellContent(item) as TextBox).Text;
-                            PecaId = pecaslista.Count - int.Parse(ID);
-                            cmb_ItemDesc.Text = Novaspecaslista[PecaId].DESCRICAO;
-                            txt_itemDesconto.Text = Novaspecaslista[PecaId].DESCONTO;
-                            txt_itemQuant.Text = Novaspecaslista[PecaId].QUANTIDADE;
-                            txt_itemValor.Text = Novaspecaslista[PecaId].VALOR;
-                            Mnovo = true;
-                        }
-                        catch { }
-                    }
+                   
                 }
 
             }
