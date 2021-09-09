@@ -178,6 +178,8 @@ namespace GTManute.Views.Lançamento
                 Limpar();
                 btn_mais1.Visibility = Visibility.Visible;
                 ultimas = new List<Ultimas>();
+                pecaslista.Clear();
+                NF = null;
                 grid_itens.ItemsSource = null;
             }
             else
@@ -228,19 +230,19 @@ namespace GTManute.Views.Lançamento
             String retorno = MessageBox.Show("Deseja alterar esta manuteção?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
             if (retorno == "Yes")
             {
-
+                AtualizarItens();
                 await Task.Run(() =>
                  {
                      try
                      {
 
-                         AtualizarItens();
+                        
 
                          db.SubmitChanges();
                          Application.Current.Dispatcher.Invoke((Action)delegate
                          {
                              mensagem("Manutenção alterada com sucesso!", false, "", "Ok");
-
+                             NF = pecaslista[PecaId].NR_LANCA;
                              carregando(NF, true);
                          });
                      }
@@ -270,7 +272,7 @@ namespace GTManute.Views.Lançamento
                     }
                     else
                     {
-
+                        db.db_manu.DeleteOnSubmit(pecaslista[PecaId]);
                         db.SubmitChanges();
                         Limpar();
                         carregando("0", true);
@@ -329,7 +331,6 @@ namespace GTManute.Views.Lançamento
             cmb_veiculo.Text = listamanu.VEICULO;
             calcular();
             btn_novo.Content = "Novo";
-            btn_mais();
         }
         private async void carregando(string NF, bool full)
         {
@@ -338,26 +339,29 @@ namespace GTManute.Views.Lançamento
 
                 if (NF == "0")
                 {
-
-                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).ToList());
+                    peca = await Task.FromResult(db.db_manu.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA == peca.NR_LANCA).ToList());
                     carregar(pecaslista[0]);
+                    NF = pecaslista[0].NR_LANCA;
+                    PecaId = 0;
                 }
                 else
                 {
                     try
                     {
-                        pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA==NF).ToList());
-                        carregar( pecaslista[0]);
+                        pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA == NF).ToList());
+                        carregar(pecaslista[0]);
+                        NF = pecaslista[0].NR_LANCA;
+                        PecaId = 0;
                     }
                     catch
                     {
                         mensagem("Erro ao carregar!", false, "", "OK");
                     }
-                    
+
                 }
 
-                NF = pecaslista[0].NR_LANCA;
-                PecaId = 0;
+                
 
                 ultimas = new List<Ultimas>();
                 for (int i = 0; i < pecaslista.Count; i++)
@@ -403,7 +407,7 @@ namespace GTManute.Views.Lançamento
             if (rad_contem.IsChecked == true)
             {
                 Listpesquisa = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa)
-                    .Where(a => a.DT_NF.Contains(dt)).Where(a => a.NR_NF.Contains(doc)).Where(a => a.FORNECEDOR.Contains(fornecedor))
+                    .Where(a => a.DT_NF.Contains(dt)).Where(a => a.NR_LANCA.Contains(doc)).Where(a => a.FORNECEDOR.Contains(fornecedor))
                     .Where(a => a.MOTORISTA.Contains(motorista)).Where(a => a.KM_MANUTENCAO.Contains(km)).Where(a => a.VEICULO.Contains(placa))
                    .Where(a => a.DESCRICAO.Contains(peca)).OrderByDescending(a => a.COD).ToList());
 
@@ -417,15 +421,15 @@ namespace GTManute.Views.Lançamento
             try
             {
                 object item = dt_pesquisa.SelectedItem;
-                string ID = (dt_pesquisa.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
-                //carregando(int.Parse(ID), true);
+                string ID = (dt_pesquisa.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                carregando(ID, true);
 
             }
             catch
             {
                 object item = dt_pesquisa.SelectedItem;
-                string ID = (dt_pesquisa.SelectedCells[3].Column.GetCellContent(item) as TextBox).Text;
-               // carregando(int.Parse(ID), true);
+                string ID = (dt_pesquisa.SelectedCells[1].Column.GetCellContent(item) as TextBox).Text;
+                carregando(ID, true);
             }
         }
         private void dt_pesquisa_CurrentCellChanged(object sender, System.EventArgs e)
@@ -449,7 +453,7 @@ namespace GTManute.Views.Lançamento
         private async void btn_alterar_Click(object sender, RoutedEventArgs e)
         {
             _btn_alterar();
-            
+
         }
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
@@ -461,6 +465,29 @@ namespace GTManute.Views.Lançamento
         }
         private void btn_mais()
         {
+            peca.Empresa = Empresa;
+            peca.DESCONTO = txt_itemDesconto.Text;
+            peca.DESCRICAO = txt_itemDesconto.Text;
+            peca.DT_LANCA = DateTime.Now;
+            peca.DT_NF = txt_data.Text;
+            peca.FORNECEDOR = cmb_fornecedor.Text;
+            peca.KM_MANUTENCAO = txt_km.Text;
+            peca.MOTORISTA = cmb_motorista.Text;
+            if (chq_programada.IsChecked == true)
+            {
+                peca.MProgramada = "Programada";
+                peca.M_Km_Programada = txt_progrmadoKm.Text;
+                peca.M_OBS_Programada = txt_ProgrmadoObs.Text;
+            }
+            peca.NR_LANCA = txt_doc.Text;
+            peca.NR_NF = txt_doc.Text;
+            peca.QUANTIDADE = txt_itemQuant.Text;
+            peca.USUARIO = "";
+            peca.VALOR = txt_itemValor.Text;
+            peca.VEICULO = cmb_veiculo.Text;
+
+            pecaslista.Add(peca);
+
             txt_itemDesconto.Text = "";
             txt_itemQuant.Text = "";
             txt_itemValor.Text = "";
@@ -528,13 +555,23 @@ namespace GTManute.Views.Lançamento
                     }
 
                 }
+                if (chq_programada.IsChecked == true)
+                {
+                    pecaslista[PecaId].MProgramada = "Programada";
+                    pecaslista[PecaId].M_Km_Programada = txt_progrmadoKm.Text;
+                    pecaslista[PecaId].M_OBS_Programada = txt_ProgrmadoObs.Text;
+                    
+                }
+                pecaslista[PecaId].DESCRICAO = cmb_ItemDesc.Text;
+                pecaslista[PecaId].DESCONTO = txt_itemDesconto.Text;
+                pecaslista[PecaId].VALOR = txt_itemValor.Text;
+                pecaslista[PecaId].QUANTIDADE = txt_itemQuant.Text;
             }
             catch
             {
 
             }
         }
-
         private void calcular()
         {
             try
@@ -551,7 +588,11 @@ namespace GTManute.Views.Lançamento
                     desc1 = 0;
                     quant = 0;
                     val = 0;
-                    double.TryParse(pecaslista[i].DESCONTO.Replace("R$ ", ""), out desc1);
+                    try
+                    {
+                        double.TryParse(pecaslista[i].DESCONTO.Replace("R$ ", ""), out desc1);
+                    }
+                    catch { }
                     double.TryParse(pecaslista[i].QUANTIDADE.Replace("R$ ", ""), out quant);
                     double.TryParse(pecaslista[i].VALOR.Replace("R$ ", ""), out val);
                     desconto += desc1 * quant;
@@ -623,6 +664,25 @@ namespace GTManute.Views.Lançamento
             else
             {
                 _manutprogramada.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private async void txt_doc_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                peca = new db_manu();
+                peca = await Task.FromResult(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA==txt_doc.Text).FirstOrDefault());
+                if (peca.NR_LANCA!=""&& peca.NR_LANCA!=null&&NF==null)
+                {
+                    NF = peca.NR_LANCA;
+                    carregando(NF,true);
+                    mensagem("Documento já existente e carregado!", false, "", "Ok");
+                }
+            }
+            catch
+            {
+
             }
         }
     }
