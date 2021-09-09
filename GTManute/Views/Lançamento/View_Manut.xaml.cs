@@ -27,20 +27,21 @@ namespace GTManute.Views.Lançamento
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
-        db_manu_log manulog = new db_manu_log();
         List<db_manu> Listpesquisa = new List<db_manu>();
         List<db_manu> pecaslista = new List<db_manu>();
-        private int ID { get; set; }
+        db_manu peca = new db_manu();
+        Addons addons = new Addons();
+        private string NF { get; set; }
         private int PecaId { get; set; }
         private string Empresa { get; set; }
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Manut()
         {
             InitializeComponent();
-            db = new dbManuteDataContext(cfgdb.conexao);
+            db = new dbManuteDataContext(addons.NC);
 
             Empresa = cfgdb.empresa;
-            carregando(0, true);
+            carregando("0", true);
             cmbbox();
             txt_doc.Focus();
         }
@@ -107,7 +108,7 @@ namespace GTManute.Views.Lançamento
         {
             base.OnMouseLeftButtonDown(e);
 
-            // Begin dragging the window
+            //Begin dragging the window
             try
             {
                 this.DragMove();
@@ -150,7 +151,7 @@ namespace GTManute.Views.Lançamento
         private async void cmbbox()
         {
 
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 Application.Current.Dispatcher.Invoke((Action)async delegate
                 {
@@ -186,28 +187,13 @@ namespace GTManute.Views.Lançamento
                 {
                     try
                     {
-                        manulog = new db_manu_log();
-
-                        manulog.Desconto = txt_calcDesconto.Text;
-                        manulog.DT_LANCA = DateTime.UtcNow;
-                        manulog.DT_NF = txt_data.Text;
-                        manulog.Empresa = Empresa;
-                        manulog.FORNECEDOR = cmb_fornecedor.Text;
-                        manulog.km_manutencao = txt_km.Text;
-                        manulog.MOTORISTA = cmb_motorista.Text;
-                        manulog.NR_NF = txt_doc.Text;
-                        manulog.PLACA = cmb_veiculo.Text;
-                        manulog.VALOR_TT = txt_calcTotal.Text;
                         calcular();
 
                         await Task.Run(() =>
                         {
                             try
                             {
-                                db.db_manu_log.InsertOnSubmit(manulog);
-                                db.SubmitChanges();
                                 AtualizarItens();
-                                DarNF(manulog);
                                 db.db_manu.InsertAllOnSubmit(pecaslista);
                                 db.SubmitChanges();
 
@@ -216,7 +202,7 @@ namespace GTManute.Views.Lançamento
                                     mensagem("Manutenção gravada com sucesso!", false, "", "Ok");
                                     btn_mais1.Visibility = Visibility.Hidden;
                                     btn_novo.Content = "Novo";
-                                    carregando(0, true);
+                                    carregando("0", true);
                                 });
                             }
                             catch
@@ -243,29 +229,19 @@ namespace GTManute.Views.Lançamento
             if (retorno == "Yes")
             {
 
-
-                manulog.Desconto = txt_calcDesconto.Text;
-                manulog.DT_LANCA = DateTime.UtcNow;
-                manulog.DT_NF = txt_data.Text;
-                manulog.Empresa = Empresa;
-                manulog.FORNECEDOR = cmb_fornecedor.Text;
-                manulog.km_manutencao = txt_km.Text;
-                manulog.MOTORISTA = cmb_motorista.Text;
-                manulog.NR_NF = txt_doc.Text;
-                manulog.PLACA = cmb_veiculo.Text;
-                manulog.VALOR_TT = txt_calcTotal.Text;
-                
-                AtualizarItens();
                 await Task.Run(() =>
                  {
                      try
                      {
+
+                         AtualizarItens();
+
                          db.SubmitChanges();
                          Application.Current.Dispatcher.Invoke((Action)delegate
                          {
                              mensagem("Manutenção alterada com sucesso!", false, "", "Ok");
 
-                             carregando(ID, true);
+                             carregando(NF, true);
                          });
                      }
                      catch
@@ -285,11 +261,21 @@ namespace GTManute.Views.Lançamento
             {
                 try
                 {
-                    db.db_manu.DeleteAllOnSubmit(pecaslista);
-                   
-                    db.SubmitChanges();
-                    Limpar();
-                    carregando(0, true);
+                    if (pecaslista.Count > 1)
+                    {
+                        db.db_manu.DeleteOnSubmit(pecaslista[PecaId]);
+                        db.SubmitChanges();
+                        Limpar();
+                        carregando(NF, true);
+                    }
+                    else
+                    {
+
+                        db.SubmitChanges();
+                        Limpar();
+                        carregando("0", true);
+                    }
+
                 }
                 catch
                 {
@@ -320,56 +306,57 @@ namespace GTManute.Views.Lançamento
             cmb_veiculo.Text = "";
 
         }
-        private void preencher(db_manu listamanu, db_manu_log logmanu)
+        private void preencher(db_manu listamanu)
         {
             Limpar();
             txt_calcDesconto.Text = "";
             txt_calcTotal.Text = "";
-            txt_data.Text = logmanu.DT_NF;
-            txt_doc.Text = logmanu.NR_NF;
+            txt_data.Text = listamanu.DT_NF;
+            txt_doc.Text = listamanu.NR_LANCA;
             txt_itemDesconto.Text = listamanu.DESCONTO;
             txt_itemQuant.Text = listamanu.QUANTIDADE;
             txt_itemValor.Text = listamanu.VALOR;
-            txt_km.Text = logmanu.km_manutencao;
+            txt_km.Text = listamanu.KM_MANUTENCAO;
             if (listamanu.MProgramada == "Programada")
             {
                 txt_ProgrmadoObs.Text = listamanu.M_OBS_Programada;
                 txt_progrmadoKm.Text = listamanu.M_Km_Programada;
             }
 
-            cmb_fornecedor.Text = logmanu.FORNECEDOR;
+            cmb_fornecedor.Text = listamanu.FORNECEDOR;
             cmb_ItemDesc.Text = listamanu.DESCRICAO;
-            cmb_motorista.Text = logmanu.MOTORISTA;
-            cmb_veiculo.Text = logmanu.PLACA;
+            cmb_motorista.Text = listamanu.MOTORISTA;
+            cmb_veiculo.Text = listamanu.VEICULO;
             calcular();
             btn_novo.Content = "Novo";
             btn_mais();
         }
-        private async void carregando(int cod, bool full)
+        private async void carregando(string NF, bool full)
         {
             try
             {
 
-                if (cod == 0)
+                if (NF == "0")
                 {
-                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
+
+                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).ToList());
+                    carregar(pecaslista[0]);
                 }
                 else
                 {
-                    manulog = await Task.FromResult<db_manu_log>(db.db_manu_log.Where(a => a.Empresa == Empresa).Where(a => a.COD == cod).FirstOrDefault());
+                    try
+                    {
+                        pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA==NF).ToList());
+                        carregar( pecaslista[0]);
+                    }
+                    catch
+                    {
+                        mensagem("Erro ao carregar!", false, "", "OK");
+                    }
+                    
+                }
 
-                }
-                try
-                {
-                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("00000#")).ToList());
-                    carregar(manulog, pecaslista[0]);
-                }
-                catch
-                {
-                    pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_NF == manulog.COD.ToString("#")).ToList());
-                    carregar(manulog, pecaslista[0]);
-                }
-                ID = manulog.COD;
+                NF = pecaslista[0].NR_LANCA;
                 PecaId = 0;
 
                 ultimas = new List<Ultimas>();
@@ -397,9 +384,9 @@ namespace GTManute.Views.Lançamento
                 PecaId = -1;
             }
         }
-        private void carregar(db_manu_log log, db_manu _db_manu)
+        private void carregar(db_manu _db_manu)
         {
-            preencher(_db_manu, log);
+            preencher(_db_manu);
 
 
         }
@@ -420,10 +407,6 @@ namespace GTManute.Views.Lançamento
                     .Where(a => a.MOTORISTA.Contains(motorista)).Where(a => a.KM_MANUTENCAO.Contains(km)).Where(a => a.VEICULO.Contains(placa))
                    .Where(a => a.DESCRICAO.Contains(peca)).OrderByDescending(a => a.COD).ToList());
 
-                //
-                //
-                // 
-
                 dt_pesquisa.ItemsSource = Listpesquisa;
 
                 txt_registros.Text = "Nº de Registros: " + Listpesquisa.Count().ToString();
@@ -435,14 +418,14 @@ namespace GTManute.Views.Lançamento
             {
                 object item = dt_pesquisa.SelectedItem;
                 string ID = (dt_pesquisa.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
-                carregando(int.Parse(ID), true);
+                //carregando(int.Parse(ID), true);
 
             }
             catch
             {
                 object item = dt_pesquisa.SelectedItem;
                 string ID = (dt_pesquisa.SelectedCells[3].Column.GetCellContent(item) as TextBox).Text;
-                carregando(int.Parse(ID), true);
+               // carregando(int.Parse(ID), true);
             }
         }
         private void dt_pesquisa_CurrentCellChanged(object sender, System.EventArgs e)
@@ -458,13 +441,15 @@ namespace GTManute.Views.Lançamento
             Mensagem mensagem = new Mensagem(principal, explica, explicacao, botao);
             mensagem.ShowDialog();
         }
-        private void btn_novo_Click(object sender, RoutedEventArgs e)
+        private async void btn_novo_Click(object sender, RoutedEventArgs e)
         {
             _btn_novo();
+
         }
-        private void btn_alterar_Click(object sender, RoutedEventArgs e)
+        private async void btn_alterar_Click(object sender, RoutedEventArgs e)
         {
             _btn_alterar();
+            
         }
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
@@ -531,8 +516,8 @@ namespace GTManute.Views.Lançamento
                     pecaslista[i].MOTORISTA = cmb_motorista.Text;
                     try
                     {
-                        pecaslista[i].NR_LANCA = manulog.NR_NF;
-                        pecaslista[i].NR_NF = manulog.COD.ToString();
+                        pecaslista[i].NR_LANCA = txt_doc.Text;
+                        pecaslista[i].NR_NF = txt_doc.Text;
                         pecaslista[i].VEICULO = cmb_veiculo.Text;
                     }
                     catch
@@ -549,30 +534,7 @@ namespace GTManute.Views.Lançamento
 
             }
         }
-        private void DarNF(db_manu_log log)
-        {
-            try
-            {
-                for (int i = 0; i < pecaslista.Count; i++)
-                {
-                    try
-                    {
-                        pecaslista[i].NR_LANCA = log.NR_NF;
-                        pecaslista[i].NR_NF = log.COD.ToString();
-                        pecaslista[i].VEICULO = cmb_veiculo.Text;
-                    }
-                    catch
-                    {
-                        mensagem("Erro ao puxar NF", false, "", "OK");
-                    }
 
-                }
-            }
-            catch
-            {
-
-            }
-        }
         private void calcular()
         {
             try
@@ -598,16 +560,7 @@ namespace GTManute.Views.Lançamento
                 }
                 txt_calcDesconto.Text = desconto.ToString("N2");
                 txt_calcTotal.Text = total.ToString("N2");
-                for (int f = 0; f < Novaspecaslista.Count; f++)
-                {
-                    double.TryParse(Novaspecaslista[f].DESCONTO.Replace("R$ ", ""), out desc1);
-                    double.TryParse(Novaspecaslista[f].QUANTIDADE.Replace("R$ ", ""), out quant);
-                    double.TryParse(Novaspecaslista[f].VALOR.Replace("R$ ", ""), out val);
-                    desconto += desc1 * quant;
-                    total += val * quant;
-                }
-                txt_calcDesconto.Text = desconto.ToString("N2");
-                txt_calcTotal.Text = total.ToString("N2");
+
             }
             catch
             {
@@ -654,7 +607,7 @@ namespace GTManute.Views.Lançamento
                 }
                 catch
                 {
-                   
+
                 }
 
             }

@@ -16,6 +16,7 @@ namespace GTManute.Views
     {
         private string VersaoPrograma = "1.0.0.1";
         private string Usuario { get; set; }
+        Addons addons = new Addons();
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
@@ -24,7 +25,7 @@ namespace GTManute.Views
         public View_Menu(bool validade, string data)
         {
             InitializeComponent();
-            db = new dbManuteDataContext(cfgdb.conexao);
+            db = new dbManuteDataContext(addons.NC);
             txt_validade.Content = data;
             txt_empresa.Content = cfgdb.NomeEmpresa;
             Empresa = cfgdb.empresa;

@@ -74,12 +74,7 @@ namespace dbAcessos
     partial void DeleteValidar(Validar instance);
     #endregion
 		
-		public dbManuteDataContext() : 
-				base(global::dbAcessos.Properties.Settings.Default.db_17ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
-		
+	
 		public dbManuteDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

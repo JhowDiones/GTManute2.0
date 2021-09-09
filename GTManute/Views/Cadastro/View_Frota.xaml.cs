@@ -19,7 +19,7 @@ namespace GTManute.Views.Cadastro
             public string DTPartida { get; set; }
         }
 
-
+        Addons addons = new Addons();
         private string Usuario { get; set; }
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
@@ -31,7 +31,7 @@ namespace GTManute.Views.Cadastro
         {
             InitializeComponent();
             Empresa = cfgdb.empresa;
-            db = new dbManuteDataContext(cfgdb.conexao);
+            db = new dbManuteDataContext(addons.NC);
             carregando(0, true);
             cmbBox();
         }

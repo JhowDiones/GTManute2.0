@@ -30,13 +30,14 @@ namespace GTManute.Views.CompanyControl
         private int ID { get; set; }
         List<db_empresas> Listpesquisa = new List<db_empresas>();
         private string Empresa { get; set; }
+        Addons addons = new Addons();
         dbManuteDataContext db = new dbManuteDataContext("");
         public Company_Control()
 
         {
 
             InitializeComponent();
-            db = new dbManuteDataContext(cfgdb.conexao);
+            db = new dbManuteDataContext(addons.NC);
             CarregarGrid();
         }
 

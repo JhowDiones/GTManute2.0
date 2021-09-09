@@ -56,6 +56,7 @@ namespace dbAcessos
             // 
             // txt_source
             // 
+            this.txt_source.Enabled = false;
             this.txt_source.Location = new System.Drawing.Point(6, 26);
             this.txt_source.Name = "txt_source";
             this.txt_source.Size = new System.Drawing.Size(216, 20);
@@ -63,6 +64,7 @@ namespace dbAcessos
             // 
             // txt_catalogo
             // 
+            this.txt_catalogo.Enabled = false;
             this.txt_catalogo.Location = new System.Drawing.Point(5, 73);
             this.txt_catalogo.Name = "txt_catalogo";
             this.txt_catalogo.Size = new System.Drawing.Size(216, 20);
@@ -79,6 +81,7 @@ namespace dbAcessos
             // 
             // txt_id_banco
             // 
+            this.txt_id_banco.Enabled = false;
             this.txt_id_banco.Location = new System.Drawing.Point(5, 125);
             this.txt_id_banco.Name = "txt_id_banco";
             this.txt_id_banco.Size = new System.Drawing.Size(216, 20);
@@ -95,6 +98,7 @@ namespace dbAcessos
             // 
             // txt_senhabanco
             // 
+            this.txt_senhabanco.Enabled = false;
             this.txt_senhabanco.Location = new System.Drawing.Point(5, 177);
             this.txt_senhabanco.Name = "txt_senhabanco";
             this.txt_senhabanco.PasswordChar = '*';

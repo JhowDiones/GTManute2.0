@@ -18,13 +18,14 @@ namespace GTManute.Views
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private Settings cfg = new Settings();
         private string Empresa { get; set; }
+        Addons addons = new Addons();
         dbManuteDataContext db = new dbManuteDataContext("");
         private bool validade= true;
         private DateTime data;
         public View_Login()
         {
             InitializeComponent();
-            db = new dbManuteDataContext(cfgdb.conexao);
+            db = new dbManuteDataContext(addons.NC);
             Empresa = cfgdb.empresa;
             Carregar();
             txt_usuario.Focus();

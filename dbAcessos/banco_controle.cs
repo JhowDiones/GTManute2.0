@@ -10,18 +10,15 @@ namespace dbAcessos
     public partial class banco_controle : Form
     {
         private Settings cfg = new Settings();
+        Addons addons = new Addons();
         dbManuteDataContext db = new dbManuteDataContext("");
         bool result = false;
         public banco_controle()
         {
             InitializeComponent();
-            txt_catalogo.Text = cfg.catalogo;
             txt_empresa.Text = cfg.empresa;
-            txt_id_banco.Text = cfg.id;
-            txt_senhabanco.Text = cfg.senha;
             txt_senhaempresa.Text = cfg.senhaempresa;
-            txt_source.Text = cfg.dtSource;
-            db = new dbManuteDataContext(cfg.conexao);
+            db = new dbManuteDataContext(addons.NC);
         }
 
         private void btn_gravar_Click(object sender, EventArgs e)
@@ -45,17 +42,10 @@ namespace dbAcessos
         {
             try
             {
-                cfg.catalogo = txt_catalogo.Text;
-                cfg.dtSource = txt_source.Text;
-                cfg.id = txt_id_banco.Text;
-                cfg.senha = txt_senhabanco.Text;
-
-                
-                string banco = "Data Source=" + txt_source.Text + ";Initial Catalog=" + txt_catalogo.Text + ";Persist Security Info=True;User ID=" + txt_id_banco.Text + ";Password=" + txt_senhabanco.Text;
-                cfg.conexao = banco;
+               
                 cfg.Save();
 
-                db = new dbManuteDataContext(banco);
+                db = new dbManuteDataContext(addons.NC);
             }
             catch (Exception m)
             {

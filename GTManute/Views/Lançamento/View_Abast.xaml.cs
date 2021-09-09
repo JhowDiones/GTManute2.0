@@ -33,11 +33,12 @@ namespace GTManute.Views.Lançamento
         private int ID { get; set; }
         List<db_abast> Listpesquisa = new List<db_abast>();
         private string Empresa { get; set; }
+        Addons addons = new Addons();
         dbManuteDataContext db = new dbManuteDataContext("");
         public View_Abast()
         {
             InitializeComponent();
-            db = new dbManuteDataContext(cfgdb.conexao);
+            db = new dbManuteDataContext(addons.NC);
 
             Empresa = cfgdb.empresa;
             carregando(0, true);
