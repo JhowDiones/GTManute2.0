@@ -14,7 +14,7 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Menu : Window
     {
-        private string VersaoPrograma = "1.0.0.4";
+        private string VersaoPrograma = "1.0.0.6";
         private string Usuario { get; set; }
         Addons addons = new Addons();
         private GTManute.Properties.Settings cfg = new Properties.Settings();

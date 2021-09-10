@@ -181,6 +181,7 @@ namespace GTManute.Views.Lançamento
                 pecaslista.Clear();
                 NF = null;
                 grid_itens.ItemsSource = null;
+                txt_doc.Focus();
             }
             else
             {
@@ -423,15 +424,15 @@ namespace GTManute.Views.Lançamento
             try
             {
                 object item = dt_pesquisa.SelectedItem;
-                string ID = (dt_pesquisa.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
-                carregando(ID, true);
+                NF = (dt_pesquisa.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                carregando(NF, true);
 
             }
             catch
             {
                 object item = dt_pesquisa.SelectedItem;
-                string ID = (dt_pesquisa.SelectedCells[1].Column.GetCellContent(item) as TextBox).Text;
-                carregando(ID, true);
+                NF = (dt_pesquisa.SelectedCells[1].Column.GetCellContent(item) as TextBox).Text;
+                carregando(NF, true);
             }
         }
         private void dt_pesquisa_CurrentCellChanged(object sender, System.EventArgs e)
@@ -467,9 +468,10 @@ namespace GTManute.Views.Lançamento
         }
         private void btn_mais()
         {
+        peca = new db_manu();
             peca.Empresa = Empresa;
             peca.DESCONTO = txt_itemDesconto.Text;
-            peca.DESCRICAO = txt_itemDesconto.Text;
+            peca.DESCRICAO = cmb_ItemDesc.Text;
             peca.DT_LANCA = DateTime.Now;
             peca.DT_NF = txt_data.Text;
             peca.FORNECEDOR = cmb_fornecedor.Text;
@@ -489,6 +491,23 @@ namespace GTManute.Views.Lançamento
             peca.VEICULO = cmb_veiculo.Text;
 
             pecaslista.Add(peca);
+            grid_itens.ItemsSource = null;
+            grid_itens.ItemsSource = pecaslista;
+            ultimas = new List<Ultimas>();
+            for (int i = 0; i < pecaslista.Count; i++)
+            {
+                Ultimas ult = new Ultimas();
+
+                ult.ID = i;
+                ult.Desconto = pecaslista[i].DESCONTO;
+                ult.Descrição = pecaslista[i].DESCRICAO;
+                ult.Quant = pecaslista[i].QUANTIDADE;
+                ult.ValorItem = pecaslista[i].VALOR;
+                ultimas.Add(ult);
+
+            }
+            grid_itens.ItemsSource = ultimas;
+            calcular();
 
             txt_itemDesconto.Text = "";
             txt_itemQuant.Text = "";
