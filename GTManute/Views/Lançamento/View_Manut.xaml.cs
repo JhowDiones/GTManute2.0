@@ -332,18 +332,19 @@ namespace GTManute.Views.Lançamento
             calcular();
             btn_novo.Content = "Novo";
         }
-        private async void carregando(string NF, bool full)
+        private async void carregando(string nota, bool full)
         {
             try
             {
 
-                if (NF == "0")
+                if (nota == "0")
                 {
                     peca = await Task.FromResult(db.db_manu.Where(a => a.Empresa == Empresa).OrderByDescending(a => a.COD).FirstOrDefault());
                     pecaslista = await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA == peca.NR_LANCA).ToList());
                     carregar(pecaslista[0]);
                     NF = pecaslista[0].NR_LANCA;
                     PecaId = 0;
+                    btn_mais1.Visibility = Visibility.Hidden;
                 }
                 else
                 {
@@ -353,6 +354,7 @@ namespace GTManute.Views.Lançamento
                         carregar(pecaslista[0]);
                         NF = pecaslista[0].NR_LANCA;
                         PecaId = 0;
+                        btn_mais1.Visibility = Visibility.Hidden;
                     }
                     catch
                     {

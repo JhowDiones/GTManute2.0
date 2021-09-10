@@ -6,7 +6,6 @@ C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.d
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.pdb
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.banco_controle.resources
 C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.csproj.GenerateResource.cache
-C:\Users\vostro\Desktop\JWD Programas\GTManute\dbAcessos\obj\Release\dbAcessos.csproj.AssemblyReference.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Release\app.config
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Release\dbAcessos.dll
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\dbAcessos\bin\Release\dbAcessos.pdb
