@@ -162,6 +162,14 @@ namespace GTManute.Views {
         #line default
         #line hidden
         
+        
+        #line 147 "..\..\..\Views\View_Menu.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btn_upvalores;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -333,6 +341,15 @@ namespace GTManute.Views {
             
             #line 146 "..\..\..\Views\View_Menu.xaml"
             this.btn_atualizar.Click += new System.Windows.RoutedEventHandler(this.btn_atualizar_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 24:
+            this.btn_upvalores = ((System.Windows.Controls.Button)(target));
+            
+            #line 147 "..\..\..\Views\View_Menu.xaml"
+            this.btn_upvalores.Click += new System.Windows.RoutedEventHandler(this.btn_atualizar_Click);
             
             #line default
             #line hidden

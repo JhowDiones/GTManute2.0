@@ -195,5 +195,10 @@ namespace GTManute.Views
         {
             Atualizar();
         }
+
+        private void btn_upvalores_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
