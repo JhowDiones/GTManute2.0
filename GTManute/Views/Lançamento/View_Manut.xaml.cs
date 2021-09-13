@@ -237,7 +237,7 @@ namespace GTManute.Views.Lançamento
                      try
                      {
 
-                        
+
 
                          db.SubmitChanges();
                          Application.Current.Dispatcher.Invoke((Action)delegate
@@ -364,7 +364,7 @@ namespace GTManute.Views.Lançamento
 
                 }
 
-                
+
 
                 ultimas = new List<Ultimas>();
                 for (int i = 0; i < pecaslista.Count; i++)
@@ -468,7 +468,7 @@ namespace GTManute.Views.Lançamento
         }
         private void btn_mais()
         {
-        peca = new db_manu();
+            peca = new db_manu();
             peca.Empresa = Empresa;
             peca.DESCONTO = txt_itemDesconto.Text;
             peca.DESCRICAO = cmb_ItemDesc.Text;
@@ -581,7 +581,7 @@ namespace GTManute.Views.Lançamento
                     pecaslista[PecaId].MProgramada = "Programada";
                     pecaslista[PecaId].M_Km_Programada = txt_progrmadoKm.Text;
                     pecaslista[PecaId].M_OBS_Programada = txt_ProgrmadoObs.Text;
-                    
+
                 }
                 pecaslista[PecaId].DESCRICAO = cmb_ItemDesc.Text;
                 pecaslista[PecaId].DESCONTO = txt_itemDesconto.Text;
@@ -616,8 +616,8 @@ namespace GTManute.Views.Lançamento
                     catch { }
                     double.TryParse(pecaslista[i].QUANTIDADE.Replace("R$ ", ""), out quant);
                     double.TryParse(pecaslista[i].VALOR.Replace("R$ ", ""), out val);
-                    desconto += desc1 * quant;
-                    total += val * quant;
+                    desconto += desc1;
+                    total += (val * quant)-desconto;
 
                 }
                 txt_calcDesconto.Text = desconto.ToString("N2");
@@ -687,17 +687,16 @@ namespace GTManute.Views.Lançamento
                 _manutprogramada.Visibility = Visibility.Hidden;
             }
         }
-
         private async void txt_doc_LostFocus(object sender, RoutedEventArgs e)
         {
             try
             {
                 peca = new db_manu();
-                peca = await Task.FromResult(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA==txt_doc.Text).FirstOrDefault());
-                if (peca.NR_LANCA!=""&& peca.NR_LANCA!=null&&NF==null)
+                peca = await Task.FromResult(db.db_manu.Where(a => a.Empresa == Empresa).Where(a => a.NR_LANCA == txt_doc.Text).FirstOrDefault());
+                if (peca.NR_LANCA != "" && peca.NR_LANCA != null && NF == null)
                 {
                     NF = peca.NR_LANCA;
-                    carregando(NF,true);
+                    carregando(NF, true);
                     mensagem("Documento já existente e carregado!", false, "", "Ok");
                 }
             }
