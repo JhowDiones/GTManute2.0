@@ -2,7 +2,11 @@
 using GTManute.Views.Cadastro;
 using GTManute.Views.CompanyControl;
 using GTManute.Views.Lançamento;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -17,6 +21,7 @@ namespace GTManute.Views
         private string VersaoPrograma = "1.0.0.8";
         private string Usuario { get; set; }
         Addons addons = new Addons();
+        List<db_abast> pecaslista = new List<db_abast>();
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
@@ -196,9 +201,106 @@ namespace GTManute.Views
             Atualizar();
         }
 
-        private void btn_upvalores_Click(object sender, RoutedEventArgs e)
+        private async void btn_upvalores_Click(object sender, RoutedEventArgs e)
         {
+            pecaslista = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).ToList());
 
+            for (int i = 0; i < pecaslista.Count; i++)
+            {
+                try
+                {
+                    if(pecaslista[i].DESPESA_ALI!=""&& pecaslista[i].DESPESA_ALI != null)
+                    {
+                        pecaslista[i].DESPESA_ALI = pecaslista[i].DESPESA_ALI.Replace("R$ ", "");
+                    }
+                    
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (pecaslista[i].DESPESA_COMB != "" && pecaslista[i].DESPESA_COMB != null)
+                    {
+                        pecaslista[i].DESPESA_COMB = pecaslista[i].DESPESA_COMB.Replace("R$ ", "");
+                    }
+
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (pecaslista[i].DESPESA_OUTRAS != "" && pecaslista[i].DESPESA_OUTRAS != null)
+                    {
+                        pecaslista[i].DESPESA_OUTRAS = pecaslista[i].DESPESA_OUTRAS.Replace("R$ ", "");
+                    }
+
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (pecaslista[i].DESPESA_PERN != "" && pecaslista[i].DESPESA_PERN != null)
+                    {
+                        pecaslista[i].DESPESA_PERN = pecaslista[i].DESPESA_PERN.Replace("R$ ", "");
+                    }
+
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (pecaslista[i].VALOR_TOTAL != "" && pecaslista[i].VALOR_TOTAL != null)
+                    {
+                        pecaslista[i].VALOR_TOTAL = pecaslista[i].VALOR_TOTAL.Replace("R$ ", "");
+                    }
+
+                }
+                catch
+                {
+
+                }
+
+
+
+            }
+            String retorno = MessageBox.Show("Alterar manutenções?", "Conferencia!!!", MessageBoxButton.YesNo).ToString();
+            if (retorno == "Yes")
+            {
+                await Task.Run(() =>
+                {
+                    try
+                    {
+
+
+
+                        db.SubmitChanges();
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
+                            mensagem("Manutenção alterada com sucesso!", false, "", "Ok");
+                           
+                        });
+                    }
+                    catch
+                    {
+                        Application.Current.Dispatcher.Invoke((Action)delegate
+                        {
+                            mensagem("Tivemos algum erro ao alterar o abastecimento! Revise os campos e tente novamente! \n Caso persista entre em contato com: " + cfg.Email_Dev, false, "", "Ok");
+                        });
+                    }
+                });
+            }
+            else
+            {
+
+            }
         }
     }
 }
