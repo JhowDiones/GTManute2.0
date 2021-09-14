@@ -21,7 +21,8 @@ namespace GTManute.Views
         private string VersaoPrograma = "1.0.0.8";
         private string Usuario { get; set; }
         Addons addons = new Addons();
-        List<db_abast> pecaslista = new List<db_abast>();
+        List<db_manu> pecaslista = new List<db_manu>();
+        List<db_manu_log> manut = new List<db_manu_log>();
         private GTManute.Properties.Settings cfg = new Properties.Settings();
         private dbAcessos.Properties.Settings cfgdb = new dbAcessos.Properties.Settings();
         private int ID { get; set; }
@@ -200,18 +201,24 @@ namespace GTManute.Views
         {
             Atualizar();
         }
-
+       
         private async void btn_upvalores_Click(object sender, RoutedEventArgs e)
         {
-            pecaslista = await Task.FromResult<List<db_abast>>(db.db_abast.Where(a => a.Empresa == Empresa).ToList());
+            pecaslista = new List<db_manu>(); //await Task.FromResult<List<db_manu>>(db.db_manu.Where(a => a.Empresa == Empresa).ToList());
+            manut = await Task.FromResult<List<db_manu_log>>(db.db_manu_log.Where(a => a.Empresa == Empresa).ToList());
 
-            for (int i = 0; i < pecaslista.Count; i++)
+
+            for (int i = 0; i < manut.Count; i++)
             {
                 try
                 {
-                    if(pecaslista[i].DESPESA_ALI!=""&& pecaslista[i].DESPESA_ALI != null)
+                    db_manu db_Manu = new db_manu();
+                    if (manut[i].Desconto != "" && manut[i].Desconto != null)
                     {
-                        pecaslista[i].DESPESA_ALI = pecaslista[i].DESPESA_ALI.Replace("R$ ", "");
+                       db_Manu = new db_manu();
+                        db_Manu = await Task.FromResult(db.db_manu.Where(a => a.Empresa == Empresa).Where(a=>a.NR_LANCA==manut[i].NR_NF).FirstOrDefault());
+                        db_Manu.DESCONTO = manut[i].Desconto.Replace("R$ ","");
+                        pecaslista.Add(db_Manu);
                     }
                     
                 }
@@ -219,55 +226,6 @@ namespace GTManute.Views
                 {
 
                 }
-                try
-                {
-                    if (pecaslista[i].DESPESA_COMB != "" && pecaslista[i].DESPESA_COMB != null)
-                    {
-                        pecaslista[i].DESPESA_COMB = pecaslista[i].DESPESA_COMB.Replace("R$ ", "");
-                    }
-
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    if (pecaslista[i].DESPESA_OUTRAS != "" && pecaslista[i].DESPESA_OUTRAS != null)
-                    {
-                        pecaslista[i].DESPESA_OUTRAS = pecaslista[i].DESPESA_OUTRAS.Replace("R$ ", "");
-                    }
-
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    if (pecaslista[i].DESPESA_PERN != "" && pecaslista[i].DESPESA_PERN != null)
-                    {
-                        pecaslista[i].DESPESA_PERN = pecaslista[i].DESPESA_PERN.Replace("R$ ", "");
-                    }
-
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    if (pecaslista[i].VALOR_TOTAL != "" && pecaslista[i].VALOR_TOTAL != null)
-                    {
-                        pecaslista[i].VALOR_TOTAL = pecaslista[i].VALOR_TOTAL.Replace("R$ ", "");
-                    }
-
-                }
-                catch
-                {
-
-                }
-
 
 
             }
@@ -285,7 +243,7 @@ namespace GTManute.Views
                         Application.Current.Dispatcher.Invoke((Action)delegate
                         {
                             mensagem("Manutenção alterada com sucesso!", false, "", "Ok");
-                           
+
                         });
                     }
                     catch

@@ -144,7 +144,7 @@
         </Grid>
 
         <Button x:Name="btn_atualizar" Visibility="Hidden" Content="Atualizar" Style="{StaticResource BotaoBranco}" HorizontalAlignment="Left" Margin="667,75,0,0" VerticalAlignment="Top" Width="116" Click="btn_atualizar_Click"/>
-        <Button x:Name="btn_upvalores" Visibility="Visible" Content="Atualizar valores" Style="{StaticResource BotaoBranco}" HorizontalAlignment="Left" Margin="514,75,0,0" VerticalAlignment="Top" Width="116" Click="btn_upvalores_Click"/>
+        <Button x:Name="btn_upvalores" Visibility="Hidden" Content="Atualizar valores" Style="{StaticResource BotaoBranco}" HorizontalAlignment="Left" Margin="514,75,0,0" VerticalAlignment="Top" Width="116" Click="btn_upvalores_Click"/>
 
     </Grid>
 </Window>
