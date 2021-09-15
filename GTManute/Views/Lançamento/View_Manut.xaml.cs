@@ -598,6 +598,7 @@ namespace GTManute.Views.Lançamento
             try
             {
                 double desconto = 0;
+                double descontoTT = 0;
                 double total = 0;
                 double desc1 = 0;
                 double quant = 0;
@@ -616,11 +617,12 @@ namespace GTManute.Views.Lançamento
                     catch { }
                     double.TryParse(pecaslista[i].QUANTIDADE.Replace("R$ ", ""), out quant);
                     double.TryParse(pecaslista[i].VALOR.Replace("R$ ", ""), out val);
-                    desconto += desc1;
+                    desconto = desc1;
+                    descontoTT += desc1;
                     total += (val * quant)-desconto;
 
                 }
-                txt_calcDesconto.Text = desconto.ToString("N2");
+                txt_calcDesconto.Text = descontoTT.ToString("N2");
                 txt_calcTotal.Text = total.ToString("N2");
 
             }

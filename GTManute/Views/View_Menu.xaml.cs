@@ -18,7 +18,7 @@ namespace GTManute.Views
     /// </summary>
     public partial class View_Menu : Window
     {
-        private string VersaoPrograma = "1.0.0.8";
+        private string VersaoPrograma = "1.0.1.0";
         private string Usuario { get; set; }
         Addons addons = new Addons();
         List<db_manu> pecaslista = new List<db_manu>();
