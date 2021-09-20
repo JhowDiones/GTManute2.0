@@ -224,6 +224,8 @@ namespace GTManute.Views.Lançamento
             if (btn_novo.Content.ToString() == "Novo")
             {
                 btn_novo.Content = "Gravar";
+                btn_alterar.IsEnabled = false;
+                btn_delete.IsEnabled = false;
                 Limpar();
                 grid_ultimas.ItemsSource = null;
             }
@@ -676,6 +678,27 @@ namespace GTManute.Views.Lançamento
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
             _btn_deletar();
+        }
+
+        private async void txt_doc_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+              db_abast  peca = await Task.FromResult(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.N_DOC == txt_doc.Text).FirstOrDefault());
+                if (peca.N_DOC != "" && peca.N_DOC != null)
+                {
+                    
+                    carregando(peca.ID, true);
+                    mensagem("Documento já existente e carregado!", false, "", "Ok");
+                    btn_novo.Content = "Novo";
+                    btn_alterar.IsEnabled = true;
+                    btn_delete.IsEnabled = true;
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 

@@ -181,6 +181,8 @@ namespace GTManute.Views.Lançamento
                 pecaslista.Clear();
                 NF = null;
                 grid_itens.ItemsSource = null;
+                btn_alterar.IsEnabled = false;
+                btn_delete.IsEnabled = false;
                 txt_doc.Focus();
             }
             else
@@ -364,7 +366,9 @@ namespace GTManute.Views.Lançamento
 
                 }
 
-
+                btn_novo.Content = "Novo";
+                btn_alterar.IsEnabled = true;
+                btn_delete.IsEnabled = true;
 
                 ultimas = new List<Ultimas>();
                 for (int i = 0; i < pecaslista.Count; i++)
