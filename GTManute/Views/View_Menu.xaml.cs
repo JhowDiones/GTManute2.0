@@ -42,6 +42,11 @@ namespace GTManute.Views
                 btn_home.IsEnabled = false;
             }
 
+            if (Empresa == "17")
+            {
+                web_pbi.Navigate("https://app.powerbi.com/view?r=eyJrIjoiZDZiZDY3YjctOTAxNC00MGVkLTllZTQtOGFhMjFiYjMzZjdiIiwidCI6IjFiZjQxZjFmLTM5YjYtNDZiOS1hNDhmLWE0OWZjZGQ3NDk2ZCJ9");
+            }
+
         }
         private void Atualizar()
         {
@@ -103,8 +108,11 @@ namespace GTManute.Views
             btn_home.Background = brush1;
             btn_cadastro.Background = brush;
             btn_Lanca.Background = brush1;
-            grid_cadastro.Visibility = Visibility.Visible;
+
+            grid_home.Visibility = Visibility.Hidden;
             grid_lanc.Visibility = Visibility.Hidden;
+
+            grid_cadastro.Visibility = Visibility.Visible;
         }
 
         private void btn_Config_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -121,6 +129,7 @@ namespace GTManute.Views
             btn_home.Background = brush1;
             btn_cadastro.Background = brush1;
             btn_Lanca.Background = brush;
+            grid_home.Visibility = Visibility.Hidden;
             grid_cadastro.Visibility = Visibility.Hidden;
             grid_lanc.Visibility = Visibility.Visible;
         }
@@ -164,6 +173,7 @@ namespace GTManute.Views
             btn_Lanca.Background = brush1;
             grid_cadastro.Visibility = Visibility.Hidden;
             grid_lanc.Visibility = Visibility.Hidden;
+            grid_home.Visibility = Visibility.Visible;
         }
 
         private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
