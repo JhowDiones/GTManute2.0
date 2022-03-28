@@ -97,7 +97,6 @@ namespace GTManute.Views
             {
 
             }
-
         }
 
         private void Home2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -1,6 +1,4 @@
 ﻿using dbAcessos;
-using dbAcessos.Properties;
-using GTManute.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,15 +90,12 @@ namespace GTManute.Views.Lançamento
             try
             {
                 string justNumbers = new String(dt.Text.Where(Char.IsDigit).ToArray());
-
                 string newDate = justNumbers.Insert(2, ":");
-               
                 dt.Text = DateTime.Parse(newDate).ToString("HH:mm");
             }
-            catch (Exception ex)
+            catch
             {
                 mensagem("horario invalido invalida!", false, "", "OK");
-
             }
 
         }
@@ -117,7 +112,7 @@ namespace GTManute.Views.Lançamento
             {
 
             }
-            
+
         }
         void container_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -162,8 +157,7 @@ namespace GTManute.Views.Lançamento
                     List<string> Rotas1 = new List<string>();
                     List<string> placas = new List<string>();
 
-                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a=>a.Empresa==Empresa).Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
-
+                    List<db_colaboradores> aju = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "AJUDANTE").OrderBy(a => a.NOME).ToList());
                     List<db_frota> pla = await Task.FromResult<List<db_frota>>(db.db_frota.Where(a => a.Empresa == Empresa).OrderBy(a => a.PLACA).ToList());
                     List<db_colaboradores> moto = await Task.FromResult<List<db_colaboradores>>(db.db_colaboradores.Where(a => a.Empresa == Empresa).Where(a => a.funcao == "MOTORISTA").OrderBy(a => a.NOME).ToList());
                     List<db_forn> forn = await Task.FromResult<List<db_forn>>(db.db_forn.OrderBy(a => a.RAZAO_SOCIAL).Where(a => a.Empresa == Empresa).ToList());
@@ -340,24 +334,24 @@ namespace GTManute.Views.Lançamento
                 _abast.PARA = cmb_destino.Text;
                 _abast.periodo = (DateTime.Parse(txt_dt_destino.Text) - DateTime.Parse(txt_dt_partida.Text)).ToString();
                 _abast.USUARIO = Usuario;
-                double valor=0;
+                double valor = 0;
                 try
                 {
-                    double combustivel =0;
+                    double combustivel = 0;
                     double pernoite = 0;
                     double outras = 0;
                     double alimento = 0;
                     double.TryParse(txt_desp_alimentacao.Text, out alimento);
-                    double.TryParse(txt_valor.Text,out combustivel);
+                    double.TryParse(txt_valor.Text, out combustivel);
                     double.TryParse(txt_desp_alimentacao.Text, out combustivel);
                     double.TryParse(txt_valor.Text, out combustivel);
-                    valor = combustivel + pernoite + outras+alimento;
+                    valor = combustivel + pernoite + outras + alimento;
                 }
                 catch
                 {
 
                 }
-                _abast.VALOR_TOTAL =valor.ToString("N2");
+                _abast.VALOR_TOTAL = valor.ToString("N2");
                 _abast.DT_HR = DateTime.UtcNow;
 
 
@@ -521,8 +515,8 @@ namespace GTManute.Views.Lançamento
 
             preencher(abast.DESPESA_ALI, abast.DESPESA_PERN, abast.N_DOC, abast.DT_CHEGADA,
                 abast.DT_PARTIDA, abast.HORA_CHEGADA, abast.HORA_PARTIDA, abast.KM_CHEGADA, abast.KM_PARTIDA,
-                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA, 
-                abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA,abast.T_COMBUSTIVEL);
+                abast.LITRAGEM, abast.DESPESA_OUTRAS, abast.VALOR_TOTAL, abast.AJUDANTE1, abast.AJUDANTE2, abast.PARA,
+                abast.FORNECEDOR, abast.MOTORISTA, abast.DE, abast.PLACA, abast.T_COMBUSTIVEL);
         }
 
         private async void btn_pesquisar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -605,7 +599,7 @@ namespace GTManute.Views.Lançamento
             }
         }
 
-        
+
 
         private void txt_dt_partida_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -632,7 +626,7 @@ namespace GTManute.Views.Lançamento
             setValor(sender, e);
             try
             {
-               double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
+                double valorunit = (double.Parse(txt_valor.Text) / double.Parse(txt_litragem.Text));
                 txt_res_unitario.Text = valorunit.ToString("N2");
             }
             catch
@@ -684,10 +678,10 @@ namespace GTManute.Views.Lançamento
         {
             try
             {
-              db_abast  peca = await Task.FromResult(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.N_DOC == txt_doc.Text).FirstOrDefault());
+                db_abast peca = await Task.FromResult(db.db_abast.Where(a => a.Empresa == Empresa).Where(a => a.N_DOC == txt_doc.Text).FirstOrDefault());
                 if (peca.N_DOC != "" && peca.N_DOC != null)
                 {
-                    
+
                     carregando(peca.ID, true);
                     mensagem("Documento já existente e carregado!", false, "", "Ok");
                     btn_novo.Content = "Novo";

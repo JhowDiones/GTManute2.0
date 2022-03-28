@@ -93,7 +93,6 @@ C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.c
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.cache
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\RdlCompile.compiled
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CoreCompileInputs.cache
-C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.csproj.CopyComplete
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.exe
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\obj\Debug\GTManute.pdb
 C:\Users\Administrador\Desktop\JWDDevs\GTManute2.0\GTManute\bin\Debug\Microsoft.ReportViewer.Common.dll
